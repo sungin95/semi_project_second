@@ -1,0 +1,106 @@
+/* 카테고리 */
+.main-category {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.7rem;
+    background: grey;
+}
+
+.main-category p {
+    padding-top: 10px;
+    margin-bottom: 0;
+}
+
+.main-category div {
+    padding: 20px;
+}
+
+.main-category-img {
+    border-radius: 50%;
+    width: 7rem;
+    height: 7rem;
+}
+/* 카테고리 종료 */
+
+/* 브랜드 카테고리 */
+.LG {
+    background-image: url(/lg5-common/images/header/lg_logo.svg);
+}
+
+.brand-category {
+    display: flex;
+    justify-content: center;
+    vertical-align: bottom;
+}
+
+.brand-category-logo {
+    background-color: lightblue;
+    border-radius: 50%;
+    width: 4rem;
+    height: 2rem;
+    margin: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    padding-top: 3.5px;
+}
+
+/* 베스트랭킹 */
+.best-ranking-box {
+    max-width: 1440px;
+    display: grid;
+}
+
+.best-ranking {
+    background-color: lightcoral;
+}
+
+.best-ranking h3 {
+    color: white;
+}
+
+.best-ten {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 5px;
+}
+
+.best-ten a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+/* .container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+} */
+
+.md-pick {
+    text-align: center;
+    background-color: bisque;
+}
+
+.slide-container {
+    width: 300vw;
+    height: 700px;
+    transition: all 1s;
+}
+
+.slide-box {
+    width: 100vw;
+    height: 100%;
+    float: left;
+}
+
+.slide-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.hide {
+    display: none;
+}
