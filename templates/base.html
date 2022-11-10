@@ -12,10 +12,68 @@
     {% block title %}{% endblock title %}
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="icon" href=" {% static 'images/dish.svg'%} ">
   </head>
 
   <body>
+    <!-- 네비게이션바 -->
+    <nav style="background-color: rgb(205, 205, 255);" class="navbar navbar-expand-lg sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'labs:main' %}">
+          <img src="{% static 'labs/img/mainlogo.png' %}" style="width: 44px; height:40px;" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">커뮤니티</a>
+            </li>
+            <li class="nav-item " id="navbarProduct">
+              <a class="nav-link">제품</a>
+            </li>
+            <!-- 어드민만 보이는 회원목록 -->
+            {% if request.user.is_superuser == 1 %}
+              <li class="nav-item">
+                <a class="nav-link" href="#">회원정보 목록</a>
+              </li>
+            {% endif %}
+          </ul>
+
+          {% if request.user.is_authenticated %}
+            <div class="navbar-nav d-flex">
+              <p class="nav-link mb-0 fw-bold">
+                {% if request.user.image %}
+                  <img src="#" alt="" style="width: 30px; height: 28px; border-radius: 500px">
+                {% endif %}
+                <a href="#" class="link-light">{{ request.user }}님 안녕하세요!</a>
+              </p>
+              <a class="nav-link" href="#">로그아웃</a>
+            </div>
+          {% else %}
+            <div class="navbar-nav d-flex">
+              <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
+              <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
+            </div>
+          {% endif %}
+          <form class="d-flex" action="#">
+            <input style="width: 150px; border: 0.1rem solid #cdcdcd; border-radius: 5rem;" class="px-3" type="search" name="search" placeholder="검색" aria-label="Search" required="required">
+            <button style="background-color: rgb(205, 205, 255);" id="search-btn" class="border border-0">
+              <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:32px;height:32px" type="submit"></lord-icon>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- 제품목록 -->
+    <ul id="listGroup" class="list-group" style="display: none;">
+      <li class="list-group-item">브랜드 1</li>
+      <li class="list-group-item">브랜드 2</li>
+      <li class="list-group-item">브랜드 3</li>
+      <li class="list-group-item">브랜드 4</li>
+      <li class="list-group-item">브랜드 5</li>
+    </ul>
+
     <!-- 타임특가정보 -->
     {% block timesale %}{% endblock timesale %}
 
@@ -23,16 +81,19 @@
     {% block carousel %}{% endblock carousel %}
 
     <!-- 메인 내용 -->
-    <main class="">
+    <main class="container">
       {% block content %}{% endblock content %}
     </main>
 
     <!-- 푸터 -->
-    <footer class="sticky-bottom my-5">
+    <footer class="sticky-bottom my-5" style="background-color: transparent;">
       <div class="card">
         <div class="card-body text-center">
           made by. 유영, 호빈, 성인, 윤식, 창현
         </div>
+        <div>아이콘 출처 :
+        </div>
+        <a href="https://www.flaticon.com/kr/free-animated-icons/" title="컴퓨터 애니메이션 아이콘">컴퓨터 애니메이션 아이콘 제작자: Freepik - Flaticon</a>
       </div>
     </footer>
 
@@ -40,7 +101,46 @@
     {% bootstrap_javascript %}
     <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const navbarProductClick = document.querySelector('#navbarProduct')
+      const listGroup = document.querySelector("#listGroup")
+      navbarProductClick.addEventListener('mouseover', () => {
+        listGroup.style.display = 'block';
+      })
+      navbarProductClick.addEventListener('mouseout', () => {
+        listGroup.style.display = 'none';
+      })
+    </script>
+    <script>
+      const searchBtn = document.querySelector('#search-btn')
+
+      window.addEventListener('scroll', () => {
+            var 스크롤양 = document.querySelector('html').scrollTop;
+            var 실제높이 = document.querySelector('html').scrollHeight;
+            var 높이 = document.querySelector('html').clientHeight;
+            if (window.scrollY > 200) {
+                document.querySelector('.navbar').style.backgroundColor = 'transparent'
+                searchBtn.style.backgroundColor = 'transparent'
+
+            } else {
+                document.querySelector('.navbar').style.backgroundColor = 'rgb(205, 205, 255)'
+                searchBtn.style.backgroundColor = 'rgb(205, 205, 255)'
+            }
+        })
+
+        
+    </script>
+    {% comment %} <script>
+        document
+            .querySelector("#modal")
+            .addEventListener("click", () => {
+                document
+                    .querySelector(".modal")
+                    .classList
+                    .toggle("show");
+            });
+    </script> {% endcomment %}
     {% block js %}{% endblock js %}
-  </body>
+</body>
 
 </html>
