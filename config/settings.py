@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "labs",
     "accounts",
     "imagekit",
+    "products",
     "phonenumber_field",
     "django_bootstrap5",
     "django.contrib.admin",
