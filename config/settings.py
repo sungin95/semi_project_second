@@ -32,10 +32,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "communities",
+    "labs",
     "accounts",
     "imagekit",
     "products",
     "phonenumber_field",
+    "django_bootstrap5",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.sites",
@@ -43,9 +46,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_bootstrap5",
     "storages",
-    # "login.apps.LoginConfig", 임시 주석
+    "login.apps.LoginConfig",  # 왜 login에서 가져 오는지는 모르겠네
     # allauth
     "allauth",
     "allauth.account",
@@ -141,10 +143,10 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-MEDIAFILES_LOCATION = "media"
 
 AUTH_USER_MODEL = "accounts.User"
 
+MEDIAFILES_LOCATION = "media"
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
@@ -156,4 +158,4 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 
 
-LOGIN_REDIRECT_URL = "/"  # 로그인 후 리다이렉트 될 경로
+LOGIN_REDIRECT_URL = "/accounts"  # 로그인 후 리다이렉트 될 경로

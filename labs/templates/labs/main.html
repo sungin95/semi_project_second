@@ -1,0 +1,353 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'labs/css/main.css' %}">
+{% endblock css %}
+
+<!-- 타임특가 정보 -->
+{% block timesale %}
+  <div id="timesale" class="alert alert-danger">5초 이내 구매시 사은품 증정!</div>
+  <div style="overflow: hidden;"></div>
+{% endblock timesale %}
+
+<!-- 캐러셀 -->
+{% block carousel %}
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'labs/img/sample.webp' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'labs/img/car2.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'labs/img/car3.png' %}" class="d-block w-1000" alt="...">
+      </div>
+    </div>
+  </div>
+{% endblock carousel %}
+{% block content %}
+  <!-- 카테고리 -->
+  <div class="main-category">
+    <div>
+      <img src="http://placeimg.com/150/150/tech" class="main-category-img" alt="">
+      <p>인텔리랩스를 소개합니다</p>
+    </div>
+    <div>
+      <img src="http://placeimg.com/150/150/tech" class="main-category-img" alt="">
+      <p>인텔리랩스 등급</p>
+    </div>
+    <div>
+      <img src="http://placeimg.com/150/150/tech" class="main-category-img" alt="">
+      <p>커뮤니티</p>
+    </div>
+    <div>
+      <img src="http://placeimg.com/150/150/tech" class="main-category-img" alt="">
+      <p>특가정보</p>
+    </div>
+    <div>
+      <img src="http://placeimg.com/150/150/tech" class="main-category-img" alt="">
+      <p>미정</p>
+    </div>
+  </div>
+
+  <!-- 브랜드 카테고리 -->
+  <div class="brand-category">
+    <div class="brand-category-logo"># 전체</div>
+    <div class="brand-category-logo"># 삼성</div>
+    <div class="brand-category-logo LG"># 헬쥐</div>
+    <div class="brand-category-logo"># Apple</div>
+    <div class="brand-category-logo"># Lenovo</div>
+    <div class="brand-category-logo"># Asus</div>
+    <div class="brand-category-logo"># Msi</div>
+    <div class="brand-category-logo"># Dell</div>
+    <div class="brand-category-logo"># 한성</div>
+    <div class="brand-category-logo"># HP</div>
+  </div>
+
+  <!-- 베스트랭킹 -->
+  <div class="container">
+    <div class="best-ranking-box row">
+      <div class='best-ranking col-3'>
+        <h3>베스트랭킹</h3>
+        <div class="best-ten">
+          <a href="">01 제품명
+          </a>
+          <a href="">02 제품명
+          </a>
+          <a href="">03 제품명
+          </a>
+          <a href="">04 제품명
+          </a>
+          <a href="">05 제품명
+          </a>
+          <a href="">06 제품명
+          </a>
+          <a href="">07 제품명
+          </a>
+          <a href="">08 제품명
+          </a>
+          <a href="">09 제품명
+          </a>
+          <a href="">10 제품명
+          </a>
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="d-flex">
+          <div class="card">
+            <div class="card-body">
+              <img src="http://placeimg.com/150/150/tech" alt="">
+              <h5 class="card-title">제품명</h5>
+              <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+              <p class="card-text">
+                <div class="standard-price">
+                  <span>기준가</span>기준가격
+                </div>
+                <div class="sale-price">
+                  <span>할인가</span>할인가격</div>
+              </p>
+              <a href="#" class="btn btn-primary">구매하기</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <img src="http://placeimg.com/150/150/tech" alt="">
+              <h5 class="card-title">제품명</h5>
+              <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+              <p class="card-text">
+                <div class="standard-price">
+                  <span>기준가</span>기준가격
+                </div>
+                <div class="sale-price">
+                  <span>할인가</span>할인가격</div>
+              </p>
+              <a href="#" class="btn btn-primary">구매하기</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <img src="http://placeimg.com/150/150/tech" alt="">
+              <h5 class="card-title">제품명</h5>
+              <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+              <p class="card-text">
+                <div class="standard-price">
+                  <span>기준가</span>기준가격
+                </div>
+                <div class="sale-price">
+                  <span>할인가</span>할인가격</div>
+              </p>
+              <a href="#" class="btn btn-primary">구매하기</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <img src="http://placeimg.com/150/150/tech" alt="">
+              <h5 class="card-title">제품명</h5>
+              <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+              <p class="card-text">
+                <div class="standard-price">
+                  <span>기준가</span>기준가격
+                </div>
+                <div class="sale-price">
+                  <span>할인가</span>할인가격</div>
+              </p>
+              <a href="#" class="btn btn-primary">구매하기</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <img src="http://placeimg.com/150/150/tech" alt="">
+              <h5 class="card-title">제품명</h5>
+              <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+              <p class="card-text">
+                <div class="standard-price">
+                  <span>기준가</span>기준가격
+                </div>
+                <div class="sale-price">
+                  <span>할인가</span>할인가격</div>
+              </p>
+              <a href="#" class="btn btn-primary">구매하기</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <img src="http://placeimg.com/150/150/tech" alt="">
+              <h5 class="card-title">제품명</h5>
+              <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+              <p class="card-text">
+                <div class="standard-price">
+                  <span>기준가</span>기준가격
+                </div>
+                <div class="sale-price">
+                  <span>할인가</span>할인가격</div>
+              </p>
+              <a href="#" class="btn btn-primary">구매하기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MD추천 아이템 -->
+
+    <div class="container">
+      <h3 class="md-pick">MD추천 아이템</h3>
+      <div class="row row row-cols-4 g-3">
+        <div class="card">
+          <div class="card-body">
+            <img src="http://placeimg.com/150/150/tech" alt="">
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn btn-primary">구매하기</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <img src="http://placeimg.com/150/150/tech" alt="">
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn btn-primary">구매하기</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <img src="http://placeimg.com/150/150/tech" alt="">
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn btn-primary">구매하기</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <img src="http://placeimg.com/150/150/tech" alt="">
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn btn-primary">구매하기</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <img src="http://placeimg.com/150/150/tech" alt="">
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn btn-primary">구매하기</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <img src="http://placeimg.com/150/150/tech" alt="">
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn btn-primary">구매하기</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <img src="http://placeimg.com/150/150/tech" alt="">
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn btn-primary">구매하기</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <img src="http://placeimg.com/150/150/tech" alt="">
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn btn-primary">구매하기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center m-5">
+      <button>더보기</button>
+    </div>
+  {% endblock content %}
+
+  <!-- 자바스크립트 -->
+  {% block js %}
+    <script src="{% static 'labs/js/main.js' %}"></script>
+
+    <!-- 타임세일 -->
+    <script>
+      var time = 5;
+
+      const interval = setInterval(() => {
+        time--;
+        document
+          .querySelector("#timesale")
+          .innerHTML = `${time}초 이내 구매시 사은품 증정!`;
+        if (time === 0) {
+          document
+            .querySelector("#timesale")
+            .classList
+            .add("hide");
+          clearInterval(interval);
+        }
+      }, 1000);
+    </script>
+
+    <script>
+      var slideWrap = document.querySelector('slidewrap')
+    </script>
+  {% endblock js %}

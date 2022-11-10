@@ -16,9 +16,14 @@
   </head>
 
   <body>
+    <!-- 타임특가정보 -->
+    {% block timesale %}{% endblock timesale %}
+
+    <!-- 캐러셀 -->
+    {% block carousel %}{% endblock carousel %}
 
     <!-- 메인 내용 -->
-    <main class="container">
+    <main class="">
       {% block content %}{% endblock content %}
     </main>
 
