@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "accounts",
     "imagekit",
+    "products",
     "phonenumber_field",
     "django.contrib.admin",
     "django.contrib.auth",
