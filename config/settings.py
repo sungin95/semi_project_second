@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "labs",
     "accounts",
     "imagekit",
     "phonenumber_field",
