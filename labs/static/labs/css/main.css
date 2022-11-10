@@ -1,10 +1,14 @@
 /* 카테고리 */
+body {
+    background: rgb(219, 219, 255);
+}
+
 .main-category {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     text-align: center;
     font-size: 0.7rem;
-    background: grey;
+    margin: 20px;
 }
 
 .main-category p {
@@ -13,63 +17,109 @@
 }
 
 .main-category div {
-    padding: 20px;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    border: 3px solid rgb(205, 205, 255);
+}
+
+.main-category a {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
 }
 
 .main-category-img {
-    border-radius: 50%;
-    width: 7rem;
-    height: 7rem;
+    padding-top: 28px;
+    width: 75%;
+    height: 75%;
 }
 /* 카테고리 종료 */
 
 /* 브랜드 카테고리 */
-.LG {
-    background-image: url(/lg5-common/images/header/lg_logo.svg);
-}
-
 .brand-category {
     display: flex;
     justify-content: center;
     vertical-align: bottom;
+    margin: 10px;
 }
 
 .brand-category-logo {
-    background-color: lightblue;
-    border-radius: 50%;
-    width: 4rem;
-    height: 2rem;
-    margin: 10px;
+    background-color: rgb(205, 205, 255);
+    font-weight: 700;
+    font-size: 1.5rem;
+    width: 7rem;
+    height: 3rem;
+    border-radius: 1rem;
+    margin: 20px 5px 20px;
     font-size: 0.8rem;
     text-align: center;
-    padding-top: 3.5px;
+    padding-top: 13px;
+}
+
+.brand-category-logo img {
+    width: 100%;
+    height: 100%;
 }
 
 /* 베스트랭킹 */
 .best-ranking-box {
-    max-width: 1440px;
-    display: grid;
+    overflow: hidden;
+    display: flex;
+    margin-bottom: 20px;
+    max-height: 330px;
 }
 
 .best-ranking {
-    background-color: lightcoral;
+    min-width: 25%;
+    background-color: rgb(205, 205, 255);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .best-ranking h3 {
     color: white;
+    margin: 15px;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
 .best-ten {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     background-color: white;
     margin: 5px;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    height: 75%;
 }
 
 .best-ten a {
     text-decoration: none;
     color: black;
     font-weight: 600;
+    margin: 2px 6px 2px;
+}
+
+.best-ranking-products {
+    display: flex;
+    margin-left: 13px;
+    width: 200vw;
+}
+
+.best-ten-product {
+    margin-left: 13px;
+    height: 100%;
+    min-width: 25%;
+}
+
+.best-ten-product .card-body {
+    height: 100%;
+    padding: 0;
 }
 
 /* .container {
@@ -81,7 +131,20 @@
 
 .md-pick {
     text-align: center;
-    background-color: bisque;
+    background: rgb(205, 205, 255);
+    border-radius: 10px;
+    margin-top: 20px;
+    height: 100px;
+    position: relative;
+}
+
+.md-pick h3 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    color: white;
 }
 
 .slide-container {
@@ -103,4 +166,30 @@
 
 .hide {
     display: none;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.hit-product {
+    width: 20%;
+}
+
+.btn-color {
+    background-color: rgb(205, 205, 255);
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    padding: 5px;
+    border-style: none;
 }
