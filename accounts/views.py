@@ -7,12 +7,12 @@ from .forms import (
     CustomUserCreationForm,
     CustomUserChangeForm,
     ProfileCustomUserChangeForm,
+    MyAuthForm,
 )
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import JsonResponse
 import json
-from .models import User
 
 
 @login_required
@@ -50,7 +50,7 @@ def login(request):
             auth_login(request, form.get_user())
             return redirect(request.GET.get("next") or "accounts:index")
     else:
-        form = AuthenticationForm()
+        form = MyAuthForm()
     context = {
         "form": form,
     }
