@@ -7,9 +7,12 @@ from .forms import (
     CustomUserCreationForm,
     CustomUserChangeForm,
     ProfileCustomUserChangeForm,
+    MyAuthForm,
 )
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import JsonResponse
+import json
 
 
 @login_required
@@ -26,6 +29,7 @@ def signup(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            auth_login(request, user)
             return redirect("accounts:detail", request.user.pk)
     else:
         form = CustomUserCreationForm()
@@ -37,16 +41,16 @@ def signup(request):
 
 def login(request):
     if request.user.is_authenticated:  # 로그인이 된 상태에서는 로그인 화면에 들어갈 수 없다.
-        return redirect("accounts/login.html")
+        return redirect("accounts:index")
     if request.method == "POST":
         form = AuthenticationForm(
             request, data=request.POST
         )  # request가 없어도 잘 돌아가는거 같음 하지만 대부분이 request를 필수적으로 받아 가지고 편의상 넣겠음
         if form.is_valid():
             auth_login(request, form.get_user())
-            return redirect(request.GET.get("next") or "accounts/login.html")
+            return redirect(request.GET.get("next") or "accounts:index")
     else:
-        form = AuthenticationForm()
+        form = MyAuthForm()
     context = {
         "form": form,
     }
@@ -136,3 +140,21 @@ def follow(request, user_pk):
         else:
             person.followers.add(request.user)
     return redirect("accounts:profile", person.username)
+
+
+def database(request):
+    jsonObject = json.loads(request.body)
+    username = jsonObject.get("username")
+    users = get_user_model().objects.filter(username=username)
+
+    if users:
+        user = get_user_model().objects.get(username=username)
+        auth_login(request, user)
+    else:
+        user = get_user_model()
+        user.username = jsonObject.get("username")
+        print(user)
+        user.save()
+        user = get_user_model().objects.get(username=username)
+        auth_login(request, user)
+    return JsonResponse({"username": user.username})
