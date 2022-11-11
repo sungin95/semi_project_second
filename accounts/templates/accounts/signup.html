@@ -15,28 +15,49 @@
       <div class="square" style="--i:2;"></div>
       <div class="square" style="--i:3;"></div>
       <div class="square" style="--i:4;"></div>
-        <div class="container">
-          <div class="form">
-            <h2>로그인 폼</h2>
-            <form>
-              <div class="inputBox">
-                <input type="text" placeholder="아이디">
+        <div class="container1">
+          <div class="form1 d-flex flex-column align-items-center">
+            <h2>회원가입</h2>
+            <form class="all-form">
+              <div class="inputBox1">
+                <p class="sign">성</p>
+                <input type="text" placeholder="" name="first_name">
               </div>
-              <div class="inputBox">
-                <input type="password" placeholder="비밀번호">
+              <div class="inputBox1">
+                <p class="sign">이름</p>
+                <input type="text" placeholder="" name="last_name">
               </div>
-              <div class="inputBox">
-                <input type="submit" value="Login">
+              <div class="inputBox1" >
+                <p class="sign">아이디</p>
+                <input type="text" placeholder="아이디를 입력해주세요" name="username">
               </div>
-              <p class="forget">비밀번호를 잊어버리셨나요?<a
-                href="#">여기 누르세요!</a></p>
-              <p class="forget">계정이 없으신가요?<a
-                href="#">회원가입</a></p>    
+              <div class="inputBox1">
+                <p class="sign">이메일</p>
+                <input type="text" placeholder="예:intellilaps@gmail.com" name="email">
+              </div>
+              <div class="inputBox1">
+                <p class="sign">비밀번호</p>
+                <input type="text" placeholder="비밀번호를 입력해주세요" name="password1">
+              </div>
+              <div class="inputBox1">
+                <p class="sign">비밀번호 확인</p>
+                <input type="text" placeholder="비밀번호를 다시 입력해주세요" name="password2">
+              </div>
+              <div class="exform_txt text-center">
+                <span><span style="color:red">*</span>표시는 필수적으로 입력해주셔야 가입이 가능합니다.</span>
+              </div>
+      
+        
+              <div class="inputBox1_button d-flex justify-content-center">
+                <input type="submit" class="form-control form-control-lg" value="회원가입">
+              </div>
+        
             </form>
           </div>
       </div>
     </div>
   </section>
+<script src="{% static 'js/signup.js'%}"></script>  
 {% endblock content %}
 
 
