@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
-{% block css %}{% endblock css %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+{% endblock css %}
 
 {% block content %}
 
@@ -38,7 +40,7 @@
   </div>
 </section>
 
-  <!-- 구글 로그인 -->
+  <!-- 구글 로그인
   {% load socialaccount %}
   {% providers_media_js %}
   <h1>인터넷응용 2020</h1>
@@ -53,7 +55,7 @@
   {% endif %}
   <div class="col-md-6">
     <a href="{% provider_login_url 'kakao' %}" class="btn btn-outline-dark btn-block btn-sm" role="button">Log In With kakao</a>
-  </div>
+  </div> -->
 
 
 {% endblock content %}
