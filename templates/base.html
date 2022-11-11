@@ -12,13 +12,14 @@
     {% block title %}{% endblock title %}
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
 
   <body>
     <!-- 네비게이션바 -->
-    <nav style="background-color: rgb(205, 205, 255);" class="navbar navbar-expand-lg sticky-top" id="nabvar">
+    <nav class="navbar navbar-expand-lg sticky-top" id="nabvar">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'labs:main' %}">
           <img src="{% static 'labs/img/mainlogo.png' %}" style="width: 44px; height:40px;" alt="">
@@ -99,18 +100,18 @@
     <!-- 푸터1 -->
     <footer class="sticky-bottom my-5">
       <div class="card">
-        <div class="card-body text-center" style="background-color: rgb(205, 205, 255);">
+        <div class="card-body text-center">
           made by. 유영, 호빈, 성인, 윤식, 창현
         </div>
       </div>
     </footer>
 
     <!-- 푸터2 -->
-    <footer>
+    <!-- <footer>
       <div>아이콘 출처 :
         <a href="https://www.flaticon.com/kr/free-animated-icons/" title="컴퓨터 애니메이션 아이콘">컴퓨터 애니메이션 아이콘 제작자: Freepik - Flaticon</a>
       </div>
-    </footer>
+    </footer> -->
 
     <!-- 스크립트 -->
     {% bootstrap_javascript %}
