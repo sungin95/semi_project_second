@@ -12,8 +12,7 @@
     {% block title %}{% endblock title %}
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
 
@@ -33,7 +32,7 @@
               <a class="nav-link active" aria-current="page" href="{% url 'communities:index' %}">커뮤니티</a>
             </li>
             <li class="nav-item " id="navbarProduct">
-              <a class="nav-link">제품</a>
+              <a class="nav-link" href="{% url 'products:index' %}">제품</a>
             </li>
             <!-- 어드민만 보이는 회원목록 -->
             {% if request.user.is_superuser == 1 %}
@@ -45,7 +44,7 @@
 
           <div class="d-flex">
           {% if request.user.is_authenticated %}
-            <div class="navbar-nav d-flex">
+            <div class="navbar-nav d-flex align-items-center">
               <p class="nav-link mb-0 fw-bold">
                 {% if request.user.image %}
                   <img src="#" alt="" style="width: 30px; height: 28px; border-radius: 500px">
@@ -53,11 +52,17 @@
                 <a href="#" class="link-light">{{ request.user }}님 안녕하세요!</a>
               </p>
               <a class="nav-link" href="#">로그아웃</a>
+              <a class="nav-link" href="">
+                <i class="bi bi-cart"></i>
+              </a>
             </div>
           {% else %}
             <div class="navbar-nav d-flex">
               <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
               <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
+              <a class="nav-link" href="">
+                <i class="bi bi-cart"></i>
+              </a>
             </div>
           {% endif %}
           <form class="d-flex" action="#">
@@ -73,7 +78,7 @@
     <!-- 제품목록 -->
     <div class="black-bg" >
       <div class="white-bg" id="listGroup">
-        <div><a href="" class="navbar-product">전체</a></div>
+        <div><a href="{% url 'products:index' %}" class="navbar-product">전체</a></div>
         <div><a href="" class="navbar-product">삼성 (Samsung)</a></div>
         <div><a href="" class="navbar-product">엘지 (LG)</a></div>
         <div><a href="" class="navbar-product">애플 (Apple)</a></div>

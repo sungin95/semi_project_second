@@ -1,0 +1,46 @@
+.search-time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-time form {
+    display: flex;
+}
+
+.search-time div {
+    display: flex;
+    width: 50%;
+}
+
+.today-best-ten {
+    display: flex;
+}
+
+.today-best-left {
+    width: 50%;
+}
+
+.today-best-right {
+    width: 50%;
+}
+
+.classification-btn {
+    padding: 30px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.article-title {
+    font-size: 0.8rem;
+}
+
+.articles {
+    border: 2px solid silver;
+    border-radius: 5px;
+}
+
+.pgnation-sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

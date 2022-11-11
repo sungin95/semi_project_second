@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'products/css/index.css' %}">
+{% endblock css %}
+
+<!-- 배너 -->
+{% block carousel %}
+  <div class="product-brand-banner">
+    <div class="product-brand-banner-name" style="">
+      <h2>브랜드</h2>
+    </div>
+    <div class="product-brand-banner-img" style="width: 55%">
+      <img src="{% static 'products/img/laptops.jpg' %}" width="100%" alt="">
+    </div>
+  </div>
+{% endblock carousel %}
+
+{% block content %}
+
+  <div class="d-flex align-items-center my-3 justify-content-between">
+    <!-- 필터 -->
+    <div class="">
+      <p>
+        <span>상세검색</span>
+        |
+        <span>검색 결과</span>
+        <span>??개</span></p>
+    </div>
+    <!-- 정렬 -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        추천순
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+          <a class="dropdown-item" href="#">추천순</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">최신순</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">인기순</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">높은 가격순</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">낮은 가격순</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+
+  <div class="main">
+    <!-- 사이드바 -->
+    <aside class="">
+      <div>화면크기</div>
+      <div>무게</div>
+      <div>프로세서</div>
+      <div>메모리</div>
+      <div>그래픽카드</div>
+      <div>저장장치</div>
+      <div>가격대</div>
+    </aside>
+
+    <!-- 제품 목록 -->
+    <div class="container">
+      <div class="row"></div>
+      <div class="row g-3">
+        <!-- 카드1 한장 시작 -->
+        <div class="hit-product col-12 col-sm-6 col-lg-4">
+          <div class="product-card-body">
+            <div>
+              <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            </div>
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn-color">구매하기</a>
+          </div>
+        </div>
+        <!-- 카드1 한장 끝 -->
+        <!-- 카드2 한장 시작 -->
+        <div class="hit-product col-12 col-sm-6 col-lg-4">
+          <div class="product-card-body">
+            <div>
+              <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            </div>
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn-color">구매하기</a>
+          </div>
+        </div>
+        <!-- 카드2 한장 끝 -->
+        <!-- 카드3 한장 시작 -->
+        <div class="hit-product col-12 col-sm-6 col-lg-4">
+          <div class="product-card-body">
+            <div>
+              <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            </div>
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn-color">구매하기</a>
+          </div>
+        </div>
+        <!-- 카드3 한장 끝 -->
+        <!-- 카드3 한장 시작 -->
+        <div class="hit-product col-12 col-sm-6 col-lg-4">
+          <div class="product-card-body">
+            <div>
+              <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            </div>
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn-color">구매하기</a>
+          </div>
+        </div>
+        <!-- 카드3 한장 끝 -->
+        <!-- 카드3 한장 시작 -->
+        <div class="hit-product col-12 col-sm-6 col-lg-4">
+          <div class="product-card-body">
+            <div>
+              <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            </div>
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn-color">구매하기</a>
+          </div>
+        </div>
+        <!-- 카드3 한장 끝 -->
+        <!-- 카드3 한장 시작 -->
+        <div class="hit-product col-12 col-sm-6 col-lg-4">
+          <div class="product-card-body">
+            <div>
+              <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            </div>
+            <h5 class="card-title">제품명</h5>
+            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <p class="card-text">
+              <div class="standard-price">
+                <span>기준가</span>기준가격
+              </div>
+              <div class="sale-price">
+                <span>할인가</span>할인가격</div>
+            </p>
+            <a href="#" class="btn-color">구매하기</a>
+          </div>
+        </div>
+        <!-- 카드3 한장 끝 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 더보기 버튼 -->
+  <div class="d-flex justify-content-center m-3">
+    <button class="btn-color px-3 py-2">더보기</button>
+  </div>
+  <!--{% comment %} 제품 하나 {% endcomment %} <div class="col-md-6 col-lg-3 card mb-3"> <div class="row"> {% if request.user in article.like_users.all %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart-fill align-end"></i> {% else %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart justify-right"></i> {% endif %} <img src="https://dummyimage.com/200x250/000000/c4c4c4" alt=""> <h3>아이폰13 Pro Max</h3> <p>A2484</p> <p>기준가 : 1,490,000 원</p> <h5>할인가 : 1,290,000 원</h5> <hr> <div class="d-flex align-text-center"> <p>적립 예정 포인트 </p> <h5> 2500p</h5> </div> <a class="btn btn-primary" href="#" role="button">구매하기</a> </div> </div> {% comment %} 제품 하나 {% endcomment %} <div class="col-md-6 col-lg-3 card mb-3"> <div class="row"> {% if request.user in article.like_users.all %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart-fill"></i> {% else %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart"></i> {% endif %} </div> </div> <div class="col-md-6 col-lg-3 card mb-3"> <div class=""> {% if request.user in article.like_users.all %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart-fill"></i> {% else %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart"></i> {% endif %} </div> </div> <div class="col-md-6 col-lg-3 card mb-3"> <div class=""> {% if request.user in article.like_users.all %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart-fill"></i> {% else %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart"></i> {% endif %} </div> </div>-->
+{% endblock content %}
