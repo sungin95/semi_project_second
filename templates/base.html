@@ -13,11 +13,12 @@
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
 
   <body>
     <!-- 네비게이션바 -->
-    <nav style="background-color: rgb(205, 205, 255);" class="navbar navbar-expand-lg sticky-top">
+    <nav style="background-color: rgb(205, 205, 255);" class="navbar navbar-expand-lg sticky-top" id="nabvar">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'labs:main' %}">
           <img src="{% static 'labs/img/mainlogo.png' %}" style="width: 44px; height:40px;" alt="">
@@ -25,10 +26,10 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">커뮤니티</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'communities:index' %}">커뮤니티</a>
             </li>
             <li class="nav-item " id="navbarProduct">
               <a class="nav-link">제품</a>
@@ -41,6 +42,7 @@
             {% endif %}
           </ul>
 
+          <div class="d-flex">
           {% if request.user.is_authenticated %}
             <div class="navbar-nav d-flex">
               <p class="nav-link mb-0 fw-bold">
@@ -65,15 +67,23 @@
           </form>
         </div>
       </div>
+      </div>
     </nav>
     <!-- 제품목록 -->
-    <ul id="listGroup" class="list-group" style="display: none;">
-      <li class="list-group-item">브랜드 1</li>
-      <li class="list-group-item">브랜드 2</li>
-      <li class="list-group-item">브랜드 3</li>
-      <li class="list-group-item">브랜드 4</li>
-      <li class="list-group-item">브랜드 5</li>
-    </ul>
+    <div class="black-bg" >
+      <div class="white-bg" id="listGroup">
+        <div><a href="" class="navbar-product">전체</a></div>
+        <div><a href="" class="navbar-product">삼성 (Samsung)</a></div>
+        <div><a href="" class="navbar-product">엘지 (LG)</a></div>
+        <div><a href="" class="navbar-product">애플 (Apple)</a></div>
+        <div><a href="" class="navbar-product">레노버 (Lenovo)</a></div>
+        <div><a href="" class="navbar-product">에이수스 (Asus)</a></div>
+        <div><a href="" class="navbar-product">엠에스아이 (Msi)</a></div>
+        <div><a href="" class="navbar-product">델 (Dell)</a></div>
+        <div><a href="" class="navbar-product">한성 (Hansung)</a></div>
+        <div><a href="" class="navbar-product">에이치피 (HP)</a></div>
+      </div>
+    </div>
 
     <!-- 타임특가정보 -->
     {% block timesale %}{% endblock timesale %}
@@ -86,14 +96,18 @@
       {% block content %}{% endblock content %}
     </main>
 
-    <!-- 푸터 -->
-    <footer class="sticky-bottom my-5" style="background-color: transparent;">
+    <!-- 푸터1 -->
+    <footer class="sticky-bottom my-5">
       <div class="card">
-        <div class="card-body text-center">
+        <div class="card-body text-center" style="background-color: rgb(205, 205, 255);">
           made by. 유영, 호빈, 성인, 윤식, 창현
         </div>
-        <div>아이콘 출처 :
-        </div>
+      </div>
+    </footer>
+
+    <!-- 푸터2 -->
+    <footer>
+      <div>아이콘 출처 :
         <a href="https://www.flaticon.com/kr/free-animated-icons/" title="컴퓨터 애니메이션 아이콘">컴퓨터 애니메이션 아이콘 제작자: Freepik - Flaticon</a>
       </div>
     </footer>
@@ -105,11 +119,23 @@
     <script>
       const navbarProductClick = document.querySelector('#navbarProduct')
       const listGroup = document.querySelector("#listGroup")
-      navbarProductClick.addEventListener('mouseover', () => {
-        listGroup.style.display = 'block';
+      const nabvar = document.querySelector("#nabvar")
+      navbarProductClick.addEventListener('mouseenter', () => {
+        document.querySelector('.black-bg').classList.add('show-modal')
       })
-      navbarProductClick.addEventListener('mouseout', () => {
-        listGroup.style.display = 'none';
+
+      listGroup.addEventListener('mouseleave', ()=>{
+        document.querySelector('.black-bg').classList.remove('show-modal')
+      })
+      
+      nabvar.addEventListener('mouseover', ()=>{
+        document.querySelector('.navbar').style.backgroundColor = 'rgb(205, 205, 255)'
+        searchBtn.style.backgroundColor = 'rgb(205, 205, 255)'
+      })
+
+      listGroup.addEventListener('mouseleave', ()=>{
+        document.querySelector('.navbar').style.backgroundColor = 'transparent'
+        searchBtn.style.backgroundColor = 'transparent'
       })
     </script>
     <script>
@@ -121,11 +147,15 @@
             var 높이 = document.querySelector('html').clientHeight;
             if (window.scrollY > 200) {
                 document.querySelector('.navbar').style.backgroundColor = 'transparent'
+                document.querySelector('.navbar').style.transition = 'all 1s'
                 searchBtn.style.backgroundColor = 'transparent'
+                searchBtn.style.transition = 'all 1s'
 
             } else {
                 document.querySelector('.navbar').style.backgroundColor = 'rgb(205, 205, 255)'
+                document.querySelector('.navbar').style.transition = 'all 1s'
                 searchBtn.style.backgroundColor = 'rgb(205, 205, 255)'
+                searchBtn.style.transition = 'all 1s'
             }
         })
 

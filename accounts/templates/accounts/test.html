@@ -4,39 +4,13 @@
 {% block css %}{% endblock css %}
 
 {% block content %}
-
-<section>
-  <div class="color"></div>
-  <div class="color"></div>
-  <div class="color"></div>
-  <div class="box">
-    <div class="square" style="--i:0;"></div>
-    <div class="square" style="--i:1;"></div>
-    <div class="square" style="--i:2;"></div>
-    <div class="square" style="--i:3;"></div>
-    <div class="square" style="--i:4;"></div>
-    <div class="container">
-      <div class="form">
-        <h2>로그인 폼</h2>
-        <form>
-          <div class="inputBox">
-            <input type="text" placeholder="아이디">
-          </div>
-          <div class="inputBox">
-            <input type="password" placeholder="비밀번호">
-          </div>
-          <div class="inputBox">
-            <input type="submit" value="로그인">
-          </div>
-          <p class="forget">비밀번호를 잊어버리셨나요?<a
-            href="#">여기 누르세요</a></p>
-          <p class="forget">계정이 없으신가요?<a
-            href="#">회원가입</a></p>    
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+  <h1>login</h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-outline-dark" onclick="location.href='{% url 'accounts:index' %}' ">로그인</button>
+    <button type="button" class="" onclick="location.href='{% url 'accounts:signup' %}' ">회원가입</button>
+  </form>
 
   <!-- 구글 로그인 -->
   {% load socialaccount %}
@@ -51,14 +25,9 @@
     <a href="{% provider_login_url 'google' %}">구글 로그인</a><br>
     로그인 하세유
   {% endif %}
-  <div class="col-md-6">
-    <a href="{% provider_login_url 'kakao' %}" class="btn btn-outline-dark btn-block btn-sm" role="button">Log In With kakao</a>
-  </div>
-
 
 {% endblock content %}
 {% block js %}
-
   <ul>
     <li onclick="kakaoLogin();">
       <a href="javascript:void(0)">
@@ -71,33 +40,55 @@
       </a>
     </li>
   </ul>
-  <!-- 카카오 스크립트 -->
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   <script>
     Kakao.init('859aceb90553e35aea74a737254f983c'); //발급받은 키 중 javascript키를 사용해준다.
     console.log(Kakao.isInitialized()); // sdk초기화여부판단
     //카카오로그인
     function kakaoLogin() {
-      Kakao
+      window
+        .Kakao
         .Auth
         .login({
+          scope: 'profile_nickname, profile_image, account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
           success: function (response) {
-            Kakao
+            console.log(response) // 로그인 성공하면 받아오는 데이터
+            window
+              .Kakao
               .API
-              .request({
+              .request({ // 사용자 정보 가져오기
                 url: '/v2/user/me',
-                success: function (response) {
-                  console.log(response)
-                },
-                fail: function (error) {
-                  console.log(error)
+                success: (res) => {
+                  const kakao_account = res.kakao_account;
+                  username = kakao_account.profile_nickname;
+                  if (typeof kakao_account != 'undefined') {
+                    username = kakao_account.profile_nickname;
+                  }
+                  const csrftoken = document
+                    .querySelector('[name=csrfmiddlewaretoken]')
+                    .value
+                    axios({
+                      method: 'post',
+                      url: `/accounts/database/`,
+                      headers: {
+                        'X-CSRFToken': csrftoken
+                      },
+                      data: {
+                        'username': username
+                      }
+                    })
+                    .then(response => {
+                      location.reload();
+                      // window.location.href = 'http://localhost:8000/reviews/';  이동할 url
+                    })
                 }
-              })
+              });
+            // window.location.href='/ex/kakao_login.html' 리다이렉트 되는 코드
           },
           fail: function (error) {
-            console.log(error)
+            console.log(error);
           }
-        })
+        });
     }
     //카카오로그아웃
     function kakaoLogout() {
@@ -119,5 +110,4 @@
       }
     }
   </script>
-
 {% endblock js %}
