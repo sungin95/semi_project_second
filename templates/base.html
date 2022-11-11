@@ -18,14 +18,14 @@
   <body>
     <!-- 네비게이션바 -->
     <nav style="background-color: rgb(205, 205, 255);" class="navbar navbar-expand-lg sticky-top" id="nabvar">
-      <div class="container-fluid">
+      <div class="container">
         <a class="navbar-brand" href="{% url 'labs:main' %}">
           <img src="{% static 'labs/img/mainlogo.png' %}" style="width: 44px; height:40px;" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'communities:index' %}">커뮤니티</a>
@@ -36,46 +36,69 @@
             <!-- 어드민만 보이는 회원목록 -->
             {% if request.user.is_superuser == 1 %}
               <li class="nav-item">
-                <a class="nav-link" href="#">회원정보 목록</a>
+                <a class="nav-link" href="{% url 'accounts:index' %}">회원정보 목록</a>
               </li>
             {% endif %}
           </ul>
 
+          <!-- 검색, 장바구니, 계정 -->
           <div class="d-flex">
-          {% if request.user.is_authenticated %}
-            <div class="navbar-nav d-flex align-items-center">
-              <p class="nav-link mb-0 fw-bold">
-                {% if request.user.image %}
-                  <img src="#" alt="" style="width: 30px; height: 28px; border-radius: 500px">
-                {% endif %}
-                <a href="#" class="link-light">{{ request.user }}님 안녕하세요!</a>
-              </p>
-              <a class="nav-link" href="#">로그아웃</a>
-              <a class="nav-link" href="">
-                <i class="bi bi-cart"></i>
-              </a>
-            </div>
-          {% else %}
-            <div class="navbar-nav d-flex">
-              <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
-              <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
-              <a class="nav-link" href="">
-                <i class="bi bi-cart"></i>
-              </a>
-            </div>
-          {% endif %}
-          <form class="d-flex" action="#">
+            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:32px;height:32px" type="submit"/></lord-icon>
+            <a id="cart" class="nav-link mx-3" href="{% url 'cart:detail' %}">
+              <img src="{% static 'img/cart_none.png' %}" alt="" width="25px" height="25px">
+            </a>
+            <div id="login">
+            {% if request.user.is_authenticated %}
+              <img src="{% static 'img/login_ing.png' %}" id="loginIng" alt="" width="30px" height="30px">
+            {% else %}
+              <img src="{% static 'img/login_none.png' %}" id="loginNone" class="" alt="" width="30px" height="30px">
+            {% endif %}
+          </div>
+          </div>
+          
+          {% comment %} <form class="d-flex" action="#">
             <input style="width: 150px; border: 0.1rem solid #cdcdcd; border-radius: 5rem;" class="px-3" type="search" name="search" placeholder="검색" aria-label="Search" required="required">
             <button style="background-color: rgb(205, 205, 255);" id="search-btn" class="border border-0">
-              <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:32px;height:32px" type="submit"></lord-icon>
             </button>
-          </form>
+          </form> {% endcomment %}
         </div>
       </div>
-      </div>
+      
     </nav>
+
+    <!-- 프로필 (로그인) -->
+    <div class="profile-black-bg-login">
+      <div class="container">
+        <div class="profile-bg-login">
+          <div>
+            <p class="nav-link mb-0 fw-bold">
+              {% if request.user.image %}
+                <img src="#" alt="" style="width: 30px; height: 28px; border-radius: 500px">
+              {% endif %}
+              <a href="#" class="link-light">{{ request.user }}님 안녕하세요!</a>
+            </p>
+            <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 프로필 (비로그인) -->
+    <div class="profile-black-bg-none">
+      <div class="container">
+      <div class="profile-bg-none">
+        <div>
+          <p class="nav-link mb-0 fw-bold">
+            <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
+          </p>
+          <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
+        </div>
+      </div>
+    </div>
+    </div>
+
     <!-- 제품목록 -->
-    <div class="black-bg" >
+    <div class="black-bg">
       <div class="white-bg" id="listGroup">
         <div><a href="{% url 'products:index' %}" class="navbar-product">전체</a></div>
         <div><a href="" class="navbar-product">삼성 (Samsung)</a></div>
@@ -89,6 +112,7 @@
         <div><a href="" class="navbar-product">에이치피 (HP)</a></div>
       </div>
     </div>
+
 
     <!-- 타임특가정보 -->
     {% block timesale %}{% endblock timesale %}
@@ -125,23 +149,52 @@
       const navbarProductClick = document.querySelector('#navbarProduct')
       const listGroup = document.querySelector("#listGroup")
       const nabvar = document.querySelector("#nabvar")
-      navbarProductClick.addEventListener('mouseenter', () => {
-        document.querySelector('.black-bg').classList.add('show-modal')
-      })
+      const blackBg = document.querySelector('.black-bg')
+      const profileBlackBgLogin = document.querySelector('.profile-black-bg-login')
+      const profileBlackBgNone = document.querySelector('.profile-black-bg-none')
+      const profileBgLogin = document.querySelector('.profile-bg-login')
+      const profileBgNone = document.querySelector('.profile-bg-none')
 
-      listGroup.addEventListener('mouseleave', ()=>{
-        document.querySelector('.black-bg').classList.remove('show-modal')
+      // 네비게이션바 제품
+      navbarProductClick.addEventListener('mouseenter', () => {
+        blackBg.classList.add('show-modal')
       })
-      
+      listGroup.addEventListener('mouseleave', ()=>{
+        blackBg.classList.remove('show-modal')
+      })
       nabvar.addEventListener('mouseover', ()=>{
         document.querySelector('.navbar').style.backgroundColor = 'rgb(205, 205, 255)'
-        searchBtn.style.backgroundColor = 'rgb(205, 205, 255)'
       })
-
       listGroup.addEventListener('mouseleave', ()=>{
         document.querySelector('.navbar').style.backgroundColor = 'transparent'
-        searchBtn.style.backgroundColor = 'transparent'
       })
+      
+      if (login.children[0].id == 'loginNone'){
+        // 비로그인 중 프로필 팝업
+        const loginNone = document.querySelector('#loginNone')
+        loginNone.addEventListener('mouseenter', ()=>{
+          profileBlackBgNone.style.visibility = 'visible'
+          profileBlackBgNone.style.opacity = '1'
+        })
+        profileBgNone.addEventListener('mouseleave', ()=>{
+          profileBlackBgNone.style.visibility = 'hidden'
+          profileBlackBgNone.style.opacity = '0'
+        })
+      } else {
+        // 로그인 중 프로필 팝업
+        const loginIng = document.querySelector('#loginIng')
+        loginIng.addEventListener('mouseenter', ()=>{
+          profileBlackBgLogin.style.visibility = 'visible'
+          profileBlackBgLogin.style.opacity = '1'
+        })
+        profileBgLogin.addEventListener('mouseleave', ()=>{
+          profileBlackBgLogin.style.visibility = 'hidden'
+          profileBlackBgLogin.style.opacity = '0'
+        })
+      }
+      
+
+      
     </script>
     <script>
       const searchBtn = document.querySelector('#search-btn')
@@ -153,14 +206,9 @@
             if (window.scrollY > 200) {
                 document.querySelector('.navbar').style.backgroundColor = 'transparent'
                 document.querySelector('.navbar').style.transition = 'all 1s'
-                searchBtn.style.backgroundColor = 'transparent'
-                searchBtn.style.transition = 'all 1s'
-
             } else {
                 document.querySelector('.navbar').style.backgroundColor = 'rgb(205, 205, 255)'
                 document.querySelector('.navbar').style.transition = 'all 1s'
-                searchBtn.style.backgroundColor = 'rgb(205, 205, 255)'
-                searchBtn.style.transition = 'all 1s'
             }
         })
 
