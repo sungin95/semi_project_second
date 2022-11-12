@@ -1,3 +1,7 @@
+main {
+    min-height: 90vh;
+}
+
 .black-bg {
     width: 100%;
     height: 100%;
@@ -29,4 +33,190 @@
     text-decoration: none;
     color: black;
     font-weight: 500;
+}
+
+.link-light {
+    text-decoration: none;
+}
+
+#cart {
+    width: 30px;
+    height: 30px;
+}
+
+#cart i {
+    height: 32px;
+    vertical-align: auto;
+}
+
+/* 로그인 */
+.profile-black-bg-login {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 8;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.6s;
+}
+
+.profile-black-bg-login .container {
+    position: relative;
+}
+
+.profile-bg-login {
+    background: #e6eaf5;
+    position: absolute;
+    right: 0%;
+    z-index: 9;
+    width: 12rem;
+    height: 12rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.nav-user-login {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.profile-bg-login div hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-bg-login p {
+    text-align: center;
+}
+
+.profile-bg-login p a {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    color: black;
+}
+
+.nav-detail-login {
+    padding: 0;
+}
+
+.nav-detail-login a {
+    margin-bottom: 10px;
+    margin-left: 3px;
+    font-size: 14px;
+}
+
+/* 비로그인 */
+.profile-black-bg-none {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.6s;
+}
+
+.profile-black-bg-none .container {
+    position: relative;
+    z-index: 7;
+}
+
+.profile-bg-none {
+    background: #e6eaf5;
+    position: absolute;
+    right: 0%;
+    z-index: 9;
+    width: 7rem;
+    height: 5rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.profile-bg-none div {
+    display: flex;
+    flex-direction: column;
+    padding: 0.9rem;
+}
+
+.profile-bg-none p a {
+    margin-bottom: 8px;
+}
+
+.nav-detail-none {
+    padding: 0;
+}
+
+.nav-detail-none a {
+    margin-bottom: 10px;
+    margin-left: 3px;
+    font-size: 14px;
+}
+
+/* 검색창 */
+.search {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.input_form {
+    border: 0.1rem solid #cdcdcd;
+    border-radius: 5rem;
+    margin-right: 0.5rem;
+    padding: 1.2rem 1.5rem;
+    width: 50%;
+}
+
+.button {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0.5rem;
+    position: absolute;
+    right: 26%;
+    top: 0.8rem;
+    width: 40px;
+    height: 40px;
+}
+
+.button img {
+    opacity: 70%;
+    width: 60%;
+    height: 60%;
+}
+
+#searchForm {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 8;
+    transition: all 0.6s;
+}
+
+.search-bg-white {
+    background: #e6eaf5;
+    padding: 2rem;
+    padding-top: 2rem;
+}
+
+.search-cancel {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e6eaf5;
+    position: relative;
+    left: 50%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.search-cancel img {
+    width: 50%;
+    height: 50%;
 }

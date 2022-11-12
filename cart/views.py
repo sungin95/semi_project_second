@@ -31,10 +31,10 @@ def add_cart(request, product_id):
             cart=cart,
         )
         cart_item.save()
-    return redirect("cart:cart_detail")
+    return redirect("cart:detail")
 
 
-def cart_detail(request, total=0, counter=0, cart_items=None):
+def detail(request, total=0, counter=0, cart_items=None):
     try:
         cart = Cart.objects.get(cart_id="c1")
         cart_items = CartItem.objects.filter(cart=cart, active=True)
