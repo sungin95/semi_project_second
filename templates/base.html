@@ -43,7 +43,7 @@
 
           <!-- 검색, 장바구니, 계정 -->
           <div class="d-flex">
-            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:32px;height:32px" type="submit"/></lord-icon>
+            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:32px;height:32px" type="submit" id="search-click"></lord-icon>
             <a id="cart" class="nav-link mx-3" href="{% url 'cart:detail' %}">
               <img src="{% static 'img/cart_none.png' %}" alt="" width="25px" height="25px">
             </a>
@@ -55,16 +55,30 @@
             {% endif %}
           </div>
           </div>
-          
-          {% comment %} <form class="d-flex" action="#">
-            <input style="width: 150px; border: 0.1rem solid #cdcdcd; border-radius: 5rem;" class="px-3" type="search" name="search" placeholder="검색" aria-label="Search" required="required">
-            <button style="background-color: rgb(205, 205, 255);" id="search-btn" class="border border-0">
-            </button>
-          </form> {% endcomment %}
         </div>
       </div>
-      
     </nav>
+
+    <!--검색-->
+    <div class="search-bg-black" id="searchForm" style="visibility: hidden; opacity: 0;">
+      <div class="search-bg-white">
+        <form class="search" action="#">
+          <input class="input_form" type="search" placeholder="검색" name="search" aria-label="Search" id="search"
+            required>
+          <button class="button" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/16/16492.png"
+              alt="검색 아이콘"></button>
+        </form>
+      </div>
+      <div class="search-cancel"><img src="{% static 'img/cancel.png' %}" alt=""></div>
+    </div>
+
+    {% comment %} <!-- 검색창 -->
+    <form class="d-flex" action="#">
+      <input style="width: 150px; border: 0.1rem solid #cdcdcd; border-radius: 5rem;" class="px-3" type="search" name="search" placeholder="검색" aria-label="Search" required="required">
+      <button style="background-color: rgb(205, 205, 255);" id="search-btn" class="border border-0">
+      </button>
+    </form> {% endcomment %}
+      
 
     <!-- 프로필 (로그인) -->
     <div class="profile-black-bg-login">
@@ -201,8 +215,27 @@
         })
       }
       
-
+      // 검색
+      const searchClick = document.querySelector("#search-click")
+      const searchForm = document.querySelector('#searchForm')
+      const searchCancel = document.querySelector('.search-cancel')
       
+      searchClick.addEventListener('click',()=>{
+        if (searchForm.style.visibility == 'hidden') {
+          searchForm.style.visibility = 'visible'
+          searchForm.style.opacity = '1'
+        } else {
+          searchForm.style.visibility = 'hidden'
+          searchForm.style.opacity = '0'
+        }
+      })
+
+      searchCancel.addEventListener('click',()=>{
+        searchForm.style.visibility = 'hidden'
+        searchForm.style.opacity = '0'
+      })
+      
+
     </script>
     <script>
       const searchBtn = document.querySelector('#search-btn')

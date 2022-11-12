@@ -157,3 +157,66 @@ main {
     margin-left: 3px;
     font-size: 14px;
 }
+
+/* 검색창 */
+.search {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.input_form {
+    border: 0.1rem solid #cdcdcd;
+    border-radius: 5rem;
+    margin-right: 0.5rem;
+    padding: 1.2rem 1.5rem;
+    width: 50%;
+}
+
+.button {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0.5rem;
+    position: absolute;
+    right: 26%;
+    top: 0.8rem;
+    width: 40px;
+    height: 40px;
+}
+
+.button img {
+    opacity: 70%;
+    width: 60%;
+    height: 60%;
+}
+
+#searchForm {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 8;
+    transition: all 0.6s;
+}
+
+.search-bg-white {
+    background: #e6eaf5;
+    padding: 2rem;
+    padding-top: 2rem;
+}
+
+.search-cancel {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e6eaf5;
+    position: relative;
+    left: 50%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.search-cancel img {
+    width: 50%;
+    height: 50%;
+}
