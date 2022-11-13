@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'communities/css/detail.css' %}">
+{% endblock css %}
+
+{% block content %}
+  <!-- 음식점 정보 -->
+  <div class="row r_info">
+    <h2>제목:
+    </h2>
+    <!-- 커뮤니티 헤더 -->
+    <div class="r_header">
+      <h2>
+        <span class="grade">유저 생성 일자 및 시간</span>
+      </h2>
+      <div class="detailed_info">
+        <!-- 조회수 -->
+        <div class="people_views">
+          <img class="m-1" src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="조회수 아이콘">
+          <span>조회 17</span>
+        </div>
+        <p class="division">┃</p>
+
+        <!-- 추천 -->
+        <div class="people_views">
+          <img class="m-1" src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="조회수 아이콘">
+          <span>추천 2</span>
+        </div>
+        <p class="division">┃</p>
+
+        <!-- 조회수 -->
+        <div class="people_views">
+          <img class="m-1" src="https://cdn-icons-png.flaticon.com/512/159/159604.png" alt="조회수 아이콘">
+          <span>댓글 4</span>
+        </div>
+      </div>
+    </div>
+    <hr class="separator">
+    <!-- 내용 -->
+    <div class="row">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum nisi officia, nemo architecto vero, porro explicabo sequi necessitatibus ea doloremque voluptate quae ipsa aut amet labore ex voluptates laborum dolore?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum nisi officia, nemo architecto vero, porro explicabo sequi necessitatibus ea doloremque voluptate quae ipsa aut amet labore ex voluptates laborum dolore?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum nisi officia, nemo architecto vero, porro explicabo sequi necessitatibus ea doloremque voluptate quae ipsa aut amet labore ex voluptates laborum dolore?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum nisi officia, nemo architecto vero, porro explicabo sequi necessitatibus ea doloremque voluptate quae ipsa aut amet labore ex voluptates laborum dolore?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum nisi officia, nemo architecto vero, porro explicabo sequi necessitatibus ea doloremque voluptate quae ipsa aut amet labore ex voluptates laborum dolore?</div>
+  </div>
+
+  <!-- 댓글창 -->
+  <!-- 댓글 -->
+  <div>
+    {% comment %} {% for review in question_list %} {% endcomment %}
+      <div class="a-comment">
+        <!-- 리뷰 상단 -->
+        <div class="reviews-header">
+          <!-- 프로필 사진 -->
+          <div class="d-flex">
+            <div class="rounded-pill">
+              {% if review.user.image %}
+                <img src="{{ review.user.image.url }}" alt="프로필 사진" style="width: 50px; height: 50px; border-radius: 500px">
+              {% else %}
+                <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 50px; height: 50px; border-radius: 500px">
+              {% endif %}
+            </div>
+            <!-- 유저 네임 -->
+            <div class="user-name"></div>
+          </div>
+
+          <!-- 시간 -->
+          <div class="time">
+            {% comment %} {% if review.created_string == False %}
+              <td>{{ review.created_string|date:'m월 d일' }}</td>
+            {% else %}
+              <td>{{ review.created_string }}</td>
+            {% endif %} {% endcomment %}
+          </div>
+        </div>
+
+        <!-- 댓글내용 -->
+        <div class="review-contents">
+          <div class="review-content">댓글 내용</div>
+        </div>
+
+        <!-- 리뷰에 댓글 달기 -->
+        <div class="re-comment">
+          <div class='d-flex justify-content-between'>
+            <div class='d-flex'>
+              <button id="comment-btn" type="button" class="btn btn-sm btn-secondary review-comment" data-review-id="">댓글달기</button>
+              <div>
+                <div class="text-primary text-opacity-25">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <!-- 로그인된 유저만 보이기 -->
+                      <!-- 리뷰 좋아요 -->
+                      <div>
+                        <form class="like-review" data-reviewa-id="" data-restauranta-id="" method="POST">
+                          {% csrf_token %}
+                          {% if request.user.is_authenticated %}
+                            {% comment %} {% if request.user in review.like.all %}
+                              <input type="submit" class="btn btn-dark review-like{{ review.pk }}" value="좋아요 취소">
+                            {% else %}
+                              <input type="submit" class="btn btn-dark review-like{{ review.pk }}" value="좋아요">
+                            {% endif %} {% endcomment %}
+                          {% else %}
+                            <input type="submit" class="btn btn-dark" value="좋아요" disabled="disabled">
+                          {% endif %}
+                          <span class=""></span>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-no-end">
+                수정 삭제
+              {% comment %} {% if review.user.pk == request.user.pk %}
+                <a href="{% url 'reviews:update' review.pk restaurant.pk %}" class="link-secondary">수정</a>
+                <a href="{% url 'reviews:delete' review.pk restaurant.pk %}" class="link-danger">삭제</a>
+              {% endif %} {% endcomment %}
+            </div>
+          </div>
+          <div class="hidden">
+            <!-- 대댓글폼 클릭 -->
+            {% comment %} <form class="commentForm" method="POST" data-review-id="">
+              {% csrf_token %}
+              {% bootstrap_form comment_form %}
+              <input type="submit" class='btn' value='입력'>
+            </form> {% endcomment %}
+          </div>
+          <hr>
+          <!-- 대댓글 -->
+          {% comment %} {% for comment in review.comment_set.all %}
+            <div class="d-flex justify-content-between">
+              <div class="">
+                {% if comment.user.image %}
+                  <img src="{{ comment.user.image.url }}" alt="" style="width: 50px; height: 50px; border-radius: 500px">
+                {% else %}
+                  <img src="https://www.dummyimage.com/600x400/000/fff" alt="" style="width: 50px; height: 50px; border-radius: 500px">
+                {% endif %}
+                <span class="user-c-name">{{comment.user}}</span>
+                <span>{{comment.content}}</span>
+              </div>
+              <div>
+                {% if request.user.pk == comment.user.pk %}
+                  <form class="comment-delete" data-review-id="{{ review.pk }}" data-comment-id="{{ comment.pk }}">
+                    {% csrf_token %}
+                    <button type=" submit" class="btn btn-danger">삭제</button>
+                  </form>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %} {% endcomment %}
+        </div>
+      </div>
+      {% comment %} {% empty %}
+      <p class="text-center">아직 리뷰가 없습니다. 리뷰를 남겨
+        <b>{{ restaurant.restaurant_name }}</b>의 첫번째 리뷰를 남겨보세요.
+      </p> {% endcomment %}
+    {% comment %} {% endfor %} {% endcomment %}
+  </div>
+</div>
+
+
+{% endblock content %}

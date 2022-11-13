@@ -1,0 +1,297 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap");
+
+.r_info {
+  margin-top: 3rem;
+}
+
+.r_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+  padding-left: 0;
+}
+
+/* 음식점 이름과 평점 */
+.r_header h2 {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 4rem 0 0;
+}
+
+/* 평점에 색 */
+.grade {
+  color: #ffa704;
+  margin-left: 0.5rem;
+}
+
+.detailed_info {
+  display: flex;
+  flex-flow: row;
+  margin: 4rem 0 0;
+}
+
+.detailed_info img {
+  height: 1.2rem;
+  margin-left: 1.6rem;
+  width: 1.2rem;
+}
+
+.division {
+  color: #666666;
+  margin: 0 0.5rem;
+  opacity: 30;
+}
+
+.people_views {
+  display: flex;
+  flex-flow: row;
+}
+
+.people_views img {
+  margin: 0.2rem;
+}
+
+.review_create {
+  display: flex;
+}
+
+.review_create a {
+  color: black;
+  text-decoration: none;
+}
+
+.review_create a img {
+  height: 45%;
+  margin: 0.2rem;
+}
+
+.review_creation {
+  color: black;
+  text-decoration: none;
+}
+
+.link-secondary {
+  margin-top: 7%;
+}
+
+.bookmark {
+  display: flex;
+}
+
+.correction img {
+  margin-left: 0;
+  width: 21%;
+}
+
+.correction a {
+  color: black;
+  text-decoration: none;
+}
+
+.correction a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.like_count {
+  margin-left: 0.2rem;
+}
+
+.separator {
+  margin: 3rem 0;
+}
+
+table {
+  margin-bottom: 5rem;
+}
+
+table th {
+  color: #666666;
+  font-weight: 200;
+  width: 8rem;
+  height: 2rem;
+}
+
+/* 캐러셀 */
+li {
+  list-style: none;
+}
+
+.slide-wrapper {
+  height: 300px;
+  margin: 4.5rem auto 1.5rem;
+  overflow: hidden;
+  position: relative;
+  width: 1320px;
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slides {
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: left 0.5s ease-out;
+  display: flex;
+}
+
+.slides li:not(:last-child) {
+  margin-right: 1.875rem;
+}
+
+.controls {
+  text-align: center;
+}
+
+.controls span {
+  padding: 0px 20px;
+  margin: 0 18.3rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.controls span.prev {
+  right: calc(50% + 50px);
+}
+
+.controls span.next {
+  right: calc(100% + 50px);
+}
+
+.controls img {
+  opacity: 60%;
+  width: 1.5%;
+}
+
+.slides li {
+  width: 300px;
+  height: 300px;
+}
+
+.a-comment {
+  background-color: #fafafa;
+  border-radius: 15px;
+  box-shadow: -7px 7px 5px #e2e2e2;
+  margin: 1.5rem 0;
+  padding: 0.6rem 0;
+}
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  height: auto;
+  background-color: #fafafa;
+  border-radius: 15px;
+  box-shadow: 0.5rem 0.5rem 0.5rem #e2e2e2, -0.5rem -0.5rem 0.5rem #e2e2e2;
+  margin: 0.5rem 1rem;
+}
+
+.review-contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  padding: 1rem;
+  background-color: #fafafa;
+  border-radius: 15px;
+  margin: 0.5rem 1rem;
+}
+
+.user-name {
+  align-items: center;
+  display: flex;
+  font-weight: 600;
+  margin: 0 0.5rem;
+}
+
+.user-c-name {
+  font-weight: 600;
+}
+
+.comment-delete button {
+  background-color: transparent;
+  border: none;
+  color: #ffa704;
+  font-size: 0.9rem;
+  margin-right: -0.9rem;
+}
+
+.comment-delete button:hover {
+  background-color: transparent;
+  border: none;
+  color: #ffa704;
+  font-size: 0.9rem;
+  margin-right: -0.9rem;
+}
+
+.rate {
+  align-items: center;
+  display: flex;
+}
+
+.time {
+  color: #9a9a9a;
+  font-size: 0.9rem;
+}
+
+.re-comment {
+  padding: 1rem;
+}
+
+#comment-btn {
+  background-color: transparent;
+  border: none;
+  color: black;
+}
+
+.form-label {
+  font-size: 0.1rem;
+  opacity: 0;
+}
+
+.re-comment input {
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 2rem;
+  color: black;
+  font-size: 0.9rem;
+  margin: 0.5rem;
+  padding: 0.3rem 0.5rem;
+}
+
+.re-comment input:hover {
+  background-color: #ffc861;
+}
+
+.text-no-end {
+  vertical-align: middle;
+}
+
+.text-no-end a {
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.text-no-end a.link-secondary {
+  color: #9a9a9a;
+  margin-right: 1rem;
+}
+
+.text-no-end a.link-danger {
+  filter: opacity(0.6) drop-shadow(0 0 0 #fffb00);
+}
+
+.text-no-end a.link-danger:hover {
+  filter: opacity(0.6) drop-shadow(0 0 0 #fffb00);
+}
+
+/* 화면 숨김 */
+.hidden {
+  display: none;
+}
