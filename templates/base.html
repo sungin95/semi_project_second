@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
 
-  <body>
+  <body style="background: #f1f4f9">
     <!-- 네비게이션바 -->
     <nav style="background-color: rgb(205, 205, 255);" class="navbar navbar-expand-lg sticky-top" id="nabvar">
       <div class="container">
@@ -245,7 +245,7 @@
             var 스크롤양 = document.querySelector('html').scrollTop;
             var 실제높이 = document.querySelector('html').scrollHeight;
             var 높이 = document.querySelector('html').clientHeight;
-            if (window.scrollY > 200) {
+            if (window.scrollY > 150) {
                 document.querySelector('.navbar').style.backgroundColor = 'transparent'
                 document.querySelector('.navbar').style.transition = 'all 1s'
             } else {

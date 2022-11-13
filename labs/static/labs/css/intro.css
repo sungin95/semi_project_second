@@ -1,0 +1,85 @@
+.intro {
+    width: 100%;
+    height: 70vh;
+}
+
+.intro-flex {
+    padding-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.intro-comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.intro-comment h3 {
+    width: 80%;
+}
+
+.intro-value {
+    background: rgb(205, 205, 255);
+    width: 100%;
+    height: 50vh;
+}
+
+.intro-schedule {
+    background: rgb(188, 188, 255);
+    width: 100%;
+    height: 70vh;
+}
+
+/* 팀 규칙 */
+.intro-value-wrapper {
+    display: flex;
+    padding-top: 11%;
+    justify-content: space-between;
+    height: 80%;
+}
+
+.intro-value-wrapper h4 {
+    margin-right: 10px;
+    width: 40%;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: white;
+}
+
+.intro-value-content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.intro-value-content {
+    width: 30%;
+    padding-top: 10px;
+    padding-right: 10px;
+    margin-bottom: 28px;
+    border-top: 2px solid white;
+}
+
+.intro-value-content p {
+    width: 100%;
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.intro-value-content h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+}
+
+.intro-value-content h6 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+}

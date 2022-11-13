@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'labs/css/intro.css' %}">
+{% endblock css %}
+
+{% block carousel %}
+  <!-- 참신한 멘트-->
+  <div class="intro">
+    <div class="container" style="height:100%;">
+      <div class="intro-flex">
+        <div class="intro-comment">
+          <div>
+            <h3>트렌드</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
+          </div>
+        </div>
+        <div>
+          <img src="{% static 'labs/img/notebook.png' %}" alt="" style="width: 100%; height: 90%">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 팀 규칙 -->
+  <div class="intro-value">
+    <div class="container" style="height: 100%">
+      <div class="intro-value-wrapper">
+        <h4>인텔리랩스 규칙</h4>
+        <div class="intro-value-content-wrapper">
+          <div class="intro-value-content">
+            <h5>좌절 금지</h5>
+            <h6>No-Frustration</h6>
+            <p>어려워도 좌절하지않고 계속 시도합니다.</p>
+          </div>
+          <div class="intro-value-content">
+            <h5>평등한 호칭</h5>
+            <h6>No-Frustration</h6>
+            <p>우리는 같은 프로젝트 팀원으로 동등한 위치에서 일합니다.</p>
+          </div>
+          <div class="intro-value-content">
+            <h5>식사시간 절대준수</h5>
+            <h6>No-Frustration</h6>
+            <p>다 먹고 살려고 하는 일이니 식사시간은 철저히 합니다.</p>
+          </div>
+          <div class="intro-value-content">
+            <h5>원활한 커뮤니케이션</h5>
+            <h6>No-Frustration</h6>
+            <p>디스코드를 통해 의견 바로 말하고 듣고 있습니다.</p>
+          </div>
+          <div class="intro-value-content">
+            <h5>원활한 커뮤니케이션</h5>
+            <h6>No-Frustration</h6>
+            <p>디스코드를 통해 의견 바로 말하고 듣고 있습니다.</p>
+          </div>
+          <div class="intro-value-content">
+            <h5>원활한 커뮤니케이션</h5>
+            <h6>No-Frustration</h6>
+            <p>디스코드를 통해 의견 바로 말하고 듣고 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 데일리 스크럼 일지 -->
+  <div class="intro-schedule">
+    <div class="container">
+      <div class="row">
+        <h4>약 2주간의 인텔리랩스의 모험</h4>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <h5>2022.11.09(수)</h5>
+          <p>개발 기획 및 정리</p>
+        </div>
+        <div class="col-3">
+          <h5>2022.11.10(목)</h5>
+          <p></p>
+        </div>
+        <div class="col-3">
+          <h5>2022.11.11(금)</h5>
+        </div>
+        <div class="col-3">
+          <h5>2022.11.12(토)</h5>
+          <p></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <h5>2022.11.13(일)</h5>
+          <p></p>
+        </div>
+        <div class="col-3">
+          <h5>2022.11.14(월)</h5>
+          <p></p>
+        </div>
+        <div class="col-3">
+          <h5>2022.11.15(화)</h5>
+          <p></p>
+        </div>
+        <div class="col-3">
+          <h5>2022.11.16(수)</h5>
+          <p></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <h5>2022.11.17(목)</h5>
+          <p></p>
+        </div>
+        <div class="col-3">
+          <h5>2022.11.18(금)</h5>
+          <p></p>
+        </div>
+        <div class="col-3">
+          <h5>2022.11.19(토)</h5>
+          <p></p>
+        </div>
+        <div class="col-3">
+          <h5>2022.11.20(일)</h5>
+          <p></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <h5>2022.11.21(월)</h5>
+          <p></p>
+        </div>
+        <div class="col-3">
+          <h5>2022.11.22(화)</h5>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock carousel %}
+
+{% block content %}
+  <!-- 오시는 길 -->
+  <div class="intro">
+    <div id="map" style="width:100%;height:350px;"></div>
+  </div>
+{% endblock content %}
+
+{% block js %}
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ MAPKEY }}&libraries=services"></script>
+  <script>
+    const introNabvar = document.querySelector('#nabvar')
+    window.addEventListener('load', () => {
+      introNabvar.style.backgroundColor = 'transparent'
+    })
+    window.addEventListener('scroll', () => {
+      if (window.scrollY == 0) {
+        introNabvar.style.backgroundColor = 'transparent'
+      }
+    })
+    introNabvar.addEventListener('mouseleave', () => {
+      introNabvar.style.backgroundColor = 'transparent'
+    })
+  </script>
+
+  <script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+      mapOption = {
+        center: new kakao
+          .maps
+          .LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+      };
+
+    // 지도를 생성합니다
+    var map = new kakao
+      .maps
+      .Map(mapContainer, mapOption);
+
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new kakao
+      .maps
+      .services
+      .Geocoder();
+
+    // 주소로 좌표를 검색합니다
+    geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function (result, status) {
+
+      // 정상적으로 검색이 완료됐으면
+      if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao
+          .maps
+          .LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao
+          .maps
+          .Marker({map: map, position: coords});
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao
+          .maps
+          .InfoWindow({content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'});
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+      }
+    });
+  </script>
+{% endblock js %}

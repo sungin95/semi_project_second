@@ -34,32 +34,32 @@
 {% block content %}
   <!-- 카테고리 -->
   <div class="main-category">
-    <a href="">
-      <div>
+    <a href="{% url 'labs:intro' %}">
+      <div class="main-category-bg">
         <img src="{% static 'labs/img/laptop.gif' %}" class="main-category-img" alt="">
       </div>
       <p>인텔리랩스를 소개합니다</p>
     </a>
     <a href="{% url 'labs:rating' %}">
-      <div>
+      <div class="main-category-bg">
         <img src="{% static 'labs/img/grade.gif' %}" class="main-category-img" alt="">
       </div>
       <p>인텔리랩스 등급</p>
     </a>
     <a href="{% url 'communities:index' %}">
-      <div>
+      <div class="main-category-bg">
         <img src="{% static 'labs/img/community.gif' %}" class="main-category-img" alt="">
       </div>
       <p>커뮤니티</p>
     </a>
     <a href="">
-      <div>
+      <div class="main-category-bg">
         <img src="{% static 'labs/img/hotsale.gif' %}" class="main-category-img" id='hotDeal' alt="">
       </div>
       <p>특가정보</p>
     </a>
     <a href="">
-      <div>
+      <div class="main-category-bg">
         <img src="{% static 'labs/img/hotsale.gif' %}" class="main-category-img" alt="">
       </div>
       <p>미정</p>
