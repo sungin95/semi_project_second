@@ -6,10 +6,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-body
-{
-  overflow: hidden;
-}
+
 /* section */
 section
 {
@@ -30,24 +27,24 @@ section .color:nth-child(1)
  top: -350px;
  width: 600px;
  height: 600px; 
- background-color: #ff359b;
+ background-color: rgb(205, 205, 255);
 }
 
 section .color:nth-child(2)
 {
- bottom: -150px;
- left: 100px;
- width: 500px;
- height: 500px; 
+ bottom: -100px;
+ left: 250px;
+ width: 400px;
+ height: 400px; 
  background-color: #fffd97;
 }
 
 section .color:nth-child(3)
 {
  bottom: 50px;
- left: 100px;
- width: 300px;
- height: 300px; 
+ left: 700px;
+ width: 250px;
+ height: 250px; 
  background-color: #00d2ff;
 }
 
@@ -138,6 +135,16 @@ section .color:nth-child(3)
   border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
+h2
+{
+
+  text-align: center;
+  margin-top: 10px;
+  color:#fff;
+  margin: 1rem 0 1rem 0;
+}
+
+
 .form
 {
   position: relative;
@@ -149,34 +156,24 @@ section .color:nth-child(3)
 .form h2
 {
   position: relative;
-  color: #fff;
+  color: navy;
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 1px;
   margin-bottom: 40px;
 }
 
-.form h2::before
-{
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -7px;
-  width: 80px;
-  height: 4px;
-  background: #fff;
 
-}
 
 .form .inputBox 
 {
-  width: 100%;
+  width: 80%;
   margin-top: 20px;
 }
 
 .form .inputBox input
 {
-  width: 100%;
+  min-width: 100%;
   background: rgba(255,255,255,0.2);
   border: none;
   outline: none;
@@ -186,17 +183,19 @@ section .color:nth-child(3)
   letter-spacing: 1px;
   color:#fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin: 0;
 }
 
 .form .inputBox input::placeholder 
 {
-  color:#fff;
+  color:lightblue;
+  font-weight:20px;
 
 }
 
 .form .inputBox input[type="submit"]
 {
-  background-color: #fff;
+  background-color: transparent;
   color:#666;
   max-width: 100px;
   cursor: pointer;
@@ -206,11 +205,44 @@ section .color:nth-child(3)
 
 .forget {
   margin-top: 5px;
-  color: #fff;
+  color:lightblue;
+  font-weight:20px;
 
 }
 
 .forget a {
-  color: #fff;
-  font-weight: 600;
+  color:rgb(50, 79, 89);
+  font-weight:20px;
+
 }
+
+.card-body {
+  background-image: linear-gradient(to bottom, #f1f4f9 20%, rgb(205, 205, 255) 80%);
+}
+
+.navbar {
+  background-image: linear-gradient(to top, #f1f4f9 20%, rgb(205, 205, 255) 80%);
+}
+
+
+.bi-google {
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.btns:hover{
+  background-color: blue;
+}
+
+
+
+
+
+
+button.firstBtn:focus{ 	
+  border: none;
+  outline:none;
+  }

@@ -67,8 +67,8 @@
           {% endif %}
           <form class="d-flex" action="#">
             <input style="width: 150px; border: 0.1rem solid #cdcdcd; border-radius: 5rem;" class="px-3" type="search" name="search" placeholder="검색" aria-label="Search" required="required">
-            <button style="background-color: rgb(205, 205, 255);" id="search-btn" class="border border-0">
-              <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:32px;height:32px" type="submit"></lord-icon>
+            <button id="search-btn" class="border border-0 d-flex align-items-center">
+              <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:32px;height:32px; background-color: transparent;" type="submit"></lord-icon>
             </button>
           </form>
         </div>
@@ -135,8 +135,8 @@
       })
       
       nabvar.addEventListener('mouseover', ()=>{
-        document.querySelector('.navbar').style.backgroundColor = 'rgb(205, 205, 255)'
-        searchBtn.style.backgroundColor = 'rgb(205, 205, 255)'
+        document.querySelector('.navbar').style.backgroundColor = '#ffffff00'
+        searchBtn.style.backgroundColor = '#ffffff00'
       })
 
       listGroup.addEventListener('mouseleave', ()=>{
@@ -152,15 +152,15 @@
             var 실제높이 = document.querySelector('html').scrollHeight;
             var 높이 = document.querySelector('html').clientHeight;
             if (window.scrollY > 200) {
-                document.querySelector('.navbar').style.backgroundColor = 'transparent'
+                document.querySelector('.navbar').style.backgroundColor = '#ffffff00'
                 document.querySelector('.navbar').style.transition = 'all 1s'
-                searchBtn.style.backgroundColor = 'transparent'
+                searchBtn.style.backgroundColor = '#ffffff00'
                 searchBtn.style.transition = 'all 1s'
 
             } else {
-                document.querySelector('.navbar').style.backgroundColor = 'rgb(205, 205, 255)'
+                document.querySelector('.navbar').style.backgroundColor = '#ffffff00'
                 document.querySelector('.navbar').style.transition = 'all 1s'
-                searchBtn.style.backgroundColor = 'rgb(205, 205, 255)'
+                searchBtn.style.backgroundColor = '#ffffff00'
                 searchBtn.style.transition = 'all 1s'
             }
         })
