@@ -51,12 +51,12 @@
             </div>
             <div class="d-flex justify-content-center"> 
               <button type="button" class="btn mx-1 fs-4 p-0 border-0">
-                <img src="{% static 'images/카톡.png'%}" style="width:40px; height:40px;" onclick="kakaoLogin();" >
+                <img src="{% static 'accounts/img/카톡.png'%}" style="width:40px; height:40px;" onclick="kakaoLogin();" >
                 <a href="javascript:void(0)">
                 </a>
               </button>
               <button type="button" class="btn mx-1 fs-4 p-0 border-0">
-                <img src="{% static 'images/구글로긴.png'%}" style="width:48px; height:48px;">
+                <img src="{% static 'accounts/img/구글로긴.png'%}" style="width:48px; height:48px;">
               </button>
             </div>
           </form>
@@ -69,19 +69,6 @@
   
 {% endblock content %}
 {% block js %}
-
-  <ul>
-    <li onclick="kakaoLogin();">
-      <a href="javascript:void(0)">
-        <span>카카오 로그인</span>
-      </a>
-    </li>
-    <li onclick="kakaoLogout();">
-      <a href="javascript:void(0)">
-        <span>카카오 로그아웃</span>
-      </a>
-    </li>
-  </ul>
   <!-- 카카오 스크립트 -->
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   <script>
@@ -131,4 +118,24 @@
     }
   </script>
 
+    <!-- 네비게이션바 투명 -->
+    <script>
+      const main = document.querySelector('main')
+      window.addEventListener('load', () => {
+        main.style.minHeight = "0"
+        main.classList.remove("container")
+      })
+      const introNabvar = document.querySelector('#nabvar')
+      window.addEventListener('load', () => {
+        introNabvar.style.backgroundColor = 'transparent'
+      })
+      window.addEventListener('scroll', () => {
+        if (window.scrollY == 0) {
+          introNabvar.style.backgroundColor = 'transparent'
+        }
+      })
+      introNabvar.addEventListener('mouseleave', () => {
+        introNabvar.style.backgroundColor = 'transparent'
+      })
+    </script>
 {% endblock js %}
