@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  
+{% endblock css %}
+
+{% block content %}
+<div class="container" style="background-color: #f7f7f7;">
+  <div class="row">
+    <div class="col-md-2">
+     
+        <a>1</a>
+      
+    </div>
+    <div class="col-md-5">
+      <a>1</a>
+    </div>
+    <div class="col-md-5">
+      <div class="itm-information">
+        <div class="itm-info-head">
+          <div class="item-flag">
+            <span class="flag-tag">트레이드인</span>
+          </div>
+          <div class="social-box">
+            <button type="button" class="btn-sns-link">
+              <i class="icon ico-large ico-share">소셜공유</i>
+            </button>
+            <button type="button" class="btn-good on" title="선택됨">
+              <i class="icon ico-large ico-goods">좋아요 선택</i>
+            </button>
+          </div>
+          <h1 class="itm-info-title mt-4" id="goodsDetailNm">갤럭시 북2 Pro 360 39.6 cm Core™ i7 / 1 TB NVMe SSD</h1>
+          <div class="itm-sku b2c-itm-sku">NT950QED-KD72S</div>
+          <div class="itm-rating-con">
+            <div class="itm-rating b2c-itm-rating">
+                <div class="itm-sart-rating">
+                  <i class="star-gray">별점 0점</i>
+                  <i class="star-gray">별점 0점</i>
+                  <i class="star-gray">별점 0점</i>
+                  <i class="star-gray">별점 0점</i>
+                  <i class="star-gray">별점 0점</i>
+                  <span>0.0</span>
+                  <a href="javascript:;" class="itm-review-count" title="상품평 보러가기">(0건)</a>
+                </div>
+              </div>  
+                <div class="itm-rating itm-review">
+                  <span class="itm-review-write">
+                    <a href="javascript:void(0);" class="btn-underline" title="상품평 쓰기 바로가기">상품평 쓰기</a>
+                  </span>  
+                </div>  
+            </div>
+          </div>
+          <div class="itm-price">
+            <div>
+              <input type="hidden" id="originalPrice" value="3070000">
+              <dl class="has_strike">
+                <dt>기준가</dt>
+                <dd>
+                  <span data-price="3070000">3,070,000</span>
+                  원 
+                </dd>
+              </dl>
+              <input type="hidden" id="lastPrice" value="2191000">
+              <dl class="event-price">
+                <dt> 교육할인가</dt>
+                <dd>
+                  <span data-price="2191000" class="pd-total-price">2,191,000</span>
+                  원 
+                </dd>
+              </dl>
+              <script type="text/javascript">
+                if('2191000' == 0) {
+                  $(".itm-price").hide();
+                }
+              </script>
+            </div>
+          </div>
+          <div class="itm-option-choice droptoggle">
+            <dl>
+              <dt>
+                <span>색상</span>
+              </dt>
+              <dd>
+                <div class="dropOption" id="dropOption-2001043-1">
+                  <span class="itm-color-object" style="background-color: #c0c0c0;" data-omni="color_실버">실버</span>
+                  <span class="selectedOption">실버</span>
+                </div>
+              </dd>
+            </dl>
+            <dl class="count-show-box">
+              <dt>수량</dt>
+              <dd>
+                <span class="spinner-box pd-spinner goods-count">
+                  <a href="javascript:void(0);" class="count count-miner" id="pd-goods-count-miner">감소</a>
+                  <label for="countPrd" class="blind">구매수량</label>
+                  <input type="text" class="number count-prd" id="countPrd" value="1" data-max-qty="22" data-min-ord-qty>
+                  <a href="javascript:void(0);" class="count count-plus" id="pd-goods-count-plus">증가</a>
+                </span>
+              </dd>
+            </dl>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="/static/js/product.js"></script>
+{% endblock js %}
