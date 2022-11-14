@@ -21,13 +21,14 @@ h2
 section
 {
   display: flex;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
 }
 section .color {
-
+  position:absolute;
   filter: blur(150px);
 
 }
@@ -50,19 +51,19 @@ section .color:nth-child(1)
 
 section .color:nth-child(2)
 {
- bottom: -150px;
- left: 100px;
- width: 500px;
- height: 500px; 
+ bottom: -100px;
+ left: 350px;
+ width: 450px;
+ height: 450px; 
  background-color: #fffd97;
 }
 
 section .color:nth-child(3)
 {
  bottom: 50px;
- left: 100px;
- width: 300px;
- height: 300px; 
+ left: 900px;
+ width: 250px;
+ height:250px; 
  background-color: #00d2ff;
 }
 
@@ -170,24 +171,15 @@ section .color:nth-child(3)
 .form1 h2
 {
   position: relative;
-  color: #fff;
+  color: navy;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 1px;
   margin-bottom: 40px;
 }
 
-.form1 h2::before
-{
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -7px;
-  width: 80px;
-  height: 4px;
-  background: #fff;
 
-}
+
 .sign {
   color:gray;
   margin-bottom: 0.1rem;
@@ -217,7 +209,8 @@ section .color:nth-child(3)
 
 .form1 .inputBox1 input::placeholder 
 {
-  color:#fff;
+  color:lightblue;
+  font-weight:20px;
 
 }
 
@@ -250,11 +243,6 @@ section .color:nth-child(3)
 }
 
 
-.exform_txt{
-  padding:12px 0 19px 0; 
-  text-align:right;color:#9a9a9a;
-  font-size:13px;
-}
 
 label {
   display: block;
