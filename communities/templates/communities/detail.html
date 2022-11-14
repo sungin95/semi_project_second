@@ -60,62 +60,67 @@
               {% endif %}
             </div>
             <!-- 유저 네임 -->
-            <div class="user-name"></div>
+            <div>
+                <div class="d-flex">
+                    <div class="user-name">user-name</div>
+                    <div class="time">
+                        time
+                        {% comment %} {% if review.created_string == False %}
+                          <td>{{ review.created_string|date:'m월 d일' }}</td>
+                        {% else %}
+                          <td>{{ review.created_string }}</td>
+                        {% endif %} {% endcomment %}
+                      </div>
+                </div>
+                <div class="user-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sint quia omnis et eaque aliquam corporis facilis dicta perferendis unde, ea neque magni minima commodi illum consectetur culpa consequuntur qui!</div>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                        <form class="like-review" data-reviewa-id="" data-restauranta-id="" method="POST">
+                            {% csrf_token %}
+                            {% if request.user.is_authenticated %}
+                            {% comment %} {% if request.user in review.like.all %}
+                            <input type="submit" class="btn btn-dark review-like{{ review.pk }}" value="좋아요 취소">
+                            {% else %}
+                            <input type="submit" class="btn btn-dark review-like{{ review.pk }}" value="좋아요">
+                            {% endif %} {% endcomment %}
+                            {% else %}
+                            <input type="submit" class="btn btn-dark" value="좋아요" disabled="disabled">
+                            {% endif %}
+                            <span class=""></span>
+                        </form>
+                        <div>주인장 좋아요</div>
+                        <button id="comment-btn" type="button" class="btn btn-sm btn-secondary review-comment" data-review-id="">댓글달기</button>
+                    </div>
+                    <div class="text-end">
+                        수정 삭제
+                      {% comment %} {% if review.user.pk == request.user.pk %}
+                        <a href="{% url 'reviews:update' review.pk restaurant.pk %}" class="link-secondary">수정</a>
+                        <a href="{% url 'reviews:delete' review.pk restaurant.pk %}" class="link-danger">삭제</a>
+                      {% endif %} {% endcomment %}
+                    </div>
+                </div>
+            </div>
           </div>
-
-          <!-- 시간 -->
-          <div class="time">
-            {% comment %} {% if review.created_string == False %}
-              <td>{{ review.created_string|date:'m월 d일' }}</td>
-            {% else %}
-              <td>{{ review.created_string }}</td>
-            {% endif %} {% endcomment %}
-          </div>
-        </div>
-
-        <!-- 댓글내용 -->
-        <div class="review-contents">
-          <div class="review-content">댓글 내용</div>
         </div>
 
         <!-- 리뷰에 댓글 달기 -->
         <div class="re-comment">
           <div class='d-flex justify-content-between'>
             <div class='d-flex'>
-              <button id="comment-btn" type="button" class="btn btn-sm btn-secondary review-comment" data-review-id="">댓글달기</button>
-              <div>
-                <div class="text-primary text-opacity-25">
-                  <div class="d-flex justify-content-between">
-                    <div>
-                      <!-- 로그인된 유저만 보이기 -->
-                      <!-- 리뷰 좋아요 -->
-                      <div>
-                        <form class="like-review" data-reviewa-id="" data-restauranta-id="" method="POST">
-                          {% csrf_token %}
-                          {% if request.user.is_authenticated %}
-                            {% comment %} {% if request.user in review.like.all %}
-                              <input type="submit" class="btn btn-dark review-like{{ review.pk }}" value="좋아요 취소">
-                            {% else %}
-                              <input type="submit" class="btn btn-dark review-like{{ review.pk }}" value="좋아요">
-                            {% endif %} {% endcomment %}
-                          {% else %}
-                            <input type="submit" class="btn btn-dark" value="좋아요" disabled="disabled">
-                          {% endif %}
-                          <span class=""></span>
-                        </form>
-                      </div>
+                <div>
+                    <div class="text-primary text-opacity-25">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <!-- 로그인된 유저만 보이기 -->
+                                <!-- 리뷰 좋아요 -->
+                                <div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
               </div>
             </div>
-            <div class="text-no-end">
-                수정 삭제
-              {% comment %} {% if review.user.pk == request.user.pk %}
-                <a href="{% url 'reviews:update' review.pk restaurant.pk %}" class="link-secondary">수정</a>
-                <a href="{% url 'reviews:delete' review.pk restaurant.pk %}" class="link-danger">삭제</a>
-              {% endif %} {% endcomment %}
-            </div>
+            
           </div>
           <div class="hidden">
             <!-- 대댓글폼 클릭 -->
