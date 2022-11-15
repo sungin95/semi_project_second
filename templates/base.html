@@ -8,13 +8,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block css %}{% endblock css %}
     {% block title %}{% endblock title %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
-    
   </head>
 
   <body style="">
@@ -50,12 +49,12 @@
               <img src="{% static 'img/cart_none.png' %}" alt="" width="25px" height="25px">
             </a>
             <div id="login">
-            {% if request.user.is_authenticated %}
-              <img src="{% static 'img/login_ing.png' %}" id="loginIng" alt="" width="30px" height="30px">
-            {% else %}
-              <img src="{% static 'img/login_none.png' %}" id="loginNone" class="" alt="" width="30px" height="30px">
-            {% endif %}
-          </div>
+              {% if request.user.is_authenticated %}
+                <img src="{% static 'img/login_ing.png' %}" id="loginIng" alt="" width="30px" height="30px">
+              {% else %}
+                <img src="{% static 'img/login_none.png' %}" id="loginNone" class="" alt="" width="30px" height="30px">
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
@@ -65,22 +64,12 @@
     <div class="search-bg-black" id="searchForm" style="visibility: hidden; opacity: 0;">
       <div class="search-bg-white">
         <form class="search" action="#">
-          <input class="input_form" type="search" placeholder="검색" name="search" aria-label="Search" id="search"
-            required>
-          <button class="button" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/16/16492.png"
-              alt="검색 아이콘"></button>
+          <input class="input_form" type="search" placeholder="검색" name="search" aria-label="Search" id="search" required="required">
+          <button class="button" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/16/16492.png" alt="검색 아이콘"></button>
         </form>
       </div>
       <div class="search-cancel"><img src="{% static 'img/cancel.png' %}" alt=""></div>
     </div>
-
-    {% comment %} <!-- 검색창 -->
-    <form class="d-flex" action="#">
-      <input style="width: 150px; border: 0.1rem solid #cdcdcd; border-radius: 5rem;" class="px-3" type="search" name="search" placeholder="검색" aria-label="Search" required="required">
-      <button style="background-color: rgb(205, 205, 255);" id="search-btn" class="border border-0">
-      </button>
-    </form> {% endcomment %}
-      
 
     <!-- 프로필 (로그인) -->
     <div class="profile-black-bg-login">
@@ -96,12 +85,12 @@
             <hr>
             <div class="nav-detail-login">
               {% if request.user.is_authenticated %}
-            <a class="nav-link" href="{% url 'accounts:detail' request.user.pk %}">회원정보 관리</a>
-            {% endif %}
-            <a class="nav-link" href="#">주문/배송 조회</a>
-            <a class="nav-link" href="#">쿠폰존</a>
-            <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
-          </div>
+                <a class="nav-link" href="{% url 'accounts:detail' request.user.pk %}">회원정보 관리</a>
+              {% endif %}
+              <a class="nav-link" href="#">주문/배송 조회</a>
+              <a class="nav-link" href="#">쿠폰존</a>
+              <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
+            </div>
           </div>
         </div>
       </div>
@@ -110,31 +99,84 @@
     <!-- 프로필 (비로그인) -->
     <div class="profile-black-bg-none">
       <div class="container">
-      <div class="profile-bg-none">
-        <div class="nav-detail-none">
-          <p class="nav-link mb-0 fw-bold">
-            <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
-          </p>
-          <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
+        <div class="profile-bg-none">
+          <div class="nav-detail-none">
+            <p class="nav-link mb-0 fw-bold">
+              <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
+            </p>
+            <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
+          </div>
         </div>
       </div>
-    </div>
     </div>
 
     <!-- 제품목록 -->
     <div class="black-bg">
       <div class="white-bg" id="listGroup">
         <div class="container">
-          <div><a href="{% url 'products:index' %}" class="navbar-product">전체</a></div>
-          <div><a href="" class="navbar-product">삼성 (Samsung)</a></div>
-          <div><a href="" class="navbar-product">엘지 (LG)</a></div>
-          <div><a href="" class="navbar-product">애플 (Apple)</a></div>
-          <div><a href="" class="navbar-product">레노버 (Lenovo)</a></div>
-          <div><a href="" class="navbar-product">에이수스 (Asus)</a></div>
-          <div><a href="" class="navbar-product">엠에스아이 (Msi)</a></div>
-          <div><a href="" class="navbar-product">델 (Dell)</a></div>
-          <div><a href="" class="navbar-product">한성 (Hansung)</a></div>
-          <div><a href="" class="navbar-product">에이치피 (HP)</a></div>
+          <div>
+            <a href="{% url 'products:index' %}" class="navbar-product">전체</a>
+          </div>
+          <form action="{% url 'products:index' %}">
+            <button type="submit" class="a_menu">
+              <p>삼성 (Samsung)</p>
+              <input type="text" value="삼성" class="category-value" name="category">
+            </button>
+          </form>
+          <form action="{% url 'products:index' %}">
+            <button type="submit" class="a_menu">
+              <p>엘지 (LG)</p>
+              <input type="text" value="LG전자" class="category-value" name="category">
+            </button>
+          </form>
+          <form action="{% url 'products:index' %}">
+            <button type="submit" class="a_menu">
+              <p>애플 (Apple)</p>
+              <input type="text" value="APPLE" class="category-value" name="category">
+            </button>
+          </form>
+          <form action="{% url 'products:index' %}">
+            <button type="submit" class="a_menu">
+              <p>에이수스 (Asus)</p>
+              <input type="text" value="ASUS" class="category-value" name="category">
+            </button>
+          </form>
+          <form action="{% url 'products:index' %}">
+            <button type="submit" class="a_menu">
+              <p>레노버 (Lenovo)</p>
+              <input type="text" value="레노버" class="category-value" name="category">
+            </button>
+          </form>
+          <form action="{% url 'products:index' %}">
+            <button type="submit" class="a_menu">
+              <p>엠에스아이 (Msi)</p>
+              <input type="text" value="MSI" class="category-value" name="category">
+            </button>
+          </form>
+          <form action="{% url 'products:index' %}">
+            <button type="submit" class="a_menu">
+              <p>델 (Dell)</p>
+              <input type="text" value="DELL" class="category-value" name="category">
+            </button>
+          </form>
+          <form action="{% url 'products:index' %}">
+            <button type="submit" class="a_menu">
+              <p>한성 (Hansung)</p>
+              <input type="text" value="한성" class="category-value" name="category">
+            </button>
+          </form>
+          <form action="{% url 'products:index' %}">
+            <button type="submit" class="a_menu">
+              <p>기가바이트 (GigaByte)</p>
+              <input type="text" value="GIGABYTE" class="category-value" name="category">
+            </button>
+          </form>
+          <form action="{% url 'products:index' %}">
+            <button type="submit" class="a_menu">
+              <p>에이치피 (HP)</p>
+              <input type="text" value="HP" class="category-value" name="category">
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -174,11 +216,7 @@
     </footer>
 
     <!-- 푸터2 -->
-    <!-- <footer>
-      <div>아이콘 출처 :
-        <a href="https://www.flaticon.com/kr/free-animated-icons/" title="컴퓨터 애니메이션 아이콘">컴퓨터 애니메이션 아이콘 제작자: Freepik - Flaticon</a>
-      </div>
-    </footer> -->
+    <!-- <footer> <div>아이콘 출처 : <a href="https://www.flaticon.com/kr/free-animated-icons/" title="컴퓨터 애니메이션 아이콘">컴퓨터 애니메이션 아이콘 제작자: Freepik - Flaticon</a> </div> </footer> -->
 
     <!-- 스크립트 -->
     {% bootstrap_javascript %}
@@ -196,48 +234,58 @@
 
       // 네비게이션바 제품
       navbarProductClick.addEventListener('mouseenter', () => {
-        blackBg.classList.add('show-modal')
+        blackBg
+          .classList
+          .add('show-modal')
       })
-      listGroup.addEventListener('mouseleave', ()=>{
-        blackBg.classList.remove('show-modal')
+      listGroup.addEventListener('mouseleave', () => {
+        blackBg
+          .classList
+          .remove('show-modal')
       })
-      nabvar.addEventListener('mouseover', ()=>{
-        document.querySelector('.navbar').style.backgroundColor = '#CCE1FF'
+      nabvar.addEventListener('mouseover', () => {
+        document
+          .querySelector('.navbar')
+          .style
+          .backgroundColor = '#CCE1FF'
       })
-      listGroup.addEventListener('mouseleave', ()=>{
-        document.querySelector('.navbar').style.backgroundColor = 'transparent'
+      listGroup.addEventListener('mouseleave', () => {
+        document
+          .querySelector('.navbar')
+          .style
+          .backgroundColor = 'transparent'
       })
-      
-      if (login.children[0].id == 'loginNone'){
+
+      if (login.children[0].id == 'loginNone') {
         // 비로그인 중 프로필 팝업
         const loginNone = document.querySelector('#loginNone')
-        loginNone.addEventListener('mouseenter', ()=>{
+        loginNone.addEventListener('mouseenter', () => {
           profileBlackBgNone.style.visibility = 'visible'
           profileBlackBgNone.style.opacity = '1'
         })
-        profileBgNone.addEventListener('mouseleave', ()=>{
+        profileBgNone.addEventListener('mouseleave', () => {
           profileBlackBgNone.style.visibility = 'hidden'
           profileBlackBgNone.style.opacity = '0'
         })
       } else {
         // 로그인 중 프로필 팝업
         const loginIng = document.querySelector('#loginIng')
-        loginIng.addEventListener('mouseenter', ()=>{
+        loginIng.addEventListener('mouseenter', () => {
           profileBlackBgLogin.style.visibility = 'visible'
           profileBlackBgLogin.style.opacity = '1'
         })
-        profileBgLogin.addEventListener('mouseleave', ()=>{
+        profileBgLogin.addEventListener('mouseleave', () => {
           profileBlackBgLogin.style.visibility = 'hidden'
           profileBlackBgLogin.style.opacity = '0'
         })
       }
-      
+
       // 검색
       const searchClick = document.querySelector("#search-click")
       const searchForm = document.querySelector('#searchForm')
       const searchCancel = document.querySelector('.search-cancel')
-      
-      searchClick.addEventListener('click',()=>{
+
+      searchClick.addEventListener('click', () => {
         if (searchForm.style.visibility == 'hidden') {
           searchForm.style.visibility = 'visible'
           searchForm.style.opacity = '1'
@@ -247,28 +295,46 @@
         }
       })
 
-      searchCancel.addEventListener('click',()=>{
+      searchCancel.addEventListener('click', () => {
         searchForm.style.visibility = 'hidden'
         searchForm.style.opacity = '0'
       })
     </script>
-    
+
     <!-- 스크롤시 네비게이션바 투명하게 -->
     <script>
       const searchBtn = document.querySelector('#search-btn')
 
       window.addEventListener('scroll', () => {
-            var 스크롤양 = document.querySelector('html').scrollTop;
-            var 실제높이 = document.querySelector('html').scrollHeight;
-            var 높이 = document.querySelector('html').clientHeight;
-            if (window.scrollY > 150) {
-                document.querySelector('.navbar').style.backgroundColor = 'transparent'
-                document.querySelector('.navbar').style.transition = 'all 1s'
-            } else {
-                document.querySelector('.navbar').style.backgroundColor = '#CCE1FF'
-                document.querySelector('.navbar').style.transition = 'all 1s'
-            }
-        })
+        var 스크롤양 = document
+          .querySelector('html')
+          .scrollTop;
+        var 실제높이 = document
+          .querySelector('html')
+          .scrollHeight;
+        var 높이 = document
+          .querySelector('html')
+          .clientHeight;
+        if (window.scrollY > 150) {
+          document
+            .querySelector('.navbar')
+            .style
+            .backgroundColor = 'transparent'
+          document
+            .querySelector('.navbar')
+            .style
+            .transition = 'all 1s'
+        } else {
+          document
+            .querySelector('.navbar')
+            .style
+            .backgroundColor = '#CCE1FF'
+          document
+            .querySelector('.navbar')
+            .style
+            .transition = 'all 1s'
+        }
+      })
     </script>
 
     <script>
@@ -277,18 +343,18 @@
       const hamburgerClickUp = document.querySelector('.hamburger-click-up')
       const hamburgerClickDown = document.querySelector('.hamburger-click-down')
 
-      hamburger.addEventListener('click',()=>{
+      hamburger.addEventListener('click', () => {
         hamburger.style.visibility = "hidden"
         hamburgerClickX.style.visibility = "visible"
         hamburgerClickUp.style.visibility = "visible"
         //hamburgerClickUp.style.opacity = '1'
-        hamburgerClickUp.style.transform= "translateY(-260%)";
+        hamburgerClickUp.style.transform = "translateY(-260%)";
         hamburgerClickDown.style.visibility = "visible"
         //hamburgerClickDown.style.opacity = '1'
-        hamburgerClickDown.style.transform= "translateY(-130%)";
+        hamburgerClickDown.style.transform = "translateY(-130%)";
       })
 
-      hamburgerClickX.addEventListener('click',()=>{
+      hamburgerClickX.addEventListener('click', () => {
         hamburger.style.visibility = "visible"
         hamburgerClickX.style.visibility = "hidden"
         hamburgerClickUp.style.visibility = "hidden"
@@ -297,17 +363,16 @@
         hamburgerClickDown.style.transform = "translateY(0%)";
       })
 
-      hamburgerClickUp.addEventListener('click',()=>{
-        window.scrollTo({top:location, behavior:'smooth'});
+      hamburgerClickUp.addEventListener('click', () => {
+        window.scrollTo({top: location, behavior: 'smooth'});
       })
 
-      hamburgerClickDown.addEventListener('click',()=>{
+      hamburgerClickDown.addEventListener('click', () => {
         window.scrollTo(0, document.body.scrollHeight);
       })
-
     </script>
 
     {% block js %}{% endblock js %}
-</body>
+  </body>
 
 </html>
