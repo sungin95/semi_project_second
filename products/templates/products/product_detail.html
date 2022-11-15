@@ -109,7 +109,7 @@
                 <i class="icon ico-large ico-goods">좋아요 선택</i>
               </button>
             </div>
-            <h1 class="itm-info-title mt-4" id="goodsDetailNm">갤럭시 북2 Pro 360 39.6 cm Core™ i7 / 1 TB NVMe SSD</h1>
+            <h1 class="itm-info-title mt-4" id="goodsDetailNm">{{modelName}}</h1>
             <div class="itm-sku b2c-itm-sku">NT950QED-KD72S</div>
             <div class="itm-rating-con">
               <div class="itm-rating b2c-itm-rating">
@@ -136,7 +136,7 @@
               <dl class="has_strike">
                 <dt>정가</dt>
                 <dd>
-                  <span data-price="3070000">3,070,000</span>
+                  <span data-price="3070000">{{price}}</span>
                   원
                 </dd>
               </dl>
@@ -145,7 +145,7 @@
                 <dt>
                   특가</dt>
                 <dd>
-                  <span data-price="2191000" class="pd-total-price">2,191,000</span>
+                  <span data-price="2191000" class="pd-total-price">{{special_price}}</span>
                   원
                 </dd>
               </dl>
@@ -229,8 +229,8 @@ Kakao
   container: '#kakaotalk-sharing-btn',
   objectType: 'commerce',
   content: {
-    title: '언제 어디든, 더 쉽고 편하게 당신의 일상을 더 즐겁게, 헤이 라이언의 이야기를 들려드릴게요.',
-    imageUrl: 'http://k.kakaocdn.net/dn/dScJiJ/btqB3cwK1Hi/pv5qHVwetz5RZfPZR3C5K1/kakaolink40_original.png',
+    title: '',
+    imageUrl: `{{thumbnail}}`,
     link: {
       // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
       mobileWebUrl: 'https://developers.kakao.com',
@@ -238,23 +238,23 @@ Kakao
     }
   },
   commerce: {
-    productName: '카카오',
-    regularPrice: 10000,
+    productName: `{{ modelName }}`,
+    regularPrice: {{price}},
     discountRate: 10,
-    discountPrice: 9000
+    discountPrice: {{special_price}},
   },
   buttons: [
     {
       title: '구매하기',
       link: {
-        mobileWebUrl: 'http://localhost:8000/products/product_detail/',
-        webUrl: 'http://localhost:8000/products/product_detail/'
+        mobileWebUrl: `http://localhost:8000/products/product_detail/{{product}}`,
+        webUrl: `http://localhost:8000/products/product_detail/{{product}}`
       }
     }, {
       title: '공유하기',
       link: {
-        mobileWebUrl: 'http://localhost:8000/products/product_detail/',
-        webUrl: 'http://localhost:8000/products/product_detail/'
+        mobileWebUrl: `http://localhost:8000/products/product_detail/{{product}}`,
+        webUrl: `http://localhost:8000/products/product_detail/{{product}}`
       }
     }
   ]
