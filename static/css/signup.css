@@ -34,11 +34,11 @@ section .color {
 }
 
 .card-body {
-  background-image: linear-gradient(to bottom, #f1f4f9 20%, rgb(205, 205, 255) 80%);
+  background-image: linear-gradient(to bottom, #f1f4f9 40%, #F0F8FF 60%);
 }
 
 .navbar {
-  background-image: linear-gradient(to top, #f1f4f9 20%, rgb(205, 205, 255) 80%);
+  background-image: linear-gradient(to top, #f1f4f9 40%, #F0F8FF 60%);
 }
 
 section .color:nth-child(1)
@@ -209,7 +209,7 @@ section .color:nth-child(3)
 
 .form1 .inputBox1 input::placeholder 
 {
-  color:lightblue;
+  color:skyblue;
   font-weight:20px;
 
 }

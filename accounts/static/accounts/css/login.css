@@ -7,6 +7,8 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
+
 /* section */
 section
 {
@@ -217,11 +219,11 @@ h2
 }
 
 .card-body {
-  background-image: linear-gradient(to bottom, #f1f4f9 20%, rgb(205, 205, 255) 80%);
+  background-image: linear-gradient(to bottom, #f1f4f9 40%, #F0F8FF 60%);
 }
 
 .navbar {
-  background-image: linear-gradient(to top, #f1f4f9 20%, rgb(205, 205, 255) 80%);
+  background-image: linear-gradient(to top, #f1f4f9 40%, #F0F8FF 60%);
 }
 
 
