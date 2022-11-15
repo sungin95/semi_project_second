@@ -9,6 +9,51 @@
 }
 
 
+.pg-location {
+  display: block;
+  width: 100%;
+  border-top: 1px solid #ebebeb;
+  overflow: hidden;
+  z-index:1;
+}
+/* 
+@media (max-width: 1440px) and (min-width: 1281px)  */
+/* .pg-location-inner {
+  max-width:100vw;
+  height: 3.4722vw;
+  line-height: 3.4722vw;
+  padding: 0 1.6667vw;
+} */
+
+.pg-location-inner{
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* .pg-location a, .pg-location span {
+  font-size: 0.9028vw;
+  margin-right: 2.4306vw;
+} */
+
+.pg-location a .pg-location span{
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  color: #8f8f8f;
+  
+}
+
+.pg-location a::before, .pg-location
+span::before {
+  position: absolute;
+  top:50%;
+  background: url(https://www.samsungebiz.com/sec/static/_images/common/icon-location-bulet.png) no-repeat;
+  transform: translateY(-50%);
+  content: '';
+}
+
 
 .itm-information{
   position:relative;
@@ -497,7 +542,6 @@ input[type=text] {
 .pd-spinner .number{
   display: block;
   height: 28px;
-  line-height: 28px;
   font-size: 14px;
   font-weight: bold;
   text-align: center;
@@ -530,3 +574,136 @@ label {
   cursor: default;
 }
 
+.itm-total-bottom .box-cto {
+  font-size: 0;
+  text-align: center;
+}
+
+.ol, ul, li {
+  list-style: none;
+}
+
+.itm-total-bottom .box-cto ul li {
+  float: left;
+  width: 50%;
+}
+
+.itm-total-bottom .box-cto .btn-l {
+  min-width: 185px;
+  margin: 0;
+}
+
+.itm-total-bottom .box-cto .btn-k {
+  min-width: 185px;
+  margin: 0;
+  height: 50px;
+}
+
+.btn.btn-type6 {
+  color: #707070;
+  border-color: #707070;
+  background: #fff;
+  border-width:  2px;
+}
+.btn.btn-l {
+  background: #fff;
+  background-color: #fff;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.btn.btn-k {
+  background: #fff;
+  background-color: #99C3FF;
+  border-radius: 30px;
+  font-weight: bold;
+  color:#fff;
+}
+
+
+.btn {
+  border: 2px solid #99C3FF;
+  color: #99C3FF;
+  background: #fff;
+  opacity: 1;
+}
+
+.btn-l {
+  min-width: 150px;
+  height: 50px;
+  line-height: 48px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 16px;
+  border: 2px solid;
+  border-radius: 30px;
+}
+
+/* .btn{
+  display: inline-block;
+  margin: 0 4px;
+  padding-left: 24px;
+  padding-right: 24px;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid rgba(33, 36, 37, .6);
+  background: #fff;
+  overflow: hidden;
+  font-family: sans-serif;
+} */
+
+
+.itm-total-bottom {
+  position: relative;
+  left: -7%;
+}
+
+.btns{
+  border: none;
+}
+
+/*slider */
+
+.carousel {
+  position: relative;
+}
+.carousel-item img {
+  object-fit: cover;
+}
+#carousel-thumbs {
+  background: rgba(255,255,255,.3);
+  bottom: 0;
+  left: 0;
+  padding: 0 50px;
+  right: 0;
+}
+#carousel-thumbs img {
+  border: 5px solid transparent;
+  cursor: pointer;
+}
+#carousel-thumbs img:hover {
+  border-color: rgba(255,255,255,.3);
+}
+#carousel-thumbs .selected img {
+  border-color: #fff;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+}
+@media all and (max-width: 767px) {
+  .carousel-container #carousel-thumbs img {
+    border-width: 3px;
+  }
+}
+@media all and (min-width: 576px) {
+  .carousel-container #carousel-thumbs {
+    position: absolute;
+  }
+}
+@media all and (max-width: 576px) {
+  .carousel-container #carousel-thumbs {
+    background: #ccccce;
+  }
+}
