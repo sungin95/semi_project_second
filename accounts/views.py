@@ -7,7 +7,8 @@ from .forms import (
     CustomUserCreationForm,
     CustomUserChangeForm,
     ProfileCustomUserChangeForm,
-    MyAuthForm,
+    MyLoginForm,
+    MySignupForm,
 )
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -29,10 +30,10 @@ def signup(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            auth_login(request, user)
-            return redirect("accounts:detail", request.user.pk)
+            # auth_login(request, user)
+            return redirect("accounts:login")
     else:
-        form = CustomUserCreationForm()
+        form = MySignupForm()
     context = {
         "form": form,
     }
@@ -50,7 +51,7 @@ def login(request):
             auth_login(request, form.get_user())
             return redirect(request.GET.get("next") or "accounts:index")
     else:
-        form = MyAuthForm()
+        form = MyLoginForm()
     context = {
         "form": form,
     }

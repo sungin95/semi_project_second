@@ -35,7 +35,7 @@
     <!-- 공지사항 1개 시작 -->
     <div class="row">
       <div class="col-6">
-        <span class="badge bg-secondary mx-2 p-1">공지</span>공지사항 제목</div>
+        <span class="badge bg-danger mx-2 p-1">공지</span>공지사항 제목</div>
       <div class="col-2">공지 작성자</div>
       <div class="col-2">조회수</div>
       <div class="col-2">작성일</div>
@@ -45,7 +45,7 @@
     <!-- 공지사항 2개 시작 -->
     <div class="row">
       <div class="col-6">
-        <span class="badge bg-secondary mx-2 p-1">공지</span>공지사항 제목</div>
+        <span class="badge bg-danger mx-2 p-1">공지</span>공지사항 제목</div>
       <div class="col-2">공지 작성자</div>
       <div class="col-2">조회수</div>
       <div class="col-2">작성일</div>
@@ -55,7 +55,7 @@
     <!-- 공지사항 3개 시작 -->
     <div class="row">
       <div class="col-6">
-        <span class="badge bg-secondary mx-2 p-1">공지</span>공지사항 제목</div>
+        <span class="badge bg-danger mx-2 p-1">공지</span>공지사항 제목</div>
       <div class="col-2">공지 작성자</div>
       <div class="col-2">조회수</div>
       <div class="col-2">작성일</div>
@@ -70,27 +70,27 @@
       <div class="today-best-ten">
         <div class="today-best-left">
           <div>
-            <span class="badge text-bg-secondary mx-2">01</span>NVIDIA vs AMD 최근 상황</div>
+            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">01</span>NVIDIA vs AMD 최근 상황</div>
           <div>
-            <span class="badge text-bg-secondary mx-2 ">02</span>우주상향 대학 1차 붙었습니다..</div>
+            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">02</span>우주상향 대학 1차 붙었습니다..</div>
+          <div> 
+            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">03</span>어제 밥먹다가 플스가 생긴 사람입니다.</div>
           <div>
-            <span class="badge text-bg-secondary mx-2 ">03</span>어제 밥먹다가 플스가 생긴 사람입니다.</div>
+            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">04</span>요즘 군대에서 모을수 있는 돈 액수</div>
           <div>
-            <span class="badge text-bg-secondary mx-2 ">04</span>요즘 군대에서 모을수 있는 돈 액수</div>
-          <div>
-            <span class="badge text-bg-secondary mx-2 ">05</span>알리발 휴대용 모니터가 도착했습니다.</div>
+            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">05</span>알리발 휴대용 모니터가 도착했습니다.</div>
         </div>
         <div class="today-best-right">
           <div>
-            <span class="badge text-bg-secondary mx-2 ">06</span>이야 원달러 쭉쭉 내려가네요</div>
+            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">06</span>이야 원달러 쭉쭉 내려가네요</div>
           <div>
-            <span class="badge text-bg-secondary mx-2 ">07</span>와 저도 19금 프로그램 깔려 있었네여</div>
+            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">07</span>와 저도 19금 프로그램 깔려 있었네여</div>
           <div>
-            <span class="badge text-bg-secondary mx-2 ">08</span>케이스 리퍼 사지마세요</div>
+            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">08</span>케이스 리퍼 사지마세요</div>
           <div>
-            <span class="badge text-bg-secondary mx-2 ">09</span>허먼밀러 의자를 샀습니다 (후기)</div>
+            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">09</span>허먼밀러 의자를 샀습니다 (후기)</div>
           <div>
-            <span class="badge text-bg-secondary mx-2 ">10</span>전 여친에게 연락을 해보았습니다</div>
+            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">10</span>전 여친에게 연락을 해보았습니다</div>
         </div>
       </div>
     </div>
@@ -172,28 +172,44 @@
         </li>
       </ul>
     </div>
-  <!--페이지네이션-->
-  <ul class="pagination mt-3">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">1</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">3</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
+      <!-- 페이징처리 시작 -->
+      <div class="m-3">
+        <ul class="pagination justify-content-center">
+          <!-- 이전페이지 -->
+          {% if question_list.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+            </li>
+          {% endif %}
+          <!-- 페이지리스트 -->
+          {% for page_number in question_list.paginator.page_range %}
+            {% if page_number == question_list.number %}
+              <li class="page-item" aria-current="page">
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+              </li>
+            {% else %}
+              <li class="page-item">
+                <a class="page-link text-info" href="?page={{ page_number }}">{{ page_number }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+          <!-- 다음페이지 -->
+          {% if question_list.has_next %}
+            <li class="page-item">
+              <a class=" page-link" href="?page={{ question_list.next_page_number }}">다음</a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <a class=" page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+      <!-- 페이징처리 끝 -->
   <!-- 간격용 -->
   <div style="opacity: 0;">hellohellohellohell</div>
 </div>

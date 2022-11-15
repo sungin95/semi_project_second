@@ -1,14 +1,22 @@
+
 from django.shortcuts import render, redirect, get_object_or_404
 from .form import ArticleForm, CommentForm
 from .models import Articles, Comments
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Articles
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
-    articles = Articles.objects.order_by("-pk")
+    k = Articles.objects.all().order_by("id")
+    page = request.GET.get("page", "1")
+    paginator = Paginator(k, 3)
+    page_obj = paginator.get_page(page)
     context = {
-        "articles": articles,
+        "v": k,
     }
     return render(request, "communities/index.html", context)
 

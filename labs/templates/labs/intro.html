@@ -12,8 +12,20 @@
     <div class="container" style="height:100%;">
       <div class="intro-flex">
         <div class="intro-comment">
-          <div>
-            <h3>트렌드</h3>
+          <div class="intro-comment-change show">
+            <h3>트렌드1</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
+          </div>
+          <div class="intro-comment-change">
+            <h3>트렌드2</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
+          </div>
+          <div class="intro-comment-change">
+            <h3>트렌드3</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
+          </div>
+          <div class="intro-comment-change">
+            <h3>트렌드4</h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
           </div>
         </div>
@@ -262,5 +274,31 @@
         map.setCenter(coords);
       }
     });
+  </script>
+
+  <!-- 글귀변경 -->
+  <script>
+    const introCommentChangeH3 = document.querySelector('.intro-comment-change h3')
+    const introCommentChangeP = document.querySelector('.intro-comment-change p')
+    const introCommentChange = document.querySelectorAll('.intro-comment-change')
+    const commentListH3 = ['김유영', '신윤식', '이성인', '이호빈', '조창현']
+    const commentListP = ['팀장', '멘탈붕괴직전', '팀원2', '야간조', '팀원4']
+    const count = introCommentChange.length
+    var i = 0
+
+    setInterval(() => {
+      for (let k of introCommentChange) {
+        k
+          .classList
+          .remove('show')
+      }
+      introCommentChange[i % count]
+        .classList
+        .add('show')
+      //  introCommentChange.style.transform = "translateY(0%)"
+      //  introCommentChangeH3.innerHTML = `${commentListH3[i % count]}`
+      //  introCommentChangeP.innerHTML = `${commentListP[i % count]}`
+      i++
+    }, 2000)
   </script>
 {% endblock js %}

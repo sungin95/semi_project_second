@@ -5,4 +5,6 @@ app_name = "products"
 
 urlpatterns = [
     path("index/", views.index, name="index"),
+    path("product_detail/<int:pk>", views.detail, name="detail"),
+    path("like/<int:pk>", views.like_product, name="like_product"),
 ]

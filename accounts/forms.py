@@ -27,18 +27,45 @@ class ProfileCustomUserChangeForm(UserChangeForm):
         }
 
 
-class MyAuthForm(AuthenticationForm):
+class MyLoginForm(AuthenticationForm):
     class Meta:
         model = get_user_model()
         fields = ["username", "password"]
 
     def __init__(self, *args, **kwargs):
-        super(MyAuthForm, self).__init__(*args, **kwargs)
-        self.fields["username"].widget = forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "아이디"}
-        )
+        super(MyLoginForm, self).__init__(*args, **kwargs)
+        self.fields["username"].widget = forms.TextInput(attrs={"placeholder": "아이디"})
         self.fields["username"].label = False
         self.fields["password"].widget = forms.PasswordInput(
-            attrs={"class": "form-control", "placeholder": "비밀번호"}
+            attrs={"placeholder": "비밀번호"}
         )
         self.fields["password"].label = False
+
+
+class MySignupForm(CustomUserCreationForm):
+    class Meta:
+        model = get_user_model()
+        fields = ["username", "email", "first_name", "last_name"]
+
+    def __init__(self, *args, **kwargs):
+        super(MySignupForm, self).__init__(*args, **kwargs)
+        self.fields["username"].widget = forms.TextInput(
+            # 아이디
+            attrs={"placeholder": "아이디를 입력해주세요"}
+        )
+        self.fields["username"].label = False
+        # 이메일
+        self.fields["email"].widget = forms.TextInput(
+            attrs={"placeholder": "예:intellilaps@gmail.com"}
+        )
+        self.fields["email"].label = False
+        # 비밀번호1
+        self.fields["password1"].widget = forms.PasswordInput(
+            attrs={"placeholder": "비밀번호를 입력해주세요"}
+        )
+        self.fields["password1"].label = False
+        # 비밀번호2
+        self.fields["password2"].widget = forms.PasswordInput(
+            attrs={"placeholder": "비밀번호 확인"}
+        )
+        self.fields["password2"].label = False

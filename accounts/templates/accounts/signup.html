@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
-{% block css %}{% endblock css %}
-
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/signup.css'%}">
+{% endblock css %}
 {% block content %}
-<!--회원가입 폼-->
+  <!--회원가입 폼-->
   <section>
     <div class="color"></div>
     <div class="color"></div>
@@ -15,49 +16,51 @@
       <div class="square" style="--i:2;"></div>
       <div class="square" style="--i:3;"></div>
       <div class="square" style="--i:4;"></div>
-        <div class="container1">
-          <div class="form1 d-flex flex-column align-items-center">
-            <h2>회원가입</h2>
-            <form class="all-form">
-              <div class="inputBox1">
-                <p class="sign">성</p>
-                <input type="text" placeholder="" name="first_name">
-              </div>
-              <div class="inputBox1">
-                <p class="sign">이름</p>
-                <input type="text" placeholder="" name="last_name">
-              </div>
-              <div class="inputBox1" >
-                <p class="sign">아이디</p>
-                <input type="text" placeholder="아이디를 입력해주세요" name="username">
-              </div>
-              <div class="inputBox1">
-                <p class="sign">이메일</p>
-                <input type="text" placeholder="예:intellilaps@gmail.com" name="email">
-              </div>
-              <div class="inputBox1">
-                <p class="sign">비밀번호</p>
-                <input type="text" placeholder="비밀번호를 입력해주세요" name="password1">
-              </div>
-              <div class="inputBox1">
-                <p class="sign">비밀번호 확인</p>
-                <input type="text" placeholder="비밀번호를 다시 입력해주세요" name="password2">
-              </div>
-              <div class="exform_txt text-center">
-                <span><span style="color:red">*</span>표시는 필수적으로 입력해주셔야 가입이 가능합니다.</span>
-              </div>
-      
-        
-              <div class="inputBox1_button d-flex justify-content-center">
-                <input type="submit" class="form-control form-control-lg" value="회원가입">
-              </div>
-        
-            </form>
-          </div>
+      <div class="container1">
+        <div class="form1 d-flex flex-column align-items-center">
+          <h2>회원가입</h2>
+          <form class="all-form" action="{% url 'accounts:signup' %}" method="POST">
+            {% csrf_token %}
+            <div class="inputBox1">
+              <p class="sign">성</p>
+              {{ form.first_name }}
+              {% comment %} <input type="text" placeholder="" name="first_name"> {% endcomment %}
+            </div>
+            <div class="inputBox1">
+              <p class="sign">이름</p>
+              {{ form.last_name }}
+              {% comment %} <input type="text" placeholder="" name="last_name"> {% endcomment %}
+            </div>
+            <div class="inputBox1">
+              <p class="sign"><span style="color:red;">*</span>아이디</p>
+              {{ form.username }}
+              {% comment %} <input type="text" placeholder="아이디를 입력해주세요" name="username"> {% endcomment %}
+            </div>
+            <div class="inputBox1">
+              <p class="sign">이메일</p>
+              {{ form.email }}
+              {% comment %} <input type="text" placeholder="예:intellilaps@gmail.com" name="email"> {% endcomment %}
+            </div>
+            <div class="inputBox1">
+              <p class="sign"><span style="color:red;">*</span>비밀번호</p>
+              {{ form.password1 }}
+            </div>
+            <div class="inputBox1">
+              <p class="sign"><span style="color:red;">*</span>비밀번호 확인</p>
+              {{ form.password2 }}
+            </div>
+            <div class="exform_txt text-center">
+              <span style="font-size:16px;"><span style="color:red;">*</span>표시는 필수적으로 입력해주셔야 가입이 가능합니다.</span>
+            </div>
+
+            <div class="inputBox1_button d-flex justify-content-center">
+              <input type="submit" class="form-control form-control-lg" value="회원가입">
+            </div>
+
+          </form>
+        </div>
       </div>
     </div>
   </section>
-<script src="{% static 'js/signup.js'%}"></script>  
+
 {% endblock content %}
-
-
