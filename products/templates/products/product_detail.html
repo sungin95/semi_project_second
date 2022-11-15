@@ -9,98 +9,110 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900" rel="stylesheet">
-	<link rel="stylesheet" href="{% static 'products/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'products/css/owl.carousel.min.css' %}">
   <link rel="stylesheet" href="{% static 'products/css/owl.theme.default.min.css' %}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
-	<link rel="stylesheet" href="{% static 'products/css/animate.css' %}">
-	<link rel="stylesheet" href="{% static 'products/css/style.css' %}">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+  <link rel="stylesheet" href="{% static 'products/css/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'products/css/style.css' %}">
+
 {% endblock css %}
 
 {% block content %}
-<!--경로-->
-<div class="pg-location">
-  <div class="pg-location-inner d-flex justify-content-start; mt-3">
-    <a href="" class="ml-3 mr-2" style="text-decoration:none; color:gray; font-size: 15px;">HOME <i class="bi bi-chevron-right"></i></a>
-    <span style="color:gray; font-size: 15px;">
-      PC/프린터 <i class="bi bi-chevron-right"></i>
-    </span>
-    <a href="" style="text-decoration:none; color:gray; font-size: 15px;" class="ml-2">
-      PC <i class="bi bi-chevron-right"></i>
-    </a>
-    <a href="" style="text-decoration:none; color:gray; font-size: 15px;" class="ml-2">
-      모두보기 <i class="bi bi-chevron-right"></i>
-    </a>
-    <span id="location-prd-nm" class="ml-2" style="color:gray; font-size: 15px;">
-      갤럭시 북2 Pro 360 39.6 cm Core™ i7 / 1 TB NVMe SSD
-    </span>
+  <!--경로-->
+  <div class="pg-location">
+    <div class="pg-location-inner d-flex justify-content-start; mt-3">
+      <a href="" class="ml-3 mr-2" style="text-decoration:none; color:gray; font-size: 15px;">HOME
+        <i class="bi bi-chevron-right"></i>
+      </a>
+      <span style="color:gray; font-size: 15px;">
+        PC/프린터
+        <i class="bi bi-chevron-right"></i>
+      </span>
+      <a href="" style="text-decoration:none; color:gray; font-size: 15px;" class="ml-2">
+        PC
+        <i class="bi bi-chevron-right"></i>
+      </a>
+      <a href="" style="text-decoration:none; color:gray; font-size: 15px;" class="ml-2">
+        모두보기
+        <i class="bi bi-chevron-right"></i>
+      </a>
+      <span id="location-prd-nm" class="ml-2" style="color:gray; font-size: 15px;">
+        갤럭시 북2 Pro 360 39.6 cm Core™ i7 / 1 TB NVMe SSD
+      </span>
+    </div>
   </div>
-</div>
 
-<div class="container" style="background-color: #f7f7f7; margin-top: 70px;">
-  <div class="row">
-    <div class="col-md-7 pr-0">
-      <!--캐러셀-->
-      <section class="ftco-section">
-              <div class="slider-hero">
-                <div class="featured-carousel owl-carousel">
-                  <div class="item">
-                    <div class="work">
-                      <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/static/products/img/slider-1.jpg);">
-                        <div class="text text-center">
-                          <!-- <h2>인텔리랩스</h2> -->
-                        </div>
-                      </div>
+  <div class="container" style="background-color: #f7f7f7; margin-top: 70px;">
+    <div class="row">
+      <div class="col-md-7 pr-0">
+        <!--캐러셀-->
+        <section class="ftco-section">
+          <div class="slider-hero">
+            <div class="featured-carousel owl-carousel">
+              <div class="item">
+                <div class="work">
+                  <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/static/products/img/slider-1.jpg);">
+                    <div class="text text-center">
+                      <!-- <h2>인텔리랩스</h2> -->
                     </div>
                   </div>
-                  <div class="item">
-                    <div class="work">
-                      <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/static/products/img/slider-2.jpg);">
-                        <div class="text text-center">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="work">
-                      <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/static/products/img/slider-3.jpg);">
-                        <div class="text text-center">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="my-5 text-center">
-                  <ul class="thumbnail">
-                    <li class="active img"><a href="#"><img src="/static/products/img/thumb-1.jpg" alt="Image" class="img-fluid"></a></li>
-                    <li><a href="#"><img src="/static/products/img/thumb-2.jpg" alt="Image" class="img-fluid"></a></li>
-                    <li><a href="#"><img src="/static/products/img/thumb-3.jpg" alt="Image" class="img-fluid"></a></li>
-                  </ul>
                 </div>
               </div>
-        
-      </section>
-    </div>
-    <!--구매 정보-->
-    <div class="col-md-5 p-0">
+              <div class="item">
+                <div class="work">
+                  <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/static/products/img/slider-2.jpg);">
+                    <div class="text text-center"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="work">
+                  <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/static/products/img/slider-3.jpg);">
+                    <div class="text text-center"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="my-5 text-center">
+              <ul class="thumbnail">
+                <li class="active img">
+                  <a href="#"><img src="/static/products/img/thumb-1.jpg" alt="Image" class="img-fluid"></a>
+                </li>
+                <li>
+                  <a href="#"><img src="/static/products/img/thumb-2.jpg" alt="Image" class="img-fluid"></a>
+                </li>
+                <li>
+                  <a href="#"><img src="/static/products/img/thumb-3.jpg" alt="Image" class="img-fluid"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </section>
+      </div>
+      <!--구매 정보-->
+      <div class="col-md-5 p-0">
         <div class="itm-information">
           <div class="itm-info-head">
             <div class="item-flag">
               <span class="flag-tag">트레이드인</span>
             </div>
-          <div class="social-box">
-            <button type="button" class="btn-sns-link">
-              <i class="icon ico-large ico-share">소셜공유</i>
-            </button>
-            <button type="button" class="btn-good on" title="선택됨">
-              <i class="icon ico-large ico-goods">좋아요 선택</i>
-            </button>
-          </div>
-          <h1 class="itm-info-title mt-4" id="goodsDetailNm">갤럭시 북2 Pro 360 39.6 cm Core™ i7 / 1 TB NVMe SSD</h1>
-          <div class="itm-sku b2c-itm-sku">NT950QED-KD72S</div>
-          <div class="itm-rating-con">
-            <div class="itm-rating b2c-itm-rating">
+            <div class="social-box">
+              <button type="button" class="btn-sns-link">
+                <a id="kakaotalk-sharing-btn" href="javascript:;">
+                    <i class="icon ico-large ico-share">소셜공유</i>
+                </a>
+                  {% comment %} <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png" alt="카카오톡 공유 보내기 버튼"/> {% endcomment %}
+              </button>
+              <button type="button" class="btn-good on" title="선택됨">
+                <i class="icon ico-large ico-goods">좋아요 선택</i>
+              </button>
+            </div>
+            <h1 class="itm-info-title mt-4" id="goodsDetailNm">갤럭시 북2 Pro 360 39.6 cm Core™ i7 / 1 TB NVMe SSD</h1>
+            <div class="itm-sku b2c-itm-sku">NT950QED-KD72S</div>
+            <div class="itm-rating-con">
+              <div class="itm-rating b2c-itm-rating">
                 <div class="itm-sart-rating">
                   <i class="star-gray">별점 0점</i>
                   <i class="star-gray">별점 0점</i>
@@ -110,12 +122,12 @@
                   <span>0.0</span>
                   <a href="javascript:;" class="itm-review-count" title="상품평 보러가기">(0건)</a>
                 </div>
-              </div>  
-                <div class="itm-rating itm-review">
-                  <span class="itm-review-write">
-                    <a href="javascript:void(0);" class="btn-underline" title="상품평 쓰기 바로가기">상품평 쓰기</a>
-                  </span>  
-                </div>  
+              </div>
+              <div class="itm-rating itm-review">
+                <span class="itm-review-write">
+                  <a href="javascript:void(0);" class="btn-underline" title="상품평 쓰기 바로가기">상품평 쓰기</a>
+                </span>
+              </div>
             </div>
           </div>
           <div class="itm-price">
@@ -125,19 +137,20 @@
                 <dt>정가</dt>
                 <dd>
                   <span data-price="3070000">3,070,000</span>
-                  원 
+                  원
                 </dd>
               </dl>
               <input type="hidden" id="lastPrice" value="2191000">
               <dl class="event-price">
-                <dt> 특가</dt>
+                <dt>
+                  특가</dt>
                 <dd>
                   <span data-price="2191000" class="pd-total-price">2,191,000</span>
-                  원 
+                  원
                 </dd>
               </dl>
               <script type="text/javascript">
-                if('2191000' == 0) {
+                if ('2191000' == 0) {
                   $(".itm-price").hide();
                 }
               </script>
@@ -165,36 +178,35 @@
                   <div id='result' class="number countPrd">1</div>
                   <!-- <input type="text" class="number count-prd" id="countPrd" value="1" data-max-qty="22" data-min-ord-qty> -->
                   <input type="button" onclick='count("plus")' value="+" class="count count-plus btn btns">
-                  <!-- <a href="javascript:void(0);" class="count count-plus"  type="button" id="pd-goods-count-plus" onclick='count("plus")' value="+">증가</a> -->
+                  <!-- <a href="javascript:void(0);" class="count count-plus" type="button" id="pd-goods-count-plus" onclick='count("plus")' value="+">증가</a> -->
                 </span>
               </dd>
             </dl>
           </div>
           <hr>
-            <div class="itm-total-bottom">
-              <div class="box-btn">
-                <div class="box-cto">
-                  <ul>
-                    <li>
-                      <button id="btnCart" type="button" class="btn btn-l btn-type6">장바구니</button>
-                    </li>
-                    <li>
-                      <button id="btnCart" type="button" class="btn btn-k btn-type2 ms-3 px-3">바로구매</button>
-                    </li>
-                  </ul>
-                </div>
+          <div class="itm-total-bottom">
+            <div class="box-btn">
+              <div class="box-cto">
+                <ul>
+                  <li>
+                    <button id="btnCart" type="button" class="btn btn-l btn-type6">장바구니</button>
+                  </li>
+                  <li>
+                    <button id="btnCart" type="button" class="btn btn-k btn-type2 ms-3 px-3">바로구매</button>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+</div>
 
 {% endblock content %}
-
 
 {% block js %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -206,4 +218,46 @@
 <script src="/static/js/bootstrap.min.js"></script>
 <script src="/static/js/owl.carousel.min.js"></script>
 <script src="/static/js/main.js"></script>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.1/kakao.min.js" integrity="sha384-eKjgHJ9+vwU/FCSUG3nV1RKFolUXLsc6nLQ2R1tD0t4YFPCvRmkcF8saIfOZNWf/" crossorigin="anonymous"></script>
+<script>
+Kakao.init('859aceb90553e35aea74a737254f983c'); // 사용하려는 앱의 JavaScript 키 입력
+</script>
+<script>
+Kakao
+.Share
+.createDefaultButton({
+  container: '#kakaotalk-sharing-btn',
+  objectType: 'commerce',
+  content: {
+    title: '언제 어디든, 더 쉽고 편하게 당신의 일상을 더 즐겁게, 헤이 라이언의 이야기를 들려드릴게요.',
+    imageUrl: 'http://k.kakaocdn.net/dn/dScJiJ/btqB3cwK1Hi/pv5qHVwetz5RZfPZR3C5K1/kakaolink40_original.png',
+    link: {
+      // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+      mobileWebUrl: 'https://developers.kakao.com',
+      webUrl: 'https://developers.kakao.com'
+    }
+  },
+  commerce: {
+    productName: '카카오',
+    regularPrice: 10000,
+    discountRate: 10,
+    discountPrice: 9000
+  },
+  buttons: [
+    {
+      title: '구매하기',
+      link: {
+        mobileWebUrl: 'http://localhost:8000/products/product_detail/',
+        webUrl: 'http://localhost:8000/products/product_detail/'
+      }
+    }, {
+      title: '공유하기',
+      link: {
+        mobileWebUrl: 'http://localhost:8000/products/product_detail/',
+        webUrl: 'http://localhost:8000/products/product_detail/'
+      }
+    }
+  ]
+});
+</script>
 {% endblock js %}
