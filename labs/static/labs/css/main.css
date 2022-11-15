@@ -23,7 +23,7 @@
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
-    border: 3px solid rgb(205, 205, 255);
+    border: 3px solid #a4c3fa;
     background: white;
 }
 
@@ -43,16 +43,15 @@
 }
 
 .brand-category-logo {
-    background-color: rgb(205, 205, 255);
-    font-weight: 700;
-    font-size: 1.5rem;
-    width: 7rem;
-    height: 3rem;
-    border-radius: 1rem;
-    margin: 20px 5px 20px;
-    font-size: 0.8rem;
+    background-color: #a4c3fa;
+    color: #e9f1fa;
+    font-weight: 600;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 20px;
+    font-size: 1rem;
     text-align: center;
-    padding-top: 13px;
+    margin: 20px 10px 20px;
 }
 
 .brand-category-logo img {
@@ -64,13 +63,14 @@
 .best-ranking-box {
     overflow: hidden;
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 5rem;
+    margin-top: 3rem;
     max-height: 330px;
 }
 
 .best-ranking {
     min-width: 25%;
-    background-color: rgb(205, 205, 255);
+    background-color: #a4c3fa;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -115,6 +115,7 @@
 }
 
 .best-ten-product .card-body {
+    background: #f7f7f7;
     height: 100%;
     padding: 0;
 }
@@ -128,11 +129,12 @@
 
 .md-pick {
     text-align: center;
-    background: rgb(205, 205, 255);
+    background: #a4c3fa;
     border-radius: 10px;
     margin-top: 20px;
     height: 100px;
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .md-pick h3 {
@@ -167,21 +169,24 @@
 
 .cards {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .card-body {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 0;
 }
 
 .hit-product {
-    width: 33%;
+    width: 23%;
+    margin-bottom: 1rem;
 }
 
 .btn-color {
-    background-color: rgb(205, 205, 255);
+    background-color: #a4c3fa;
     text-decoration: none;
     font-size: 1rem;
     color: white;

@@ -45,7 +45,7 @@
             </div>
             <p class="forget">비밀번호를 잊어버리셨나요?<a href="#" class="ms-2">여기 누르세요</a>
             </p>
-            <p class="forget">계정이 없으신가요?<a href="#" class="ms-2">회원가입</a>
+            <p class="forget">계정이 없으신가요?<a href="{% url 'accounts:signup' %}" class="ms-2">회원가입</a>
             </p>
             <hr>
             <div class="d-flex justify-content-center">
@@ -54,12 +54,12 @@
             <div class="d-flex justify-content-center"> 
               <button type="button" class="btn mx-1 fs-4 p-0 border-0">
                 <a href="{% provider_login_url 'kakao' %}">
-                    <img src="{% static 'images/카톡.png'%}" style="width:40px; height:40px;" onclick="kakaoLogin();" >
+                    <img src="{% static 'accounts/img/카톡.png'%}" style="width:40px; height:40px;" onclick="kakaoLogin();" >
                 </a>
               </button>
               <button type="button" class="btn mx-1 fs-4 p-0 border-0">
                 <a href="{% provider_login_url 'google' %}">
-                    <img src="{% static 'images/구글로긴.png'%}" style="width:48px; height:48px;">
+                    <img src="{% static 'accounts/img/구글로긴.png'%}" style="width:48px; height:48px;">
                 </a>
               </button>
             </div>
@@ -73,5 +73,24 @@
   
 {% endblock content %}
 {% block js %}
-
+    <!-- 네비게이션바 투명 -->
+    <script>
+      const main = document.querySelector('main')
+      window.addEventListener('load', () => {
+        main.style.minHeight = "0"
+        main.classList.remove("container")
+      })
+      const introNabvar = document.querySelector('#nabvar')
+      window.addEventListener('load', () => {
+        introNabvar.style.backgroundColor = 'transparent'
+      })
+      window.addEventListener('scroll', () => {
+        if (window.scrollY == 0) {
+          introNabvar.style.backgroundColor = 'transparent'
+        }
+      })
+      introNabvar.addEventListener('mouseleave', () => {
+        introNabvar.style.backgroundColor = 'transparent'
+      })
+    </script>
 {% endblock js %}
