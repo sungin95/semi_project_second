@@ -101,12 +101,25 @@
             <div class="social-box">
               <button type="button" class="btn-sns-link">
                 <a id="kakaotalk-sharing-btn" href="javascript:;">
-                    <i class="icon ico-large ico-share">소셜공유</i>
+                  <i class="icon ico-large ico-share">소셜공유</i>
                 </a>
-                  {% comment %} <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png" alt="카카오톡 공유 보내기 버튼"/> {% endcomment %}
+
               </button>
               <button type="button" class="btn-good on" title="선택됨">
-                <i class="icon ico-large ico-goods">좋아요 선택</i>
+                {% if request.user.is_authenticated %}
+                  {% if request.user in product.like_product.all %}
+                    <i id="attention" data-product-id="{{ product.pk }}" class="icon ico-large ico-goods">취소</i>
+                  {% else %}
+                    <i id="attention" data-product-id="{{ product.pk }}" class="icon ico-large ico-goods">찜하기</i>
+                  {% endif %}
+                {% else %}
+                  <!-- 수정 필요 11/15-->
+                  <div>
+                    <a href="{% url 'accounts:login' %}">
+                      <i class="icon ico-large ico-goods">찜하기</i>
+                    </a>
+                  </div>
+                {% endif %}
               </button>
             </div>
             <h1 class="itm-info-title mt-4" id="goodsDetailNm">{{modelName}}</h1>
@@ -239,9 +252,17 @@ Kakao
   },
   commerce: {
     productName: `{{ modelName }}`,
-    regularPrice: {{price}},
+    regularPrice: {
+      {
+        price
+      }
+    },
     discountRate: 10,
-    discountPrice: {{special_price}},
+    discountPrice: {
+      {
+        special_price
+      }
+    }
   },
   buttons: [
     {
@@ -259,5 +280,16 @@ Kakao
     }
   ]
 });
+</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+const attention = document.querySelector("#attention")
+attention.addEventListener("click", function (event) {
+const productId = event.target.dataset.productId;
+event.preventDefault()
+axios({method: "get", url: `/products/like/${productId}`}).then(response => {
+  console.log("11111111")
+})
+})
 </script>
 {% endblock js %}
