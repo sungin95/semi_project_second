@@ -19,29 +19,34 @@
       <div class="container1">
         <div class="form1 d-flex flex-column align-items-center">
           <h2>회원가입</h2>
-          <form class="all-form">
+          <form class="all-form" action="{% url 'accounts:signup' %}" method="POST">
+            {% csrf_token %}
             <div class="inputBox1">
               <p class="sign">성</p>
-              <input type="text" placeholder="" name="first_name">
+              {{ form.first_name }}
+              {% comment %} <input type="text" placeholder="" name="first_name"> {% endcomment %}
             </div>
             <div class="inputBox1">
               <p class="sign">이름</p>
-              <input type="text" placeholder="" name="last_name">
+              {{ form.last_name }}
+              {% comment %} <input type="text" placeholder="" name="last_name"> {% endcomment %}
             </div>
             <div class="inputBox1">
-              <p class="sign">아이디</p>
-              <input type="text" placeholder="아이디를 입력해주세요" name="username">
+              <p class="sign"><span style="color:red;">*</span>아이디</p>
+              {{ form.username }}
+              {% comment %} <input type="text" placeholder="아이디를 입력해주세요" name="username"> {% endcomment %}
             </div>
             <div class="inputBox1">
               <p class="sign">이메일</p>
-              <input type="text" placeholder="예:intellilaps@gmail.com" name="email">
+              {{ form.email }}
+              {% comment %} <input type="text" placeholder="예:intellilaps@gmail.com" name="email"> {% endcomment %}
             </div>
             <div class="inputBox1">
-              <p class="sign">비밀번호</p>
+              <p class="sign"><span style="color:red;">*</span>비밀번호</p>
               {{ form.password1 }}
             </div>
             <div class="inputBox1">
-              <p class="sign">비밀번호 확인</p>
+              <p class="sign"><span style="color:red;">*</span>비밀번호 확인</p>
               {{ form.password2 }}
             </div>
             <div class="exform_txt text-center">
