@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from dotenv import load_dotenv
+import os
 
 # Create your views here.
 def index(request):
@@ -6,4 +8,9 @@ def index(request):
 
 
 def detail(request):
-    return render(request, "products/product_detail.html")
+    load_dotenv()
+    KAKAO_KEY = os.getenv("KAKAOKEY")
+    context = {
+        "KAKAO_KEY": KAKAO_KEY,
+    }
+    return render(request, "products/product_detail.html", context)
