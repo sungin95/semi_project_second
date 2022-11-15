@@ -15,13 +15,13 @@
 /* 음식점 이름과 평점 */
 .r_header h2 {
   font-family: "Noto Sans KR", sans-serif;
-  margin: 4rem 0 0;
+  margin: 1rem 0 0;
 }
 
 /* 평점에 색 */
 .grade {
-  color: #ffa704;
-  margin-left: 0.5rem;
+  color: #010101;
+  margin-left: 0.2rem;
 }
 
 .detailed_info {
@@ -183,12 +183,11 @@ li {
 
 .reviews-header {
   display: flex;
-  justify-content: space-between;
   padding: 1rem;
   height: auto;
   background-color: #fafafa;
   border-radius: 15px;
-  box-shadow: 0.5rem 0.5rem 0.5rem #e2e2e2, -0.5rem -0.5rem 0.5rem #e2e2e2;
+  box-shadow: 0.1rem 0.1rem 0.1rem #e2e2e2, -0.1rem -0.1rem 0.1rem #e2e2e2;
   margin: 0.5rem 1rem;
 }
 
@@ -196,7 +195,7 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 200px;
+  min-height: 110px;
   padding: 1rem;
   background-color: #fafafa;
   border-radius: 15px;
@@ -229,7 +228,20 @@ li {
   font-size: 0.9rem;
   margin-right: -0.9rem;
 }
-
+.comment-comment button {
+  background-color: transparent;
+  border: none;
+  color: #d832e7;
+  font-size: 0.9rem;
+  margin-right: -0.9rem;
+}
+.comment-comment button:hover {
+  background-color: transparent;
+  border: none;
+  color: #d832e7;
+  font-size: 0.9rem;
+  margin-right: -0.9rem;
+}
 .rate {
   align-items: center;
   display: flex;
