@@ -73,5 +73,24 @@
   
 {% endblock content %}
 {% block js %}
-
+    <!-- 네비게이션바 투명 -->
+    <script>
+      const main = document.querySelector('main')
+      window.addEventListener('load', () => {
+        main.style.minHeight = "0"
+        main.classList.remove("container")
+      })
+      const introNabvar = document.querySelector('#nabvar')
+      window.addEventListener('load', () => {
+        introNabvar.style.backgroundColor = 'transparent'
+      })
+      window.addEventListener('scroll', () => {
+        if (window.scrollY == 0) {
+          introNabvar.style.backgroundColor = 'transparent'
+        }
+      })
+      introNabvar.addEventListener('mouseleave', () => {
+        introNabvar.style.backgroundColor = 'transparent'
+      })
+    </script>
 {% endblock js %}
