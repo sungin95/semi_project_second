@@ -17,9 +17,9 @@
     
   </head>
 
-  <body style="background: #f1f4f9">
+  <body style="">
     <!-- 네비게이션바 -->
-    <nav style="background-color: rgb(205, 205, 255);" class="navbar navbar-expand-lg sticky-top" id="nabvar">
+    <nav style="background-color: #a4c3fa;" class="navbar navbar-expand-lg sticky-top" id="nabvar">
       <div class="container">
         <a class="navbar-brand" href="{% url 'labs:main' %}">
           <img src="{% static 'labs/img/mainlogo.png' %}" style="width: 44px; height:40px;" alt="">
@@ -124,19 +124,20 @@
     <!-- 제품목록 -->
     <div class="black-bg">
       <div class="white-bg" id="listGroup">
-        <div><a href="{% url 'products:index' %}" class="navbar-product">전체</a></div>
-        <div><a href="" class="navbar-product">삼성 (Samsung)</a></div>
-        <div><a href="" class="navbar-product">엘지 (LG)</a></div>
-        <div><a href="" class="navbar-product">애플 (Apple)</a></div>
-        <div><a href="" class="navbar-product">레노버 (Lenovo)</a></div>
-        <div><a href="" class="navbar-product">에이수스 (Asus)</a></div>
-        <div><a href="" class="navbar-product">엠에스아이 (Msi)</a></div>
-        <div><a href="" class="navbar-product">델 (Dell)</a></div>
-        <div><a href="" class="navbar-product">한성 (Hansung)</a></div>
-        <div><a href="" class="navbar-product">에이치피 (HP)</a></div>
+        <div class="container">
+          <div><a href="{% url 'products:index' %}" class="navbar-product">전체</a></div>
+          <div><a href="" class="navbar-product">삼성 (Samsung)</a></div>
+          <div><a href="" class="navbar-product">엘지 (LG)</a></div>
+          <div><a href="" class="navbar-product">애플 (Apple)</a></div>
+          <div><a href="" class="navbar-product">레노버 (Lenovo)</a></div>
+          <div><a href="" class="navbar-product">에이수스 (Asus)</a></div>
+          <div><a href="" class="navbar-product">엠에스아이 (Msi)</a></div>
+          <div><a href="" class="navbar-product">델 (Dell)</a></div>
+          <div><a href="" class="navbar-product">한성 (Hansung)</a></div>
+          <div><a href="" class="navbar-product">에이치피 (HP)</a></div>
+        </div>
       </div>
     </div>
-
 
     <!-- 타임특가정보 -->
     {% block timesale %}{% endblock timesale %}
@@ -149,8 +150,22 @@
       {% block content %}{% endblock content %}
     </main>
 
+    <!-- 위/아래로 -->
+    <div class='hamburger'>
+      <img src="{% static 'img/ham.png' %}" alt="">
+    </div>
+    <div class='hamburger-click-x'>
+      <img src="{% static 'img/x.png' %}" alt="">
+    </div>
+    <div class='hamburger-click-up'>
+      <img src="{% static 'img/up.png' %}" alt="">
+    </div>
+    <div class='hamburger-click-down'>
+      <img src="{% static 'img/down.png' %}" alt="">
+    </div>
+
     <!-- 푸터1 -->
-    <footer class="sticky-bottom my-5">
+    <footer class="sticky-bottom">
       <div class="card">
         <div class="card-body text-center">
           made by. 유영, 호빈, 성인, 윤식, 창현
@@ -187,7 +202,7 @@
         blackBg.classList.remove('show-modal')
       })
       nabvar.addEventListener('mouseover', ()=>{
-        document.querySelector('.navbar').style.backgroundColor = 'rgb(205, 205, 255)'
+        document.querySelector('.navbar').style.backgroundColor = '#CCE1FF'
       })
       listGroup.addEventListener('mouseleave', ()=>{
         document.querySelector('.navbar').style.backgroundColor = 'transparent'
@@ -236,9 +251,9 @@
         searchForm.style.visibility = 'hidden'
         searchForm.style.opacity = '0'
       })
-      
-
     </script>
+    
+    <!-- 스크롤시 네비게이션바 투명하게 -->
     <script>
       const searchBtn = document.querySelector('#search-btn')
 
@@ -250,23 +265,48 @@
                 document.querySelector('.navbar').style.backgroundColor = 'transparent'
                 document.querySelector('.navbar').style.transition = 'all 1s'
             } else {
-                document.querySelector('.navbar').style.backgroundColor = 'rgb(205, 205, 255)'
+                document.querySelector('.navbar').style.backgroundColor = '#CCE1FF'
                 document.querySelector('.navbar').style.transition = 'all 1s'
             }
         })
-
-        
     </script>
-    {% comment %} <script>
-        document
-            .querySelector("#modal")
-            .addEventListener("click", () => {
-                document
-                    .querySelector(".modal")
-                    .classList
-                    .toggle("show");
-            });
-    </script> {% endcomment %}
+
+    <script>
+      const hamburger = document.querySelector('.hamburger')
+      const hamburgerClickX = document.querySelector('.hamburger-click-x')
+      const hamburgerClickUp = document.querySelector('.hamburger-click-up')
+      const hamburgerClickDown = document.querySelector('.hamburger-click-down')
+
+      hamburger.addEventListener('click',()=>{
+        hamburger.style.visibility = "hidden"
+        hamburgerClickX.style.visibility = "visible"
+        hamburgerClickUp.style.visibility = "visible"
+        //hamburgerClickUp.style.opacity = '1'
+        hamburgerClickUp.style.transform= "translateY(-260%)";
+        hamburgerClickDown.style.visibility = "visible"
+        //hamburgerClickDown.style.opacity = '1'
+        hamburgerClickDown.style.transform= "translateY(-130%)";
+      })
+
+      hamburgerClickX.addEventListener('click',()=>{
+        hamburger.style.visibility = "visible"
+        hamburgerClickX.style.visibility = "hidden"
+        hamburgerClickUp.style.visibility = "hidden"
+        hamburgerClickUp.style.transform = "translateY(0%)";
+        hamburgerClickDown.style.visibility = "hidden"
+        hamburgerClickDown.style.transform = "translateY(0%)";
+      })
+
+      hamburgerClickUp.addEventListener('click',()=>{
+        window.scrollTo({top:location, behavior:'smooth'});
+      })
+
+      hamburgerClickDown.addEventListener('click',()=>{
+        window.scrollTo(0, document.body.scrollHeight);
+      })
+
+    </script>
+
     {% block js %}{% endblock js %}
 </body>
 
