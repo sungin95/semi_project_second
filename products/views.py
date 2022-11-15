@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Products
+from dotenv import load_dotenv
+import os
 
 # Create your views here.
 def index(request):
@@ -17,4 +19,9 @@ def index(request):
     return render(request, "products/index.html", context)
 
 def detail(request):
-    return render(request, "products/product_detail.html")
+    load_dotenv()
+    KAKAO_KEY = os.getenv("KAKAOKEY")
+    context = {
+        "KAKAO_KEY": KAKAO_KEY,
+    }
+    return render(request, "products/product_detail.html", context)
