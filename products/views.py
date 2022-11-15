@@ -17,7 +17,9 @@ def detail(request, pk):
     special_price = product.가격
     price = int(round((product.가격) * 1.1, -4))
     thumbnail = product.썸네일
-
+    image1 = product.이미지1
+    image3 = product.이미지3
+    image2 = product.이미지2
     context = {
         "KAKAO_KEY": KAKAO_KEY,
         "price": price,
@@ -25,6 +27,9 @@ def detail(request, pk):
         "modelName": model_name,
         "product": product,
         "thumbnail": thumbnail,
+        "image1": image1,
+        "image2": image2,
+        "image3": image3,
     }
     return render(request, "products/product_detail.html", context)
 
