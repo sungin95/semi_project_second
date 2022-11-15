@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from dotenv import load_dotenv
 import os
+from products.models import Products
 
 # Create your views here.
 def main(request):
-    context = {}
+    products = Products.objects.all()
+    context = {
+        'products': products,
+        'products_10': products[0:10],
+    }
     return render(request, "labs/main.html", context)
 
 def rating(request):

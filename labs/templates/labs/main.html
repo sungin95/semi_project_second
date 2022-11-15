@@ -137,211 +137,32 @@
     <div class='best-ranking'>
       <h3>베스트랭킹</h3>
       <div class="best-ten">
-        <a href="">01 제품명
-        </a>
-        <a href="">02 제품명
-        </a>
-        <a href="">03 제품명
-        </a>
-        <a href="">04 제품명
-        </a>
-        <a href="">05 제품명
-        </a>
-        <a href="">06 제품명
-        </a>
-        <a href="">07 제품명
-        </a>
-        <a href="">08 제품명
-        </a>
-        <a href="">09 제품명
-        </a>
-        <a href="">10 제품명
-        </a>
+        {% for product_10 in products_10 %}
+          <a href="">
+            {{ product_10.모델명 }}
+          </a>
+        {% endfor %}
       </div>
     </div>
     <div class="best-ranking-products">
-      <!-- 1등 제품 시작-->
-      <div class="card best-ten-product">
-        <div class="card-body">
-          <div class="p-2" style="width:130px;height:130px">
-            <img src="{% static 'labs/img/laptop_sample.jpg' %}" alt="" class='img-fluid'>
-          </div>
-          <div class="p-2">
-            <h5 class="card-title">제품명</h5>
-            <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-            <p class="card-text">
-              <div class="standard-price">
-                <span>기준가</span>기준가격
-              </div>
-              <div class="sale-price">
-                <span>할인가</span>할인가격</div>
-            </p>
-            <a href="#" class="btn-color">구매하기</a>
-          </div>
-        </div>
-      </div>
-      <!-- 2등 제품 시작-->
-      <div class="card best-ten-product">
-        <div class="card-body">
-          <div class="p-2" style="width:130px;height:130px">
-            <img src="{% static 'labs/img/laptop_sample.jpg' %}" alt="" class='img-fluid'>
-          </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
+      {% for product_10 in products_10 %}
+        <!-- 1등 제품 시작-->
+        <div class="best-ten-product">
+          <div class="card-body">
+            <div class="p-2" style="width:100%;height:50%">
+              <img src="{{ product_10.썸네일 }}" alt="" class='img-fluid'>
             </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
-        </div>
-      </div>
-      <!-- 3등 제품 시작-->
-      <div class="card best-ten-product">
-        <div class="card-body">
-          <div class="p-2" style="width:130px;height:130px">
-            <img src="{% static 'labs/img/laptop_sample.jpg' %}" alt="" class='img-fluid'>
-          </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
+            <div class="p-3">
+              <h5 class="card-title fs-6">{{ product_10.모델명 }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+              <p class="card-text">
+                <div class="sale-price">{{ product_10.가격 }}</div>
+              </p>
+              <a href="#" class="btn-color">구매하기</a>
             </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
-        </div>
-      </div>
-      <!-- 4등 제품 시작-->
-      <div class="card best-ten-product">
-        <div class="card-body">
-          <div class="p-2" style="width:130px;height:130px">
-            <img src="{% static 'labs/img/laptop_sample.jpg' %}" alt="" class='img-fluid'>
           </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
         </div>
-      </div>
-      <!-- 5등 제품 시작-->
-      <div class="card best-ten-product">
-        <div class="card-body">
-          <div class="p-2" style="width:130px;height:130px">
-            <img src="{% static 'labs/img/laptop_sample.jpg' %}" alt="" class='img-fluid'>
-          </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
-        </div>
-      </div>
-      <!-- 6등 제품 시작-->
-      <div class="card best-ten-product">
-        <div class="card-body">
-          <div class="p-2" style="width:130px;height:130px">
-            <img src="{% static 'labs/img/laptop_sample.jpg' %}" alt="" class='img-fluid'>
-          </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
-        </div>
-      </div>
-      <!-- 7등 제품 시작-->
-      <div class="card best-ten-product">
-        <div class="card-body">
-          <div class="p-2" style="width:130px;height:130px">
-            <img src="{% static 'labs/img/laptop_sample.jpg' %}" alt="" class='img-fluid'>
-          </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
-        </div>
-      </div>
-      <!-- 8등 제품 시작-->
-      <div class="card best-ten-product">
-        <div class="card-body">
-          <div class="p-2" style="width:130px;height:130px">
-            <img src="{% static 'labs/img/laptop_sample.jpg' %}" alt="" class='img-fluid'>
-          </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
-        </div>
-      </div>
-      <!-- 9등 제품 시작-->
-      <div class="card best-ten-product">
-        <div class="card-body">
-          <div class="p-2" style="width:130px;height:130px">
-            <img src="{% static 'labs/img/laptop_sample.jpg' %}" alt="" class='img-fluid'>
-          </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
-        </div>
-      </div>
-      <!-- 10등 제품 시작-->
-      <div class="card best-ten-product">
-        <div class="card-body">
-          <div class="p-2" style="width:130px;height:130px">
-            <img src="{% static 'labs/img/laptop_sample.jpg' %}" alt="" class='img-fluid'>
-          </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 

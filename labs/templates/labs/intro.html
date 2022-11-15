@@ -8,24 +8,30 @@
 
 {% block carousel %}
   <!-- 참신한 멘트-->
+  <!--['김유영', '신윤식', '이성인', '이호빈', '조창현']-->
+  <!-- ['팀장', '멘탈붕괴직전', '팀원2', '야간조', '팀원4']-->
   <div class="intro">
     <div class="container" style="height:100%;">
       <div class="intro-flex">
         <div class="intro-comment">
           <div class="intro-comment-change show">
-            <h3>트렌드1</h3>
+            <h3>김유영<span>팀장</span></h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
           </div>
           <div class="intro-comment-change">
-            <h3>트렌드2</h3>
+            <h3>신윤식<span>잡부</span></h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
           </div>
           <div class="intro-comment-change">
-            <h3>트렌드3</h3>
+            <h3>이성인<span>백엔드</span></h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
           </div>
           <div class="intro-comment-change">
-            <h3>트렌드4</h3>
+            <h3>이호빈<span>프론트엔드</span></h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
+          </div>
+          <div class="intro-comment-change">
+            <h3>조창현<span>백엔드</span></h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
           </div>
         </div>
@@ -281,11 +287,10 @@
     const introCommentChangeH3 = document.querySelector('.intro-comment-change h3')
     const introCommentChangeP = document.querySelector('.intro-comment-change p')
     const introCommentChange = document.querySelectorAll('.intro-comment-change')
-    const commentListH3 = ['김유영', '신윤식', '이성인', '이호빈', '조창현']
-    const commentListP = ['팀장', '멘탈붕괴직전', '팀원2', '야간조', '팀원4']
     const count = introCommentChange.length
     var i = 0
 
+    // 멘트
     setInterval(() => {
       for (let k of introCommentChange) {
         k
@@ -295,10 +300,115 @@
       introCommentChange[i % count]
         .classList
         .add('show')
-      //  introCommentChange.style.transform = "translateY(0%)"
-      //  introCommentChangeH3.innerHTML = `${commentListH3[i % count]}`
-      //  introCommentChangeP.innerHTML = `${commentListP[i % count]}`
       i++
-    }, 2000)
+    }, 3000)
+
+    // 멘트 클릭 이벤트
+    for (let rel of introCommentChange) {
+      rel.addEventListener('click', () => {
+        for (let re of introCommentChange) {
+          re
+            .classList
+            .remove('show')
+        }
+        introCommentChange[i % count]
+          .classList
+          .add('show')
+        i++
+      })
+    }
+
+    // 스크롤 이벤트
+    // 규칙
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 330) {
+        document
+          .querySelector('.intro-value-wrapper')
+          .style
+          .transform = 'translateX(0%)'
+        document
+          .querySelector('.intro-value-wrapper')
+          .style
+          .visibility = 'visible'
+        document
+          .querySelector('.intro-value-wrapper')
+          .style
+          .opacity = '1'
+      }
+      if (window.scrollY > 1500) {
+        document
+          .querySelector('.intro-value-wrapper')
+          .style
+          .transform = 'translateX(10%)'
+        document
+          .querySelector('.intro-value-wrapper')
+          .style
+          .visibility = 'hidden'
+        document
+          .querySelector('.intro-value-wrapper')
+          .style
+          .opacity = '0'
+      }
+      if (window.scrollY < 330) {
+        document
+          .querySelector('.intro-value-wrapper')
+          .style
+          .transform = 'translateX(10%)'
+        document
+          .querySelector('.intro-value-wrapper')
+          .style
+          .visibility = 'hidden'
+        document
+          .querySelector('.intro-value-wrapper')
+          .style
+          .opacity = '0'
+      }
+    })
+
+    // 모험
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 1200) {
+        document
+          .querySelector('.intro-schedule-wrapper')
+          .style
+          .transform = 'translateX(0%)'
+        document
+          .querySelector('.intro-schedule-wrapper')
+          .style
+          .visibility = 'visible'
+        document
+          .querySelector('.intro-schedule-wrapper')
+          .style
+          .opacity = '1'
+      }
+      if (window.scrollY > 2400) {
+        document
+          .querySelector('.intro-schedule-wrapper')
+          .style
+          .transform = 'translateX(10%)'
+        document
+          .querySelector('.intro-schedule-wrapper')
+          .style
+          .visibility = 'hidden'
+        document
+          .querySelector('.intro-schedule-wrapper')
+          .style
+          .opacity = '0'
+      }
+      if (window.scrollY < 1200) {
+        document
+          .querySelector('.intro-schedule-wrapper')
+          .style
+          .transform = 'translateX(10%)'
+        document
+          .querySelector('.intro-schedule-wrapper')
+          .style
+          .visibility = 'hidden'
+        document
+          .querySelector('.intro-schedule-wrapper')
+          .style
+          .opacity = '0'
+      }
+    })
   </script>
 {% endblock js %}

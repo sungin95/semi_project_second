@@ -65,7 +65,6 @@
     display: flex;
     margin-bottom: 5rem;
     margin-top: 3rem;
-    max-height: 330px;
 }
 
 .best-ranking {
@@ -90,9 +89,10 @@
     justify-content: center;
     background-color: white;
     margin: 5px;
+    padding: 10px;
     border-radius: 1rem;
     font-size: 0.8rem;
-    height: 75%;
+    height: 100%;
 }
 
 .best-ten a {
@@ -105,22 +105,23 @@
 .best-ranking-products {
     display: flex;
     margin-left: 13px;
-    width: 200vw;
+    width: 300vw;
 }
 
 .best-ten-product {
     margin-left: 13px;
-    height: 100%;
-    min-width: 25%;
+    height: 90%;
+    min-width: 20%;
 }
 
 .best-ten-product .card-body {
-    background: #f7f7f7;
+    border: 5px solid #a4c3fa;
+    border-radius: 15px;
     height: 100%;
     padding: 0;
 }
 
-/* .container {
+/* .container-main {
     display: flex;
     justify-content: center;
     margin-top: 3rem;
