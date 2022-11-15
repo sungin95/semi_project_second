@@ -3,7 +3,19 @@ main {
 }
 
 html {
-    scroll-behavior: smooth !important;
+    scroll-behavior: smooth;
+}
+
+.a_menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-style: none;
+    background: transparent;
+}
+
+.category-value {
+    display: none;
 }
 
 .nav-item a {
