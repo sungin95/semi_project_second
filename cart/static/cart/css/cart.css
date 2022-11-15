@@ -27,3 +27,13 @@
 .my_customer_button{
     margin-top: 5px;
 }
+
+
+
+.card-body {
+    background-image: linear-gradient(to bottom, #f1f4f9 40%, #F0F8FF 60%);
+  }
+  
+  .navbar {
+    background-image: linear-gradient(to top, #f1f4f9 40%, #F0F8FF 60%);
+  }
