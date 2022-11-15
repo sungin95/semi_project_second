@@ -32,19 +32,19 @@ section .color:nth-child(1)
 
 section .color:nth-child(2)
 {
- bottom: -150px;
- left: 100px;
- width: 500px;
- height: 500px; 
+ bottom: 50px;
+ left: -200px;
+ width: 400px;
+ height: 400px; 
  background-color: #fffd97;
 }
 
 section .color:nth-child(3)
 {
  bottom: 50px;
- left: 100px;
- width: 300px;
- height: 300px; 
+ left: -300px;
+ width: 150px;
+ height: 150px; 
  background-color: #00d2ff;
 }
 
