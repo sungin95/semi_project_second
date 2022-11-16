@@ -119,6 +119,17 @@
     margin-top: 20px;
 }
 
+.recomment {
+    background-color:  #d9e7ff;
+    border-radius: 0.5rem;
+    border: 1px solid  #d9e7ff;
+    margin-right: 1rem;
+    padding: 0.006rem 0.4rem;
+    color: black;
+    font-size: smaller;
+    display: inline-block;
+}
+
 .pgnation-sort{
     display: flex;
     justify-content: center;
@@ -130,4 +141,8 @@
     display: inline-block;
     margin-top: 20px;
     padding: 0;
+}
+
+.page-link {
+    color: #a4c3fa;
 }
