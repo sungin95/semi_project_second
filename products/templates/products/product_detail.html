@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
     <link rel="stylesheet" href="{% static 'products/css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'products/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'products/css/detail.css' %}">
 
 {% endblock css %}
 
@@ -123,22 +124,22 @@
               </button>
             </div>
             <h1 class="itm-info-title mt-4" id="goodsDetailNm">{{modelName}}</h1>
-            <div class="itm-sku b2c-itm-sku">NT950QED-KD72S</div>
+            <!--<div class="itm-sku b2c-itm-sku">NT950QED-KD72S</div>-->
             <div class="itm-rating-con">
               <div class="itm-rating b2c-itm-rating">
                 <div class="itm-sart-rating">
-                  <i class="star-gray">별점 0점</i>
-                  <i class="star-gray">별점 0점</i>
-                  <i class="star-gray">별점 0점</i>
-                  <i class="star-gray">별점 0점</i>
-                  <i class="star-gray">별점 0점</i>
-                  <span>0.0</span>
-                  <a href="javascript:;" class="itm-review-count" title="상품평 보러가기">(0건)</a>
+                  <i id="rating1" class=""></i>
+                  <i id="rating2" class=""></i>
+                  <i id="rating3" class=""></i>
+                  <i id="rating4" class=""></i>
+                  <i id="rating5" class=""></i>
+                  <span>{{product_grade}}</span>
+                  <a href="javascript:;" class="itm-review-count" title="상품평 보러가기">{{lenReviews}}건</a>
                 </div>
               </div>
               <div class="itm-rating itm-review">
                 <span class="itm-review-write">
-                  <a href="" class="btn-underline" title="상품평 쓰기 바로가기">상품평 쓰기</a>
+                  <a href="{% url 'products:review_create' product.pk %}" class="btn-underline" title="상품평 쓰기 바로가기">상품평 쓰기</a>
                 </span>
               </div>
             </div>
@@ -217,9 +218,80 @@
   </div>
 </div>
 </div>
-{% comment %} 아래 자동 정렬 멈추기용 {% endcomment %}
 </div>
+<!-- 스펙 -->
+<!-- 리뷰 -->
+<!-- 리뷰창 -->
+  <!-- 개인 리뷰 -->
+  <div>
+    {% for review in reviews %}
 
+        <div class="d-flex">
+            <div>
+                {% if review.user.image %}
+                <img src="{{ review.user.image.url }}" alt="프로필 사진" style="width: 50px; height: 50px; border-radius: 500px">
+                {% else %}
+                <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 50px; height: 50px; border-radius: 500px">
+                {% endif %}
+            </div>
+              <div class="mx-3" style="width: 100%;">
+                  <div class="d-flex">
+                    <div>
+                        {{review.user.username}}
+                    </div>
+                    <div class="mx-3">
+                        {% if review.created_string == False %}
+                            <td>
+                                {{ review.registered_date|date:'m월 d일' }}
+                            </td>
+                        {% else %}
+                            <td>
+                                {{ review.created_string }}
+                            </td>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {{ review.grade }}
+                    </div>
+                </div>
+                  <div>{{review.content}}</div>
+                  <div class="d-flex justify-content-between">
+                      <div class="d-flex">
+                        {% if request.user.is_authenticated %}
+                            {% if request.user in review.like.all %}
+                            <i data-review-id="{{ review.pk }}" data-product-id="{{ product.pk }}" class="review-like icon-heart bi bi-heart-fill" ></i>
+                            {% else %}
+                            <i data-review-id="{{ review.pk }}" data-product-id="{{ product.pk }}" class="review-like icon-heart bi bi-heart"></i>
+                            {% endif %}
+                        {% else %}
+                        <a href="{% url 'accounts:login' %}">
+                            <i class="icon-heart bi bi-heart"></i>
+                        </a>
+                        {% endif %}
+                        <div id="likeReviewCount{{review.pk}}">{{ review.like.count }}</div>
+                        <div>답글</div>
+                    </div>
+                    <div class="d-flex">
+                        <!-- 수정 삭제 버튼 아직 미 완성 -->
+                        {% if request.user.pk == review.user.pk %}
+                            <button type="button" class="btn btn-outline-success mx-3" onclick="location.href='{% url 'products:update' product.pk review.pk %}'">수정</button>
+                            <form method="post" action="{% url 'products:delete' product.pk review.pk %}" class="comment-delete" data-product-id="{{ product.pk }}" data-review-id="{{ review.pk }}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger">삭제</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+              </div>
+        </div>
+        {% empty %}
+        <p class="text-center">아직 리뷰가 없습니다. 리뷰를 남겨
+          <b>{{ restaurant.restaurant_name }}</b>의 첫번째 리뷰를 남겨보세요.
+        </p>
+      {% endfor %}
+    </div>
+  </div>
+{% comment %} 아래 자동 정렬 멈추기용 {% endcomment %}
 {% endblock content %}
 
 {% block js %}
@@ -274,6 +346,64 @@ Kakao
   ]
 });
 </script>
+<script>
+    const drawStar = (target) => {
+        document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+      }
+    const rating1 = document.querySelector("#rating1")
+    const rating2 = document.querySelector("#rating2")
+    const rating3 = document.querySelector("#rating3")
+    const rating4 = document.querySelector("#rating4")
+    const rating5 = document.querySelector("#rating5")
+    const num = {{product_grade}}
+    var n = 0;
+    if (num >= 1){
+        rating1.classList.add('bi-heart-fill')
+    } else {
+        if (num >= 0.5) {
+            rating1.classList.add('bi-heart-half')
+        } else {
+            rating1.classList.add('bi-heart')
+        }
+    }
+    if (num >= 2){
+        rating2.classList.add('bi-heart-fill')
+    } else {
+        if (num >= 1.5) {
+            rating2.classList.add('bi-heart-half')
+        } else {
+            rating2.classList.add('bi-heart')
+        }
+    }
+    if (num >= 3){
+        rating3.classList.add('bi-heart-fill')
+    } else {
+        if (num >= 2.5) {
+            rating3.classList.add('bi-heart-half')
+        } else {
+            rating3.classList.add('bi-heart')
+        }
+    }
+    if (num >= 4){
+        rating4.classList.add('bi-heart-fill')
+    } else {
+        if (num >= 3.5) {
+            rating4.classList.add('bi-heart-half')
+        } else {
+            rating4.classList.add('bi-heart')
+        }
+    }
+    if (num == 5){
+        rating5.classList.add('bi-heart-fill')
+    } else {
+        if (num >= 4.5) {
+            rating5.classList.add('bi-heart-half')
+        } else {
+            rating5.classList.add('bi-heart')
+        }
+    }
+
+</script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 const attention = document.querySelector("#attention")
@@ -292,4 +422,24 @@ axios({method: "get", url: `/products/like/${productId}`})
 })
 })
 </script>
+<script>
+    const reviewLike = document.querySelector(".review-like")
+    reviewLike.addEventListener("click", function (event) {
+        const productId = event.target.dataset.productId;
+        const reviewId = event.target.dataset.reviewId;
+        event.preventDefault()
+        axios({method: "get", url: `/products/like_reviews/${reviewId}/${productId}`})
+        .then(response => {
+            if (response.data.isLiked === true) {
+                event.target.classList.add('bi-heart-fill')
+                event.target.classList.remove('bi-heart')
+            } else {
+                event.target.classList.add('bi-heart')
+                event.target.classList.remove('bi-heart-fill')
+            }
+            const likeReviewCount = document.querySelector(`#likeReviewCount${reviewId}`)
+            likeReviewCount.innerText = response.data.likeReviewCount
+        })
+    })
+    </script>
 {% endblock js %}

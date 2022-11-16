@@ -8,6 +8,7 @@ class ReviewForm(forms.ModelForm):
         fields = [
             "title",
             "content",
+            "grade",
         ]
         widgets = {
             "content": forms.Textarea(
@@ -20,4 +21,5 @@ class ReviewForm(forms.ModelForm):
         labels = {
             "title": "제목",
             "content": "내용",
+            "grade": "평점",
         }
