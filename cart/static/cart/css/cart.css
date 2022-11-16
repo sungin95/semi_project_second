@@ -1,35 +1,3 @@
-.my_customer_table{
-    min-width: 400px;
-    font-size: 14px;
-}
-
-.my_customer_thread{
-    font-weight: normal;
-    text-transform: uppercase;
-    letter-spacing: .2em;
-    background-color: #f8f9fa !important;
-}
-
-.custom_image{
-    width: 100px;
-    height: 100px;
-}
-
-.custom_a{
-    text-decoration: none;
-}
-
-.custom_icon{
-    text-decoration: none;
-    color: #868e96 !important;
-}
-
-.my_customer_button{
-    margin-top: 5px;
-}
-
-
-
 .card-body {
     background-image: linear-gradient(to bottom, #f1f4f9 40%, #F0F8FF 60%);
   }
@@ -37,3 +5,840 @@
   .navbar {
     background-image: linear-gradient(to top, #f1f4f9 40%, #F0F8FF 60%);
   }
+  
+  .cart-content {
+    position: relative;
+    max-width: 1440px;
+    min-height: 620px;
+    padding: 50px 24px 0;
+    padding-right: 410px;
+  }
+  
+  .content {
+    margin: auto;
+  }
+  
+  .cart-content > .tit-box {
+    margin-bottom: 36px;
+  }
+  
+  .txt-s20 {
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+    line-height: 1.3;
+    letter-spacing: -0.1px;
+  }
+  
+  .opt-select {
+    min-height: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .opt-select .chk-form {
+    float: left;
+    margin-top: 4px;
+    margin-right: 20px;
+  }
+  
+  .chk-form input[type="radio"], .chk-form input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    border: 0;
+    overflow: hidden;
+  }
+  
+  .input[type=checkbox] {
+    display: inline-block;
+  }
+  
+  
+  .chk-form input[type="checkbox"] + label {
+    font-size: 14px;
+    font-weight: unset;
+    line-height: initial;
+    letter-spacing: normal;
+  }
+  
+  .chk-form input[type="checkbox"] + label {
+    position: relative;
+    display: inline-block;
+    padding: 1px 0;
+    padding-left: 26px;
+    color:#000;
+    vertical-align: top;
+    word-break: keep-all;
+  }
+  
+  .opt-select .chk-form label {
+    padding-right: 0 !important;
+  }
+  
+  
+  .chk-form input[type=checkbox] + label:before {
+    border-color: #555;
+  }
+  
+  .chk-form input[type="checkbox"] + label::before{
+    background: none;
+    background: url(https://www.samsungebiz.com/sec/static/_images/common/icon-down-gray.svg) center center no-repeat;
+  }
+  
+  .chk-form input[type="checkbox"] + label:before{
+    content: '';
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #b2b2b2;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+  
+  .opt-select .opt-select-right {
+    float: right;
+  }
+  
+  .opt-select .opt-select-right .btn-s {
+    height: 28px;
+    margin: 0;
+    font-weight: bold;
+    border-color: #212425;
+    border-radius: 14px;
+    font-size: 14px;
+    color: #99C3FF; 
+  }
+  
+  .btn.btn-s {
+    font-size: 14px;
+  }
+  
+  .btn {
+    border: 2px solid #99C3FF;
+    color: #99C3FF;
+    background: #fff;
+    opacity: 1;
+  }
+  
+  /* .btn-type2-disable {
+    opacity: 0.3;
+    cursor: default;
+  } */
+  
+  .btn-s {
+    min-width: 80px;
+    padding-left: 16px;
+    height: 32px;
+    padding-right:16px;
+    line-height: 30px;
+    font-size: 14px;
+    border-radius: 20px;
+  }
+  
+  .btn {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+  
+  .opt-select:after{
+    display: block;
+    content: "";
+    clear:both;
+  }
+  
+  .cart-content .cart-area{
+    position: relative;
+    margin-bottom: 14px;
+  }
+  
+  .cart-content .cart-area > h2 {
+    padding-bottom: 5px;
+    font-size: 20px;
+    color:#000;
+    font-weight: bold;
+    border-bottom: 2px solid #191919;
+  }
+  
+  
+  .blind {
+    position: absolute;
+    overflow: hidden;
+    border: 0;
+    width:1px;
+    height: 1px;
+    clip:rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+  }
+  
+  .cart-area .blind+.cart-tbl {
+    border-top: 1px solid #191919;
+  }
+  
+  
+  .cart-tbl{
+    position: relative;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .cart-tbl .cart-check{
+    position:absolute;
+    left: 0;
+    top: 23px;
+  }
+  
+  
+  .chk-form-hidden input {
+    opacity: 0;
+    position: absolute;
+    left:-2px;
+    top:-2px;
+    width:24px;
+    height:24px;
+    border:0;
+    z-index:1;
+  }
+  
+  .chk-form-hidden label {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #b2b2b2;
+    border-radius: 50%;
+    z-index: 1;
+    background: none;
+  
+  
+  }
+  
+  .chk-form-hidden label > span {
+    position:absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+  }
+  
+  .cart-tbl .cart-image{
+    width:25%;
+    min-width: 216px;
+    padding-left:15px;
+    padding-right: 15px;
+    text-align: center;
+  }
+  
+  .cart-tbl .cart-td {
+    position: relative;
+    display: table-cell;
+    height:165px;
+    padding: 64px 0 40px;
+    vertical-align: top;
+  }
+  
+  .cart-tbl .photo {
+    display: inline-block;
+    width:100%;
+    height: 100%;
+    max-width: 180px;
+    max-height: 180px;
+    margin: 0 auto;
+  }
+  
+  .cart-tbl .photo a {
+    position:relative;
+    display: inline-block;
+    width:180px;
+    height:180px;
+    margin: 0 auto;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+  
+  .cart-tbl .photo a > img {
+    max-height: 100%;
+    height:180px;
+    width: 180px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  
+  
+  .cart-tbl .cart-spec {
+    width: 30%;
+    padding-right:24px;
+    text-align: left;
+  }
+  
+  .cart-tbl .cart-td {
+    position: relative;
+    display: table-cell;
+    height:165px;
+    padding: 64px 0 40px;
+    vertical-align: top;
+  }
+  
+  .cart-tbl .cart-spec-group:nth-last-child(1){
+    margin-bottom: 0;
+  }
+  
+  .cart-tbl .cart-spec-group {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-height: 120px;
+  }
+  
+  .cart-tbl .cart-spec-group .o-title {
+    word-break: keep-all;
+    overflow: hidden;
+  }
+  
+  .cart-tbl .cart-spec-group .o-title a{
+    display: inline;
+    font-size: 16px;
+    color:#000;
+    font-weight: bold;
+    line-height: 1.36;
+  }
+  
+  .cart-tbl .cart-spec-group .o-label {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #707070;
+    overflow: hidden;
+  }
+  
+  .cart-tbl .cart-spec-group .ico-group{
+    display: block;
+    margin-top: 20px;
+  }
+  
+  .cart-tbl .cart-spec-group .o-spec{
+    font-size: 12px;
+  
+  }
+  
+  .cart-tbl .cart-spec-group .o-spec span{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 38px;
+    overflow: hidden;
+    margin-right:10px;
+    padding: 2px 0;
+    line-height: 1.5;
+    font-size: inherit;
+    color:#707070;
+  }
+  
+  .cart-tbl .cart-count {
+    width: 20%;
+    text-align: center;
+  }
+  
+  .cart-tbl .cart-td{
+    position: relative;
+    display: table-cell;
+    height:165px;
+    padding: 64px 0 40px;
+    vertical-align: top;
+  }
+  
+  .cart-area .cart-spinner {
+    max-width:  108px;
+    height: 30px;
+    padding-left:30px;
+    padding-right:30px;
+  }
+  
+  .spinner-box {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    line-height: 40px;
+    padding:0 40px;
+    border: 1px solid #b2b2b2;
+    border-radius: 5px;
+    background: #fff;
+    overflow: hidden;
+  }
+  
+  .cart-area .cart-spinner .count {
+    width: 30px;
+  }
+  
+  .spinner-box .count-miner{
+    left: 0;
+    top: 0;
+    background: url(https://www.samsungebiz.com/sec/static/_images/common/icon-miner.svg) #fff no-repeat center center;
+    border-right: 1px solid #b2b2b2;
+  }
+  
+  .spinner-box .count {
+    position: absolute;
+    display: block;
+    height: 100%;
+    font-size: 0;
+  }
+  
+  label.blind {
+    overflow: hidden;
+    position: absolute;
+    left:-9999px;
+    font-size: 1px;
+    color: transparent;
+    text-indent: -9999px;
+  }
+  
+  .blind {
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    display: block;
+  }
+  
+  .cart-area .cart-spinner .number {
+    height: 30px;
+    line-height: 30px;
+  }
+  
+  input:not([type=checkbox]):not([type=radio]) {
+    font-family: sans-serif;
+  }
+  
+  .spinner-box .number {
+    display: block;
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-indent: 0;
+    border: none;
+  }
+  
+  input[type=button] {
+    background: #fff;
+    vertical-align: middle;
+    border-radius: 0;
+    width: 100%;
+  } 
+  
+  .spinner-box .count-plus {
+    right: 0;
+    top: 0;
+    background: url(https://www.samsungebiz.com/sec/static/_images/common/icon-plus.svg) #fff no-repeat center center;
+    border-left: 1px solid #b2b2b2;
+  }
+  
+  .spinner-box .count {
+    position: absolute;
+    display: block;
+    height: 100%;
+    font-size: 0;
+  }
+  
+  
+  .cart-tbl .cart-price {
+    position: relative;
+    width: 20%;
+    padding-right: 0;
+    text-align: right;
+  }
+  
+  .cart-tbl .cart-td {
+    display: table-cell;
+    height: 165px;
+    padding: 64px 0 40px;
+    vertical-align: top;
+  }
+  
+  .cart-tbl .price-small {
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+    font-family: sans-serif;
+    color: #a6a6a6;
+    font-weight: normal;
+  }
+  
+  .cart-tbl .price-small:after{
+    position: absolute;
+    left: 0;
+    left: 0;
+    top: 40%;
+    width: 100%;
+    height: 1px;
+    background: #a6a6a6;
+    content: "";
+  }
+  
+  .cart-tbl .price-big {
+    display: block;
+    font-family: sans-serif;
+    font-size: 16px;
+    color:#000;
+    font-weight: bold;
+  
+  }
+  
+  .cart-area .cart-sns {
+    position: absolute;
+    right: 0;
+    top: 20px;
+  }
+  
+  .cart-area .cart-sns .sns-delete {
+    background: url(https://www.samsungebiz.com/sec/static/_images/common/icon-delete.svg) no-repeat center center;
+    background-size: 21px auto;
+    margin-right: 0;
+  }
+  
+  .cart-area .cart-sns > button {
+    width: 26px;
+    height: 26px;
+    margin: 0 8px;
+    border: none;
+  }
+  
+  .cart-area .cart-sns > button > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+  }
+  
+  
+  .cart-bottom {
+    margin-bottom: 86px;
+    font-size: 14px;
+    line-height: 32px;
+    overflow: hidden;
+  }
+  .cart-bottom .cart-bottom-left{
+    float: left;
+    color: #707070;
+  }
+  
+  
+  .cart-payment-area {
+    position: absolute;
+    right: 24px;
+    top: 156px;
+    width: 100%;
+    max-width: 330px;
+    background: #fff;
+    border-top: 1px solid #191919;
+    z-index: 10;
+  }
+  
+  
+  .cart-payment-area > h2 {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    color:#000;
+    font-weight: bold;
+    border-bottom: 1px solid #191919;
+  
+  }
+  
+  .blind {
+    position: absolute;
+    overflow: hidden;
+    border: 0;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    display: block;
+    top: -1000em;
+    left:0;
+  }
+  
+  .delivery-change {
+    position: relative;
+    min-height: 120px;
+    padding: 24px 19px;
+    text-align: center;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d9d9d9;
+    overflow: hidden;
+    width: 330px;
+  }
+  
+  .delivery-change .entry-add {
+    position: relative;
+    padding-left:  26px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 20px;
+  }
+  
+  .delivery-change .entry-add::before{
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width:16px;
+    height: 16px;
+    background: url(https://www.samsungebiz.com/sec/static/_images/common/icon-advice.svg) no-repeat center center;
+    content: '';
+    background-size: contain;
+  }
+  
+  .btn.btn-type1 {
+    color:#99C3FF;
+    border-color: #99C3FF;
+    background: #fff;
+    border-width: 2px;
+    min-width: 108px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 14px;
+    border-radius: 20px;
+  }
+  
+  .delivery-change .btn {
+    margin: 10px auto 0;
+  }
+  
+  .btn {
+    border:  2px solid #99C3FF;
+    opacity: 1;
+  }
+  
+  
+  .btn {
+    display: inline-block;
+    padding-left: 24px;
+    padding-right: 24px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+  
+  .cart-payment-area > h2 {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+    border-bottom: 2px solid #191919;
+  }
+  
+  .blind {
+    position: absolute;
+    overflow: hidden;
+    border: 0;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+  }
+  
+  .blind{
+    display: block;
+    top:-1000em;
+    left:0;
+  }
+  
+  
+  .cart-payment-area .payment-listup {
+    padding: 24px 0;
+    border-bottom: 1px solid #eaeaea;
+    overflow: hidden;
+  }
+  
+  .cart-payment-area .payment-listup > li {
+    clear: both;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  
+  .cart-payment-area .payment-listup > li > .head {
+    float: left;
+    width: 50%;
+  }
+  
+  .cart-payment-area .payment-listup > li > span {
+    display: block;
+    padding: 3px 0;
+    color: #707070;
+  }
+  
+  .cart-payment-area .payment-listup > li > .text {
+    float: left;
+    width: 50%;
+    color:#000;
+    text-align: right;
+  }
+  
+  .cart-payment-area .payment-listup > li > .text > strong {
+    padding-right: 2px;
+    font-weight: normal;
+    color: inherit;
+  }
+  
+  .cart-payment-area .payment-listup .color-sb{
+    color:#2188ff !important;
+  }
+  
+  .cart-payment-area .cost-listup {
+    padding: 27px 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+    overflow: hidden;
+  }
+  
+  .cart-payment-area .cost-listup  >li {
+    clear: both;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  
+  
+  .cart-payment-area .cost-listup  >li > .head {
+    float: left;
+    width: 100%;
+    max-width: 140px;
+    margin-top: 5px;
+    color: #000;
+  }
+  
+  .cart-payment-area .cost-listup  >li > span {
+    display: block;
+    padding: 3px 0;
+  }
+  
+  
+  .cart-payment-area .cost-listup  >li > span > strong{
+    font-size: 18px;
+  }
+  
+  
+  .cart-payment-area .cost-listup  >li > .text {
+    float: right;
+    width: 50%;
+    color: #000;
+    text-align: right;
+  
+  }
+  
+  .cart-payment-area .cost-listup  >li > span{
+    display:  block;
+    padding: 3px 0;
+  }
+  
+  
+  
+  .cart-payment-area .cost-listup  >li > .text > strong{
+    font-family: sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .cart-payment-area .cost-listup  >li > span > strong{
+    color:inherit;
+  }
+  
+  .btn.btn-type3 {
+    background: #99C3FF;
+    background-color: #99C3FF;
+    color: white;
+  }
+  
+  .cart-payment-area .btn-l {
+    width: 100%;
+    margin-top: 36px;
+    border-radius: 30px;
+    min-width: 150px;
+    height: 50px;
+    line-height: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 16px;
+  }
+  
+  .cart-foot{
+    padding-bottom: 70px;
+  }
+  
+  .cart-foot{
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 0 18px;
+    border-top: 2px solid #000;
+  }
+  
+  .cart-foot > .cart-foot-inner {
+    padding: 0;
+  }
+  
+  .cart-foot .cart-foot-left{
+    float: left;
+  }
+  
+  .cart-foot p {
+    font-size: 12px;
+    color: #707070;
+  }
+  
+  .cart-foot p > .txt-small {
+    margin-right: 12px;
+    font-size: 14px;
+    color: #000;
+    vertical-align: baseline;
+  }
+  
+  
+  /* .my_customer_table{
+    min-width: 400px;
+    font-size: 14px;
+  }
+  
+  .my_customer_thread{
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    background-color: #f8f9fa !important;
+  }
+  
+  .custom_image{
+    width: 100px;
+    height: 100px;
+  }
+  
+  .custom_a{
+    text-decoration: none;
+  }
+  
+  .custom_icon{
+    text-decoration: none;
+    color: #868e96 !important;
+  }
+  
+  .my_customer_button{
+    margin-top: 5px;
+  }
+  */
+  
