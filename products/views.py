@@ -27,19 +27,23 @@ def detail(request, pk):
     KAKAO_KEY = os.getenv("KAKAOKEY")
     product = get_object_or_404(Products, pk=pk)
     reviews = product.review_set.all()
+    review_form = ReviewForm()
     product_grade = 0
     lenReviews = len(reviews)
     for review in reviews:
         product_grade += review.grade
-    product_grade = round((product_grade / lenReviews), 1)
+    if lenReviews != 0:
+        product_grade = round((product_grade / lenReviews), 1)
     model_name = product.모델명
     special_price = product.가격
     price = int(round((product.가격) * 1.1, -4))
     thumbnail = product.썸네일
     image1 = product.이미지1
-    image3 = product.이미지3
     image2 = product.이미지2
+    image3 = product.이미지3
+
     context = {
+        "review_form": review_form,
         "reviews": reviews,
         "product_grade": product_grade,
         "lenReviews": lenReviews,
@@ -106,11 +110,22 @@ def review_create(request, pk):
     return render(request, "products/create.html", context)
 
 
-def update(request):
-
-    return redirect("products:detail")  # product.pk
+def update(request, product_pk, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    if request.method == "POST":
+        review_form = ReviewForm(request.POST, instance=review)
+        if review_form.is_valid():
+            review_form.save()
+            return redirect("products:detail", product_pk)
+    else:
+        reviewContent = review.content
+    context = {
+        "reviewContent": reviewContent,
+    }
+    return JsonResponse(context)
 
 
 def delete(request, product_pk, review_pk):
     get_object_or_404(Review, pk=review_pk).delete()
-    return redirect("products:detail", product_pk)
+    context = {}
+    return JsonResponse(context)

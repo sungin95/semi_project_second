@@ -6,7 +6,6 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = [
-            "title",
             "content",
             "grade",
         ]
@@ -19,7 +18,6 @@ class ReviewForm(forms.ModelForm):
             ),
         }
         labels = {
-            "title": "제목",
             "content": "내용",
             "grade": "평점",
         }

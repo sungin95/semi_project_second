@@ -254,7 +254,16 @@
                         {{ review.grade }}
                     </div>
                 </div>
-                  <div>{{review.content}}</div>
+                  <div id="review-content-{{review.pk}}" class="">{{review.content}}</div>
+                  <div id="review-form-{{review.pk}}" class="hidden">
+                    <form action="{% url 'products:update' product.pk review.pk %}" method="POST" >
+                        {% csrf_token %}
+                        {{review_form}}
+                        <div>
+                            <input type="submit" value="수정하기">
+                        </div>
+                    </form>
+                </div>
                   <div class="d-flex justify-content-between">
                       <div class="d-flex">
                         {% if request.user.is_authenticated %}
@@ -274,8 +283,8 @@
                     <div class="d-flex">
                         <!-- 수정 삭제 버튼 아직 미 완성 -->
                         {% if request.user.pk == review.user.pk %}
-                            <button type="button" class="btn btn-outline-success mx-3" onclick="location.href='{% url 'products:update' product.pk review.pk %}'">수정</button>
-                            <form method="post" action="{% url 'products:delete' product.pk review.pk %}" class="comment-delete" data-product-id="{{ product.pk }}" data-review-id="{{ review.pk }}">
+                            <button type="button" class="review-update btn btn-outline-success mx-3" data-product-id="{{ product.pk }}" data-review-id="{{ review.pk }}">수정</button>
+                            <form class="review-delete" data-product-id="{{ product.pk }}" data-review-id="{{ review.pk }}">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-outline-danger">삭제</button>
                             </form>
@@ -312,44 +321,44 @@ Kakao.init(`{{ KAKAO_KEY }}`); // 사용하려는 앱의 JavaScript 키 입력
 Kakao
 .Share
 .createDefaultButton({
-  container: '#kakaotalk-sharing-btn',
-  objectType: 'commerce',
-  content: {
+container: '#kakaotalk-sharing-btn',
+objectType: 'commerce',
+content: {
     title: '',
     imageUrl: `{{thumbnail}}`,
     link: {
-      // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-      mobileWebUrl: 'https://developers.kakao.com',
-      webUrl: 'https://developers.kakao.com'
+    // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+    mobileWebUrl: 'https://developers.kakao.com',
+    webUrl: 'https://developers.kakao.com'
     }
-  },
-  commerce: {
+},
+commerce: {
     productName: `{{ modelName }}`,
     regularPrice: {{price}},
     discountRate: 10,
     discountPrice: {{special_price}}
-  },
-  buttons: [
+},
+buttons: [
     {
-      title: '구매하기',
-      link: {
+    title: '구매하기',
+    link: {
         mobileWebUrl: `http://localhost:8000/products/product_detail/{{product.pk}}`,
         webUrl: `http://localhost:8000/products/product_detail/{{product.pk}}`
-      }
-    }, {
-      title: '공유하기',
-      link: {
-        mobileWebUrl: `http://localhost:8000/products/product_detail/{{product.pk}}`,
-        webUrl: `http://localhost:8000/products/product_detail/{{product.pk}}`
-      }
     }
-  ]
+    }, {
+    title: '공유하기',
+    link: {
+        mobileWebUrl: `http://localhost:8000/products/product_detail/{{product.pk}}`,
+        webUrl: `http://localhost:8000/products/product_detail/{{product.pk}}`
+    }
+    }
+]
 });
 </script>
 <script>
     const drawStar = (target) => {
         document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
-      }
+    }
     const rating1 = document.querySelector("#rating1")
     const rating2 = document.querySelector("#rating2")
     const rating3 = document.querySelector("#rating3")
@@ -402,25 +411,24 @@ Kakao
             rating5.classList.add('bi-heart')
         }
     }
-
 </script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-const attention = document.querySelector("#attention")
-attention.addEventListener("click", function (event) {
-const productId = event.target.dataset.productId;
-event.preventDefault()
-axios({method: "get", url: `/products/like/${productId}`})
-.then(response => {
-    if (response.data.isLiked === true) {
-        event.target.classList.add('bi-heart-fill')
-        event.target.classList.remove('bi-heart')
-      } else {
-        event.target.classList.add('bi-heart')
-        event.target.classList.remove('bi-heart-fill')
-      }
-})
-})
+    const attention = document.querySelector("#attention")
+    attention.addEventListener("click", function (event) {
+    const productId = event.target.dataset.productId;
+    event.preventDefault()
+    axios({method: "get", url: `/products/like/${productId}`})
+    .then(response => {
+        if (response.data.isLiked === true) {
+            event.target.classList.add('bi-heart-fill')
+            event.target.classList.remove('bi-heart')
+        } else {
+            event.target.classList.add('bi-heart')
+            event.target.classList.remove('bi-heart-fill')
+        }
+    })
+    })
 </script>
 <script>
     const reviewLike = document.querySelector(".review-like")
@@ -441,5 +449,46 @@ axios({method: "get", url: `/products/like/${productId}`})
             likeReviewCount.innerText = response.data.likeReviewCount
         })
     })
-    </script>
+</script>
+<script>
+    const reviewDelete = document.querySelector(".review-delete")
+    reviewDelete.addEventListener("submit", function (event) {
+    const productId = event.target.dataset.productId;
+    const reviewId = event.target.dataset.reviewId;
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    event.preventDefault()
+    axios(
+        {
+            method: "post", 
+            url: `/products/product_detail/${productId}/${reviewId}/delete`,
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+        }
+    )
+    .then(response => {
+        reviewDelete.parentNode.parentNode.parentNode.parentNode.innerHTML = ""
+        })
+    })
+</script>
+<script>
+    const reviewUpdate = document.querySelector(".review-update")
+    reviewUpdate.addEventListener("click", function (event) {
+        const productId = event.target.dataset.productId;
+        const reviewId = event.target.dataset.reviewId;
+        event.preventDefault()
+        axios(
+            {
+                method: "get", 
+                url: `/products/product_detail/${productId}/${reviewId}/update`,
+            }
+        )
+        .then(response => {
+            const reviewContent = document.querySelector(`#review-content-${reviewId}`)
+            const reviewForm = document.querySelector(`#review-form-${reviewId}`)
+            reviewContent.classList.toggle("hidden")
+            reviewForm.classList.toggle("hidden")
+            })
+        })
+</script>
 {% endblock js %}
