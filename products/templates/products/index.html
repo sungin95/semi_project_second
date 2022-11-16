@@ -12,6 +12,8 @@
     <div class="product-brand-banner-name" style="">
       {% if category %}
         <h2>{{ category }}</h2>
+      {% elif search %}
+        <h2>{{ search }}</h2>
       {% else %}
         <h2>전체</h2>
       {% endif %}
@@ -23,7 +25,7 @@
 {% endblock carousel %}
 
 {% block content %}
-  <div class="d-flex align-items-center my-3 justify-content-between">
+  <div class="detail-bar">
     <!-- 필터 -->
     <div class="">
       <p>
@@ -32,6 +34,8 @@
         <span>검색 결과</span>
         {% if category %}
           <span>{{ products_category.count }}개</span>
+        {% elif search %}
+          <span>{{ search_lists.count }}개</span>
         {% else %}
           <span>{{ products.count }}개</span>
         {% endif %}
@@ -65,14 +69,52 @@
 
   <div class="main">
     <!-- 사이드바 -->
-    <aside class="">
-      <div>화면크기</div>
-      <div>무게</div>
-      <div>프로세서</div>
-      <div>메모리</div>
-      <div>그래픽카드</div>
-      <div>저장장치</div>
-      <div>가격대</div>
+    <aside class="sidebar-wrapper">
+      <div class="sidebar">
+        <div>화면</div>
+        <i class="bi bi-plus"></i>
+      </div>
+      <div>
+        <div class="sidebar-detail">
+          <div>화면크기</div>
+          <i class="bi bi-plus"></i>
+        </div>
+        <div class="sidebar-detail">
+          <div>해상도</div>
+          <i class="bi bi-plus"></i>
+        </div>
+      </div>
+      <hr>
+      <div class="sidebar">
+        <div>무게</div>
+        <i class="bi bi-plus"></i>
+      </div>
+      <hr>
+      <div class="sidebar">
+        <div>프로세서</div>
+        <i class="bi bi-plus"></i>
+      </div>
+      <hr>
+      <div class="sidebar">
+        <div>메모리</div>
+        <i class="bi bi-plus"></i>
+      </div>
+      <hr>
+      <div class="sidebar">
+        <div>그래픽카드</div>
+        <i class="bi bi-plus"></i>
+      </div>
+      <hr>
+      <div class="sidebar">
+        <div>저장장치</div>
+        <i class="bi bi-plus"></i>
+      </div>
+      <hr>
+      <div class="sidebar">
+        <div>가격대</div>
+        <i class="bi bi-plus"></i>
+      </div>
+      <hr>
     </aside>
 
     <!-- 제품 목록 -->
@@ -84,7 +126,33 @@
           {% for product in products_category %}
             <!-- 카드1 한장 시작 -->
             <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative">
-              <div class="product-card-body">
+              <div class="product-card-body test1">
+                <!-- 찜하기 추가 작업 필요 -->
+                <a href="" class="position-absolute top-0 end-0 m-3">찜하기</a>
+                <div>
+                  <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
+                </div>
+                <a href="{% url 'products:detail' product.pk %}">
+                  <h5 class="card-title">{{ product.모델명 }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+                  <p class="card-text">
+                    <div class="standard-price">
+                      <span>기준가</span>기준가격
+                    </div>
+                    <div class="sale-price">
+                      <span>할인가</span>{{ product.가격 }}</div>
+                  </p>
+                </a>
+                <a href="#" class="btn-color">구매하기</a>
+              </div>
+            </div>
+            <!-- 카드1 한장 끝 -->
+          {% endfor %}
+        {% elif search %}
+          {% for product in search_lists %}
+            <!-- 카드1 한장 시작 -->
+            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative">
+              <div class="product-card-body test2">
                 <!-- 찜하기 추가 작업 필요 -->
                 <a href="" class="position-absolute top-0 end-0 m-3">찜하기</a>
                 <div>
@@ -110,7 +178,7 @@
           {% for product in products_category %}
             <!-- 카드1 한장 시작 -->
             <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative">
-              <div class="product-card-body">
+              <div class="product-card-body test3">
                 <!-- 찜하기 추가 작업 필요 -->
                 <div>
                   <img src="{{ product.썸네일 }}" alt="" class="img-fluid">

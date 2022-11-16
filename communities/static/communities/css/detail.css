@@ -200,6 +200,7 @@ li {
   background-color: #fafafa;
   border-radius: 15px;
   margin: 0.5rem 1rem;
+  
 }
 
 .user-name {
@@ -211,6 +212,23 @@ li {
 
 .user-c-name {
   font-weight: 600;
+}
+
+.sub_comment-create  {
+  background-color: transparent;
+  border: none;
+  color: #048eff;
+  font-size: 0.9rem;
+  margin-right: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.sub_comment-create :hover {
+  background-color: transparent;
+  border: none;
+  color: #048eff;
+  font-size: 0.9rem;
+  margin-right: -0.9rem;
 }
 
 .comment-delete button {
@@ -228,20 +246,7 @@ li {
   font-size: 0.9rem;
   margin-right: -0.9rem;
 }
-.comment-comment button {
-  background-color: transparent;
-  border: none;
-  color: #d832e7;
-  font-size: 0.9rem;
-  margin-right: -0.9rem;
-}
-.comment-comment button:hover {
-  background-color: transparent;
-  border: none;
-  color: #d832e7;
-  font-size: 0.9rem;
-  margin-right: -0.9rem;
-}
+
 .rate {
   align-items: center;
   display: flex;
