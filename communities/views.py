@@ -12,7 +12,7 @@ from django.core.paginator import Paginator
 def index(request):
     k = Articles.objects.all().order_by("-id")
     page = request.GET.get("page", "1")
-    paginator = Paginator(k, 5)
+    paginator = Paginator(k, 10)
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
