@@ -95,13 +95,13 @@
   </div>
   <!--탭 버튼-->
   <div class="btn_group">
-    <button class="btn_btn">베스트</button>
-    <button class="btn_btn">전체</button>
-    <button class="btn_btn">잡담</button>
-    <button class="btn_btn">질문</button>
-    <button class="btn_btn">자랑</button>
-    <button class="btn_btn">고민/상담</button>
-    <button class="btn_btn">인사</button>
+    <a class="btn_btn" href="{% url 'communities:index' %}">베스트</a>
+    <a class="btn_btn" href="{% url 'communities:index' %}">전체</a>
+    <a class="btn_btn" href="{% url 'communities:index_jab' %}">잡담</a>
+    <a class="btn_btn" href="{% url 'communities:index_question' %}">질문</a>
+    <a class="btn_btn" href="{% url 'communities:index_boast' %}">자랑</a>
+    <a class="btn_btn" href="{% url 'communities:index_consult' %}">고민/상담</a>
+    <a class="btn_btn" href="{% url 'communities:index_hello' %}">인사</a>
   </div>
 
   <!--글 목록-->

@@ -5,6 +5,11 @@ app_name = "communities"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("index_jab/", views.index_jab, name="index_jab"),
+    path("index_question/", views.index_question, name="index_question"),
+    path("index_boast/", views.index_boast, name="index_boast"),
+    path("index_consult/", views.index_consult, name="index_consult"),
+    path("index_hello/", views.index_hello, name="index_hello"),
     path("article_create/", views.article_create, name="article_create"),
     path("<int:article_pk>/", views.detail, name="detail"),
     path("<int:article_pk>/delete/", views.article_delete, name="article_delete"),
