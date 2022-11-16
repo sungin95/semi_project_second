@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect, get_object_or_404
 from .form import ArticleForm, CommentForm
 from .models import Articles, Comments
@@ -17,6 +16,7 @@ def index(request):
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
+        "question_list": page_obj,
     }
     return render(request, "communities/index.html", context)
 
