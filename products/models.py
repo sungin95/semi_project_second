@@ -20,7 +20,7 @@ class Products(models.Model):
     해상도 = models.TextField(blank=True, null=True)
     화면크기대 = models.TextField(blank=True, null=True)
     DCI_P3 = models.IntegerField(blank=True, null=True)
-    NTSC = models.TextField(blank=True, null=True)
+    NTSC = models.FloatField(blank=True, null=True)
     화면밝기 = models.IntegerField(blank=True, null=True)
     주사율 = models.TextField(blank=True, null=True)
     패널종류 = models.TextField(blank=True, null=True)

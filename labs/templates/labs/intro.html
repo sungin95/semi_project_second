@@ -8,24 +8,30 @@
 
 {% block carousel %}
   <!-- 참신한 멘트-->
+  <!--['김유영', '신윤식', '이성인', '이호빈', '조창현']-->
+  <!-- ['팀장', '멘탈붕괴직전', '팀원2', '야간조', '팀원4']-->
   <div class="intro">
     <div class="container" style="height:100%;">
       <div class="intro-flex">
         <div class="intro-comment">
           <div class="intro-comment-change show">
-            <h3>트렌드1</h3>
+            <h3>김유영<span>팀장</span></h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
           </div>
           <div class="intro-comment-change">
-            <h3>트렌드2</h3>
+            <h3>신윤식<span>잡부</span></h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
           </div>
           <div class="intro-comment-change">
-            <h3>트렌드3</h3>
+            <h3>이성인<span>백엔드</span></h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
           </div>
           <div class="intro-comment-change">
-            <h3>트렌드4</h3>
+            <h3>이호빈<span>프론트엔드</span></h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
+          </div>
+          <div class="intro-comment-change">
+            <h3>조창현<span>백엔드</span></h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga consectetur dignissimos in. Qui velit obcaecati assumenda aperiam ex laboriosam quaerat corrupti. Dolores, iure. Nisi nesciunt omnis voluptatem quasi necessitatibus maxime!</p>
           </div>
         </div>
@@ -213,28 +219,10 @@
 
 {% block content %}{% endblock content %}
 
+<!-- 자바스크립트 -->
 {% block js %}
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ MAPKEY }}&libraries=services"></script>
-
-  <!-- 네비게이션바 투명 -->
-  <script>
-    const main = document.querySelector('main')
-    window.addEventListener('load', () => {
-      main.style.minHeight = "0"
-    })
-    const introNabvar = document.querySelector('#nabvar')
-    window.addEventListener('load', () => {
-      introNabvar.style.backgroundColor = 'transparent'
-    })
-    window.addEventListener('scroll', () => {
-      if (window.scrollY == 0) {
-        introNabvar.style.backgroundColor = 'transparent'
-      }
-    })
-    introNabvar.addEventListener('mouseleave', () => {
-      introNabvar.style.backgroundColor = 'transparent'
-    })
-  </script>
+  <script src="{% static 'labs/js/intro.js' %}"></script>
 
   <!-- 카카오지도 -->
   <script>
@@ -274,31 +262,5 @@
         map.setCenter(coords);
       }
     });
-  </script>
-
-  <!-- 글귀변경 -->
-  <script>
-    const introCommentChangeH3 = document.querySelector('.intro-comment-change h3')
-    const introCommentChangeP = document.querySelector('.intro-comment-change p')
-    const introCommentChange = document.querySelectorAll('.intro-comment-change')
-    const commentListH3 = ['김유영', '신윤식', '이성인', '이호빈', '조창현']
-    const commentListP = ['팀장', '멘탈붕괴직전', '팀원2', '야간조', '팀원4']
-    const count = introCommentChange.length
-    var i = 0
-
-    setInterval(() => {
-      for (let k of introCommentChange) {
-        k
-          .classList
-          .remove('show')
-      }
-      introCommentChange[i % count]
-        .classList
-        .add('show')
-      //  introCommentChange.style.transform = "translateY(0%)"
-      //  introCommentChangeH3.innerHTML = `${commentListH3[i % count]}`
-      //  introCommentChangeP.innerHTML = `${commentListP[i % count]}`
-      i++
-    }, 2000)
   </script>
 {% endblock js %}
