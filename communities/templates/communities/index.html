@@ -7,35 +7,13 @@
 {% endblock css %}
 
 {% block content %}
-  <!--검색창과 시간-->
-  <div class="container">
-    <div class="search-time">
-      <!-- 검색창 -->
-      <div>
-        <form action="#" method="GET" class="search-form">
-          {% csrf_token %}
-          <input class="form-control rounded-2 text-left btn-sm mr-5" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="q">
-          <button type="submit" class="btn">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
-        <div class="d-flex justify-content-center align-items-center">
-          실검
-        </div>
-      </div>
-      <div class="">
-        <input type="text" class="form-control" placeholder="14: 18 : 52| D-day">
-      </div>
-    </div>
-  </div>
-
   <!-- 공지사항-->
   <div class="container">
-    <h4 class="m-2">공지사항</h4>
+    <h4 class="m-3">공지사항</h4>
     <!-- 공지사항 1개 시작 -->
     <div class="row">
       <div class="col-6">
-        <span class="badge bg-danger mx-2 p-1">공지</span>공지사항 제목</div>
+        <span class="comm_span">공지</span>공지사항 제목</div>
       <div class="col-2">공지 작성자</div>
       <div class="col-2">조회수</div>
       <div class="col-2">작성일</div>
@@ -45,7 +23,7 @@
     <!-- 공지사항 2개 시작 -->
     <div class="row">
       <div class="col-6">
-        <span class="badge bg-danger mx-2 p-1">공지</span>공지사항 제목</div>
+        <span class="comm_span">공지</span>공지사항 제목</div>
       <div class="col-2">공지 작성자</div>
       <div class="col-2">조회수</div>
       <div class="col-2">작성일</div>
@@ -55,7 +33,7 @@
     <!-- 공지사항 3개 시작 -->
     <div class="row">
       <div class="col-6">
-        <span class="badge bg-danger mx-2 p-1">공지</span>공지사항 제목</div>
+        <span class="comm_span">공지</span>공지사항 제목</div>
       <div class="col-2">공지 작성자</div>
       <div class="col-2">조회수</div>
       <div class="col-2">작성일</div>
@@ -69,28 +47,28 @@
     <div>
       <div class="today-best-ten">
         <div class="today-best-left">
-          <div>
-            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">01</span>NVIDIA vs AMD 최근 상황</div>
-          <div>
-            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">02</span>우주상향 대학 1차 붙었습니다..</div>
-          <div> 
-            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">03</span>어제 밥먹다가 플스가 생긴 사람입니다.</div>
-          <div>
-            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">04</span>요즘 군대에서 모을수 있는 돈 액수</div>
-          <div>
-            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">05</span>알리발 휴대용 모니터가 도착했습니다.</div>
+          <div class="today">
+            <span class="best-today" >01</span>NVIDIA vs AMD 최근 상황</div>
+          <div class="today">
+            <span class="best-today" >02</span>우주상향 대학 1차 붙었습니다..</div>
+          <div class="today"> 
+            <span class="best-today" >03</span>어제 밥먹다가 플스가 생긴 사람입니다.</div>
+          <div class="today">
+            <span class="best-today" >04</span>요즘 군대에서 모을수 있는 돈 액수</div>
+          <div class="today">
+            <span class="best-today" >05</span>알리발 휴대용 모니터가 도착했습니다.</div>
         </div>
         <div class="today-best-right">
-          <div>
-            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">06</span>이야 원달러 쭉쭉 내려가네요</div>
-          <div>
-            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">07</span>와 저도 19금 프로그램 깔려 있었네여</div>
-          <div>
-            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">08</span>케이스 리퍼 사지마세요</div>
-          <div>
-            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">09</span>허먼밀러 의자를 샀습니다 (후기)</div>
-          <div>
-            <span class="badge mx-2" style="background-color: rgb(128, 202, 251);">10</span>전 여친에게 연락을 해보았습니다</div>
+          <div class="today">
+            <span class="best-today">06</span>이야 원달러 쭉쭉 내려가네요</div>
+          <div class="today">
+            <span class="best-today">07</span>와 저도 19금 프로그램 깔려 있었네여</div>
+          <div class="today">
+            <span class="best-today" >08</span>케이스 리퍼 사지마세요</div>
+          <div class="today">
+            <span class="best-today">09</span>허먼밀러 의자를 샀습니다 (후기)</div>
+          <div class="today">
+            <span class="best-today">10</span>전 여친에게 연락을 해보았습니다</div>
         </div>
       </div>
     </div>
@@ -99,14 +77,15 @@
     <a class="btn btn-secondary mt-3 mx-3" method="POST" href="{% url 'communities:article_create' %}">글쓰기</a>
   </div>
   <!--탭 버튼-->
-  <div class="btn-group mt-3 container" style="margin:0px; " role="group" aria-label="Basic example">
-    <button type="button" class="classification-btn btn btn-secondary">베스트</button>
-    <button type="button" class="classification-btn btn btn-secondary">전체</button>
-    <button type="button" class="classification-btn btn btn-secondary">잡담</button>
-    <button type="button" class="classification-btn btn btn-secondary">질문</button>
-    <button type="button" class="classification-btn btn btn-secondary">축하</button>
-    <button type="button" class="classification-btn btn btn-secondary">고민/상담</button>
-    <button type="button" class="classification-btn btn btn-secondary">인사</button>
+
+  <div class="btn_group">
+    <button class="btn_btn">베스트</button>
+    <button class="btn_btn">전체</button>
+    <button class="btn_btn">잡담</button>
+    <button class="btn_btn">질문</button>
+    <button class="btn_btn">자랑</button>
+    <button class="btn_btn">고민/상담</button>
+    <button class="btn_btn">인사</button>
   </div>
 
   <!--글 목록-->
@@ -151,7 +130,7 @@
     
     <!-- 게시글 정렬 -->
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <button class="recomm dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         추천순
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -189,7 +168,7 @@
           {% for page_number in question_list.paginator.page_range %}
             {% if page_number == question_list.number %}
               <li class="page-item" aria-current="page">
-                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                <a class="page_hi page-link" href="?page={{ page_number }}">{{ page_number }}</a>
               </li>
             {% else %}
               <li class="page-item">
