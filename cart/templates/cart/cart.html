@@ -7,7 +7,156 @@
 {% endblock css %}
 
 {% block content %}
-  {% comment %} 상품이 비어 있을때 {% endcomment %}
+    <div class="content cart-content">
+      <!--title-->
+        <div class="tit-box cart-title">
+          <h1 class="txt-s20">장바구니</h1>
+        </div>
+      <!--위에 전체선택 체크표시-->  
+        <div class="opt-select">
+          <div class="chk-form">
+            <input type="checkbox" id="cart_check_box_all" name="cart_check_box_all" value="N" required title>
+            <label for="cart_check_box_all">
+              전체선택
+            </label>
+          </div>
+          <div class="opt-select-right">
+            <button type="button" class="btn btn-s btn-type2-disable" onclick="cartHeaderBtn.delOpenLayer(); return false;">선택 삭제</button>
+          </div>
+        </div>
+        <div class="cart-area main-cart">
+          <h2 class="blind">주문상품</h2>
+          <!--제품 체크 표시-->
+            <div class="cart-tbl buy-cart-goods">
+              <div class="chk-form-hidden cart-check">
+                <input type="checkbox" id="cartIds_0" class="cart-data-hidden">
+                <label for="cartIds_0">
+                  <span>갤럭시 북2 Pro 360 39.6 cm Core™ i7 / 1 TB NVMe SSD</span>
+                </label>
+              </div>
+              <!-- 첫번째 이미지-->
+              <div class="cart-td cart-image">
+                <div class="photo">
+                  <a href=""><img src="{% static 'products/img/slider-1.jpg'%}" alt=""></a>
+                </div>
+              </div>
+              <!-- 제품 정보-->
+              <div class="cart-td cart-spec">
+                <div class="cart-spec-group">
+                    <p class="o-title">
+                      <a href="">갤럭시 북2 Pro 360 39.6 cm Core™ i7 / 1 TB NVMe SSD</a>
+                    </p>
+                    <p class="o-label">NT950QED-KD72S</p>
+                    <span class="ico-group">
+                      <div class="o-spec cart-o-spec">
+                        <span>실버</span>
+                      </div>
+                    </span>
+                </div>
+              </div>
+             <!--수량버튼--> 
+            <div class="cart-td cart-count">
+              <span class="spinner-box cart-spinner">
+                <input type="button" onclick='count("minus")' value="-" class="count count-miner btn btns">
+                <label for="countPrd" class="blind">구매수량</label>
+                <div id='result' class="number">1</div>
+                <input type="button" onclick='count("plus")' value="+" class="count count-plus btn btns">
+              </span>
+            </div>  
+            <!--가격-->
+            <div class="cart-td cart-price">
+              <span class="price-small">
+                3,070,000원
+              </span>
+              <span class="price-big" style="padding-right: 0">
+                2,191,000원
+              </span>
+              <div class="cart-sns">
+                <button type="button" class="sns-delete cart_delete-btn" onclick="">
+                  <span>선택제품 삭제</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cart-bottom">
+          <span class="cart-bottom-left"> * 장바구니 상품은 30일간 보관됩니다.</span>
+        </div>
+        <!--배송정보-->
+        <div class="cart-payment-area">
+          <h2 class="blind delivery-title">배송지 추가/변경</h2>
+            <div class="delivery-change">
+              <!--비회원 로그인 시 배송지 등록 영역 미노출-->
+              <div id="memberNoDeliveryAddress">
+                <p class="entry-add">
+                  배송지를 등록해 주세요.
+                </p>
+                <button type="button" class="btn btn-d btn-type1" id="dlvrInsertBtn" >배송지 등록</button>
+              </div>
+            </div>
+          <h2 class="blind">결제 정보</h2>
+            <!--전체상품-->
+            <ul class="payment-listup cart-bcart-top">
+                <li>
+                  <span class="head">전체 상품</span>
+                  <span class="text">
+                    <strong id="goods_cnt">0</strong>
+                    개
+                  </span>
+                </li>
+                <li>
+                  <span class="head">주문 금액</span>
+                  <span class="text">
+                    <strong id="order_payment_total_goods_amt_view">0</strong>
+                    원
+                  </span>
+                </li>
+                <li>
+                  <span class="head">할인 금액</span>
+                  <span class="text color-sb">
+                    <strong id="order_payment_total_dc_amt_view">0</strong>
+                    원
+                  </span>
+                </li>
+            </ul>
+            <ul class="cost-listup">
+              <li>
+                <span class="head">
+                  <strong>결제 예정 금액</strong>
+                </span>
+                <span class="text">
+                  <strong id="order_payment_total_pay_amt_view">0</strong>
+                  원
+                </span>
+              </li>
+            </ul>
+       
+            <button id="btnCartOrder" type="button" class="btn btn-l btn-type3" onclick="">주문하기</button>  
+      </div>
+          <div class="cart-foot">
+            <div class="cart-foot-inner">
+              <div class="cart-foot-left">
+                <p>
+                  고객센터
+                  <strong class="txt-small">1234-5678</strong>
+                  평일 09시 ~ 18시 / 토요일 09시 ~ 13시 (일요일, 공휴일은 운영하지 않습니다.)
+                </p>
+              </div>
+            </div>
+          </div>  
+    </div>
+
+{% endblock content %}
+
+
+
+{% block js %}
+<script src="/static/js/product.js"></script>
+{% endblock js %}
+
+
+
+<!-- {% comment %} 상품이 비어 있을때 {% endcomment %}
   {% if not cart_items %}
     <div>
       <div class="text-center">
@@ -118,5 +267,4 @@
       </div>
     </div>
   </div>
-  {% endif %}
-{% endblock content %}
+  {% endif %} -->
