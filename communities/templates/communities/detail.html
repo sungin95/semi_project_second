@@ -90,10 +90,11 @@
 
         <!-- 댓글내용 -->
         <div class="review-contents">
-          <div class="review-content">댓글 내용</div>
+          <div class="review-content mb-3">댓글 내용</div>
           <div class="d-flex">
               <div id="comments">
                 {% for comment in comments %}
+                {% if comment.parent_id == null %}
                   <div class="rounded-pill">
                     {% if comment.user.image %}
                       <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
@@ -107,45 +108,41 @@
                     {{ comment.content }}</p>
                   <!-- 대댓글내용 -->
                   <div class="mx-5 child-comments">
-                    {% for comment in comments %}
-                      {% for sub_comment in comments %}
-                        {% if comment.id == sub_comment.parent_id %}
-                          <div class="rounded-pill">
-                            {% if sub_comment.user.image %}
-                              <img src="{{ sub_comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
-                            {% else %}
-                              <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
-                            {% endif %}
-                          </div>
-                          <p class="my-3">
-                            {{ sub_comment.user.username }}
-                            |
-                            {{ sub_comment.content }}</p>
-                          <div class="d-flex">
-                            {% if request.user == sub_comment.user %}
-                              <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk comment.pk %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger">삭제</button>
-                              </form>
-                            {% endif %}
-                          </div>
-                          <hr>
-                        {% endif %}
-                        {% empty %}
-                          <p>.</p>
-                      {% endfor %}
+                    {% for sub_comment in comments %}
+                      {% if comment.id == sub_comment.parent_id %}
+                        <div class="rounded-pill">
+                          {% if sub_comment.user.image %}
+                            <img src="{{ sub_comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
+                          {% else %}
+                            <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
+                          {% endif %}
+                        </div>
+                        <p class="my-3">
+                          {{ sub_comment.user.username }}
+                          |
+                          {{ sub_comment.content }}</p>
+                        <div class="d-flex">
+                          {% if request.user == sub_comment.user %}
+                            <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk sub_comment.pk %}" method="POST">
+                              {% csrf_token %}
+                              <button type="submit" class="btn btn-danger">삭제</button>
+                            </form>
+                          {% endif %}
+                        </div>
+                        <hr>
+                      {% endif %}
+                      {% empty %}
+                        <p>.</p>
                     {% endfor %}
                   </div>
                   <!-- 대댓글끝 -->
+                  <!-- 대댓글작성, 삭제 폼 -->
                   <div class="d-flex">
-                    {% if request.user.is_authenticated %}
-                      <form class="d-flex" id="comment-form" action="{% url 'communities:sub_comment_create' article.pk comment.pk %}" method="POST">
-                        {% csrf_token %}
-                        {% bootstrap_form comment_form layout='floating'%}
-                        <input class="btn btn-primary mx-3" type="submit" value="작성" style="height: 3.5rem;">
-                      </form>
-                    {% endif %}
-                    
+                    <p>
+                      <button class="sub_comment-create" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{comment.id}}" aria-expanded="false" aria-controls="collapseExample">
+                        대댓글 작성
+                      </button>
+                    </p>
                     {% if request.user == comment.user %}
                       <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk comment.pk %}" method="POST">
                         {% csrf_token %}
@@ -153,7 +150,20 @@
                       </form>
                     {% endif %}
                   </div>
+                  <div class="collapse" id="collapseExample{{comment.id}}">
+                    <div class="d-flex">
+                      {% if request.user.is_authenticated %}
+                        <form class="d-flex" id="comment-form" action="{% url 'communities:sub_comment_create' article.pk comment.pk %}" method="POST">
+                          {% csrf_token %}
+                          {% bootstrap_form comment_form layout='floating'%}
+                          <input class="btn btn-primary mx-3" type="submit" value="작성" style="height: 3.5rem;">
+                        </form>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <!-- 대댓글작성, 삭제 폼 끝 -->
                   <hr>
+                  {% endif %}
                   {% empty %}
                     <p>댓글이 없어요 ㅠ_ㅠ</p>
                 {% endfor %}

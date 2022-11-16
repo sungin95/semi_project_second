@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect, get_object_or_404
 from .form import ArticleForm, CommentForm
 from .models import Articles, Comments
@@ -11,12 +10,13 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
-    k = Articles.objects.all().order_by("id")
+    k = Articles.objects.all().order_by("-id")
     page = request.GET.get("page", "1")
-    paginator = Paginator(k, 3)
+    paginator = Paginator(k, 5)
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
+        "page_obj": page_obj,
     }
     return render(request, "communities/index.html", context)
 
@@ -41,9 +41,10 @@ def article_create(request):
 def detail(request, article_pk):
     article = get_object_or_404(Articles, pk=article_pk)
     comment_form = CommentForm()
+    comments = article.comments_set.all()
     content = {
         "article": article,
-        "comments": article.comments_set.all(),
+        "comments": comments,
         "comment_form": comment_form,
     }
     return render(request, "communities/detail.html", content)
