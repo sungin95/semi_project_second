@@ -16,7 +16,7 @@ def index(request):
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
-        "page_obj": page_obj,
+        "question_list": page_obj,
     }
     return render(request, "communities/index.html", context)
 
