@@ -12,6 +12,8 @@
     <div class="product-brand-banner-name" style="">
       {% if category %}
         <h2>{{ category }}</h2>
+      {% elif search %}
+        <h2>{{ search }}</h2>
       {% else %}
         <h2>전체</h2>
       {% endif %}
@@ -32,6 +34,8 @@
         <span>검색 결과</span>
         {% if category %}
           <span>{{ products_category.count }}개</span>
+        {% elif search %}
+          <span>{{ search_lists.count }}개</span>
         {% else %}
           <span>{{ products.count }}개</span>
         {% endif %}
@@ -84,7 +88,33 @@
           {% for product in products_category %}
             <!-- 카드1 한장 시작 -->
             <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative">
-              <div class="product-card-body">
+              <div class="product-card-body test1">
+                <!-- 찜하기 추가 작업 필요 -->
+                <a href="" class="position-absolute top-0 end-0 m-3">찜하기</a>
+                <div>
+                  <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
+                </div>
+                <a href="{% url 'products:detail' product.pk %}">
+                  <h5 class="card-title">{{ product.모델명 }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+                  <p class="card-text">
+                    <div class="standard-price">
+                      <span>기준가</span>기준가격
+                    </div>
+                    <div class="sale-price">
+                      <span>할인가</span>{{ product.가격 }}</div>
+                  </p>
+                </a>
+                <a href="#" class="btn-color">구매하기</a>
+              </div>
+            </div>
+            <!-- 카드1 한장 끝 -->
+          {% endfor %}
+        {% elif search %}
+          {% for product in search_lists %}
+            <!-- 카드1 한장 시작 -->
+            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative">
+              <div class="product-card-body test2">
                 <!-- 찜하기 추가 작업 필요 -->
                 <a href="" class="position-absolute top-0 end-0 m-3">찜하기</a>
                 <div>
@@ -110,7 +140,7 @@
           {% for product in products_category %}
             <!-- 카드1 한장 시작 -->
             <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative">
-              <div class="product-card-body">
+              <div class="product-card-body test3">
                 <!-- 찜하기 추가 작업 필요 -->
                 <div>
                   <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
