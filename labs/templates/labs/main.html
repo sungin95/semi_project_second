@@ -6,11 +6,7 @@
   <link rel="stylesheet" href="{% static 'labs/css/main.css' %}">
 {% endblock css %}
 
-<!-- 타임특가 정보 -->
-{% block timesale %}
-  <div id="timesale" class="alert alert-danger">5초 이내 구매시 사은품 증정!</div>
-  <div style="overflow: hidden;"></div>
-{% endblock timesale %}
+<!-- 타임특가 정보 <div id="timesale" class="alert alert-danger">5초 이내 구매시 사은품 증정!</div> <div style="overflow: hidden;"></div> -->
 
 <!-- 캐러셀 -->
 {% block carousel %}
@@ -335,24 +331,7 @@
 {% block js %}
   <script src="{% static 'labs/js/main.js' %}"></script>
 
-  <!-- 타임세일 -->
-  <script>
-    var time = 5;
-
-    const interval = setInterval(() => {
-      time--;
-      document
-        .querySelector("#timesale")
-        .innerHTML = `${time}초 이내 구매시 사은품 증정!`;
-      if (time === 0) {
-        document
-          .querySelector("#timesale")
-          .classList
-          .add("hide");
-        clearInterval(interval);
-      }
-    }, 1000);
-  </script>
+  <!-- 타임세일 <script> var time = 5; const interval = setInterval(() => { time--; document .querySelector("#timesale") .innerHTML = `${time}초 이내 구매시 사은품 증정!`; if (time === 0) { document .querySelector("#timesale") .classList .add("hide"); clearInterval(interval); } }, 1000); </script>-->
 
   <!-- <script> const hotDeal = document.querySelector('#hotDeal') setInterval(() => { if (hotDeal.src.includes('color')) { document .querySelector('#hotDeal') .src = "{% static 'labs/img/hotdeal.png' %}" } else { document .querySelector('#hotDeal') .src = "{% static 'labs/img/hotdeal_color.png' %}" } }, 1500) var slideWrap = document.querySelector('slidewrap') </script> -->
 

@@ -63,7 +63,7 @@
     <!--검색-->
     <div class="search-bg-black" id="searchForm" style="visibility: hidden; opacity: 0;">
       <div class="search-bg-white">
-        <form class="search" action="#">
+        <form class="search" action="{% url 'labs:search' %}">
           <input class="input_form" type="search" placeholder="검색" name="search" aria-label="Search" id="search" required="required">
           <button class="button" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/16/16492.png" alt="검색 아이콘"></button>
         </form>
