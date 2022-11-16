@@ -79,7 +79,6 @@
     <div class="container">
       <div class="row"></div>
       <div class="row g-3">
-        <!-- 관련 기능 여기에 담음 -->
         <!-- -->
         {% if category %}
           {% for product in products_category %}
@@ -91,7 +90,7 @@
                 <div>
                   <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
                 </div>
-                <a href="{% url 'products:detail' %}">
+                <a href="{% url 'products:detail' product.pk %}">
                   <h5 class="card-title">{{ product.모델명 }}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
                   <p class="card-text">
@@ -116,7 +115,7 @@
                 <div>
                   <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
                 </div>
-                <a href="{% url 'products:detail' %}">
+                <a href="{% url 'products:detail' product.pk %}">
                   <h5 class="card-title">{{ product.모델명 }}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
                   <p class="card-text">

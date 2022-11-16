@@ -51,7 +51,7 @@
             <div class="featured-carousel owl-carousel">
               <div class="item">
                 <div class="work">
-                  <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/static/products/img/slider-1.jpg);">
+                  <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{image1}});">
                     <div class="text text-center">
                       <!-- <h2>인텔리랩스</h2> -->
                     </div>
@@ -60,14 +60,14 @@
               </div>
               <div class="item">
                 <div class="work">
-                  <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/static/products/img/slider-2.jpg);">
+                  <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{image2}});">
                     <div class="text text-center"></div>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="work">
-                  <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/static/products/img/slider-3.jpg);">
+                  <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{image3}});">
                     <div class="text text-center"></div>
                   </div>
                 </div>
@@ -77,13 +77,13 @@
             <div class="my-5 text-center">
               <ul class="thumbnail">
                 <li class="active img">
-                  <a href="#"><img src="/static/products/img/thumb-1.jpg" alt="Image" class="img-fluid"></a>
+                  <a href="#"><img src="{{image1}}" alt="Image" class="img-fluid"></a>
                 </li>
                 <li>
-                  <a href="#"><img src="/static/products/img/thumb-2.jpg" alt="Image" class="img-fluid"></a>
+                  <a href="#"><img src="{{image2}}" alt="Image" class="img-fluid"></a>
                 </li>
                 <li>
-                  <a href="#"><img src="/static/products/img/thumb-3.jpg" alt="Image" class="img-fluid"></a>
+                  <a href="#"><img src="{{image3}}" alt="Image" class="img-fluid"></a>
                 </li>
               </ul>
             </div>
@@ -101,15 +101,28 @@
             <div class="social-box">
               <button type="button" class="btn-sns-link">
                 <a id="kakaotalk-sharing-btn" href="javascript:;">
-                    <i class="icon ico-large ico-share">소셜공유</i>
+                  <i class="icon ico-large ico-share">소셜공유</i>
                 </a>
-                  {% comment %} <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png" alt="카카오톡 공유 보내기 버튼"/> {% endcomment %}
+
               </button>
               <button type="button" class="btn-good on" title="선택됨">
-                <i class="icon ico-large ico-goods">좋아요 선택</i>
+                {% if request.user.is_authenticated %}
+                  {% if request.user in product.like_product.all %}
+                    <i id="attention" data-product-id="{{ product.pk }}" class="icon ico-large ico-goods">취소</i>
+                  {% else %}
+                    <i id="attention" data-product-id="{{ product.pk }}" class="icon ico-large ico-goods">찜하기</i>
+                  {% endif %}
+                {% else %}
+                  <!-- 수정 필요 11/15-->
+                  <div>
+                    <a href="{% url 'accounts:login' %}">
+                      <i class="icon ico-large ico-goods">찜하기</i>
+                    </a>
+                  </div>
+                {% endif %}
               </button>
             </div>
-            <h1 class="itm-info-title mt-4" id="goodsDetailNm">갤럭시 북2 Pro 360 39.6 cm Core™ i7 / 1 TB NVMe SSD</h1>
+            <h1 class="itm-info-title mt-4" id="goodsDetailNm">{{modelName}}</h1>
             <div class="itm-sku b2c-itm-sku">NT950QED-KD72S</div>
             <div class="itm-rating-con">
               <div class="itm-rating b2c-itm-rating">
@@ -125,7 +138,7 @@
               </div>
               <div class="itm-rating itm-review">
                 <span class="itm-review-write">
-                  <a href="javascript:void(0);" class="btn-underline" title="상품평 쓰기 바로가기">상품평 쓰기</a>
+                  <a href="" class="btn-underline" title="상품평 쓰기 바로가기">상품평 쓰기</a>
                 </span>
               </div>
             </div>
@@ -136,7 +149,7 @@
               <dl class="has_strike">
                 <dt>정가</dt>
                 <dd>
-                  <span data-price="3070000">3,070,000</span>
+                  <span data-price="3070000">{{price}}</span>
                   원
                 </dd>
               </dl>
@@ -145,7 +158,7 @@
                 <dt>
                   특가</dt>
                 <dd>
-                  <span data-price="2191000" class="pd-total-price">2,191,000</span>
+                  <span data-price="2191000" class="pd-total-price">{{special_price}}</span>
                   원
                 </dd>
               </dl>
@@ -229,8 +242,8 @@ Kakao
   container: '#kakaotalk-sharing-btn',
   objectType: 'commerce',
   content: {
-    title: '언제 어디든, 더 쉽고 편하게 당신의 일상을 더 즐겁게, 헤이 라이언의 이야기를 들려드릴게요.',
-    imageUrl: 'http://k.kakaocdn.net/dn/dScJiJ/btqB3cwK1Hi/pv5qHVwetz5RZfPZR3C5K1/kakaolink40_original.png',
+    title: '',
+    imageUrl: `{{thumbnail}}`,
     link: {
       // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
       mobileWebUrl: 'https://developers.kakao.com',
@@ -238,26 +251,45 @@ Kakao
     }
   },
   commerce: {
-    productName: '카카오',
-    regularPrice: 10000,
+    productName: `{{ modelName }}`,
+    regularPrice: {
+      {
+        price
+      }
+    },
     discountRate: 10,
-    discountPrice: 9000
+    discountPrice: {
+      {
+        special_price
+      }
+    }
   },
   buttons: [
     {
       title: '구매하기',
       link: {
-        mobileWebUrl: 'http://localhost:8000/products/product_detail/',
-        webUrl: 'http://localhost:8000/products/product_detail/'
+        mobileWebUrl: `http://localhost:8000/products/product_detail/{{product}}`,
+        webUrl: `http://localhost:8000/products/product_detail/{{product}}`
       }
     }, {
       title: '공유하기',
       link: {
-        mobileWebUrl: 'http://localhost:8000/products/product_detail/',
-        webUrl: 'http://localhost:8000/products/product_detail/'
+        mobileWebUrl: `http://localhost:8000/products/product_detail/{{product}}`,
+        webUrl: `http://localhost:8000/products/product_detail/{{product}}`
       }
     }
   ]
 });
+</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+const attention = document.querySelector("#attention")
+attention.addEventListener("click", function (event) {
+const productId = event.target.dataset.productId;
+event.preventDefault()
+axios({method: "get", url: `/products/like/${productId}`}).then(response => {
+  console.log("11111111")
+})
+})
 </script>
 {% endblock js %}

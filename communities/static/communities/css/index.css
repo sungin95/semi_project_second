@@ -85,10 +85,12 @@
 }
 
 .article-title {
+    
     font-size: 0.8rem;
 }
 
 .articles {
+    
     border: 2px solid silver;
     border-radius: 5px;
 }

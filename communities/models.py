@@ -50,11 +50,12 @@ class Articles(models.Model):
 
 
 class Comments(models.Model):
-    Articles = models.ForeignKey("Articles", on_delete=models.CASCADE)
+    Articles = models.ForeignKey(Articles, on_delete=models.CASCADE)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True)
     like = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name="like_comments"
     )
