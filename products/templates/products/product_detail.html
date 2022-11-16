@@ -3,17 +3,17 @@
 {% load static %}
 
 {% block css %}
-  <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'products/css/owl.carousel.min.css' %}">
-  <link rel="stylesheet" href="{% static 'products/css/owl.theme.default.min.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
-  <link rel="stylesheet" href="{% static 'products/css/animate.css' %}">
-  <link rel="stylesheet" href="{% static 'products/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'products/css/product.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'products/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'products/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="{% static 'products/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'products/css/style.css' %}">
 
 {% endblock css %}
 
@@ -108,15 +108,15 @@
               <button type="button" class="btn-good on" title="선택됨">
                 {% if request.user.is_authenticated %}
                   {% if request.user in product.like_product.all %}
-                    <i id="attention" data-product-id="{{ product.pk }}" class="icon ico-large ico-goods">취소</i>
+                    <i id="attention" data-product-id="{{ product.pk }}" class="icon-heart bi bi-heart-fill" ></i>
                   {% else %}
-                    <i id="attention" data-product-id="{{ product.pk }}" class="icon ico-large ico-goods">찜하기</i>
+                    <i id="attention" data-product-id="{{ product.pk }}" class="icon-heart bi bi-heart"></i>
                   {% endif %}
                 {% else %}
                   <!-- 수정 필요 11/15-->
                   <div>
                     <a href="{% url 'accounts:login' %}">
-                      <i class="icon ico-large ico-goods">찜하기</i>
+                      <i class="icon-heart bi bi-heart"></i>
                     </a>
                   </div>
                 {% endif %}
@@ -217,6 +217,7 @@
   </div>
 </div>
 </div>
+{% comment %} 아래 자동 정렬 멈추기용 {% endcomment %}
 </div>
 
 {% endblock content %}
@@ -252,30 +253,22 @@ Kakao
   },
   commerce: {
     productName: `{{ modelName }}`,
-    regularPrice: {
-      {
-        price
-      }
-    },
+    regularPrice: {{price}},
     discountRate: 10,
-    discountPrice: {
-      {
-        special_price
-      }
-    }
+    discountPrice: {{special_price}}
   },
   buttons: [
     {
       title: '구매하기',
       link: {
-        mobileWebUrl: `http://localhost:8000/products/product_detail/{{product}}`,
-        webUrl: `http://localhost:8000/products/product_detail/{{product}}`
+        mobileWebUrl: `http://localhost:8000/products/product_detail/{{product.pk}}`,
+        webUrl: `http://localhost:8000/products/product_detail/{{product.pk}}`
       }
     }, {
       title: '공유하기',
       link: {
-        mobileWebUrl: `http://localhost:8000/products/product_detail/{{product}}`,
-        webUrl: `http://localhost:8000/products/product_detail/{{product}}`
+        mobileWebUrl: `http://localhost:8000/products/product_detail/{{product.pk}}`,
+        webUrl: `http://localhost:8000/products/product_detail/{{product.pk}}`
       }
     }
   ]
@@ -287,8 +280,15 @@ const attention = document.querySelector("#attention")
 attention.addEventListener("click", function (event) {
 const productId = event.target.dataset.productId;
 event.preventDefault()
-axios({method: "get", url: `/products/like/${productId}`}).then(response => {
-  console.log("11111111")
+axios({method: "get", url: `/products/like/${productId}`})
+.then(response => {
+    if (response.data.isLiked === true) {
+        event.target.classList.add('bi-heart-fill')
+        event.target.classList.remove('bi-heart')
+      } else {
+        event.target.classList.add('bi-heart')
+        event.target.classList.remove('bi-heart-fill')
+      }
 })
 })
 </script>
