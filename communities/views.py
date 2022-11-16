@@ -21,6 +21,66 @@ def index(request):
     return render(request, "communities/index.html", context)
 
 
+def index_jab(request):
+    k = Articles.objects.filter(category="잡담").order_by("-id")
+    page = request.GET.get("page", "1")
+    paginator = Paginator(k, 5)
+    page_obj = paginator.get_page(page)
+    context = {
+        "v": k,
+        "page_obj": page_obj,
+    }
+    return render(request, "communities/index.html", context)
+
+
+def index_question(request):
+    k = Articles.objects.filter(category="질문").order_by("-id")
+    page = request.GET.get("page", "1")
+    paginator = Paginator(k, 5)
+    page_obj = paginator.get_page(page)
+    context = {
+        "v": k,
+        "page_obj": page_obj,
+    }
+    return render(request, "communities/index.html", context)
+
+
+def index_boast(request):
+    k = Articles.objects.filter(category="자랑").order_by("-id")
+    page = request.GET.get("page", "1")
+    paginator = Paginator(k, 5)
+    page_obj = paginator.get_page(page)
+    context = {
+        "v": k,
+        "page_obj": page_obj,
+    }
+    return render(request, "communities/index.html", context)
+
+
+def index_consult(request):
+    k = Articles.objects.filter(category="고민/상담").order_by("-id")
+    page = request.GET.get("page", "1")
+    paginator = Paginator(k, 5)
+    page_obj = paginator.get_page(page)
+    context = {
+        "v": k,
+        "page_obj": page_obj,
+    }
+    return render(request, "communities/index.html", context)
+
+
+def index_hello(request):
+    k = Articles.objects.filter(category="인사").order_by("-id")
+    page = request.GET.get("page", "1")
+    paginator = Paginator(k, 5)
+    page_obj = paginator.get_page(page)
+    context = {
+        "v": k,
+        "page_obj": page_obj,
+    }
+    return render(request, "communities/index.html", context)
+
+
 @login_required
 def article_create(request):
     if request.method == "POST":
