@@ -1,0 +1,100 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap");
+
+/* 프로필 사진 */
+.title {
+    font-family: "Noto Sans KR", sans-serif;
+    margin: 4rem auto 2rem;
+    width: 60%;
+}
+
+
+/* test */
+.profile {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    width: 60%;
+}
+
+/* 폼 간격 조절 */
+.form {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+}
+
+#id_image {
+    background-color: red;
+    border-radius: 20rem;
+    height: 7rem;
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 53%;
+    transform: translate(-50%, -40%);
+    width: 10rem;
+    z-index: 5;
+}
+
+.upload_icon {
+    width: 5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+
+/* 등록 버튼 위치 수정 */
+.buttons {
+    position: relative;
+    transform: translateY(400%);
+    display: flex;
+    margin-top: 210px;
+    justify-content: center;
+}
+
+/* 제출 버튼 조절 */
+.submit {
+    background-color: #c187fb;
+    border: none;
+    border-radius: 2rem;
+    color: rgb(254, 254, 254);
+    padding: 0.5rem 1rem;
+}
+
+/* 제출 버튼 색 변경 */
+.submit:hover {
+    background-color: #d399fd;
+}
+
+/* 뒤로가기 버튼 */
+.back {
+    background-color: none;
+    border: 0 #e6c9fb;
+    border-radius: 2rem;
+    margin-left: 1.7rem;
+    padding: 0.7rem 1rem;
+}
+
+.back:hover {
+    background-color: hsl(274, 94%, 86%);
+    border: none;
+    border-radius: 2rem;
+    color: rgb(255, 251, 251);
+    padding: 0.7rem 1rem;
+}
+
+#image-clear_id {
+    opacity: 0;
+}
+
+#profile-form label {
+    opacity: 0;
+}
+#profile-form a {
+    opacity: 0;
+}

@@ -21,28 +21,23 @@
       <div class="detailed_info">
         <!-- 조회수 -->
           <div class="people_views">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-            </svg>
+            <i class="bi bi-eye-fill"></i>
             <span class="spen">{{ article.hits }}</span>
           <p class="">┃</p>
       
           <!-- 조회수 -->
           <div class="people_views">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-              <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-            </svg>
+            <i class="bi bi-pencil-fill"></i>
             <span class="spen">{{ comments|length }}</span>
           </div>
           <p class="">┃</p>
           <!-- 추천 -->
           
-          <div class="bookmark">
+          <div class="likeBtn">
             {% if request.user in article.like.all %}
-              <i id="like-btn" data-restaurant-id="{{ article.pk }}" class="bi bi-star-fill"></i>
+              <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-bookmarks-fill"></i>
             {% else %}
-              <i id="like-btn" data-restaurant-id="{{ article.pk }}" class="bi bi-star"></i>
+              <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-bookmarks"></i>
             {% endif %}
             <span id="like-count">{{ article.like.count }}</span>
           </div>
@@ -106,7 +101,7 @@
               <div id="comments">
                 {% for comment in comments %}
                 {% if comment.parent_id == null %}
-                  <div class="my-3" style="display: inline-block">
+                  <div class="my-1" style="display: inline-block">
                     {% if comment.user.image %}
                       <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
                     {% else %}
@@ -121,22 +116,22 @@
                   <div class="mx-5 child-comments">
                     {% for sub_comment in comments %}
                       {% if comment.id == sub_comment.parent_id %}
-                        <div class="" style="display: inline-block">
+                        <div class="rounded-pill">
                           {% if sub_comment.user.image %}
                             <img src="{{ sub_comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
                           {% else %}
                             <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
                           {% endif %}
                         </div>
-                        <p class="my-3" style="display: inline-block">
+                        <p class="my-2" style="display: inline-block ">
                           {{ sub_comment.user.username }}
                           |
                           {{ sub_comment.content }}</p>
-                        <div class="d-flex">
+                        <div class="" style="display: inline-block">
                           {% if request.user == sub_comment.user %}
                             <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk sub_comment.pk %}" method="POST">
                               {% csrf_token %}
-                              <button type="submit" class="">삭제</button>
+                              <button type="submit" class="btn btn-dange">삭제</button>
                             </form>
                           {% endif %}
                         </div>
@@ -165,8 +160,8 @@
                       {% if request.user.is_authenticated %}
                         <form class="d-flex" id="comment-form" action="{% url 'communities:sub_comment_create' article.pk comment.pk %}" method="POST">
                         {% csrf_token %}  
-                          <input name="content" placeholder="댓글을 작성해주세요" type="text" required="" class="tradecomment-create" value="">
-                          <input class="btn btn-dark tradecomment-input" type="submit" value="제출">
+                          <input name="content" placeholder="댓글을 작성해주세요" type="text" required="comment_form" class="tradecomment-create" value="">
+                          <input class="comment_form btn btn-dark" type="submit" value="제출">
                         </form>
                       {% endif %}
                     </div>
@@ -316,24 +311,29 @@
       }).then(response => {
         const comments = document.querySelector("#comments")
             comments.insertAdjacentHTML('beforeend',`
-            <div class="rounded-pill">
+            <div class="my-1" style="display: inline-block">
               {% if comment.user.image %}
                 <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
               {% else %}
                 <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
               {% endif %}
             </div>
-            <p>
-              ${response.data.userName}
+            <span class="user-c-name">
+              ${response.data.userName}</span>
               |
-              ${response.data.content}</p>
-            
-              <form class="comment-delete">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">삭제</button>
-              </form>
-            
-            <hr>
+            <span>${response.data.content}</spen>
+              <br>
+              <div class="d-flex">
+                <p>
+                  <button class="sub_comment-create" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{comment.id}}" aria-expanded="false" aria-controls="collapseExample">
+                    대댓글 작성
+                  </button>
+                </p>
+                  <form class="comment-delete">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger">삭제</button>
+                  </form>
+            </div>
             `)
             commentForm.reset()
       })
@@ -341,18 +341,18 @@
 </script>
 <script>
   // 북마크 비동기
-const likeBtn = document.querySelector("#like-btn");
-likeBtn.addEventListener("click", function (e) {
-    axios({ method: "get", url: `/communities/${e.target.dataset.articleId}/like/`}).then((art) => {
-        if (art.data.isLiked === true) {
-            e.target.classList.add("bi-star-fill");
-            e.target.classList.remove("bi-star");
-        } else {
-            e.target.classList.add("bi-star");
-            e.target.classList.remove("bi-star-fill");
-        }
-        const likeCount = document.querySelector("#like-count");
-        likeCount.innerText = art.data.likeCount;
+  const likeBtn = document.querySelector("#like-btn");
+  likeBtn.addEventListener("click", function (e) {
+    axios({ method: "get", url: `/communities/${e.target.dataset.articleId}/like` }).then((res) => {
+      if (res.data.isLiked === true) {
+        e.target.classList.add("bi-bookmarks-fill");
+        e.target.classList.remove("bi-bookmarks");
+      } else {
+        e.target.classList.add("bi-bookmarks");
+        e.target.classList.remove("bi-bookmarks-fill");
+      }
+      const likeCount = document.querySelector("#like-count");
+      likeCount.innerText = res.data.likeCount;
     });
 });
 </script>
