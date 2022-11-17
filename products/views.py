@@ -5,19 +5,28 @@ import os
 from .models import Products
 from .forms import ReviewForm
 from django.http import JsonResponse
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
     products = Products.objects.all()
+    products_high = Products.objects.all().order_by('가격')
+    products_low = Products.objects.all().order_by('-가격')
     category = request.GET.get("category")
     if category:
         products_category = Products.objects.filter(제조회사__contains=category)
     else:
         products_category = products
+    page = request.GET.get("page", "1")
+    paginator = Paginator(products_category, 6)
+    page_obj = paginator.get_page(page)
     context = {
         "products": products,
         "category": category,
+        "products_high": products_high,
+        "products_low": products_low,
         "products_category": products_category,
+        "page_obj": page_obj,
     }
     return render(request, "products/index.html", context)
 

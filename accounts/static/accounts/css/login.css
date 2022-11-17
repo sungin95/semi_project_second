@@ -6,8 +6,6 @@
     font-family: "Poppins", sans-serif;
 }
 
-
-
 /* section */
 section {
     display: flex;
@@ -185,19 +183,17 @@ h2 {
 }
 
 .forget a {
-
-  color:rgb(50, 79, 89);
-  font-weight:20px;
-
+    color: rgb(50, 79, 89);
+    font-weight: 20px;
 }
 
 .card-body {
-    background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #F0F8FF 65%);
-  }
-  
+    background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #f0f8ff 65%);
+}
+
 .navbar {
-    background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #F0F8FF 75%);
-  }
+    background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #f0f8ff 75%);
+}
 
 .bi-google {
     background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
