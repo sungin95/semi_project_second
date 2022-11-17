@@ -48,15 +48,15 @@
       <div class="today-best-ten">
         <div class="today-best-left">
           <div class="today">
-            <span class="best-today" >01</span>NVIDIA vs AMD 최근 상황</div>
+            <span class="best-today">01</span>NVIDIA vs AMD 최근 상황</div>
           <div class="today">
-            <span class="best-today" >02</span>우주상향 대학 1차 붙었습니다..</div>
+            <span class="best-today">02</span>우주상향 대학 1차 붙었습니다..</div>
           <div class="today"> 
-            <span class="best-today" >03</span>어제 밥먹다가 플스가 생긴 사람입니다.</div>
+            <span class="best-today">03</span>어제 밥먹다가 플스가 생긴 사람입니다.</div>
           <div class="today">
-            <span class="best-today" >04</span>요즘 군대에서 모을수 있는 돈 액수</div>
+            <span class="best-today">04</span>요즘 군대에서 모을수 있는 돈 액수</div>
           <div class="today">
-            <span class="best-today" >05</span>알리발 휴대용 모니터가 도착했습니다.</div>
+            <span class="best-today">05</span>알리발 휴대용 모니터가 도착했습니다.</div>
         </div>
         <div class="today-best-right">
           <div class="today">
@@ -73,19 +73,35 @@
       </div>
     </div>
   </div>
-  <div class>
-    <a class="btn btn-secondary mt-3 mx-3" method="POST" href="{% url 'communities:article_create' %}">글쓰기</a>
+  <div class="writing">
+    <a class="recomm" method="POST" href="{% url 'communities:article_create' %}">글쓰기</a>
+        <!-- 게시글 정렬 -->
+        <div class="dropdown">
+          <button class="recomm dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            추천순
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <a class="dropdown-item" href="#">추천순</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">최신순</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">인기순</a>
+            </li>
+          </ul>
+        </div>
   </div>
   <!--탭 버튼-->
-
   <div class="btn_group">
-    <button class="btn_btn">베스트</button>
-    <button class="btn_btn">전체</button>
-    <button class="btn_btn">잡담</button>
-    <button class="btn_btn">질문</button>
-    <button class="btn_btn">자랑</button>
-    <button class="btn_btn">고민/상담</button>
-    <button class="btn_btn">인사</button>
+    <a class="btn_btn" href="{% url 'communities:index' %}">베스트</a>
+    <a class="btn_btn" href="{% url 'communities:index' %}">전체</a>
+    <a class="btn_btn" href="{% url 'communities:index_jab' %}">잡담</a>
+    <a class="btn_btn" href="{% url 'communities:index_question' %}">질문</a>
+    <a class="btn_btn" href="{% url 'communities:index_boast' %}">자랑</a>
+    <a class="btn_btn" href="{% url 'communities:index_consult' %}">고민/상담</a>
+    <a class="btn_btn" href="{% url 'communities:index_hello' %}">인사</a>
   </div>
 
   <!--글 목록-->
@@ -103,14 +119,14 @@
 
     <!-- 게시글들 -->
     <div class="articles py-2">
-      {% for article in articles %}
+      {% for article in question_list %}
       <!-- 게시글 하나씩 -->
       <a class="detail-article" href="{% url 'communities:detail' article.pk %}" style="text-decoration: none; color: #000000 !important;">
         <div class="row justify-content-center text-center">
           <div class="col-1">
-            <span class="badge bg-secondary mx-2 p-1">0</span></div>
+            <span class="recomment">0</span></div>
           <div class="col-1">
-            <span class="badge bg-secondary mx-2 p-1">{{ article.category }}</span></div>
+            <span class="recomment">{{ article.category }}</span></div>
           <div class="col-4">
             {{ article.title }}</div>
           <div class="col-2">{{ article.user.username }}</div>
@@ -127,33 +143,9 @@
   <!--페이지네이션 + 게시글 정렬-->
   <div class="container">
   <div class="pgnation-sort">
-    
-    <!-- 게시글 정렬 -->
-    <div class="dropdown">
-      <button class="recomm dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        추천순
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li>
-          <a class="dropdown-item" href="#">추천순</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">최신순</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">인기순</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">높은 가격순</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">낮은 가격순</a>
-        </li>
-      </ul>
-    </div>
       <!-- 페이징처리 시작 -->
-      <div class="m-3">
-        <ul class="pagination justify-content-center">
+      <div class="">
+        <ul class="pagination">
           <!-- 이전페이지 -->
           {% if question_list.has_previous %}
             <li class="page-item">
@@ -168,11 +160,11 @@
           {% for page_number in question_list.paginator.page_range %}
             {% if page_number == question_list.number %}
               <li class="page-item" aria-current="page">
-                <a class="page_hi page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
               </li>
             {% else %}
               <li class="page-item">
-                <a class="page-link text-info" href="?page={{ page_number }}">{{ page_number }}</a>
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
               </li>
             {% endif %}
           {% endfor %}
@@ -190,12 +182,12 @@
       </div>
       <!-- 페이징처리 끝 -->
   <!-- 간격용 -->
-  <div style="opacity: 0;">hellohellohellohell</div>
+  <!-- <div style="opacity: 0;">hellohellohellohell</div> -->
 </div>
 </div>
 
   <!-- 게시글 검색창 -->
-  <div class="d-flex justify-content-center">
+  <div class="search_i">
       <form action="#" method="GET" class="d-flex">
         {% csrf_token %}
         <input class="form-control rounded-2 text-left btn-sm  mr-5" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="q">

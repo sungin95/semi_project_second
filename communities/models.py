@@ -11,7 +11,7 @@ from django.template.defaultfilters import slugify
 category_CHOICES = (
     ("잡담", "잡담"),
     ("질문", "질문"),
-    ("축하", "축하"),
+    ("자랑", "자랑"),
     ("고민/상담", "고민/상담"),
     ("인사", "인사"),
 )
