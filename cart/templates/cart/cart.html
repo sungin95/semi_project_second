@@ -67,7 +67,7 @@
           <!--가격-->
           <div class="cart-td cart-price">
             <span class="price-small">
-              {{ cart_itme_ }}
+              {{ cart_item.product.ten_price | intcomma }}
             </span>
             <span class="price-big" style="padding-right: 0">
               {{ cart_item.product.가격 | intcomma }}

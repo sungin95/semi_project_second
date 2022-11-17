@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
+{% load humanize %}
 {% load static %}
 
 {% block css %}
@@ -133,7 +134,7 @@
       <h3>베스트랭킹</h3>
       <div class="best-ten">
         {% for product_10 in products_10 %}
-          <a href="">
+          <a href="{% url 'products:detail' product_10.pk %}">
             {{ product_10.모델명 }}
           </a>
         {% endfor %}
@@ -151,7 +152,10 @@
               <h5 class="card-title fs-6">{{ product_10.모델명 }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
               <p class="card-text">
-                <div class="sale-price">{{ product_10.가격 }}</div>
+                <div class="sale-price">기준가 :
+                  {{ product_10.ten_price | intcomma }}</div>
+                <div class="sale-price">할인가 :
+                  {{ product_10.가격 | intcomma }}</div>
               </p>
               <a href="#" class="btn-color">구매하기</a>
             </div>
