@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
-{% block css %}{% endblock css %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'accounts/css/update.css' %}">
+{% endblock css %}
 
 {% block content %}
-  <h1>update</h1>
-  <form action="" method="POST">
+<h2 class="title">Update</h2>
+<div class="form">
+  <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {% bootstrap_form form %}
-    <input type="submit" value="제출"/>
-    <button type="button" class="btn btn-outline-dark" onclick="location.href='{% url 'accounts:index' %}' ">돌아가기</button>
+    <input class="submit" type="submit" value="수정"/>
+    <button type="button" class="back" onclick="location.href='{% url 'accounts:detail' user.pk %}' ">돌아가기</button>
   </form>
+</div>
 {% endblock content %}

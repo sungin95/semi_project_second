@@ -1,0 +1,168 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+
+/* user 님의 회원정보 */
+.title {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 4rem auto 2rem;
+    width: 60%;
+}
+
+
+/* 이름에 색 입힘 */
+.user {
+    color: #c797f8;
+}
+
+
+/* 상단 정보 */
+.infos {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 60%;
+}
+
+
+/* 이름, 이메일 */
+.small_info {
+    color: #666666;
+    margin-top: 0.3rem;
+    margin-bottom: -1rem;
+}
+
+.name {
+    color: black;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+
+/* 설정 및 수정 버튼 */
+.user_buttons button {
+    border: none;
+    border-radius: 1.2rem;
+    padding: 0.5rem 1rem;
+    margin-left: 0.2rem;
+}
+
+.user_buttons button:hover {
+    background-color: #bfbfbf;
+    border: none;
+}
+
+.user_buttons a {
+    color: black;
+    text-decoration: none;
+}
+
+.user_buttons a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* 중간 선*/
+.hr {
+    margin: 1.8rem auto 2.3rem;
+    width: 60%;
+}
+
+
+/* 북마크 제목 */
+.bookmarked {
+    margin: auto;
+    width: 60%;
+}
+
+.bookmarked_p {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+
+/* 북마크 아래 설명 */
+.explanation {
+    color: #969696;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+
+/* 음식점명 a 효과 삭제 */
+.table a {
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.table a:hover {
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+/* 작성한 댓글 제목 */
+.comments {
+    margin: auto;
+    width: 60%;
+}
+
+.comments_p {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+/* 작성한 대댓글 제목 */
+.review {
+    margin: auto;
+    width: 60%;
+}
+
+.review_p {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+/* 북마크 제목 */
+.restaurant {
+    margin: auto;
+    width: 60%;
+}
+
+.restaurant_p {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+
+/* 북마크 아래 설명 */
+.explanation {
+    color: #969696;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+
+/* 음식점명 a 효과 삭제 */
+.table a {
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.table a:hover {
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+}
