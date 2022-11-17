@@ -176,18 +176,17 @@
     <div class="card hit-product">
       <div class="card-body">
         <div>
-          <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+          <img src="{% static 'labs/img/키보드.jpeg'%}" alt="" class="img-fluid">
         </div>
-        <h5 class="card-title">제품명</h5>
-        <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+        <h5 class="card-title text-center">Mistel 키보드</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center">MD770 RGB</h6>
         <p class="card-text">
-          <div class="standard-price">
-            <span>기준가</span>기준가격
+          <div class="standard-price text-center">
+            <span class="text-center">최저가</span><span style="margin-left: 5px; color: blue;">213,990</span>
           </div>
-          <div class="sale-price">
-            <span>할인가</span>할인가격</div>
         </p>
-        <a href="#" class="btn-color">구매하기</a>
+        <hr>
+        <a href="#" class="btn-color d-flex align-items-center">구매하기</a>
       </div>
     </div>
     <!-- 카드1 한장 끝 -->
@@ -195,7 +194,7 @@
     <div class="card hit-product">
       <div class="card-body">
         <div>
-          <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+          <img src="{% static '/labs/img/키보드.jpeg'%}" alt="" class="img-fluid">
         </div>
         <h5 class="card-title">제품명</h5>
         <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
@@ -326,10 +325,6 @@
     <!-- 카드8 한장 끝 -->
   </div>
 
-  <!-- 더보기 버튼 -->
-  <div class="d-flex justify-content-center">
-    <button class="btn-color px-3 py-2">더보기</button>
-  </div>
 {% endblock content %}
 
 <!-- 자바스크립트 -->
