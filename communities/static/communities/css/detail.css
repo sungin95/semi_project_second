@@ -2,7 +2,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap");
 
 .r_info {
-  margin-top: 3rem;
+  margin: 16px 0 29px;
+  padding-bottom: 11px;
+}
+
+.head{
+  float: left;
+  color: #9a9a9a;
+  font-size: smaller;
+
+}
+
+.header_h {
+  padding-top: 10px;
+  color: cornflowerblue;
+  font-weight: bolder;
+}
+
+.spen {
+  margin-left: 0.7rem;
+  size: 1rem;
 }
 
 .r_header {
@@ -12,43 +31,35 @@
   padding-left: 0;
 }
 
-/* 음식점 이름과 평점 */
-.r_header h2 {
-  font-family: "Noto Sans KR", sans-serif;
-  margin: 1rem 0 0;
-}
-
 /* 평점에 색 */
 .grade {
-  color: #010101;
-  margin-left: 0.2rem;
+  cursor: default;
+  
 }
 
 .detailed_info {
-  display: flex;
-  flex-flow: row;
-  margin: 4rem 0 0;
+  padding-right: 7px;
+  float: right;
+  color: #666666;
 }
 
-.detailed_info img {
-  height: 1.2rem;
-  margin-left: 1.6rem;
-  width: 1.2rem;
-}
 
 .division {
   color: #666666;
-  margin: 0 0.5rem;
+  margin: 0.05rem;
   opacity: 30;
 }
 
 .people_views {
   display: flex;
   flex-flow: row;
+  cursor: default;
+  font-size: small;
 }
 
 .people_views img {
-  margin: 0.2rem;
+  margin: 0.05rem;
+  width: 1rem;
 }
 
 .review_create {
@@ -203,6 +214,8 @@ li {
   
 }
 
+
+
 .user-name {
   align-items: center;
   display: flex;
@@ -234,17 +247,20 @@ li {
 .comment-delete button {
   background-color: transparent;
   border: none;
-  color: #ffa704;
+  color: #f82c03;
   font-size: 0.9rem;
   margin-right: -0.9rem;
+  display: flex;
+  justify-content: end;
 }
 
 .comment-delete button:hover {
   background-color: transparent;
   border: none;
-  color: #ffa704;
+  color: #ff3604;
   font-size: 0.9rem;
   margin-right: -0.9rem;
+  
 }
 
 .rate {
@@ -312,3 +328,53 @@ li {
 .hidden {
   display: none;
 }
+
+.hr_h {
+  border: 0;
+  height: 3px;
+  background: #3877f5 ;
+}
+
+.btn_modify1 {
+  background-color:  #fff;
+  border-radius: 0.3rem;
+  border: 1px solid  #9cb7fc;
+  padding: 0.06rem 0.08rem;
+  color: #9cb7fc;
+  display: inline-block;
+  text-decoration-line: none;
+}
+
+.btn_modify2 {
+  background-color:  #fff;
+  border-radius: 0.3rem;
+  border: 1px solid  #fc9c9c;
+  padding: 0.06rem 0.08rem;
+  color: #fc9c9c;
+  display: inline-block;
+  text-decoration-line: none;
+}
+
+.btn_modify3 {
+  background-color:  #fff;
+  border-radius: 0.3rem;
+  border: 1px solid  gray;
+  padding: 0.06rem 0.08rem;
+  color: gray;
+  display: inline-block;
+  text-decoration-line: none; 
+}
+
+.tradecomment-create:focus {
+  outline: none;
+  color: rgb(0, 0, 0);
+}
+
+.tradecomment-create {
+  border: 0px;
+  background-color: transparent;
+  width: 1070px;
+  color: aliceblue;
+  height: 50px;
+}
+

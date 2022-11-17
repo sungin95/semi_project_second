@@ -27,6 +27,7 @@ class Articles(models.Model):
         settings.AUTH_USER_MODEL, related_name="like_articles"
     )
     category = models.CharField(max_length=50, choices=category_CHOICES)
+    hits = models.PositiveIntegerField(default=0, verbose_name="조회수")
     #
     # object 를 Post 의 title 문자열로 반환
     def __str__(self):
