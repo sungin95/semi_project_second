@@ -50,6 +50,38 @@ class Articles(models.Model):
             return False
 
 
+def get_image_filename(instance, filename):
+    # 해당 Post 모델의 title 을 가져옴
+    title = instance.articles.title
+    # slug - 의미있는 url 사용을 위한 필드.
+    # slugfy 를 사용해서 title을 slug 시켜줌.
+    slug = slugify(title)
+    # 제목 - 슬러그된 파일이름 형태
+    return "post_images/%s-%s" % (slug, filename)
+
+
+# default, upload_to 먼지 보기
+class ArticlesImages(models.Model):
+    # default = None 으로 이미지를 등록하지 않을 때는 db에 저장되지 않음.
+    articles = models.ForeignKey(
+        Articles, default=None, on_delete=models.CASCADE, related_name="articles_image"
+    )
+    # get_image_filename method 경로 사용
+    # 문자열로 경로를 지정할 경우, media/문자열 지정 경로로 저장되며, 중간 디렉토리 경로를 지정할 수 있고,
+    # 메소드(함수)로 지정할 경우, 중간 디렉토리 경로명뿐만 아니라 파일명까지 지정 가능
+    image = models.ImageField(upload_to=get_image_filename)
+    # admin 에서 모델이름
+    class Meta:
+        # 단수
+        verbose_name = "Image"
+        # 복수
+        verbose_name_plural = "Images"
+
+    # 이것도 역시 post title 로 반환
+    def __str__(self):
+        return str(self.articles)
+
+
 class Comments(models.Model):
     Articles = models.ForeignKey(Articles, on_delete=models.CASCADE)
     content = models.TextField()
