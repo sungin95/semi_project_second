@@ -6,12 +6,25 @@ html {
     scroll-behavior: smooth;
 }
 
+.container form {
+    height: 60px;
+}
+
+.navbar-img {
+    height: 90%;
+}
+
+#navbar {
+    transition: all 1s linear;
+}
+
 .a_menu {
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-style: none;
     background: transparent;
+    height: 100%;
 }
 
 .category-value {
@@ -19,7 +32,6 @@ html {
 }
 
 .nav-item a {
-    color: white;
 }
 
 .black-bg {
@@ -89,8 +101,6 @@ html {
     position: absolute;
     right: 0%;
     z-index: 9;
-    width: 12rem;
-    height: 12rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }

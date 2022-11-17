@@ -18,7 +18,7 @@
 
   <body>
     <!-- 네비게이션바 -->
-    <nav style="background-color: #a4c3fa;" class="navbar navbar-expand-lg sticky-top" id="nabvar">
+    <nav style="background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #f0f8ff 75%);" class="navbar navbar-expand-lg sticky-top navbar-color" id="navbar">
       <div class="container">
         <a class="navbar-brand" href="{% url 'labs:main' %}">
           <img src="{% static 'labs/img/mainlogo.png' %}" style="width: 44px; height:40px;" alt="">
@@ -114,66 +114,66 @@
     <div class="black-bg">
       <div class="white-bg" id="listGroup">
         <div class="container">
-          <div>
+          {% comment %} <div>
             <a href="{% url 'products:index' %}" class="navbar-product">전체</a>
-          </div>
+          </div> {% endcomment %}
           <form action="{% url 'products:index' %}">
             <button type="submit" class="a_menu">
-              <p>삼성 (Samsung)</p>
+              <div class="navbar-img"><img src="{% static 'img/samsung.png' %}" alt="" width="150px"></div>
               <input type="text" value="삼성" class="category-value" name="category">
             </button>
           </form>
           <form action="{% url 'products:index' %}">
             <button type="submit" class="a_menu">
-              <p>엘지 (LG)</p>
+              <div class="navbar-img"><img src="{% static 'img/lg.png' %}" alt="" width="90px"></div>
               <input type="text" value="LG전자" class="category-value" name="category">
             </button>
           </form>
           <form action="{% url 'products:index' %}">
             <button type="submit" class="a_menu">
-              <p>애플 (Apple)</p>
+              <div class="navbar-img"><img src="{% static 'img/apple.png' %}" alt="" width="108px"></div>
               <input type="text" value="APPLE" class="category-value" name="category">
             </button>
           </form>
           <form action="{% url 'products:index' %}">
             <button type="submit" class="a_menu">
-              <p>에이수스 (Asus)</p>
+              <div class="navbar-img"><img src="{% static 'img/asus.png' %}" alt="" width="100px"></div>
               <input type="text" value="ASUS" class="category-value" name="category">
             </button>
           </form>
           <form action="{% url 'products:index' %}">
             <button type="submit" class="a_menu">
-              <p>레노버 (Lenovo)</p>
+              <div class="navbar-img"><img src="{% static 'img/lenovo.png' %}" alt="" width="150px"></div>
               <input type="text" value="레노버" class="category-value" name="category">
             </button>
           </form>
           <form action="{% url 'products:index' %}">
             <button type="submit" class="a_menu">
-              <p>엠에스아이 (Msi)</p>
+              <div class="navbar-img"><img src="{% static 'img/msi.png' %}" alt="" width="100px"></div>
               <input type="text" value="MSI" class="category-value" name="category">
             </button>
           </form>
           <form action="{% url 'products:index' %}">
             <button type="submit" class="a_menu">
-              <p>델 (Dell)</p>
-              <input type="text" value="DELL" class="category-value" name="category">
+              <div class="navbar-img"><img src="{% static 'img/dell.png' %}" alt="" width="100px"></div>
+              <input type=" text" value="DELL" class="category-value" name="category">
             </button>
           </form>
           <form action="{% url 'products:index' %}">
             <button type="submit" class="a_menu">
-              <p>한성 (Hansung)</p>
+              <div class="navbar-img"><img src="{% static 'img/hansung.png' %}" alt="" width="160px"></div>
               <input type="text" value="한성" class="category-value" name="category">
             </button>
           </form>
           <form action="{% url 'products:index' %}">
             <button type="submit" class="a_menu">
-              <p>기가바이트 (GigaByte)</p>
+              <div class="navbar-img"><img src="{% static 'img/gigabyte.png' %}" alt="" width="140px"></div>
               <input type="text" value="GIGABYTE" class="category-value" name="category">
             </button>
           </form>
           <form action="{% url 'products:index' %}">
             <button type="submit" class="a_menu">
-              <p>에이치피 (HP)</p>
+              <div class="navbar-img"><img src="{% static 'img/hp.png' %}" alt="" width="50px" height="50px"></div>
               <input type="text" value="HP" class="category-value" name="category">
             </button>
           </form>
@@ -225,7 +225,7 @@
     <script>
       const navbarProductClick = document.querySelector('#navbarProduct')
       const listGroup = document.querySelector("#listGroup")
-      const nabvar = document.querySelector("#nabvar")
+      const navbar = document.querySelector("#navbar")
       const blackBg = document.querySelector('.black-bg')
       const profileBlackBgLogin = document.querySelector('.profile-black-bg-login')
       const profileBlackBgNone = document.querySelector('.profile-black-bg-none')
@@ -243,17 +243,14 @@
           .classList
           .remove('show-modal')
       })
-      nabvar.addEventListener('mouseover', () => {
-        document
-          .querySelector('.navbar')
-          .style
-          .backgroundColor = '#CCE1FF'
+      navbar.addEventListener('mouseover', () => {
+        navbar.style.backgroundImage = 'linear-gradient(to bottom, rgb(253, 253, 252) 25%, #f0f8ff 75%)'
+        navbar.style.backgroundColor = ''
+        navbar.style.transition = 'all 1s'
       })
       listGroup.addEventListener('mouseleave', () => {
-        document
-          .querySelector('.navbar')
-          .style
-          .backgroundColor = 'transparent'
+        navbar.style.backgroundImage = 'none'
+        navbar.style.transition = 'all 1s'
       })
 
       if (login.children[0].id == 'loginNone') {
@@ -306,33 +303,10 @@
       const searchBtn = document.querySelector('#search-btn')
 
       window.addEventListener('scroll', () => {
-        var 스크롤양 = document
-          .querySelector('html')
-          .scrollTop;
-        var 실제높이 = document
-          .querySelector('html')
-          .scrollHeight;
-        var 높이 = document
-          .querySelector('html')
-          .clientHeight;
-        if (window.scrollY > 150) {
-          document
-            .querySelector('.navbar')
-            .style
-            .backgroundColor = 'transparent'
-          document
-            .querySelector('.navbar')
-            .style
-            .transition = 'all 1s'
+        if (window.scrollY > 200) {
+          navbar.style.backgroundImage = 'none'
         } else {
-          document
-            .querySelector('.navbar')
-            .style
-            .backgroundColor = '#CCE1FF'
-          document
-            .querySelector('.navbar')
-            .style
-            .transition = 'all 1s'
+          navbar.style.backgroundImage = 'linear-gradient(to bottom, rgb(253, 253, 252) 25%, #f0f8ff 75%)'
         }
       })
     </script>
