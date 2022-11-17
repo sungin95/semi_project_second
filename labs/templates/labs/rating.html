@@ -5,8 +5,8 @@
   <link rel="stylesheet" href="{% static 'labs/css/rating.css' %}">
 {% endblock css %}
 {% block content %}
-  <div class="info">
-    <h2>회원 등급 안내</h2>
+  <div class="info conbox">
+    <h2 class="mem_rate">회원 등급 안내</h2>
     <div>
       <p>회원 등급은 구매, 친구 추천 횟수, 커뮤니티 활동 등 인텔리랩스 활동지수를 바탕으로 구분됩니다.</p>
       <p>등급이 올라갈수록 더해지는 혜택을 확인해 보세요!</p>
@@ -15,19 +15,29 @@
   </div>
   <div class="info-rating">
     <ul class="">
-      <a href="#" class="btn">i3</a>
-      <a href="#" class="btn">i5</a>
-      <a href="#" class="btn">i7</a>
+      <button type="button" class="btn custom btn-lg active" role="button" data-bs-toggle="button" aria-pressed="true" id="test1">
+        <span>i3</span>
+      </button>
+      <button class="btn custom btn-lg" id="test2">
+        <span>i5</span>
+      </button>
+      <button class="btn custom btn-lg" id="test3" onclick="myFunction()">
+        <span>i7</span>
+      </button>
     </ul>
   </div>
-  <div class="infomation">
+
+
+
+  <!--i3-->
+  <div class="infomation" id="first">
     <div class="pc-ver">
       <h1>"1도 몰라도 괜찮아요.
         <br>
         우리, 지금부터 알아가요!"
       </div>
-      <div class="member-box">
-        <div class="member-benefit">
+      <div class="member-box" style="margin-right: 20px;">
+        <div class="member-benefit mt-3">
           <h3>혜택</h3>
           <h5>제품 교육할인가에 구매</h5>
           <h5>커뮤니티 및 이벤트 참여 권한 (일부 한정)</h5>
@@ -35,12 +45,93 @@
         </div>
       </div>
       <div class="member-box">
-        <div class="member-benefit">
+        <div class="member-benefit mt-3">
           <h3>등급 선정 기준</h3>
           <div class="member-cont">
-            <img src="{% static 'labs/img/animated.png' %}" style="width: 50px " alt="...">
-            <h5>간단해요! 인텔리랩스 회원 가입만 하면 1성 자격 자동 부여!</h5>
+            <img src="{% static 'labs/img/animated.png' %}" style="width: 50px" alt="...">
+            <h5 style="margin-top:10px;">간단해요! 인텔리랩스 회원 가입만 하면 1성 자격 자동 부여!</h5>
           </div>
         </div>
       </div>
-    {% endblock content %}
+  </div>
+
+
+<!--i5-->
+  <div class="infomation" id="second">
+    <div class="pc-ver">
+      <h1>"2제 좀 인텔리랩스를 아시는군요?"
+      </div>
+      <div class="member-box" style="width:550px; margin-right: 20px;">
+        <div class="member-benefit mt-3">
+          <div style="display:flex; justify-content:space-between; align-items:center; text-align:left;">
+          <h3>혜택</h3>
+          <p style="position:relative; width:40%; font-size: 22px; line-height: 90px; text-align: left;">1성 등급 혜택</p>
+          <ul class="gc_lv_benefit">
+            <li style="font-size:22px;">인텔리랩스 데이 럭키드로우 응모 권한</li>
+            <li style="font-size:22px;">제휴 브랜드 할인/이용 쿠폰 제공</li>
+          </ul>
+        </div>
+        </div>
+      </div>
+      <div class="member-box">
+        <!-- <div class="member-benefit mt-3"> -->
+          <h3>등급 선정 기준</h3>
+            <div class="gc_lv_cont">
+              <ul class="gc_lv_standard p-0">
+                <li style="margin-bottom:30px; padding-bottom: 10px;">구매 1회 이상</li>
+                <li>친구 추천 3회 이상</li>
+                <li>커뮤니티 게시글 2회 이상 3회 이상</li>
+              </ul>
+            </div>
+        </div>
+        <p style="font-size: 16px; color: #8B8B8B; margin-top: 10px; text-align: end; padding-right: 80px;">* 회원 등급은 자격 달성 후 1년 간 유지됩니다.</p>  
+      </div>
+  </div>
+
+  <div class="infomation" id="third">
+    <div class="pc-ver">
+      <h1>"3성 인텔리랩스 찐팬 인증! 당신은 인텔리랩스의 인플루언서!"
+      </div>
+      <div class="member-box" style="width:500px; margin-right: 20px;">
+        <div class="member-benefit mt-3">
+          <div style="display:flex; justify-content:space-between; align-items:center; text-align:left;">
+          <h3>혜택</h3>
+          <p style="position:relative; width:40%; font-size: 22px; line-height: 90px; text-align: left;">1성 등급 혜택</p>
+          <ul class="gc_lv_benefit">
+            <li style="font-size:22px;">커뮤니티 소모임 개설 권한</li>
+          </ul>
+        </div>
+        </div>
+      </div>
+      <div class="member-box">
+        <!-- <div class="member-benefit mt-3"> -->
+          <h3>등급 선정 기준</h3>
+            <div class="gc_lv_cont">
+              <ul class="gc_lv_standard p-0">
+                <li style="margin-bottom:30px; padding-bottom: 10px;">구매 5회 이상</li>
+                <li>친구 추천 10회 이상</li>
+                <li>커뮤니티 게시글 50회 이상 100회 이상</li>
+              </ul>
+            </div>
+        </div>
+        <p style="font-size: 16px; color: #8B8B8B; margin-top: 10px; text-align: end; padding-right: 110px;">* 회원 등급은 자격 달성 후 1년 간 유지됩니다.</p>  
+      </div>
+  </div>
+
+
+      
+
+
+    
+         
+{% endblock content %}
+
+{% block js %}
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="{% static 'labs/js/rating.js' %}"></script>
+{% endblock js %}

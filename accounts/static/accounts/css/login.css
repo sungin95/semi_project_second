@@ -29,7 +29,7 @@ section .color:nth-child(1) {
 
 section .color:nth-child(2) {
     bottom: -100px;
-    left: 250px;
+    left: 400px;
     width: 400px;
     height: 400px;
     background-color: #fffd97;
@@ -37,7 +37,7 @@ section .color:nth-child(2) {
 
 section .color:nth-child(3) {
     bottom: 50px;
-    left: 700px;
+    left: 1100px;
     width: 250px;
     height: 250px;
     background-color: #00d2ff;
@@ -138,7 +138,7 @@ h2 {
 
 .form h2 {
     position: relative;
-    color: navy;
+    color: black;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -159,13 +159,13 @@ h2 {
     border-radius: 35px;
     font-size: 16px;
     letter-spacing: 1px;
-    color: #fff;
+    color: black;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     margin: 0;
 }
 
 .form .inputBox input::placeholder {
-    color: lightblue;
+    color: rgb(50, 79, 89);
     font-weight: 20px;
 }
 
@@ -180,7 +180,7 @@ h2 {
 
 .forget {
     margin-top: 5px;
-    color: lightblue;
+    color: rgb(50, 79, 89);
     font-weight: 20px;
 }
 
@@ -192,13 +192,12 @@ h2 {
 }
 
 .card-body {
-  background-image: linear-gradient(to bottom, #f1f4f9 40%, #F0F8FF 60%);
-}
-
+    background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #F0F8FF 65%);
+  }
+  
 .navbar {
-  background-image: linear-gradient(to top, #f1f4f9 40%, #F0F8FF 60%);
-}
-
+    background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #F0F8FF 75%);
+  }
 
 .bi-google {
     background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
