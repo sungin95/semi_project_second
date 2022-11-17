@@ -15,7 +15,7 @@
 
 .header_h {
   padding-top: 10px;
-  color: cornflowerblue;
+  color: rgb(176, 132, 251);
   font-weight: bolder;
 }
 
@@ -49,6 +49,7 @@
   margin: 0.05rem;
   opacity: 30;
 }
+
 
 .people_views {
   display: flex;
@@ -214,8 +215,6 @@ li {
   
 }
 
-
-
 .user-name {
   align-items: center;
   display: flex;
@@ -227,19 +226,21 @@ li {
   font-weight: 600;
 }
 
+
 .sub_comment-create  {
   background-color: transparent;
   border: none;
-  color: #048eff;
+  color: #b07dfd;
   font-size: 0.9rem;
   margin-right: 0.4rem;
   margin-top: 0.3rem;
+  
 }
 
 .sub_comment-create :hover {
   background-color: transparent;
   border: none;
-  color: #048eff;
+  color: #fafbfc;
   font-size: 0.9rem;
   margin-right: -0.9rem;
 }
@@ -247,11 +248,10 @@ li {
 .comment-delete button {
   background-color: transparent;
   border: none;
-  color: #f82c03;
+  color: #fb8c8c;
   font-size: 0.9rem;
-  margin-right: -0.9rem;
-  display: flex;
-  justify-content: end;
+  /* margin-right: -0.9rem; */
+
 }
 
 .comment-delete button:hover {
@@ -259,7 +259,7 @@ li {
   border: none;
   color: #ff3604;
   font-size: 0.9rem;
-  margin-right: -0.9rem;
+  /* margin-right: -0.9rem; */
   
 }
 
@@ -332,15 +332,15 @@ li {
 .hr_h {
   border: 0;
   height: 3px;
-  background: #3877f5 ;
+  background: #6200ff ;
 }
 
 .btn_modify1 {
   background-color:  #fff;
   border-radius: 0.3rem;
-  border: 1px solid  #9cb7fc;
+  border: 1px solid  #9f87f8;
   padding: 0.06rem 0.08rem;
-  color: #9cb7fc;
+  color: #9f87f8;
   display: inline-block;
   text-decoration-line: none;
 }
@@ -373,7 +373,7 @@ li {
 .tradecomment-create {
   border: 0px;
   background-color: transparent;
-  width: 1070px;
+  width: 100%;
   color: aliceblue;
   height: 50px;
 }

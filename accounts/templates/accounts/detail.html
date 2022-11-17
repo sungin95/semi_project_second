@@ -1,25 +1,127 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
-{% block css %}{% endblock css %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'accounts/css/detail.css' %}">
+{% endblock css %}
 
 {% block content %}
-  <h1>상세 회원 정보</h1>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">user</th>
-        <th scope="col">email</th>
-        <th scope="col">last_login</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">{{ user.username}}</th>
-        <td>{{ user.email}}</td>
-        <td>{{ user.last_login}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <button type="button" class="btn btn-outline-dark" onclick="location.href='{% url 'accounts:index' %}' ">돌아가기</button>
-{% endblock content %}
+  <div class="container">
+    <h2 class="title">
+      <span class="user">{{user}}</span>
+      님의 정보</h2>
+
+    <div class="infos">
+      <div class="small_info">
+        <!-- {{ user.pk }}-->
+        <p>
+          <span class="name">
+            {{ user.first_name }}
+            {{ user.last_name }}</span><br>
+          {{ user.email }}</p>
+      </div>
+
+      <div class="user_buttons">
+        {% if request.user.pk == user.pk %}
+          <button>
+            <a href="{% url 'accounts:profile' %}">프로필<br>사진 설정</a>
+          </button>
+          <button>
+            <a href="{% url 'accounts:update' %}">프로필<br>정보 수정</a>
+          </button>
+          <button>
+            <a href="{% url 'accounts:change_password' %}">비밀번호<br>수정</a>
+          </button>
+        {% endif %}
+      </div>
+    </div>
+
+    <hr class="hr">
+    <div class="bookmarked">
+      <p class="bookmarked_p">찜한 노트북</p>
+      <p class="explanation">*제조사 이름을 누르면 해당 노트북의 자세한 정보를 볼 수 있습니다.</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">제조사</th>
+            <th scope="col">모델명</th>
+            <th scope="col">가격</th>
+          </tr>
+        </thead>
+        {% for product in user.like_user.all %}
+          <tbody>
+            <tr>
+              <th scope="row">
+                <a href="{% url 'products:detail' product.pk %}">
+                  {{ product.제조회사 }}</a>
+              </th>
+              <td>{{ product.모델명 }}</td>
+              <td>{{ product.가격 }}</td>
+            </tr>
+          </tbody>
+        {% endfor %}
+      </table>
+    </div>
+    <hr class="hr">
+    <div class="bookmarked">
+      <p class="bookmarked_p">게시글</p>
+      <p class="explanation">*사용자의 추천 게시글을 볼 수 있습니다.</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">제목</th>
+            <th scope="col">내용
+              <th></tr>
+            </thead>
+            {% for article in user.like_articles.all %}
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <a href="{% url 'communities:detail' article.pk %}">
+                      {{ article.title }}</a>
+                  </th>
+                  <td>{{ article.content }}</td>
+                </tr>
+              </tbody>
+            {% endfor %}
+          </table>
+        </div>
+        <hr class="hr">
+        <div class="bookmarked">
+          <p class="bookmarked_p">제품 리뷰</p>
+          <p class="explanation">*사용자가 쓴 제품 리뷰를 볼 수 있습니다.</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">제조회사</th>
+                <th scope="col">모델명</th>
+                <th scope="col">리뷰</th>
+              </tr>
+            </thead>
+            {% for reviews in user.review_set.all %}
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <a href="{% url 'products:detail' reviews.products.pk %}">
+                      {{ reviews.products.제조회사 }}</a>
+                  </th>
+                  <td>{{ reviews.products.모델명 }}</td>
+                  <td>{{ reviews.content }}</td>
+                </tr>
+              </tbody>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+
+      <hr class="hr">
+      <div class="review">
+        <p class="bookmarked_p">커뮤니티 댓글</p>
+        <p class="explanation">*사용자가 쓴 댓글을 볼 수 있습니다.</p>
+        {% for comment in user.comments_set.all %}
+          <p>
+            {{ comment.content }}
+          </p>
+        {% endfor %}
+
+      {% endblock content %}

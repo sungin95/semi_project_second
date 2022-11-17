@@ -26,7 +26,7 @@ class Products(models.Model):
     DCI_P3 = models.IntegerField(blank=True, null=True)
     NTSC = models.TextField(blank=True, null=True)
     AdobeRGB = models.TextField(blank=True, null=True)
-    QLED  = models.BooleanField(blank=True, null=True)
+    QLED = models.BooleanField(blank=True, null=True)
     화면밝기 = models.IntegerField(blank=True, null=True)
     주사율 = models.TextField(blank=True, null=True)
     패널종류 = models.TextField(blank=True, null=True)
@@ -108,7 +108,10 @@ class Products(models.Model):
     전용펜지원 = models.BooleanField(blank=True, null=True)
     DPAltMode = models.BooleanField(blank=True, null=True)
     리프트힌지 = models.BooleanField(blank=True, null=True)
-    like_product = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_user')
+    like_product = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name="like_user"
+    )
+    ten_price = models.IntegerField(blank=True, null=True)
 
 
 class Review(models.Model):
@@ -140,4 +143,3 @@ class Review(models.Model):
             return str(time.days) + "일 전"
         else:
             return False
-

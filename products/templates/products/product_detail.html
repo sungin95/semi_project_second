@@ -34,12 +34,15 @@
         PC
         <i class="bi bi-chevron-right"></i>
       </a>
-      <a href="" style="text-decoration:none; color:gray; font-size: 15px;" class="ml-2">
-        모두보기
+      <form action="{% url 'products:index' %}">
+        <button type="submit" class="cate_btn">
+          <p>{{ product.제조회사 }}</p>
+          <input type="text" value={{ product.제조회사 }} class="category-value" name="category">
+        </button>
         <i class="bi bi-chevron-right"></i>
-      </a>
+      </form>
       <span id="location-prd-nm" class="ml-2" style="color:gray; font-size: 15px;">
-        갤럭시 북2 Pro 360 39.6 cm Core™ i7 / 1 TB NVMe SSD
+        {{modelName}}
       </span>
     </div>
   </div>

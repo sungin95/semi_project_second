@@ -1,5 +1,6 @@
 from django import forms
-from .models import Articles, Comments
+from .models import Articles, Comments, ArticlesImages
+from django.utils.translation import gettext_lazy as _
 
 
 class ArticleForm(forms.ModelForm):
@@ -10,6 +11,15 @@ class ArticleForm(forms.ModelForm):
             "category",
             "content",
         ]
+
+
+class ArticleImageForm(forms.ModelForm):
+    class Meta:
+        model = ArticlesImages
+        fields = ("image",)
+        labels = {
+            "image": _("Image"),
+        }
 
 
 class CommentForm(forms.ModelForm):

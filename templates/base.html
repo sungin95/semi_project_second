@@ -44,15 +44,15 @@
 
           <!-- 검색, 장바구니, 계정 -->
           <div class="d-flex">
-            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:32px;height:32px" type="submit" id="search-click"></lord-icon>
+            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:30px;height:30px" type="submit" id="search-click"></lord-icon>
             <a id="cart" class="nav-link mx-3" href="{% url 'cart:detail' %}">
               <img src="{% static 'img/cart_none.png' %}" alt="" width="25px" height="25px">
             </a>
             <div id="login">
               {% if request.user.is_authenticated %}
-                <img src="{% static 'img/login_ing.png' %}" id="loginIng" alt="" width="30px" height="30px">
+                <img src="{% static 'img/login_ing.png' %}" id="loginIng" alt="" width="28px" height="28px">
               {% else %}
-                <img src="{% static 'img/login_none.png' %}" id="loginNone" class="" alt="" width="30px" height="30px">
+                <img src="{% static 'img/login_none.png' %}" id="loginNone" class="" alt="" width="28px" height="28px">
               {% endif %}
             </div>
           </div>
@@ -65,7 +65,7 @@
       <div class="search-bg-white">
         <form class="search" action="{% url 'labs:search' %}">
           <input class="input_form" type="search" placeholder="검색" name="category" aria-label="Search" id="search" required="required">
-          <button class="button" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/16/16492.png" alt="검색 아이콘"></button>
+          <button class="button" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/16/16492.png" alt="검색 아이콘" style="width:20px; height:20px; line-height: 20px;"></button>
         </form>
       </div>
       <div class="search-cancel"><img src="{% static 'img/cancel.png' %}" alt=""></div>
@@ -208,7 +208,7 @@
 
     <!-- 푸터1 -->
     <footer class="sticky-bottom">
-      <div class="card">
+      <div class="card" style="background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #F0F8FF 65%);">
         <div class="card-body text-center">
           made by. 유영, 호빈, 성인, 윤식, 창현
         </div>

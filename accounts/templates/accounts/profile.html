@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
-{% block css %}{% endblock css %}
-
-{% block content %}{% endblock content %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
+{% endblock css %}
+{% block content %}
+<h2 class="title">프로필 사진</h2>
+<div class="profile">
+  <img src="https://cdn.icon-icons.com/icons2/520/PNG/512/Laptop_icon-icons.com_52042.png" alt="노트북 아이콘">
+  <div class="form">
+    <form action="" method="POST" enctype="multipart/form-data" id="profile-form">
+      {% csrf_token %}
+      {{ form.image }}
+      <div class="buttons">
+        <input type="submit" value="등록" class="submit"/>
+        <button type="button" class="back" onclick="location.href='{% url 'accounts:detail' user.pk %}' ">돌아가기</button>
+      </div>
+    </form>
+    <img src="https://cdn-icons-png.flaticon.com/512/3524/3524388.png" alt="사진 추가 아이콘" class="upload_icon">
+  </div>
+</div>
+{% endblock content %}

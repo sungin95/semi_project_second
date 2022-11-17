@@ -13,6 +13,9 @@ def index(request):
     products_high = Products.objects.all().order_by('가격')
     products_low = Products.objects.all().order_by('-가격')
     category = request.GET.get("category")
+    for product in products:
+        product.ten_price = int(round((product.가격) * 1.1))
+        product.save()
     if category:
         products_category = Products.objects.filter(제조회사__contains=category)
     else:

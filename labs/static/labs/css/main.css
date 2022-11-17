@@ -15,7 +15,8 @@
 .main-category a {
     display: inline-block;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: bold;
+    font-size: 13px;
     color: black;
 }
 
@@ -23,7 +24,7 @@
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
-    border: 3px solid #a4c3fa;
+    border: 3px solid rgb(205, 205, 255);
     background: white;
 }
 
@@ -43,16 +44,19 @@
 }
 
 .brand-category-logo {
-    background-color: #a4c3fa;
-    color: #e9f1fa;
-    font-weight: 600;
-    width: 5rem;
+    background-color: white;
+    color: rgb(147, 112, 219);
+    font-weight: 450;
+    width: 6rem;
     height: 2rem;
-    border-radius: 20px;
+    border-radius: 1.5rem;
     font-size: 1rem;
     text-align: center;
     margin: 20px 10px 20px;
+    border: 1px solid rgb(205, 205, 255);
 }
+
+
 
 .brand-category-logo img {
     width: 100%;
@@ -69,19 +73,30 @@
 
 .best-ranking {
     min-width: 25%;
-    background-color: #a4c3fa;
+    background-color: rgb(205, 205, 255);
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border: 6px solid rgb(205, 205, 255);
+
 }
 
 .best-ranking h3 {
     color: white;
-    margin: 15px;
-    font-size: 1.25rem;
+    margin: 25px 25px 25px 20px;
+    font-size: 25px;
     font-weight: 700;
+    padding-top: 15px;
+    background-color: transparent;
 }
+
+.best-ranking img{
+    width:100px;
+    height: 100px;
+    
+}
+
 
 .best-ten {
     display: flex;
@@ -115,8 +130,9 @@
 }
 
 .best-ten-product .card-body {
-    border: 5px solid #a4c3fa;
+    border: 5px solid rgb(205, 205, 255);
     border-radius: 15px;
+    background-color: #f7f7f7;
     height: 100%;
     padding: 0;
 }
@@ -174,11 +190,53 @@
     justify-content: space-around;
 }
 
-.card-body {
+.card-title{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical; 
+}
+
+.card-bodys {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
+    background-color:#f7f7f7;
+    border-radius: 1.5rem;
+    height: 500px;
+    margin-right: 5px;
+}
+
+.has_rank {
+    position: relative;
+}
+
+.card-bodys.has_rank:before{
+    content: 'best 1';
+    width: 36px;
+    height: 36px;
+    border-radius: 10px 0 10px 0;
+    font-size: 9px;
+    font-weight: bold;
+    color: white;
+    background-color: skyblue;
+    text-transform: uppercase;
+    white-space: normal;
+    text-align: center;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    padding: 8px;
+    font-family: sans-serif;
+
+}
+
+.inner {
+    position: relative;
+    width: 100%;
 }
 
 .hit-product {
@@ -186,13 +244,23 @@
     margin-bottom: 1rem;
 }
 
+
 .btn-color {
-    background-color: #a4c3fa;
+    background-color: rgb(147, 112, 219);
     text-decoration: none;
     font-size: 1rem;
     color: white;
-    border-radius: 15px;
+    border-radius: 1.5rem;
     text-align: center;
-    padding: 5px;
+    padding: 10px 60px;
     border-style: none;
+    justify-content: center;
+}
+
+.sale-price {
+    font-size: 20px;
+}
+
+.md-pick {
+    background-color: rgb(147, 112, 219);
 }
