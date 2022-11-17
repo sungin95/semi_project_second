@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .form import ArticleForm, CommentForm
-from .models import Articles, Comments
+from .form import ArticleForm, CommentForm, ArticleImageForm
+from .models import Articles, Comments, ArticlesImages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Articles
 from django.core.paginator import Paginator
 from datetime import date, datetime, timedelta
+from django.forms import modelformset_factory
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def index(request):
@@ -84,17 +86,30 @@ def index_hello(request):
 
 @login_required
 def article_create(request):
+    ImageFormSet = modelformset_factory(ArticlesImages, form=ArticleImageForm, extra=3)
     if request.method == "POST":
-        article_form = ArticleForm(request.POST)
-        if article_form.is_valid():
-            article = article_form.save(commit=False)
-            article.user = request.user
-            article.save()
+        articleForm = ArticleForm(request.POST)
+        formset = ImageFormSet(
+            request.POST, request.FILES, queryset=ArticlesImages.objects.none()
+        )
+        if articleForm.is_valid() and formset.is_valid():
+            article_form = articleForm.save(commit=False)
+            article_form.user = request.user
+            article_form.save()
+            for forms in formset.cleaned_data:
+                if forms:
+                    image = forms["image"]
+                    photo = ArticlesImages(articles=article_form, image=image)
+                    photo.save()
             return redirect("communities:index")
+        else:
+            print(article_form.errors, formset.errors)
     else:
-        article_form = ArticleForm()
+        articleForm = ArticleForm()
+        formset = ImageFormSet(queryset=ArticlesImages.objects.none())
     context = {
-        "article_form": article_form,
+        "articleForm": articleForm,
+        "formset": formset,
     }
     return render(request, "communities/form.html", context)
 

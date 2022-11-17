@@ -14,10 +14,16 @@
     </h1>
   {% endif %}
 
-  <form action="" method="POST">
+  <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {% bootstrap_form article_form %}
-    {% bootstrap_button '작성' %}
-  </form>
+    {% bootstrap_form articleForm %}
 
-{% endblock content %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+      {{ form }}<br/>
+      {% endfor %}
+
+      {% bootstrap_button '작성' %}
+    </form>
+
+  {% endblock content %}
