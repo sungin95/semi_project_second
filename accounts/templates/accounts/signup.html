@@ -22,34 +22,34 @@
           <form class="all-form" action="{% url 'accounts:signup' %}" method="POST">
             {% csrf_token %}
             <div class="inputBox1">
-              <p class="sign">성</p>
+              <p class="sign mb-1">성</p>
               {{ form.first_name }}
               {% comment %} <input type="text" placeholder="" name="first_name"> {% endcomment %}
             </div>
             <div class="inputBox1">
-              <p class="sign">이름</p>
+              <p class="sign mb-1">이름</p>
               {{ form.last_name }}
               {% comment %} <input type="text" placeholder="" name="last_name"> {% endcomment %}
             </div>
             <div class="inputBox1">
-              <p class="sign"><span style="color:red;">*</span>아이디</p>
+              <p class="sign mb-2"><span style="color:red;">*</span>아이디</p>
               {{ form.username }}
               {% comment %} <input type="text" placeholder="아이디를 입력해주세요" name="username"> {% endcomment %}
             </div>
             <div class="inputBox1">
-              <p class="sign">이메일</p>
+              <p class="sign mb-2">이메일</p>
               {{ form.email }}
               {% comment %} <input type="text" placeholder="예:intellilaps@gmail.com" name="email"> {% endcomment %}
             </div>
             <div class="inputBox1">
-              <p class="sign"><span style="color:red;">*</span>비밀번호</p>
+              <p class="sign mb-2"><span style="color:red;">*</span>비밀번호</p>
               {{ form.password1 }}
             </div>
             <div class="inputBox1">
-              <p class="sign"><span style="color:red;">*</span>비밀번호 확인</p>
+              <p class="sign mb-2"><span style="color:red;">*</span>비밀번호 확인</p>
               {{ form.password2 }}
             </div>
-            <div class="exform_txt text-center">
+            <div class="mt-3 text-center">
               <span style="font-size:16px;"><span style="color:red;">*</span>표시는 필수적으로 입력해주셔야 가입이 가능합니다.</span>
             </div>
 

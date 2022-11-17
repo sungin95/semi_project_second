@@ -16,7 +16,7 @@
 
   </head>
 
-  <body style="">
+  <body>
     <!-- 네비게이션바 -->
     <nav style="background-color: #a4c3fa;" class="navbar navbar-expand-lg sticky-top" id="nabvar">
       <div class="container">
@@ -32,7 +32,7 @@
               <a class="nav-link active" aria-current="page" href="{% url 'communities:index' %}">커뮤니티</a>
             </li>
             <li class="nav-item " id="navbarProduct">
-              <a class="nav-link" href="{% url 'products:index' %}">제품</a>
+              <a class="nav-link text-black" href="{% url 'products:index' %}">제품</a>
             </li>
             <!-- 어드민만 보이는 회원목록 -->
             {% if request.user.is_superuser == 1 %}
@@ -64,7 +64,7 @@
     <div class="search-bg-black" id="searchForm" style="visibility: hidden; opacity: 0;">
       <div class="search-bg-white">
         <form class="search" action="{% url 'labs:search' %}">
-          <input class="input_form" type="search" placeholder="검색" name="search" aria-label="Search" id="search" required="required">
+          <input class="input_form" type="search" placeholder="검색" name="category" aria-label="Search" id="search" required="required">
           <button class="button" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/16/16492.png" alt="검색 아이콘"></button>
         </form>
       </div>

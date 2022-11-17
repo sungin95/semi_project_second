@@ -1,6 +1,9 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
+from datetime import datetime, timedelta
+from django.utils import timezone
 
 # Create your models here.
 class Products(models.Model):
@@ -22,6 +25,8 @@ class Products(models.Model):
     화면크기대 = models.TextField(blank=True, null=True)
     DCI_P3 = models.IntegerField(blank=True, null=True)
     NTSC = models.TextField(blank=True, null=True)
+    AdobeRGB = models.TextField(blank=True, null=True)
+    QLED  = models.BooleanField(blank=True, null=True)
     화면밝기 = models.IntegerField(blank=True, null=True)
     주사율 = models.TextField(blank=True, null=True)
     패널종류 = models.TextField(blank=True, null=True)
@@ -46,13 +51,16 @@ class Products(models.Model):
     GPU제조사 = models.TextField(blank=True, null=True)
     GPU칩셋 = models.TextField(blank=True, null=True)
     TGP = models.IntegerField(blank=True, null=True)
+    GPU기술 = models.TextField(blank=True, null=True)
     GPU메모리 = models.IntegerField(blank=True, null=True)
     게임관련기능 = models.TextField(blank=True, null=True)
     무선랜 = models.TextField(blank=True, null=True)
     유선랜 = models.TextField(blank=True, null=True)
     블루투스 = models.TextField(blank=True, null=True)
     HDMI = models.FloatField(blank=True, null=True)
+    MicroHDMI = models.BooleanField(blank=True, null=True)
     USB = models.TextField(blank=True, null=True)
+    USB_PD = models.BooleanField(blank=True, null=True)
     썬더볼트3 = models.TextField(blank=True, null=True)
     썬더볼트4 = models.TextField(blank=True, null=True)
     USB_C = models.IntegerField(blank=True, null=True)
@@ -92,10 +100,44 @@ class Products(models.Model):
     지문인식 = models.BooleanField(blank=True, null=True)
     쿨링팬 = models.TextField(blank=True, null=True)
     키보드라이트 = models.BooleanField(blank=True, null=True)
+    침수지연키보드 = models.BooleanField(blank=True, null=True)
     터치스크린 = models.BooleanField(blank=True, null=True)
     트루톤 = models.BooleanField(blank=True, null=True)
     화면회전각 = models.TextField(blank=True, null=True)
     휴대용 = models.BooleanField(blank=True, null=True)
-    like_product = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name="like_user"
+    전용펜지원 = models.BooleanField(blank=True, null=True)
+    DPAltMode = models.BooleanField(blank=True, null=True)
+    리프트힌지 = models.BooleanField(blank=True, null=True)
+    like_product = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_user')
+
+
+class Review(models.Model):
+    products = models.ForeignKey("Products", on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_reviews")
+    grade = models.FloatField(
+        default=1, validators=[MaxValueValidator(5), MinValueValidator(0)]
     )
+    # object 를 Post 의 title 문자열로 반환
+    def __str__(self):
+        return self.title
+
+    @property
+    def created_string(self):
+        time = datetime.now(tz=timezone.utc) - self.created_at
+        if time < timedelta(minutes=1):
+            return "방금 전"
+        elif time < timedelta(hours=1):
+            return str(int(time.seconds / 60)) + "분 전"
+        elif time < timedelta(days=1):
+            return str(int(time.seconds / 3600)) + "시간 전"
+        elif time < timedelta(days=7):
+            time = datetime.now(tz=timezone.utc).date() - self.created_at.date()
+            return str(time.days) + "일 전"
+        else:
+            return False
+

@@ -25,4 +25,5 @@ urlpatterns = [
         views.sub_comment_create,
         name="sub_comment_create",
     ),
+    path("<int:article_pk>/like/", views.like, name="like"),
 ]
