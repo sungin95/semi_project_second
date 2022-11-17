@@ -66,62 +66,62 @@
   <!-- <div class="brand-category-logo">전체</div> <div class="brand-category-logo">삼성</div> <div class="brand-category-logo LG">헬쥐</div> <div class="brand-category-logo">Apple</div> <div class="brand-category-logo">Lenovo</div> <div class="brand-category-logo">Asus</div> <div class="brand-category-logo">Msi</div> <div class="brand-category-logo">Dell</div> <div class="brand-category-logo">한성</div> <div class="brand-category-logo">HP</div>-->
   <div class="brand-category">
     <form action="{% url 'products:index' %}">
-      <button class="brand-category-logo" type="submit">
-        <p>삼성 (Samsung)</p>
+      <button class="brand-category-logo btn-lg" type="submit">
+        <p>삼성</p>
         <input type="text" value="삼성" class="category-value" name="category">
       </button>
     </form>
     <form action="{% url 'products:index' %}">
       <button class="brand-category-logo" type="submit">
-        <p>엘지 (LG)</p>
+        <p>LG</p>
         <input type="text" value="LG전자" class="category-value" name="category">
       </button>
     </form>
     <form action="{% url 'products:index' %}">
       <button class="brand-category-logo" type="submit">
-        <p>애플 (Apple)</p>
+        <p>Apple</p>
         <input type="text" value="APPLE" class="category-value" name="category">
       </button>
     </form>
     <form action="{% url 'products:index' %}">
       <button class="brand-category-logo" type="submit">
-        <p>에이수스 (Asus)</p>
+        <p>Asus</p>
         <input type="text" value="ASUS" class="category-value" name="category">
       </button>
     </form>
     <form action="{% url 'products:index' %}">
       <button class="brand-category-logo" type="submit">
-        <p>레노버 (Lenovo)</p>
+        <p>Lenovo</p>
         <input type="text" value="레노버" class="category-value" name="category">
       </button>
     </form>
     <form action="{% url 'products:index' %}">
       <button class="brand-category-logo" type="submit">
-        <p>엠에스아이 (Msi)</p>
+        <p>Msi</p>
         <input type="text" value="MSI" class="category-value" name="category">
       </button>
     </form>
     <form action="{% url 'products:index' %}">
       <button class="brand-category-logo" type="submit">
-        <p>델 (Dell)</p>
+        <p>DELL</p>
         <input type="text" value="DELL" class="category-value" name="category">
       </button>
     </form>
     <form action="{% url 'products:index' %}">
       <button class="brand-category-logo" type="submit">
-        <p>한성 (Hansung)</p>
+        <p>한성</p>
         <input type="text" value="한성" class="category-value" name="category">
       </button>
     </form>
     <form action="{% url 'products:index' %}">
       <button class="brand-category-logo" type="submit">
-        <p>기가바이트 (GigaByte)</p>
+        <p>GigaByte</p>
         <input type="text" value="GIGABYTE" class="category-value" name="category">
       </button>
     </form>
     <form action="{% url 'products:index' %}">
       <button class="brand-category-logo" type="submit">
-        <p>에이치피 (HP)</p>
+        <p>HP</p>
         <input type="text" value="HP" class="category-value" name="category">
       </button>
     </form>
@@ -130,10 +130,14 @@
   <!-- 베스트랭킹 -->
   <div class="best-ranking-box">
     <div class='best-ranking'>
-      <h3>베스트랭킹</h3>
+      <div class="d-flex justify-content-between">
+        <h3>베스트랭킹</h3>
+        <img src="{% static 'labs/img/gold1.png'%}">
+      </div>
       <div class="best-ten">
         {% for product_10 in products_10 %}
           <a href="">
+            {{ product_10.id}}
             {{ product_10.모델명 }}
           </a>
         {% endfor %}
@@ -143,16 +147,17 @@
       {% for product_10 in products_10 %}
         <!-- 1등 제품 시작-->
         <div class="best-ten-product">
-          <div class="card-body">
-            <div class="p-2" style="width:100%;height:50%">
+          <div class="card-bodys has_rank">
+            <div class="p-2 mt-3" style="width:100%;height:50%">
               <img src="{{ product_10.썸네일 }}" alt="" class='img-fluid'>
             </div>
-            <div class="p-3">
-              <h5 class="card-title fs-6">{{ product_10.모델명 }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+            <div class="p-3 text-center">
+              <p class="card-subtitle mb-2 text-secondary font-weight-bold">모델명</p>
+              <h5 class="card-title fs-6 mt-3">{{ product_10.모델명 }}</h5>
               <p class="card-text">
-                <div class="sale-price">{{ product_10.가격 }}</div>
+                <div class="sale-price fw-bold">최저가 {{ product_10.가격 }}원</div>
               </p>
+              <hr class="mb-4">
               <a href="#" class="btn-color">구매하기</a>
             </div>
           </div>
@@ -163,6 +168,7 @@
 
   <!-- MD추천 아이템 -->
   <div class="md-pick">
+    <p></p>
     <h3>MD Pick</h3>
   </div>
   <div class="cards">

@@ -1,3 +1,42 @@
+// $("#test1").click(function(){
+// 	$('#first').show();
+//   $('#second').hide();
+//   $('#third').hide();
+// });
+
+// $("#test2").click(function(){
+// 	$('#second').show();
+//   $('#first').hide();
+//   $('#third').hide();
+// });
+
+// $("#test3").click(function(){
+// 	$('#third').show();
+//   $('#first').hide();
+//   $('#second').hide();
+// });
+
+// $(function() {
+//   $("#test1").on("click", function() {
+//       $("#fist").slideUp();
+//       $('#second').hide();
+//       $('#third').hide();
+//   });
+  
+//   $("#test2").on("click", function() {
+//     $("#fist").hide();
+//     $('#second').slideUp();
+//     $('#third').hide();
+//   });
+//   $("#test3").on("click", function() {
+//     $("#fist").hide();
+//     $('#second').hide();
+//     $('#third').slideUp();
+//   });
+// });
+
+
+
 $(function() {
   $("#test1").on("click", function() {
       $("#first").show();
