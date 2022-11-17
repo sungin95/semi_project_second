@@ -191,7 +191,7 @@
             <i class="bi bi-plus plus-click-graphic"></i>
           </div>
           <div class="sidebar-4-internal">
-            <div>내장그래픽</div>i
+            <div>내장그래픽</div>
           </div>
           <div class="sidebar-4-external" style="overflow: hidden; height: 31px;">
             <div class="sidebar-external">
@@ -268,14 +268,26 @@
     <!-- 제품 목록 -->
     <div class="container">
       <div class="row"></div>
-      <div class="row g-3 infinite-container">
+      <div class="row g-3 infinite-container add-event">
         {% if category %}
           {% for product in page_obj %}
             <!-- 카드1 한장 시작 -->
             <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item">
               <div class="product-card-body test1">
                 <!-- 찜하기 추가 작업 필요 -->
-                <a href="" class="position-absolute top-0 end-0 m-3">찜하기</a>
+                <div class="position-absolute top-0 end-0 m-3">
+                  {% if request.user.is_authenticated %}
+                    {% if request.user in product.like_product.all %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks-fill like-btn1"></i>
+                    {% else %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks like-btn1"></i>
+                    {% endif %}
+                  {% else %}
+                    <a href="{% url 'accounts:login' %}">
+                      <i class="bi bi-bookmarks"></i>
+                    </a>
+                  {% endif %}
+                </div>
                 <div>
                   <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
                 </div>
@@ -301,9 +313,18 @@
             <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item">
               <div class="product-card-body test2">
                 <!-- 찜하기 추가 작업 필요 -->
-                <a href="" class="position-absolute top-0 end-0 m-3">찜하기</a>
-                <div>
-                  <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
+                <div class="position-absolute top-0 end-0 m-3">
+                  {% if request.user.is_authenticated %}
+                    {% if request.user in product.like_product.all %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks-fill like-btn1"></i>
+                    {% else %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks like-btn1"></i>
+                    {% endif %}
+                  {% else %}
+                    <a href="{% url 'accounts:login' %}">
+                      <i class="bi bi-bookmarks"></i>
+                    </a>
+                  {% endif %}
                 </div>
                 <a href="{% url 'products:detail' product.pk %}">
                   <h5 class="card-title">{{ product.모델명 }}</h5>
@@ -327,6 +348,19 @@
             <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item">
               <div class="product-card-body test3">
                 <!-- 찜하기 추가 작업 필요 -->
+                <div class="position-absolute top-0 end-0 m-3">
+                  {% if request.user.is_authenticated %}
+                    {% if request.user in product.like_product.all %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks-fill like-btn1"></i>
+                    {% else %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks like-btn1"></i>
+                    {% endif %}
+                  {% else %}
+                    <a href="{% url 'accounts:login' %}">
+                      <i class="bi bi-bookmarks"></i>
+                    </a>
+                  {% endif %}
+                </div>
                 <div>
                   <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
                 </div>
@@ -363,20 +397,52 @@
         </div>
       </div>
     </div>
+  </div>
+{% endblock content %}
 
-  {% endblock content %}
+<!-- 자바스크립트 -->
+{% block js %}
+  <script src="{% static 'products/js/index.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/infinite.min.js' %}"></script>
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      offset: 'bottom-in-view',
+      onBeforePageLoad: () => {},
+      onAfterPageLoad: () => {}
+    })
+  </script>
 
-  <!-- 자바스크립트 -->
-  {% block js %}
-    <script src="{% static 'products/js/index.js' %}"></script>
-    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-    <script src="{% static 'js/infinite.min.js' %}"></script>
-    <script>
-      var infinite = new Waypoint.Infinite({
-        element: $('.infinite-container')[0],
-        offset: 'bottom-in-view',
-        onBeforePageLoad: () => {},
-        onAfterPageLoad: () => {}
+  <!-- 북마크 비동기 -->
+  <script>
+    document
+      .querySelector('.add-event')
+      .addEventListener("click", (e) => {
+        const productId = e.target.dataset.productId;
+        e.preventDefault()
+        axios({method: "get", url: `/products/like/${productId}`}).then(response => {
+          if (response.data.isLiked === true) {
+            e
+              .target
+              .classList
+              .add('bi-bookmarks-fill')
+            e
+              .target
+              .classList
+              .remove('bi-bookmarks')
+          } else {
+            e
+              .target
+              .classList
+              .add('bi-bookmarks')
+            e
+              .target
+              .classList
+              .remove('bi-bookmarks-fill')
+          }
+        })
       })
-    </script>
-  {% endblock js %}
+  </script>
+
+{% endblock js %}
