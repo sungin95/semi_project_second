@@ -6,10 +6,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.container form {
-    height: 60px;
-}
-
 .navbar-img {
     height: 90%;
 }
