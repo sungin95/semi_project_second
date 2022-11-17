@@ -139,3 +139,4 @@ class Review(models.Model):
             return str(time.days) + "일 전"
         else:
             return False
+

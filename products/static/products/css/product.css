@@ -1,18 +1,11 @@
-.navbar {
-  background-image: linear-gradient(
-    to top,
-    #f1f4f9 20%,
-    rgb(205, 205, 255) 80%
-  );
+.card-body {
+  background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #F0F8FF 65%);
 }
 
-.card-body {
-  background-image: linear-gradient(
-    to bottom,
-    #f1f4f9 20%,
-    rgb(205, 205, 255) 80%
-  );
+.navbar {
+  background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #F0F8FF 75%);
 }
+
 
 .pg-location {
   display: block;
@@ -89,7 +82,7 @@
 .flag-tag {
   display: inline-block;
   margin-right: 12px;
-  color: #99c3ff;
+  color: rgb(147, 112, 219);
   font-size: 14px;
   line-height: 18px;
   font-weight: bold;
@@ -229,6 +222,7 @@
   height: 20px;
   background: url(https://www.samsungebiz.com/sec/static/_images/common/icon-review-write.svg)
     center center no-repeat;
+  background-color: black;
   background-size: 100% auto;
 }
 
@@ -619,11 +613,10 @@ li {
 }
 
 .btn.btn-k {
-  background: #fff;
-  background-color: #99c3ff;
+  background-color: rgb(230, 230, 250);
   border-radius: 30px;
   font-weight: bold;
-  color: #fff;
+  color: rgb(147, 112, 219);
 }
 
 .btn {

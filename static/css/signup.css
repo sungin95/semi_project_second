@@ -25,6 +25,7 @@ section
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  width: 75vw;
   background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
 }
 section .color {
@@ -34,11 +35,11 @@ section .color {
 }
 
 .card-body {
-  background-image: linear-gradient(to bottom, #f1f4f9 40%, #F0F8FF 60%);
+  background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #F0F8FF 65%);
 }
 
 .navbar {
-  background-image: linear-gradient(to top, #f1f4f9 40%, #F0F8FF 60%);
+  background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #F0F8FF 75%);
 }
 
 section .color:nth-child(1)
@@ -171,7 +172,7 @@ section .color:nth-child(3)
 .form1 h2
 {
   position: relative;
-  color: navy;
+  color: black;
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -203,13 +204,13 @@ section .color:nth-child(3)
   border-radius: 5px;
   font-size: 16px;
   letter-spacing: 1px;
-  color:#fff;
+  color:black;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .form1 .inputBox1 input::placeholder 
 {
-  color:skyblue;
+  color:rgb(50, 79, 89);
   font-weight:20px;
 
 }
