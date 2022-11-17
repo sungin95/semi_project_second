@@ -52,6 +52,15 @@
   content: "";
 }
 
+.cate_btn {
+  text-decoration:none; 
+  background-color: rgb(255, 255, 255);
+  color:gray;
+  font-size: 15px;
+  border: 0;
+  outline: 0;
+}
+
 .itm-information {
   position: relative;
   float: right;

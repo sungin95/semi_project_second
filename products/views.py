@@ -10,6 +10,9 @@ from django.http import JsonResponse
 def index(request):
     products = Products.objects.all()
     category = request.GET.get("category")
+    for product in products:
+        product.ten_price = int(round((product.가격) * 1.1))
+        product.save()
     if category:
         products_category = Products.objects.filter(제조회사__contains=category)
     else:
