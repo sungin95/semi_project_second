@@ -124,13 +124,13 @@
       <a class="detail-article" href="{% url 'communities:detail' article.pk %}" style="text-decoration: none; color: #000000 !important;">
         <div class="row justify-content-center text-center">
           <div class="col-1">
-            <span class="recomment">0</span></div>
+            <span class="recomment">{{ article.like.count }}</span></div>
           <div class="col-1">
             <span class="recomment">{{ article.category }}</span></div>
           <div class="col-4">
             {{ article.title }}</div>
           <div class="col-2">{{ article.user.username }}</div>
-          <div class="col-1">0</div>
+          <div class="col-1">{{ article.hits }}</div>
           <div class="col-1">{{ article.created_string }}</div>
         </div>
         <hr class="m-2 my-1">
@@ -140,20 +140,21 @@
     </div>
   </div>
 
+  
   <!--페이지네이션 + 게시글 정렬-->
   <div class="container">
   <div class="pgnation-sort">
       <!-- 페이징처리 시작 -->
-      <div class="">
+      <div class="page_h">
         <ul class="pagination">
           <!-- 이전페이지 -->
           {% if question_list.has_previous %}
             <li class="page-item">
-              <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
+              <a class="page-link" href="?page={{ question_list.previous_page_number }}">&laquo;</a>
             </li>
           {% else %}
             <li class="page-item disabled">
-              <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+              <a class="page-link" tabindex="-1" aria-disabled="true" href="#">&laquo;</a>
             </li>
           {% endif %}
           <!-- 페이지리스트 -->
@@ -171,11 +172,11 @@
           <!-- 다음페이지 -->
           {% if question_list.has_next %}
             <li class="page-item">
-              <a class=" page-link" href="?page={{ question_list.next_page_number }}">다음</a>
+              <a class=" page-link" href="?page={{ question_list.next_page_number }}">&raquo;</a>
             </li>
           {% else %}
             <li class="page-item disabled">
-              <a class=" page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+              <a class=" page-link" tabindex="-1" aria-disabled="true" href="#">&raquo;</a>
             </li>
           {% endif %}
         </ul>

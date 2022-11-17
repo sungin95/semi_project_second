@@ -1,12 +1,11 @@
 .card-body {
-    background-image: linear-gradient(to bottom, #f1f4f9 40%, #F0F8FF 60%);
-  }
-  
-  .navbar {
-    background-image: linear-gradient(to top, #f1f4f9 40%, #F0F8FF 60%);
-  }
-  
-  .cart-content {
+  background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #F0F8FF 65%);
+}
+
+.navbar {
+  background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #F0F8FF 75%);
+}
+.cart-content {
     position: relative;
     max-width: 1440px;
     min-height: 620px;
@@ -108,10 +107,10 @@
     height: 28px;
     margin: 0;
     font-weight: bold;
-    border-color: #212425;
+    border:1px solid rgb(230, 230, 250);
     border-radius: 14px;
     font-size: 14px;
-    color: #99C3FF; 
+    color: rgb(147, 112, 219);
   }
   
   .btn.btn-s {
@@ -546,7 +545,7 @@
     max-width: 330px;
     background: #fff;
     border-top: 1px solid #191919;
-    z-index: 10;
+    z-index: 1;
   }
   
   
@@ -604,8 +603,8 @@
   }
   
   .btn.btn-type1 {
-    color:#99C3FF;
-    border-color: #99C3FF;
+    color:rgb(147, 112, 219);
+    border-color: rgb(230, 230, 250);
     background: #fff;
     border-width: 2px;
     min-width: 108px;
@@ -698,7 +697,7 @@
   }
   
   .cart-payment-area .payment-listup .color-sb{
-    color:#2188ff !important;
+    color:rgb(147, 112, 219) !important;
   }
   
   .cart-payment-area .cost-listup {
@@ -760,9 +759,8 @@
   }
   
   .btn.btn-type3 {
-    background: #99C3FF;
-    background-color: #99C3FF;
-    color: white;
+    background-color: rgb(230, 230, 250);
+    color: rgb(147, 112, 219);
   }
   
   .cart-payment-area .btn-l {

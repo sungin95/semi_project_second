@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.humanize",
     "django_extensions",
     "storages",
     "login.apps.LoginConfig",  # 왜 login에서 가져 오는지는 모르겠네

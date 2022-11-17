@@ -3,22 +3,42 @@
   background: rgb(219, 219, 255);
 } */
 
+
+
+
 .info {
     text-align: center;
     margin: 2;
 }
 
+.info .mem_rate:before{
+    content: "";
+    background: rgb(230, 230, 250);
+    width: 12%;
+    height: 25px;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translateX(-50%);
+    opacity: 0.11;
+
+}
+
 .info h2 {
-    margin-top: 30px;
+    margin-top: 100px;
     position: relative;
-    font-size: 50px;
-    font-weight: bolder;
+    font-size: 32px;
+    font-family: sans-serif;
     margin-bottom: 20px;
-    color: rgb(205, 205, 255);
+    color: rgb(147, 112, 219);
+    font-weight: bold;
+
 }
 
 .info h2 + div > p {
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: bold;
     line-height: 30px;
 }
 
@@ -33,17 +53,35 @@
     margin: auto;
 }
 
-.info-rating ul > a {
-    color: rgb(252, 251, 253);
-    background-color: rgb(205, 205, 255);
+.info-rating ul > button {
+    margin-top: 20px;
+    color: black;
+    background-color: #fff;
     width: 150px;
     margin-bottom: 30px;
+    border: 1px solid black;
+    font-size: 15px;
+    border-radius: 0.5rem;
 }
+
+.info-rating ul > button:hover {
+    color:white;
+    background-color: rgb(147, 112, 219);
+}
+.info-rating ul > button > span {
+    font-size: 20px;
+}
+
+.custom {
+    width:180px !important
+}
+
+
 
 .infomation {
     height: 100%;
     width: 100%;
-    background-color: rgb(233, 233, 253);
+    background-color: rgba(230, 230, 250, 0.9);  
     border-radius: 20px;
     padding: 45px 50px;
     text-align: center;
@@ -51,7 +89,73 @@
 
 .infomation h1 {
     font-size: 2rem;
+    font-weight: bold;
 }
+
+/* .information {
+    background: #F4F8FF;
+    border-radius: 20px;
+    padding: 45px 50px;
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+.member-benefit p:after{
+    content: "+";
+    position: absolute;
+    margin-left: 5px;
+    top:33px;
+    width: 25px;
+    height:25px;
+    line-height: 20px;
+    color: #fff;
+    border-radius: 50%;
+    background: rgb(147, 112, 219);
+    font-size: 28px;
+    text-align: center;
+  }
+  
+
+
+
+.gc_lv_standard li {
+    position: relative;
+    background: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-gc-intro-cart.svg) no-repeat top/auto;
+    padding-top: 110px;
+    width: 32%;
+    padding-left:0;
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+
+}
+
+.gc_lv_standard li:nth-child(2) {
+    background-image: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-gc-intro-fr.svg);
+}
+
+.gc_lv_standard li:last-child{
+    background-image: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-gc-intro-fr.svg);
+}
+
+
+.gc_lv_standard li + li:before{
+    content: "or";
+    position: absolute;
+    left: -18px;
+    top:46px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    color: #fff;
+    border-radius: 50%;
+    background: #699FFF;
+    font-size: 14px;
+}
+
+
+
 
 .member-box {
     margin-top: 30px;
@@ -60,7 +164,7 @@
     justify-content: center;
     align-items: center;
     width: 40%;
-    border: 2px solid rgb(205, 205, 255);
+    border: 2px solid #CCDFFF;
     border-radius: 20px;
     background: #fff;
     height: 190px;
@@ -68,12 +172,7 @@
     padding: 30px;
 }
 
-.member-box .memver-benefit {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-}
+
 
 .member-box h3 {
     position: absolute;
@@ -84,21 +183,198 @@
     height: 40px;
     padding: 0 16px;
     font-size: 22px;
-    background: rgb(205, 205, 255);
+    background: rgb(147, 112, 219);
     color: #fff;
     border-radius: 20px;
     line-height: 38px;
     text-align: center;
 }
 
-.member-benefit h5 {
+
+.card-body {
+    background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #F0F8FF 65%);
+  }
+  
+  .navbar {
+    background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #F0F8FF 75%);
+  }
+
+
+
+  /* i5 */
+.ul-tabs .ui-tabs-panel{
+    display: block;
+    border-width: 0;
+    background: none;
+}
+
+.ui-corner-bottom {
+    border-bottom-right-radius: 3px;
+}
+
+.ui-widget-content{
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.gc_tab.ui-tabs .gc_member_lv_wrap {
+    background: #f4f4f4;
+    border-radius: 20px;
+    padding: 45px 50px;
+}
+
+.gc_member_lv_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gc_member_lv_cont strong.pc-ver {
+    width: 100%;
+    font-size: 38px;
+    margin-bottom: 50px;
+}
+
+.pc-ver {
+    display: block;
+}
+
+
+.gc_member_lv_box {
+    display: flex;
+    justify-content: center;
+    width:100%;
+    align-items: center;
+    border: 2px solid rgb(147, 112, 219);
+    border-radius: 20px;
+    background: #fff;
+    height: 190px;
+    position: relative;
+    padding:30px;
+
+}
+
+.mo-ver {
+    display: none;
+}
+
+.gc_lv_cont {
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: left;
+}
+
+.gc_lv_standard {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gc_member_lv_box h3 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px;
+    min-width: 94px;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 22px;
+    background: rgb(147, 112, 219);
+    color: #fff;
+    border-radius: 20px;
+    line-height: 38px;
+    text-align: center;
+}
+
+
+
+
+
+.gc_member_lv_cont:not(.level1).gc_member_lv_box:first-child.gc_lv_cont p:after{
+    content: "+";
+    position: absolute;
+    right: 17px;
+    top: 3px;
+    width: 25px;
+    height:25px;
+    line-height: 25px;
+    color:#fff;
+    border-radius: 50%;
+    background-color: rgb(147, 112, 219);
+    font-size: 28px;
+    text-align: center;
+}
+
+
+
+.gc_lv_benefit li:before {
+    content:"";
+    display: inline-block;
+    background: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-check.svg) no-repeat left/auto;
+    width: 13px;
+    height: 10px;
+    margin-left: -20px;
+    top:22%;
+    margin-right: 10px;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+
+.gc_lv_standard {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.gc_lv_standard li {
     position: relative;
-    font-size: 23px;
-    line-height: 32px;
-    padding-left: 20px;
-    font-size: 1.3rem;
+    background: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-gc-intro-cart.svg) no-repeat top/auto;
+    padding-top: 110px;
+    width: 32%;
+    padding-left: 0;
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 15px;
+    text-align: center;
+
+}
+
+.gc_member_lv_inner .gc_lv_standard li:nth-child(2) {
+    background-image: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-gc-intro-fr.svg);
+}
+
+.gc_member_lv_inner .gc_lv_standard li + li:before {
+    content: "or";
+    position: absolute;
+    left: -18px;
+    top:46px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    color:#fff;
+    border-radius: 50%;
+    background: rgb(147, 112, 219);
+    font-size: 14px;
+}
+
+.gc_member_lv_inner .gc_lv_standard li:last-child{
+    background-image: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-gc-intro-act.svg);
+}
+
+.gc_member_lv_box + p {
+    font-size: 16px;
+    color: #8B8B8B;
+    margin-top: 10px;
+}
+
+.information {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(230, 230, 250, 0.9);  
+    border-radius: 20px;
+    padding: 45px 50px;
+    text-align: center;
 }

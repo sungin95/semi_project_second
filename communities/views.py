@@ -7,12 +7,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Articles
 from django.core.paginator import Paginator
+from datetime import date, datetime, timedelta
 
 # Create your views here.
 def index(request):
     k = Articles.objects.all().order_by("-id")
     page = request.GET.get("page", "1")
-    paginator = Paginator(k, 10)
+    paginator = Paginator(k, 5)
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
@@ -28,7 +29,7 @@ def index_jab(request):
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
-        "page_obj": page_obj,
+        "question_list": page_obj,
     }
     return render(request, "communities/index.html", context)
 
@@ -40,7 +41,7 @@ def index_question(request):
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
-        "page_obj": page_obj,
+        "question_list": page_obj,
     }
     return render(request, "communities/index.html", context)
 
@@ -52,7 +53,7 @@ def index_boast(request):
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
-        "page_obj": page_obj,
+        "question_list": page_obj,
     }
     return render(request, "communities/index.html", context)
 
@@ -64,7 +65,7 @@ def index_consult(request):
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
-        "page_obj": page_obj,
+        "question_list": page_obj,
     }
     return render(request, "communities/index.html", context)
 
@@ -76,7 +77,7 @@ def index_hello(request):
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
-        "page_obj": page_obj,
+        "question_list": page_obj,
     }
     return render(request, "communities/index.html", context)
 
@@ -107,7 +108,25 @@ def detail(request, article_pk):
         "comments": comments,
         "comment_form": comment_form,
     }
-    return render(request, "communities/detail.html", content)
+    response = render(request, "communities/detail.html", content)
+
+    expire_date, now = datetime.now(), datetime.now()
+    expire_date += timedelta(days=1)
+    expire_date = expire_date.replace(hour=0, minute=0, second=0, microsecond=0)
+    expire_date -= now
+    max_age = expire_date.total_seconds()
+
+    cookie_value = request.COOKIES.get("hitblog", "_")
+
+    if f"_{id}_" not in cookie_value:
+        cookie_value += f"{id}_"
+        response.set_cookie(
+            "hitblog", value=cookie_value, max_age=max_age, httponly=True
+        )
+        article.hits += 1
+        article.save()
+
+    return response
 
 
 @login_required
@@ -185,3 +204,19 @@ def sub_comment_delete(request, article_pk, comment_pk):
             comment.delete()
         return redirect("communities:detail", article_pk)
     return redirect("communities:detail", article_pk)
+
+
+@login_required
+def like(request, article_pk):
+    article = get_object_or_404(Articles, pk=article_pk)
+    if article.like.filter(pk=request.user.pk).exists():
+        article.like.remove(request.user)
+        is_like = False
+    else:
+        article.like.add(request.user)
+        is_like = True
+    context = {
+        "isLiked": is_like,
+        "likeCount": article.like.count(),
+    }
+    return JsonResponse(context)

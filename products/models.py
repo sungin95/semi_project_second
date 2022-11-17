@@ -1,5 +1,9 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
+from datetime import datetime, timedelta
+from django.utils import timezone
 
 # Create your models here.
 class Products(models.Model):
@@ -10,7 +14,7 @@ class Products(models.Model):
     이미지2 = models.TextField(blank=True, null=True)
     이미지3 = models.TextField(blank=True, null=True)
     제조회사 = models.TextField(blank=True, null=True)
-    등록년월 = models.TextField(blank=True, null=True) 
+    등록년월 = models.TextField(blank=True, null=True)
     운영체제 = models.TextField(blank=True, null=True)
     게임용 = models.BooleanField(blank=True, null=True)
     사무_인강용 = models.BooleanField(blank=True, null=True)
@@ -105,3 +109,35 @@ class Products(models.Model):
     DPAltMode = models.BooleanField(blank=True, null=True)
     리프트힌지 = models.BooleanField(blank=True, null=True)
     like_product = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_user')
+
+
+class Review(models.Model):
+    products = models.ForeignKey("Products", on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_reviews")
+    grade = models.FloatField(
+        default=1, validators=[MaxValueValidator(5), MinValueValidator(0)]
+    )
+    # object 를 Post 의 title 문자열로 반환
+    def __str__(self):
+        return self.title
+
+    @property
+    def created_string(self):
+        time = datetime.now(tz=timezone.utc) - self.created_at
+        if time < timedelta(minutes=1):
+            return "방금 전"
+        elif time < timedelta(hours=1):
+            return str(int(time.seconds / 60)) + "분 전"
+        elif time < timedelta(days=1):
+            return str(int(time.seconds / 3600)) + "시간 전"
+        elif time < timedelta(days=7):
+            time = datetime.now(tz=timezone.utc).date() - self.created_at.date()
+            return str(time.days) + "일 전"
+        else:
+            return False
+
