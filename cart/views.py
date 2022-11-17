@@ -45,6 +45,8 @@ def detail(request, total=0, counter=0, total_plus=0, total_dc=0, cart_items=Non
                 round(((cart_item.product.가격) * 1.1) * cart_item.quantity, -4)
             )
             counter += cart_item.quantity
+            cart_item.product.ten_price = int(round((cart_item.product.가격) * 1.1))
+            cart_item.product.save()
         total_dc = total_plus - total
 
     except ObjectDoesNotExist:
