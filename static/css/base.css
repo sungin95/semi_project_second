@@ -6,6 +6,14 @@ html {
     scroll-behavior: smooth;
 }
 
+.container form {
+    height: 60px;
+}
+
+.navbar-img {
+    height: 90%;
+}
+
 #navbar {
     transition: all 1s linear;
 }
@@ -16,6 +24,7 @@ html {
     justify-content: center;
     border-style: none;
     background: transparent;
+    height: 100%;
 }
 
 .category-value {
