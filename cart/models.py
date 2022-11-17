@@ -1,4 +1,5 @@
 from django.db import models
+from products.models import Products
 
 # Create your models here.
 class Cart(models.Model):
@@ -14,7 +15,7 @@ class Cart(models.Model):
 
 
 class CartItem(models.Model):
-    product = models.CharField(max_length=250, blank=True)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE)
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     active = models.BooleanField(default=True)
@@ -23,7 +24,7 @@ class CartItem(models.Model):
         db_table = "CartItem"
 
     def sub_total(self):
-        return 1290000 * self.quantity
+        return self.product.가격 * self.quantity
 
     def __str__(self):
         return self.product

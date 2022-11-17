@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
+{% load humanize %}
 {% load static %}
 
 {% block css %}
@@ -98,7 +99,7 @@
                       <span>기준가</span>기준가격
                     </div>
                     <div class="sale-price">
-                      <span>할인가</span>{{ product.가격 }}</div>
+                      <span>할인가</span>{{ product.가격 | intcomma }}</div>
                   </p>
                 </a>
                 <a href="#" class="btn-color">구매하기</a>
@@ -123,7 +124,7 @@
                       <span>기준가</span>기준가격
                     </div>
                     <div class="sale-price">
-                      <span>할인가</span>{{ product.가격 }}</div>
+                      <span>할인가</span>{{ product.가격 | intcomma }}</div>
                   </p>
                 </a>
                 <a href="#" class="btn-color">구매하기</a>

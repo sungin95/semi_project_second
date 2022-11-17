@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
+{% load humanize %}
 {% load static %}
 
 {% block css %}
@@ -149,7 +150,7 @@
               <dl class="has_strike">
                 <dt>정가</dt>
                 <dd>
-                  <span data-price="3070000">{{price}}</span>
+                  <span data-price="3070000">{{price | intcomma}}</span>
                   원
                 </dd>
               </dl>
@@ -158,7 +159,7 @@
                 <dt>
                   특가</dt>
                 <dd>
-                  <span data-price="2191000" class="pd-total-price">{{special_price}}</span>
+                  <span data-price="2191000" class="pd-total-price">{{special_price | intcomma}}</span>
                   원
                 </dd>
               </dl>
@@ -202,7 +203,7 @@
               <div class="box-cto">
                 <ul>
                   <li>
-                    <button id="btnCart" type="button" class="btn btn-l btn-type6">장바구니</button>
+                    <a id="btnCart" type="button" class="btn btn-l btn-type6" href="{% url 'cart:add_cart' product.id %}">장바구니</a>
                   </li>
                   <li>
                     <button id="btnCart" type="button" class="btn btn-k btn-type2 ms-3 px-3">바로구매</button>

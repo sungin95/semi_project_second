@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 # Create your models here.
 class Products(models.Model):
@@ -10,7 +11,7 @@ class Products(models.Model):
     이미지2 = models.TextField(blank=True, null=True)
     이미지3 = models.TextField(blank=True, null=True)
     제조회사 = models.TextField(blank=True, null=True)
-    등록년월 = models.TextField(blank=True, null=True) 
+    등록년월 = models.TextField(blank=True, null=True)
     운영체제 = models.TextField(blank=True, null=True)
     게임용 = models.BooleanField(blank=True, null=True)
     사무_인강용 = models.BooleanField(blank=True, null=True)
@@ -20,7 +21,7 @@ class Products(models.Model):
     해상도 = models.TextField(blank=True, null=True)
     화면크기대 = models.TextField(blank=True, null=True)
     DCI_P3 = models.IntegerField(blank=True, null=True)
-    NTSC = models.FloatField(blank=True, null=True)
+    NTSC = models.TextField(blank=True, null=True)
     화면밝기 = models.IntegerField(blank=True, null=True)
     주사율 = models.TextField(blank=True, null=True)
     패널종류 = models.TextField(blank=True, null=True)
@@ -95,4 +96,6 @@ class Products(models.Model):
     트루톤 = models.BooleanField(blank=True, null=True)
     화면회전각 = models.TextField(blank=True, null=True)
     휴대용 = models.BooleanField(blank=True, null=True)
-    like_product = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_user')
+    like_product = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name="like_user"
+    )

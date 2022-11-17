@@ -59,8 +59,8 @@
           <!-- 프로필 사진 -->
           <div class="d-flex">
             <div class="rounded-pill">
-              {% if review.user.image %}
-                <img src="{{ review.user.image.url }}" alt="프로필 사진" style="width: 50px; height: 50px; border-radius: 500px">
+              {% if article.user.image %}
+                <img src="{{ article.user.image.url }}" alt="프로필 사진" style="width: 50px; height: 50px; border-radius: 500px">
               {% else %}
                 <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 50px; height: 50px; border-radius: 500px">
               {% endif %}
