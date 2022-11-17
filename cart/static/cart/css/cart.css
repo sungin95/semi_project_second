@@ -104,11 +104,10 @@
   }
   
   .opt-select .opt-select-right .btn-s {
-    height: 28px;
     margin: 0;
     font-weight: bold;
     border:1px solid rgb(230, 230, 250);
-    border-radius: 14px;
+    border-radius: 20px;
     font-size: 14px;
     color: rgb(147, 112, 219);
   }
@@ -785,7 +784,7 @@
     max-width: 1440px;
     margin: 0 auto;
     padding: 20px 0 18px;
-    border-top: 2px solid #000;
+    border-top: 1px solid #000;
   }
   
   .cart-foot > .cart-foot-inner {
