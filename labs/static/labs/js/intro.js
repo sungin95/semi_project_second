@@ -3,17 +3,17 @@ const main = document.querySelector("main");
 window.addEventListener("load", () => {
     main.style.minHeight = "0";
 });
-const introNabvar = document.querySelector("#nabvar");
+const introNabvar = document.querySelector("#navbar");
 window.addEventListener("load", () => {
-    introNabvar.style.backgroundColor = "transparent";
+    introNabvar.style.backgroundImage = "none";
 });
 window.addEventListener("scroll", () => {
-    if (window.scrollY == 0) {
-        introNabvar.style.backgroundColor = "transparent";
+    if (window.scrollY < 200) {
+        introNabvar.style.backgroundImage = "none";
     }
 });
 introNabvar.addEventListener("mouseleave", () => {
-    introNabvar.style.backgroundColor = "transparent";
+    introNabvar.style.backgroundImage = "none";
 });
 
 //글귀변경
@@ -47,39 +47,42 @@ for (let rel of introCommentChange) {
 
 // 스크롤 이벤트
 // 규칙
+const scrollEventValue = document.querySelector(".intro-value-wrapper");
+
 window.addEventListener("scroll", () => {
     if (window.scrollY > 330) {
-        document.querySelector(".intro-value-wrapper").style.transform = "translateX(0%)";
-        document.querySelector(".intro-value-wrapper").style.visibility = "visible";
-        document.querySelector(".intro-value-wrapper").style.opacity = "1";
+        scrollEventValue.style.transform = "translateX(0%)";
+        scrollEventValue.style.visibility = "visible";
+        scrollEventValue.style.opacity = "1";
     }
     if (window.scrollY > 1500) {
-        document.querySelector(".intro-value-wrapper").style.transform = "translateX(10%)";
-        document.querySelector(".intro-value-wrapper").style.visibility = "hidden";
-        document.querySelector(".intro-value-wrapper").style.opacity = "0";
+        scrollEventValue.style.transform = "translateX(10%)";
+        scrollEventValue.style.visibility = "hidden";
+        scrollEventValue.style.opacity = "0";
     }
     if (window.scrollY < 330) {
-        document.querySelector(".intro-value-wrapper").style.transform = "translateX(10%)";
-        document.querySelector(".intro-value-wrapper").style.visibility = "hidden";
-        document.querySelector(".intro-value-wrapper").style.opacity = "0";
+        scrollEventValue.style.transform = "translateX(10%)";
+        scrollEventValue.style.visibility = "hidden";
+        scrollEventValue.style.opacity = "0";
     }
 });
 
 // 모험
+const scrollEventSchedul = document.querySelector(".intro-schedule-wrapper");
 window.addEventListener("scroll", () => {
     if (window.scrollY > 1200) {
-        document.querySelector(".intro-schedule-wrapper").style.transform = "translateX(0%)";
-        document.querySelector(".intro-schedule-wrapper").style.visibility = "visible";
-        document.querySelector(".intro-schedule-wrapper").style.opacity = "1";
+        scrollEventSchedul.style.transform = "translateX(0%)";
+        scrollEventSchedul.style.visibility = "visible";
+        scrollEventSchedul.style.opacity = "1";
     }
     if (window.scrollY > 2400) {
-        document.querySelector(".intro-schedule-wrapper").style.transform = "translateX(10%)";
-        document.querySelector(".intro-schedule-wrapper").style.visibility = "hidden";
-        document.querySelector(".intro-schedule-wrapper").style.opacity = "0";
+        scrollEventSchedul.style.transform = "translateX(10%)";
+        scrollEventSchedul.style.visibility = "hidden";
+        scrollEventSchedul.style.opacity = "0";
     }
     if (window.scrollY < 1200) {
-        document.querySelector(".intro-schedule-wrapper").style.transform = "translateX(10%)";
-        document.querySelector(".intro-schedule-wrapper").style.visibility = "hidden";
-        document.querySelector(".intro-schedule-wrapper").style.opacity = "0";
+        scrollEventSchedul.style.transform = "translateX(10%)";
+        scrollEventSchedul.style.visibility = "hidden";
+        scrollEventSchedul.style.opacity = "0";
     }
 });

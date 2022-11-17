@@ -6,6 +6,10 @@ html {
     scroll-behavior: smooth;
 }
 
+#navbar {
+    transition: all 1s linear;
+}
+
 .a_menu {
     display: flex;
     flex-direction: column;
@@ -19,7 +23,6 @@ html {
 }
 
 .nav-item a {
-    color: white;
 }
 
 .black-bg {
@@ -89,8 +92,6 @@ html {
     position: absolute;
     right: 0%;
     z-index: 9;
-    width: 12rem;
-    height: 12rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
