@@ -342,7 +342,7 @@
 <script>
   // 북마크 비동기
   const likeBtn = document.querySelector("#like-btn");
-  likeBtn.addEventListener("click", function (e) {
+  likeBtn.addEventListener("click", (e) => {
     axios({ method: "get", url: `/communities/${e.target.dataset.articleId}/like` }).then((res) => {
       if (res.data.isLiked === true) {
         e.target.classList.add("bi-bookmarks-fill");

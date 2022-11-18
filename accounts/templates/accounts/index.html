@@ -14,7 +14,7 @@
       {% for user in users %}
         <tr>
           <th scope="row">
-            <a href="{% url 'accounts:detail' user.pk %}">{{ user.username}}</a>
+            <a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a>
           </th>
           <td>{{ user.email}}</td>
           <td>{{ user.last_login}}</td>
