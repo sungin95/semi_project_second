@@ -216,21 +216,310 @@
 </div>
 </div>
 <!-- 스펙 -->
+<div class="b_tit">
+  <h3 class="txt">상품 상세정보</h3>
+</div>
+<div class="detail_cont">
+  <div class="prod_spec">
+    <table class="spec_tbl">
+      <tbody>
+        <tr>
+          <th scope="row" class="tit">제조회사</th>
+            <td class="dsc"><a class="maker_link">{{ product.제조회사 }}</a></td>
+          <th scope="row" class="tit">등록년월</th>
+            <td class="dsc">{{ product.등록년월 }}</td>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>운영체제(OS)</a></th>
+            <td class="dsc"><a>{{ product.운영체제 }}</a></td>
+          <th scope="row" class="tit"></th>
+            <td class="dsc"></td>
+        </tr>												
+        <tr>
+          <th scope="row" colspan="4">용도</th>
+        </tr>
+        <tr>
+          <th scope="row" class="tit"><a>사무/인강용</a></th>
+            <td class="dsc">{{ product.사무_인강용 }}</td>
+          <th scope="row" class="tit"><a>휴대용</a></th>
+            <td class="dsc">{{ product.휴대용 }}</td>
+        </tr>
+        <tr>    
+          <th scope="row" class="tit"><a>게임용</a></th>
+            <td class="dsc">{{ product.게임용 }}</td>
+          <th scope="row" class="tit"><a>그래픽작업용</a></th>
+            <td class="dsc">{{ product.그래픽작업용 }}</td>
+        </tr>													
+        <tr>
+          <th scope="row" colspan="4">화면정보</th>
+        </tr>
+        <tr>
+          <th scope="row" class="tit"><a>화면 크기</a></th>
+            <td class="dsc"><a>{{ product.화면크기 }}</a></td>
+          <th scope="row" class="tit"><a>화면 크기대</a></th>
+            <td class="dsc"><a>{{ product.화면크기대 }}</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="tit"><a>화면 비율</a></th>
+            <td class="dsc"><a>{{ product.화면비율 }}</a></td>
+          <th scope="row" class="tit"><a>해상도</a></th>
+            <td class="dsc"><a>{{ product.해상도 }}</a></td>
+        </tr>													
+        <tr>								
+          <th scope="row" class="tit"><a>화면 밝기</a></th>
+            <td class="dsc"><a>{{ product.화면밝기}}</a></td>
+          <th scope="row" class="tit"><a>DCI-P3</a></th>
+            <td class="dsc"><a>{{ product.DCI_P3 }}</a></td>
+        </tr>													
+        <tr>
+          <th scope="row" class="tit"><a>패널 표면 처리</a></th>
+            <td class="dsc"><a>{{ product.패널표현저리 }}</a></td>								
+          <th scope="row" class="tit"><a>패널 종류</a></th>
+            <td class="dsc"><a>{{ product.패널종류 }}</a></td>
+        </tr>													
+        <tr>
+          <th scope="row" colspan="4">디스플레이 특징</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>광시야각</a></th>
+            <td class="dsc">{{ product.광시야각 }}</td>
+          <th scope="row" class="tit"><a>슬림형 베젤</a></th>
+            <td class="dsc">{{ product.슬림형베젤 }}</td>
+        </tr>												
+        <tr>
+          <th scope="row" colspan="4">프로세서</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>CPU 제조사</a></th>
+            <td class="dsc"><a>{{ product.CPU제조사 }}</a></td>
+          <th scope="row" class="tit"><a>CPU 종류</a></th>
+            <td class="dsc"><a>{{ product.CPU종류 }}</a></td>
+        </tr>												
+        <tr>								
+          <th scope="row" class="tit"><a>CPU 코드명</a></th>
+            <td class="dsc"><a>{{ product.CPU코드명 }}</a></td>
+          <th scope="row" class="tit"><a>CPU 넘버</a></th>
+            <td class="dsc"><a>{{ product.CPU넘버 }}</a></td>
+        </tr>													
+        <tr>								
+          <th scope="row" class="tit"><a>코어 수</a></th>
+            <td class="dsc"><a>{{ product.코어수 }}</a></td>
+          <th scope="row" class="tit"><a>스레드 수</a></th>
+            <td class="dsc"><a>{{ product.스레드수 }}</a></td>
+        </tr>													
+        <tr>
+          <th scope="row" colspan="4">메모리</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>메모리 타입</a></th>
+            <td class="dsc"><a>{{ product.메모리타입 }}</a></td>
+          <th scope="row" class="tit"><a>메모리 용량</a></th>
+            <td class="dsc"><a>{{ product.메모리용량 }}</a></td>
+        </tr>													
+        <tr>								
+          <th scope="row" class="tit"><a>메모리 대역폭</a></th>
+            <td class="dsc"><a>{{ product.메모리대역폭 }}</a></td>
+          <th scope="row" class="tit">메모리 교체</th>
+            <td class="dsc"><a>{{ product.메모리교체 }}</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="tit"><a>메모리 슬롯</a></th>
+            <td class="dsc"><a>{{ product.메모리슬롯 }}</a></td>
+          <th scope="row" class="tit"><a>메모리 최대용량</a></th>
+            <td class="dsc"><a>{{ product.메모리최대용량 }}</a></td>
+        </tr>	
+        <tr>
+          <th scope="row" class="tit"><a>메모리 구성</a></th>
+            <td class="dsc"><a>{{ product.메모리구성 }}</a></td>
+          <th scope="row" class="tit"><a></a></th>
+            <td class="dsc"></td>
+        </tr>		
+        <tr>
+          <th scope="row" colspan="4">저장장치</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>저장장치 종류</a></th>
+            <td class="dsc"><a>{{ product.저장장치종류 }}</a></td>
+          <th scope="row" class="tit"><a>저장 용량</a></th>
+            <td class="dsc"><a>{{ product.저장용량 }}</a></td>
+        </tr>													
+        <tr>							
+          <th scope="row" class="tit"><a>저장 슬롯</a></th>
+            <td class="dsc"><a>{{ product.저장슬롯 }}</a></td>
+          <th scope="row" class="tit"></th>
+            <td class="dsc"></td>
+        </tr>													
+        <tr>
+          <th scope="row" colspan="4">그래픽</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit">GPU 종류</th>
+            <td class="dsc">{{ product.GPU종류 }}</td>
+          <th scope="row" class="tit"><a>GPU 제조사</a></th>
+            <td class="dsc"><a>{{ product.GPU제조사 }}</a></td>
+        </tr>													
+        <tr>								
+          <th scope="row" class="tit">GPU 칩셋</th>
+            <td class="dsc">{{ product.GPU칩셋 }}</td>
+          <th scope="row" class="tit"></th>
+            <td class="dsc"></td>
+        </tr>													
+        <tr>
+          <th scope="row" colspan="4">네트워크</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit">무선랜</th>
+            <td class="dsc">{{ product.무선랜 }}</td>
+          <th scope="row" class="tit">유선랜</th>
+            <td class="dsc">{{ product.유선랜 }}</td>
+        </tr>
+        <tr>
+          <th scope="row" class="tit"><a>블루투스</a></th>
+            <td class="dsc"><a>{{ product.블루투스 }}</a></td>
+          <th scope="row" class="tit"><a></a></th>
+            <td class="dsc"></td>
+        </tr>													
+        <tr>
+          <th scope="row" colspan="4">영상 입출력</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>HDMI</a></th>
+            <td class="dsc">{{ product.HDMI }}</td>
+          <th scope="row" class="tit"><a>웹캠(FHD)</a></th>
+            <td class="dsc">{{ product.웹캡 }}</td>
+        </tr>	
+        <tr>
+          <th scope="row" class="tit"><a>웹캠OFF 지원</a></th>
+            <td class="dsc">{{ product.웹캠OFF지원 }}</td>
+          <th scope="row" class="tit"><a></a></th>
+            <td class="dsc"></td>
+        </tr>												
+        <tr>
+          <th scope="row" colspan="4">단자</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>USB</a></th>
+            <td class="dsc"><a>{{ product.USB }}</a></td>
+          <th scope="row" class="tit"><a>썬더볼트3</a></th>
+            <td class="dsc"><a>{{ product.썬더볼트3 }}</a></td>
+        </tr>	
+        <tr>								
+          <th scope="row" class="tit"><a>썬더볼트4</a></th>
+            <td class="dsc"><a>{{ product.썬더볼트4 }}</a></td>
+          <th scope="row" class="tit"><a>USB-C</a></th>
+            <td class="dsc"><a>MicroSD카드</a></td>
+        </tr>													
+        <tr>								
+          <th scope="row" class="tit">USB-A</th>
+            <td class="dsc">{{ product.USB_A }}</td>
+          <th scope="row" class="tit"></th>
+            <td class="dsc"></td>
+        </tr>																										
+        <tr>
+          <th scope="row" colspan="4">카드 슬롯</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit">MicroSD카드</th>
+            <td class="dsc">{{ product.MicroSD카드 }}</td>
+          <th scope="row" class="tit"></th>
+            <td class="dsc"></td>
+        </tr>													
+        <tr>
+          <th scope="row" colspan="4">보안 기능</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>얼굴 인식</a></th>
+            <td class="dsc">{{ product.얼굴인식 }}</td>
+          <th scope="row" class="tit">지문 인식</th>
+            <td class="dsc">{{ product.지문인식 }}</td>
+        </tr>													
+        <tr>
+          <th scope="row" colspan="4">편의 기능</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>키보드 라이트</a></th>
+            <td class="dsc">{{ product.키보드라이트 }}</td>
+          <th scope="row" class="tit">침수지연키보드</th>
+            <td class="dsc">{{ product.침수지연키보드 }}</td>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>터치스크린</a></th>
+            <td class="dsc">{{ product.터치스크린 }}</td>
+          <th scope="row" class="tit"><a>트루론</a></th>
+            <td class="dsc">{{ product.트루론 }}</td>
+        </tr>	
+        <tr>								
+          <th scope="row" class="tit"><a>전용펜지원</a></th>
+            <td class="dsc">{{ product.전용펜지원 }}</td>
+          <th scope="row" class="tit">리프트힌지</th>
+            <td class="dsc">{{ product.리프트힌지 }}</td>
+        </tr>														
+        <tr>
+          <th scope="row" colspan="4">키보드 배열</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>숫자키패드</a></th>
+            <td class="dsc">{{ product.숫자키패트 }}</td>
+          <th scope="row" class="tit"><a></a></th>
+            <td class="dsc"></td>
+        </tr>													
+        <tr>
+          <th scope="row" colspan="4">파워</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>배터리</a></th>
+            <td class="dsc"><a>{{ product.배터리 }}</a></td>
+          <th scope="row" class="tit"><a>어댑터</a></th>
+            <td class="dsc"><a>{{ product.어댑터 }}</a></td>
+        </tr>													
+        <tr>								
+          <th scope="row" class="tit"><a>충전단자</a></th>
+            <td class="dsc"><a>{{ product.충전단자 }}</a></td>
+          <th scope="row" class="tit"></th>
+            <td class="dsc"></td>
+        </tr>													
+        <tr>
+          <th scope="row" colspan="4">주요제원</th>
+        </tr>
+        <tr>								
+          <th scope="row" class="tit"><a>두께</a></th>
+            <td class="dsc"><a>{{ product.두께 }}</a></td>
+          <th scope="row" class="tit"><a>무게</a></th>
+            <td class="dsc"><a>{{ product.무게 }}</a></td>
+        </tr>										
+        <tr>
+          <th scope="row" colspan="4"><span class="ico_kc">KC</span>인증</th>
+        </tr>
+        <tr>
+          <th scope="row" class="tit">적합성평가인증</th>
+            <td class="dsc" colspan="3">{{ product.적합성평가인증 }} <a class="btn_certi">인증번호 확인</a></td>
+        </tr>
+        <tr>
+          <th scope="row" class="tit">안전확인인증</th>
+            <td class="dsc" colspan="3">{{ product.안전확인인증 }} <a class="btn_certi">인증번호 확인</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 <!-- 리뷰 -->
 <!-- 리뷰창 -->
   <!-- 개인 리뷰 -->
+  <div class="b_txt">
+  <h3 class="txt_t">상품 리뷰</h3>
   <div>
+  <hr>
+  <div class="review_border">
     {% for review in reviews %}
-
         <div class="d-flex my-2">
             <div>
                 {% if review.user.image %}
-                <img src="{{ review.user.image.url }}" alt="프로필 사진" style="width: 50px; height: 50px; border-radius: 500px">
+                <img src="{{ review.user.image.url }}" alt="프로필 사진" style="width: 25px; height: 25px; border-radius: 500px">
                 {% else %}
-                <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 50px; height: 50px; border-radius: 500px">
+                <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 25px; height: 25px; border-radius: 500px">
                 {% endif %}
             </div>
-              <div class="mx-3" style="width: 100%;">
+              <div class="mx-2" style="width: 100%;">
                   <div class="d-flex">
                     <div class="review-user">
                         {{review.user.username}} |
@@ -294,6 +583,7 @@
       {% endfor %}
     </div>
   </div>
+<hr>
 {% comment %} 아래 자동 정렬 멈추기용 {% endcomment %}
 {% endblock content %}
 
