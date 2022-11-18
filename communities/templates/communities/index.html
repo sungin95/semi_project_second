@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
 
@@ -10,35 +10,22 @@
   <!-- 공지사항-->
   <div class="container">
     <h4 class="m-3">공지사항</h4>
-    <!-- 공지사항 1개 시작 -->
+    <!-- 공지사항 시작 -->
+    {% for notion in notions %}
     <div class="row">
+      
       <div class="col-6">
-        <span class="comm_span">공지</span>공지사항 제목</div>
-      <div class="col-2">공지 작성자</div>
-      <div class="col-2">조회수</div>
-      <div class="col-2">작성일</div>
+        <a class="detail-article" href="{% url 'communities:detail' notion.pk %}" style="text-decoration: none; color: #000000 !important;">
+        <span class="comm_span">공지</span>{{ notion.title }}</a>
+      </div>
+      <div class="col-2">{{ notion.user.username }}</div>
+      <div class="col-2">{{ notion.hit }}</div>
+      <div class="col-2">{{ notion.created_string }}</div>
+      
     </div>
     <hr class="my-2">
-    <!-- 공지사항 1개 종료 -->
-    <!-- 공지사항 2개 시작 -->
-    <div class="row">
-      <div class="col-6">
-        <span class="comm_span">공지</span>공지사항 제목</div>
-      <div class="col-2">공지 작성자</div>
-      <div class="col-2">조회수</div>
-      <div class="col-2">작성일</div>
-    </div>
-    <hr class="my-2">
-    <!-- 공지사항 2개 종료 -->
-    <!-- 공지사항 3개 시작 -->
-    <div class="row">
-      <div class="col-6">
-        <span class="comm_span">공지</span>공지사항 제목</div>
-      <div class="col-2">공지 작성자</div>
-      <div class="col-2">조회수</div>
-      <div class="col-2">작성일</div>
-    </div>
-    <!-- 공지사항 3개 종료 -->
+    {% endfor %}
+    <!-- 공지사항 종료 -->
   </div>
 
   <!--오늘의 BEST-->
@@ -48,32 +35,56 @@
       <div class="today-best-ten">
         <div class="today-best-left">
           <div class="today">
-            <span class="best-today">01</span>NVIDIA vs AMD 최근 상황</div>
+            <a class="best_link" href="">
+              <span class="best-today">01</span>{{ bests.0.title }}</div>
+            </a>
           <div class="today">
-            <span class="best-today">02</span>우주상향 대학 1차 붙었습니다..</div>
-          <div class="today"> 
-            <span class="best-today">03</span>어제 밥먹다가 플스가 생긴 사람입니다.</div>
+            <a class="best_link" href="">
+              <span class="best-today">02</span>{{ bests.1.title }}</div>
+            </a>
           <div class="today">
-            <span class="best-today">04</span>요즘 군대에서 모을수 있는 돈 액수</div>
+            <a class="best_link" href=""> 
+              <span class="best-today">03</span>{{ bests.2.title }}</div>
+            </a>
           <div class="today">
-            <span class="best-today">05</span>알리발 휴대용 모니터가 도착했습니다.</div>
+            <a class="best_link" href="">
+              <span class="best-today">04</span>{{ bests.3.title }}</div>
+            </a>
+          <div class="today">
+            <a class="best_link" href="">
+              <span class="best-today">05</span>{{ bests.4.title }}</div>
+            </a>
         </div>
         <div class="today-best-right">
           <div class="today">
-            <span class="best-today">06</span>이야 원달러 쭉쭉 내려가네요</div>
+            <a class="best_link" href="">
+              <span class="best-today">06</span>{{ bests.5.title }}</div>
+            </a>
           <div class="today">
-            <span class="best-today">07</span>와 저도 19금 프로그램 깔려 있었네여</div>
+            <a class="best_link" href="">
+              <span class="best-today">07</span>{{ bests.6.title }}</div>
+            </a>
           <div class="today">
-            <span class="best-today" >08</span>케이스 리퍼 사지마세요</div>
+            <a class="best_link" href="">
+              <span class="best-today">08</span>{{ bests.7.title }}</div>
+            </a>
           <div class="today">
-            <span class="best-today">09</span>허먼밀러 의자를 샀습니다 (후기)</div>
+            <a class="best_link" href="">
+              <span class="best-today">09</span>{{ bests.8.title }}</div>
+            </a>
           <div class="today">
-            <span class="best-today">10</span>전 여친에게 연락을 해보았습니다</div>
+            <a class="best_link" href="">
+              <span class="best-today">10</span>{{ bests.9.title }}</div>
+            </a>
         </div>
+        
       </div>
     </div>
   </div>
   <div class="writing">
+    {% if request.user.is_superuser %}
+    <a class="recomm" method="POST" href="{% url 'communities:notion_create' %}">공지쓰기</a>
+    {% endif %}
     <a class="recomm" method="POST" href="{% url 'communities:article_create' %}">글쓰기</a>
         <!-- 게시글 정렬 -->
         <div class="dropdown">
