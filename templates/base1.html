@@ -29,10 +29,16 @@
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'communities:index' %}">커뮤니티</a>
+              <a class="nav-link text-black" href="{% url 'labs:intro' %}">INTRO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-black" href="{% url 'labs:rating' %}">GRADE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'communities:index' %}">COMMUNITY</a>
             </li>
             <li class="nav-item " id="navbarProduct">
-              <a class="nav-link text-black" href="{% url 'products:index' %}">제품</a>
+              <a class="nav-link text-black" href="{% url 'products:index' %}">CATEGORY</a>
             </li>
             <!-- 어드민만 보이는 회원목록 -->
             {% if request.user.is_superuser == 1 %}
@@ -220,6 +226,7 @@
 
     <!-- 스크립트 -->
     {% bootstrap_javascript %}
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>

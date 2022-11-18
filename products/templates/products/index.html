@@ -344,6 +344,9 @@
                     </a>
                   {% endif %}
                 </div>
+                <div>
+                  <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
+                </div>
                 <a href="{% url 'products:detail' product.pk %}">
                   <h5 class="card-title">{{ product.모델명 }}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
