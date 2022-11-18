@@ -27,11 +27,12 @@ def index(request):
 
 def signup(request):
     if request.method == "POST":
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            # auth_login(request, user)
-            return redirect("accounts:login")
+        if (len(request.POST["username"])) <= 16:
+            form = CustomUserCreationForm(request.POST)
+            if form.is_valid():
+                user = form.save()
+                # auth_login(request, user)
+                return redirect("accounts:login")
     else:
         form = MySignupForm()
     context = {
