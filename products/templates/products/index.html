@@ -12,7 +12,6 @@
 
   <!-- <div class="product-brand-banner"> <div class="product-brand-banner-name" style=""> {% if category %} <h2>{{ category }}</h2> {% else %} <h2>전체</h2> {% endif %} </div> <div class="product-brand-banner-img" style="width: 100%"> <img src="{% static 'products/img/laptops.jpg' %}" width="100%" alt=""> </div> </div> </div> -->
 
-  <!-- <div class="main_image"> <img src="{% static 'products/img/laptops.jpg' %}" width="100%" height="500px"alt=""> <h1 class="main_text" style="font-size: 50px;">가운데에 글씨 쓰기</h1> </div> -->
 
   <div class="main_image">
     <img src="{% static 'products/img/laptops.jpg' %}" alt="">
@@ -23,9 +22,20 @@
     {% endif %}
   </div>
 
+<div>
+  <div class="main_image visual" style="background: url(https://images.samsung.com/kdp/display/pc/100001610/e43d0030-dea7-4a27-b3fa-8c840648e79e.jpg) center center no-repeat; background-size: cover;">
+    {% if category %}
+      <p class="main_text">{{ category }}</p>
+    {% else %}
+      <p class="main_text">전체</p>
+    {% endif %}
+  </div>
+</div>
+
 {% endblock carousel %}
 
 {% block content %}
+
   <div class="d-flex align-items-center my-3 justify-content-between">
     <!-- 필터 -->
     <div class="">

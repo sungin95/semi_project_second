@@ -15,7 +15,7 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 def index(request):
     k = Articles.objects.exclude(category="공지").order_by("-id")
-    bests = Articles.objects.exclude(category="공지").order_by("like")[:10]
+    bests = Articles.objects.exclude(category="공지").order_by("-like")[:10]
     notions = Articles.objects.filter(category="공지")
     print(bests)
     page = request.GET.get("page", "1")
