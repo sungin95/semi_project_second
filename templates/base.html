@@ -29,10 +29,16 @@
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'communities:index' %}">커뮤니티</a>
+              <a class="nav-link text-black" href="{% url 'labs:intro' %}">INTRO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-black" href="{% url 'labs:rating' %}">GRADE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'communities:index' %}">COMMUNITY</a>
             </li>
             <li class="nav-item " id="navbarProduct">
-              <a class="nav-link text-black" href="{% url 'products:index' %}">제품</a>
+              <a class="nav-link text-black" href="{% url 'products:index' %}">CATEGORY</a>
             </li>
             <!-- 어드민만 보이는 회원목록 -->
             {% if request.user.is_superuser == 1 %}
@@ -244,11 +250,6 @@
           .classList
           .remove('show-modal')
       })
-      navbar.addEventListener('mouseover', () => {
-        navbar.style.backgroundImage = 'linear-gradient(to bottom, rgb(253, 253, 252) 25%, #f0f8ff 75%)'
-        navbar.style.backgroundColor = ''
-        navbar.style.transition = 'all 1s'
-      })
       listGroup.addEventListener('mouseleave', () => {
         navbar.style.backgroundImage = 'none'
         navbar.style.transition = 'all 1s'
@@ -282,6 +283,7 @@
       const searchClick = document.querySelector("#search-click")
       const searchForm = document.querySelector('#searchForm')
       const searchCancel = document.querySelector('.search-cancel')
+      const searchBtn = document.querySelector('#search-btn')
 
       searchClick.addEventListener('click', () => {
         if (searchForm.style.visibility == 'hidden') {
@@ -299,15 +301,14 @@
       })
     </script>
 
-    <!-- 스크롤시 네비게이션바 투명하게 -->
+    <!-- 스크롤시 네비게이션바 숨기기 -->
     <script>
-      const searchBtn = document.querySelector('#search-btn')
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) {
-          navbar.style.backgroundImage = 'none'
+      window.addEventListener("mousewheel", (e) => {
+        const direction = e.deltaY > 0 ? "Scroll Down" : "Scroll Up";
+        if (direction == "Scroll Down") {
+          navbar.style.transform = 'translateY(-100%)'
         } else {
-          navbar.style.backgroundImage = 'linear-gradient(to bottom, rgb(253, 253, 252) 25%, #f0f8ff 75%)'
+          navbar.style.transform = 'translateY(0%)'
         }
       })
     </script>
