@@ -4,7 +4,9 @@
     justify-content: space-evenly;
     text-align: center;
     font-size: 0.7rem;
-    margin: 0 140px 0 140px;
+    margin: 0px 50px 0 50px;
+    padding-left: 100px;
+    padding-right:100px;
 }
 
 .main-category p {
@@ -23,7 +25,7 @@
 .main-category-bg {
     width: 8rem;
     height: 8rem;
-    /* border-radius: 50%;
+    border-radius: 50%;
     border: 3px solid rgb(205, 205, 255); */
     background: white;
 }
@@ -76,18 +78,21 @@
 }
 
 .best-ranking {
-    height: 40%;
-    min-width: 25%;
+    height: 450px;
+    min-width: 18%;
     background-color: rgb(205, 205, 255);
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    border: 6px solid rgb(205, 205, 255);
+
+    border: 5px solid rgb(205, 205, 255);
+
+
 }
 
 .best-ranking h3 {
     color: white;
-    margin: 20px 25px 25px 20px;
+    margin: 20px 0 0 10px;
     font-size: 25px;
     font-weight: 700;
     padding-top: 15px;
@@ -105,10 +110,11 @@
     justify-content: start;
     background-color: white;
     margin: 10px;
-    padding: 10px;
+    padding: 20px 10px 10px 10px;
     border-radius: 0.5rem;
     font-size: 0.8rem;
-    height: 290px;
+    height: 320px;
+    
 }
 
 .now {
@@ -117,7 +123,6 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     margin-bottom: 5px;
-    font-size: 15px;
 }
 
 .best-ten a {
@@ -136,7 +141,7 @@
 .best-ten-product {
     margin-left: 13px;
     height: 90%;
-    min-width: 20%;
+    min-width: 17%;
 }
 
 .best-ten-product .card-body {
@@ -214,7 +219,7 @@
     margin: 0;
     background-color: #f7f7f7;
     border-radius: 1.5rem;
-    height: 500px;
+    height: 480px;
     margin-right: 5px;
 }
 

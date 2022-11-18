@@ -134,7 +134,7 @@
         <h3>베스트랭킹</h3>
         <img src="{% static 'labs/img/gold1.png'%}">
       </div>
-      <div class="best-ten">
+      <div class="best-ten mt-3">
         {% for product_10 in products_10 %}
           <a href="{% url 'products:detail' product_10.id %}">
             <a class="now">
