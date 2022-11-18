@@ -156,3 +156,7 @@ tr {
   border: #9f87f8;
   border-radius: 10px;
 }
+
+.review-t{
+  min-width: 50%;
+}
