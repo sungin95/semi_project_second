@@ -223,10 +223,10 @@
 }
 
 .best-ranking-tag {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 37px;
     border-radius: 10px 0 10px 0;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: bold;
     color: white;
     background-color: skyblue;
@@ -238,7 +238,7 @@
     z-index: 1;
     left: 0;
     top: 0;
-    padding: 8px;
+    padding: 3px;
     font-family: sans-serif;
 }
 
