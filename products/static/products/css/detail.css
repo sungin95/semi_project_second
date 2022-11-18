@@ -1,3 +1,44 @@
 .hidden {
   display: none;
 }
+
+.review-update{
+  background-color:  #fff;
+  border: #fafafa;
+  padding: 0.01rem 0.01rem;
+  color: #9f87f8;
+  display: inline-block;
+  text-decoration-line: none;
+}
+
+.review-dele {
+  margin-top: 1px;
+  margin-left: 10px;
+  background-color:  #fff;
+  border: #fafafa;
+  padding: 0.01rem 0.01rem;
+  color: #fc0404;
+  display: inline-block;
+  text-decoration-line: none;
+}
+
+.reivew_user {
+  margin-top: 10px;
+}
+
+.review-m input{
+  margin-top: 1px;
+  margin-left: 10px;
+  background-color:  #fff;
+  border: #fafafa;
+  padding: 0.01rem 0.01rem;
+  color: #fc0404;
+  display: inline-block;
+  text-decoration-line: none; 
+}
+
+.re-text{
+  font-weight: bolder;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

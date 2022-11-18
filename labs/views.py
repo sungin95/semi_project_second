@@ -4,6 +4,7 @@ import os
 from products.models import Products
 from django.db.models import Q
 from .models import Search
+from django.core.paginator import Paginator
 
 # Create your views here.
 def main(request):
@@ -39,10 +40,6 @@ def search(request):
             else:
                 Search.objects.create(keyword=search, count=1)
 
-        a = list(Products.objects.values()[0].keys())
-        remove_set = {'id', '썸네일', '이미지1', '이미지2', '이미지3', '안전확인인증', '적합성평가인증'}
-        a = [i for i in a if i not in remove_set]
-
         if search:
             search_lists = products.filter(
                 Q(모델명__icontains=search) |Q(가격__icontains=search) |
@@ -73,10 +70,13 @@ def search(request):
                 Q(쿨링팬__icontains=search) |Q(터치스크린__icontains=search) |
                 Q(트루톤__icontains=search) |Q(화면회전각__icontains=search) 
             )
+            page = request.GET.get("page", "1")
+            paginator = Paginator(search_lists, 6)
+            page_obj = paginator.get_page(page)
             context = {
                 "search_lists": search_lists,
                 "s": s,
                 "search": search,
-                "a": a,
+                "page_obj": page_obj,
             }
             return render(request, "products/index.html", context)

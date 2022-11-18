@@ -6,10 +6,13 @@ html {
     scroll-behavior: smooth;
 }
 
+<<<<<<< HEAD
 .container form {
-    height: 60px;
+    /* height: 60px; */
 }
 
+=======
+>>>>>>> master
 .navbar-img {
     height: 90%;
 }
@@ -31,8 +34,6 @@ html {
     display: none;
 }
 
-.nav-item a {
-}
 
 .black-bg {
     width: 100%;

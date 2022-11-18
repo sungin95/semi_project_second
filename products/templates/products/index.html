@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% load django_bootstrap5 %}
 {% load humanize %}
 {% load static %}
@@ -66,28 +66,228 @@
 
   <div class="main">
     <!-- 사이드바 -->
-    <aside class="">
-      <div>화면크기</div>
-      <div>무게</div>
-      <div>프로세서</div>
-      <div>메모리</div>
-      <div>그래픽카드</div>
-      <div>저장장치</div>
-      <div>가격대</div>
+    <aside class="sidebar-wrapper">
+      <div>
+        <div class="sidebar-1" style="overflow: hidden; height: 45px;">
+          <div class="sidebar-display">
+            <div>화면</div>
+            <i class="bi bi-plus plus-click-display"></i>
+          </div>
+
+          <div class="sidebar-1-size" style="overflow: hidden; height: 31px;">
+            <div class="sidebar-size">
+              <div>노트북크기</div>
+              <i class="bi bi-plus plus-click-size"></i>
+            </div>
+            <div>
+              <div class="sidebar-detail">
+                <div>14인치 이하</div>
+              </div>
+              <div class="sidebar-detail">
+                <div>15인치~16.2인치</div>
+              </div>
+              <div class="sidebar-detail">
+                <div>17인치~17.3인치</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-1-resolution" style="overflow: hidden; height: 31px;">
+            <div class="sidebar-resolution">
+              <div>해상도</div>
+              <i class="bi bi-plus plus-click-resolution"></i>
+            </div>
+            <div class="sidebar-detail">
+              <div>FHD~</div>
+            </div>
+            <div class="sidebar-detail">
+              <div>QHD~</div>
+            </div>
+            <div class="sidebar-detail">
+              <div>~UHD</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <hr>
+      <div>
+        <div class="sidebar-2" style="overflow: hidden; height: 45px;">
+          <div class="sidebar-weight">
+            <div>무게</div>
+            <i class="bi bi-plus plus-click-weight"></i>
+          </div>
+          <div>
+            <div class="sidebar-detail">
+              <div>1kg 미만</div>
+            </div>
+            <div class="sidebar-detail">
+              <div>1kg ~ 1.5kg미만</div>
+            </div>
+            <div class="sidebar-detail">
+              <div>1.5kg ~ 2.0kg미만</div>
+            </div>
+            <div class="sidebar-detail">
+              <div>2kg 이상</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div>
+        <div class="sidebar-3" style="overflow: hidden; height: 45px;">
+          <div class="sidebar-processor">
+            <div>프로세서</div>
+            <i class="bi bi-plus plus-click-processor"></i>
+          </div>
+          <div class="sidebar-3-AMD" style="overflow: hidden; height: 31px;">
+            <div class="sidebar-AMD">
+              <div>AMD</div>
+              <i class="bi bi-plus plus-click-AMD"></i>
+            </div>
+            <div class="sidebar-detail">
+              <div>AMD 5000번대</div>
+            </div>
+            <div class="sidebar-detail">
+              <div>AMD 6000번대</div>
+            </div>
+          </div>
+          <div class="sidebar-3-intel" style="overflow: hidden; height: 31px;">
+            <div class="sidebar-intel">
+              <div>INTEL</div>
+              <i class="bi bi-plus plus-click-intel"></i>
+            </div>
+            <div class="sidebar-detail">
+              <div>i3</div>
+            </div>
+            <div class="sidebar-detail">
+              <div>i5</div>
+            </div>
+            <div class="sidebar-detail">
+              <div>i7</div>
+            </div>
+          </div>
+          <div class="sidebar-3-apple" style="overflow: hidden; height: 31px;">
+            <div class="sidebar-apple">
+              <div>애플</div>
+              <i class="bi bi-plus plus-click-apple"></i>
+            </div>
+            <div class="sidebar-detail">
+              <div>M1</div>
+            </div>
+            <div class="sidebar-detail">
+              <div>M2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div>
+        <div class="sidebar-4" style="overflow: hidden; height: 45px;">
+          <div class="sidebar-graphic">
+            <div>그래픽카드</div>
+            <i class="bi bi-plus plus-click-graphic"></i>
+          </div>
+          <div class="sidebar-4-internal">
+            <div>내장그래픽</div>
+          </div>
+          <div class="sidebar-4-external" style="overflow: hidden; height: 31px;">
+            <div class="sidebar-external">
+              <div>외장그래픽</div>
+              <i class="bi bi-plus plus-click-external"></i>
+            </div>
+            <div>
+              <div class="sidebar-detail">
+                <div>인텔</div>
+              </div>
+              <div class="sidebar-detail">
+                <div>AMD</div>
+              </div>
+              <div class="sidebar-detail">
+                <div>엔비디아</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div>
+        <div class="sidebar-5" style="overflow: hidden; height: 45px;">
+          <div class="sidebar-storage">
+            <div>저장용량</div>
+            <i class="bi bi-plus plus-click-storage"></i>
+          </div>
+          <div class="sidebar-detail">
+            <div>250GB~256GB이하</div>
+          </div>
+          <div class="sidebar-detail">
+            <div>500GB~512GB이하</div>
+          </div>
+          <div class="sidebar-detail">
+            <div>1TB이상~2TB미만</div>
+          </div>
+          <div class="sidebar-detail">
+            <div>2TB이상</div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div>
+        <div class="sidebar-6" style="overflow: hidden; height: 45px;">
+          <div class="sidebar-price">
+            <div>가격대</div>
+            <i class="bi bi-plus plus-click-price"></i>
+          </div>
+          <div class="sidebar-detail">
+            <div>50만원 이하</div>
+          </div>
+          <div class="sidebar-detail">
+            <div>50만원이상~
+              <br>100만원미만</div>
+          </div>
+          <div class="sidebar-detail">
+            <div>100만원이상~
+              <br>150만원미만</div>
+          </div>
+          <div class="sidebar-detail">
+            <div>150만원이상~
+              <br>200만원미만</div>
+          </div>
+          <div class="sidebar-detail">
+            <div>200만원이상</div>
+          </div>
+        </div>
+      </div>
+      <hr>
     </aside>
 
     <!-- 제품 목록 -->
     <div class="container">
       <div class="row"></div>
-      <div class="row g-3">
-        <!-- -->
+      <div class="row g-3 infinite-container add-event">
         {% if category %}
-          {% for product in products_category %}
+          {% for product in page_obj %}
             <!-- 카드1 한장 시작 -->
-            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative">
-              <div class="product-card-body">
+            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item">
+              <div class="product-card-body test1">
                 <!-- 찜하기 추가 작업 필요 -->
-                <a href="" class="position-absolute top-0 end-0 m-3">찜하기</a>
+                <div class="position-absolute top-0 end-0 m-3">
+                  {% if request.user.is_authenticated %}
+                    {% if request.user in product.like_product.all %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks-fill like-btn1"></i>
+                    {% else %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks like-btn1"></i>
+                    {% endif %}
+                  {% else %}
+                    <a href="{% url 'accounts:login' %}">
+                      <i class="bi bi-bookmarks"></i>
+                    </a>
+                  {% endif %}
+                </div>
                 <div>
                   <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
                 </div>
@@ -107,12 +307,60 @@
             </div>
             <!-- 카드1 한장 끝 -->
           {% endfor %}
-        {% else %}
-          {% for product in products_category %}
+        {% elif search %}
+          {% for product in page_obj %}
             <!-- 카드1 한장 시작 -->
-            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative">
-              <div class="product-card-body">
+            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item">
+              <div class="product-card-body test2">
                 <!-- 찜하기 추가 작업 필요 -->
+                <div class="position-absolute top-0 end-0 m-3">
+                  {% if request.user.is_authenticated %}
+                    {% if request.user in product.like_product.all %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks-fill like-btn1"></i>
+                    {% else %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks like-btn1"></i>
+                    {% endif %}
+                  {% else %}
+                    <a href="{% url 'accounts:login' %}">
+                      <i class="bi bi-bookmarks"></i>
+                    </a>
+                  {% endif %}
+                </div>
+                <a href="{% url 'products:detail' product.pk %}">
+                  <h5 class="card-title">{{ product.모델명 }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+                  <p class="card-text">
+                    <div class="standard-price">
+                      <span>기준가</span>{{ product.ten_price | intcomma }}
+                    </div>
+                    <div class="sale-price">
+                      <span>할인가</span>{{ product.가격 | intcomma }}</div>
+                  </p>
+                </a>
+                <a href="#" class="btn-color">구매하기</a>
+              </div>
+            </div>
+            <!-- 카드1 한장 끝 -->
+          {% endfor %}
+        {% else %}
+          {% for product in page_obj %}
+            <!-- 카드1 한장 시작 -->
+            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item">
+              <div class="product-card-body test3">
+                <!-- 찜하기 추가 작업 필요 -->
+                <div class="position-absolute top-0 end-0 m-3">
+                  {% if request.user.is_authenticated %}
+                    {% if request.user in product.like_product.all %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks-fill like-btn1"></i>
+                    {% else %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks like-btn1"></i>
+                    {% endif %}
+                  {% else %}
+                    <a href="{% url 'accounts:login' %}">
+                      <i class="bi bi-bookmarks"></i>
+                    </a>
+                  {% endif %}
+                </div>
                 <div>
                   <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
                 </div>
@@ -134,12 +382,67 @@
           {% endfor %}
         {% endif %}
       </div>
+      <div class="row">
+        <div class="col-3">
+          {% if search %}
+            {% if page_obj.has_next %}
+              <a class="infinite-more-link" href="?category={{ search }}&page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+          {% else %}
+            {% if page_obj.has_next %}
+              <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+            {% endif%}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <!-- 더보기 버튼 -->
-  <div class="d-flex justify-content-center m-3">
-    <button class="btn-color px-3 py-2">더보기</button>
-  </div>
-  <!--{% comment %} 제품 하나 {% endcomment %} <div class="col-md-6 col-lg-3 card mb-3"> <div class="row"> {% if request.user in article.like_users.all %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart-fill align-end"></i> {% else %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart justify-right"></i> {% endif %} <img src="https://dummyimage.com/200x250/000000/c4c4c4" alt=""> <h3>아이폰13 Pro Max</h3> <p>A2484</p> <p>기준가 : 1,490,000 원</p> <h5>할인가 : 1,290,000 원</h5> <hr> <div class="d-flex align-text-center"> <p>적립 예정 포인트 </p> <h5> 2500p</h5> </div> <a class="btn btn-primary" href="#" role="button">구매하기</a> </div> </div> {% comment %} 제품 하나 {% endcomment %} <div class="col-md-6 col-lg-3 card mb-3"> <div class="row"> {% if request.user in article.like_users.all %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart-fill"></i> {% else %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart"></i> {% endif %} </div> </div> <div class="col-md-6 col-lg-3 card mb-3"> <div class=""> {% if request.user in article.like_users.all %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart-fill"></i> {% else %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart"></i> {% endif %} </div> </div> <div class="col-md-6 col-lg-3 card mb-3"> <div class=""> {% if request.user in article.like_users.all %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart-fill"></i> {% else %} <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-heart"></i> {% endif %} </div> </div>-->
 {% endblock content %}
+
+<!-- 자바스크립트 -->
+{% block js %}
+  <script src="{% static 'products/js/index.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/infinite.min.js' %}"></script>
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      offset: 'bottom-in-view',
+      onBeforePageLoad: () => {},
+      onAfterPageLoad: () => {}
+    })
+  </script>
+
+  <!-- 북마크 비동기 -->
+  <script>
+    document
+      .querySelector('.add-event')
+      .addEventListener("click", (e) => {
+        const productId = e.target.dataset.productId;
+        e.preventDefault()
+        axios({method: "get", url: `/products/like/${productId}`}).then(response => {
+          if (response.data.isLiked === true) {
+            e
+              .target
+              .classList
+              .add('bi-bookmarks-fill')
+            e
+              .target
+              .classList
+              .remove('bi-bookmarks')
+          } else {
+            e
+              .target
+              .classList
+              .add('bi-bookmarks')
+            e
+              .target
+              .classList
+              .remove('bi-bookmarks-fill')
+          }
+        })
+      })
+  </script>
+
+{% endblock js %}
