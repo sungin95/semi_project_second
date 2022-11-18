@@ -69,7 +69,7 @@ def detail(request, pk):
         "image2": image2,
         "image3": image3,
     }
-    return render(request, "products/product_detail.html", context)
+    return render(request, "products/detail.html", context)
 
 
 def like_product(request, pk):
