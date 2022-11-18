@@ -337,4 +337,27 @@
   <!-- 자바스크립트 -->
   {% block js %}
     <script src="{% static 'labs/js/main.js' %}"></script>
+
+    <!-- 베스트랭킹 배지 -->
+    <script>
+      const bestItemArr = [
+        'red',
+        'orange',
+        'rgb(205, 205, 255)',
+        'orange',
+        'red',
+        'rgb(205, 205, 255)',
+        'red',
+        'orange',
+        'rgb(205, 205, 255)',
+        'orange'
+      ]
+      const bestRankingTag = document.querySelectorAll('.best-ranking-tag')
+      window.addEventListener('load', () => {
+        for (let i = 0; i < bestRankingTag.length; i++) {
+          bestRankingTag[i].style.backgroundColor = `${bestItemArr[i]}`
+          bestRankingTag[i].innerHTML = `best ${i + 1}`
+        }
+      })
+    </script>
   {% endblock js %}
