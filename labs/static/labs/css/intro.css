@@ -24,7 +24,7 @@
 }
 
 .intro-value {
-    background: #fff;
+    background: linear-gradient(to top right, #A0CEDE, beige);
     width: 100%;
     height: 100%;
 }
@@ -83,7 +83,7 @@
     padding-top: 10px;
     padding-right: 10px;
     margin-bottom: 28px;
-    border-top: 2px solid rgb(216, 190, 255);
+    border-top: 1px solid skyblue;
 }
 
 .intro-value-content p {
@@ -103,19 +103,23 @@
 .intro-value-content h6 {
     font-size: 1.3rem;
     font-weight: 600;
-    color: white;
+    color: transparent;
 }
 
 /* 스크럼 일지 */
 .intro-schedule {
-    background: #fff;
+    background: rgb(255, 239, 213);
     width: 100%;
     height: 100%;
-    color: black;
+    color: gray;
 }
 
 .intro-schedule-title {
     padding-left: 0;
+}
+
+.intro-schedule h5 {
+    color:black;
 }
 
 .intro-schedule-wrapper {
@@ -140,7 +144,7 @@
 .intro-schedule-day {
     height: 33%;
     padding-bottom: 5rem;
-    border-top: 1px solid rgb(216, 190, 255);
+    border-top: 1px solid rgb(139, 69, 19);
     padding-top: 0.7rem;
     position: relative;
     padding-left: 12px;

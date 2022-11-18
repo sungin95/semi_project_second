@@ -1,7 +1,3 @@
-.card-body {
-  background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #F0F8FF 65%);
-}
-
 .navbar {
   background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #F0F8FF 75%);
 }
