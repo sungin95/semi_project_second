@@ -26,7 +26,6 @@
     border-radius: 50%;
     border: 3px solid rgb(205, 205, 255);
     background: white;
-    
 }
 
 .main-category-img {
@@ -57,11 +56,10 @@
     border: 1px solid rgb(205, 205, 255);
 }
 
-.fill:hover{
-    color:rgb(147, 112, 219);
+.fill:hover {
+    color: rgb(147, 112, 219);
     background-color: rgb(205, 205, 255);
 }
-
 
 .brand-category-logo img {
     width: 100%;
@@ -78,15 +76,13 @@
 }
 
 .best-ranking {
-    height: 420px;
-    min-width: 18%;
+    height: 40%;
+    min-width: 25%;
     background-color: rgb(205, 205, 255);
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     border: 6px solid rgb(205, 205, 255);
-    margin-left: 70px;
-
 }
 
 .best-ranking h3 {
@@ -98,12 +94,10 @@
     background-color: transparent;
 }
 
-.best-ranking img{
-    width:100px;
+.best-ranking img {
+    width: 100px;
     height: 100px;
-    
 }
-
 
 .best-ten {
     display: flex;
@@ -121,12 +115,10 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical; 
+    -webkit-box-orient: vertical;
     margin-bottom: 5px;
     font-size: 15px;
-
 }
-
 
 .best-ten a {
     text-decoration: none;
@@ -208,11 +200,11 @@
     justify-content: space-around;
 }
 
-.card-title{
+.card-title {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical; 
+    -webkit-box-orient: vertical;
 }
 
 .card-bodys {
@@ -220,7 +212,7 @@
     flex-direction: column;
     align-items: center;
     margin: 0;
-    background-color:#f7f7f7;
+    background-color: #f7f7f7;
     border-radius: 1.5rem;
     height: 500px;
     margin-right: 5px;
@@ -230,8 +222,7 @@
     position: relative;
 }
 
-.card-bodys.has_rank:before{
-    content: 'best 1';
+.best-ranking-tag {
     width: 36px;
     height: 36px;
     border-radius: 10px 0 10px 0;
@@ -249,7 +240,20 @@
     top: 0;
     padding: 8px;
     font-family: sans-serif;
+}
 
+.blind-container {
+    text-align: center;
+    padding: 10px;
+    position: relative;
+}
+
+.img-blind {
+    position: absolute;
+    background-color: #f7f7f7;
+    bottom: 39%;
+    width: 88.5%;
+    height: 18%;
 }
 
 .inner {
@@ -261,7 +265,6 @@
     width: 23%;
     margin-bottom: 1rem;
 }
-
 
 .btn-color {
     background-color: rgb(147, 112, 219);
