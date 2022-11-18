@@ -32,7 +32,7 @@ def add_cart(request, product_id):
             cart=cart,
         )
         cart_item.save()
-    return redirect("cart:detail")
+    return redirect("products:detail", product_id)
 
 
 def detail(request, total=0, counter=0, total_plus=0, total_dc=0, cart_items=None):
@@ -73,4 +73,15 @@ def cart_remove(request, product_id):
         cart_item.save()
     else:
         cart_item.delete()
+    return redirect("cart:detail")
+
+
+def full_remove(request):
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, active=True)
+        for cart_item in cart_items:
+            cart_item.delete()
+    except ObjectDoesNotExist:
+        pass
     return redirect("cart:detail")
