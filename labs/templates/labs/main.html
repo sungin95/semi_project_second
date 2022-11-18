@@ -14,14 +14,14 @@
   <div class="container mb-4">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="{% static 'labs/img/final.png' %}" class="d-block w-100"  alt="...">
+        <div class="carousel-item active" data-bs-interval="3000">
+          <img src="{% static 'labs/img/final.png' %}" class="d-block w-100" alt="..." draggable="false">
         </div>
-        <div class="carousel-item">
-          <img src="{% static 'labs/img/광고이미지.png' %}" class="d-block w-100" style="height: 900px;" alt="...">
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="{% static 'labs/img/keyboard.png' %}" class="d-block w-100" alt="..." draggable="false">
         </div>
-        <div class="carousel-item">
-          <img src="{% static 'labs/img/sample.webp' %}" class="d-block w-100" alt="...">
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="{% static 'labs/img/keyboard2.png' %}" class="d-block w-100" alt="..." draggable="false">
         </div>
       </div>
     </div>
@@ -150,16 +150,26 @@
           <div class="best-ten-product">
             <div class="card-bodys has_rank">
               <div class="best-ranking-tag">best 1</div>
-              <div class="p-3 text-center blind-container">
-                <img src="{{ product_10.썸네일 }}" alt="" class='img-fluid'>
-                <div class="img-blind">
-                  <h5 class="card-title fs-6 mt-3">{{ product_10.모델명 }}</h5>
+              <div class="blind-container">
+                <div class="blind-container-down">
+                  <img src="{{ product_10.썸네일 }}" alt="" draggable="false" width="80%" height="80%">
                 </div>
-                <p class="card-subtitle mb-2 text-secondary font-weight-bold mt-3">모델명</p>
-                <p class="card-text">
-                  <div class="sale-price fw-bold">최저가
-                    {{ product_10.가격 | intcomma }}원</div>
-                </p>
+                <div class="img-blind">
+                  <h5 class="fs-6">{{ product_10.모델명 }}</h5>
+                </div>
+                <div class="what-to-do">
+                  {% if product_10.게임용 == True %}
+                    <span class="fs-6">게임용</span>
+                  {% endif %}
+                  {% if product_10.사무_인강용 == True %}
+                    <span class="fs-6">사무/인강용</span>
+                  {% endif %}
+                  {% if product_10.그래픽작업용 == True %}
+                    <span class="fs-6">그래픽작업용</span>
+                  {% endif %}
+                </div>
+                <div class="sale-price fw-bold">최저가
+                  {{ product_10.가격 | intcomma }}원</div>
                 <hr class="mb-4">
                 <a href="{% url 'products:detail' product_10.id %}" class="btn-color">구매하기</a>
               </div>
@@ -209,7 +219,6 @@
             </p>
           </div>
           <hr>
-
           <div class="d-flex justify-content-center">
             <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
           </div>
@@ -220,18 +229,19 @@
       <div class="card hit-product">
         <div class="card-body">
           <div>
-            <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+            <p class="card-text">
+              <div class="standard-price text-center">
+                <span class="text-center">최저가</span><span style="margin-left: 5px; color: blue;">1,998,990</span>
+              </div>
+            </p>
           </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
+          <hr>
+          <div class="d-flex justify-content-center">
+            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+          </div>
         </div>
       </div>
       <!-- 카드3 한장 끝 -->
@@ -239,18 +249,19 @@
       <div class="card hit-product">
         <div class="card-body">
           <div>
-            <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+            <p class="card-text">
+              <div class="standard-price text-center">
+                <span class="text-center">최저가</span><span style="margin-left: 5px; color: blue;">1,998,990</span>
+              </div>
+            </p>
           </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
+          <hr>
+          <div class="d-flex justify-content-center">
+            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+          </div>
         </div>
       </div>
       <!-- 카드4 한장 끝 -->
@@ -258,18 +269,19 @@
       <div class="card hit-product">
         <div class="card-body">
           <div>
-            <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+            <p class="card-text">
+              <div class="standard-price text-center">
+                <span class="text-center">최저가</span><span style="margin-left: 5px; color: blue;">1,998,990</span>
+              </div>
+            </p>
           </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
+          <hr>
+          <div class="d-flex justify-content-center">
+            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+          </div>
         </div>
       </div>
       <!-- 카드5 한장 끝 -->
@@ -277,18 +289,19 @@
       <div class="card hit-product">
         <div class="card-body">
           <div>
-            <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+            <p class="card-text">
+              <div class="standard-price text-center">
+                <span class="text-center">최저가</span><span style="margin-left: 5px; color: blue;">1,998,990</span>
+              </div>
+            </p>
           </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
+          <hr>
+          <div class="d-flex justify-content-center">
+            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+          </div>
         </div>
       </div>
       <!-- 카드6 한장 끝 -->
@@ -296,18 +309,19 @@
       <div class="card hit-product">
         <div class="card-body">
           <div>
-            <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+            <p class="card-text">
+              <div class="standard-price text-center">
+                <span class="text-center">최저가</span><span style="margin-left: 5px; color: blue;">1,998,990</span>
+              </div>
+            </p>
           </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
+          <hr>
+          <div class="d-flex justify-content-center">
+            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+          </div>
         </div>
       </div>
       <!-- 카드7 한장 끝 -->
@@ -315,18 +329,19 @@
       <div class="card hit-product">
         <div class="card-body">
           <div>
-            <img src="http://placeimg.com/150/150/tech" alt="" class="img-fluid">
+            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+            <p class="card-text">
+              <div class="standard-price text-center">
+                <span class="text-center">최저가</span><span style="margin-left: 5px; color: blue;">1,998,990</span>
+              </div>
+            </p>
           </div>
-          <h5 class="card-title">제품명</h5>
-          <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-          <p class="card-text">
-            <div class="standard-price">
-              <span>기준가</span>기준가격
-            </div>
-            <div class="sale-price">
-              <span>할인가</span>할인가격</div>
-          </p>
-          <a href="#" class="btn-color">구매하기</a>
+          <hr>
+          <div class="d-flex justify-content-center">
+            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+          </div>
         </div>
       </div>
       <!-- 카드8 한장 끝 -->

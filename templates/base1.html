@@ -305,15 +305,14 @@
       })
     </script>
 
-    <!-- 스크롤시 네비게이션바 투명하게 -->
+    <!-- 스크롤시 네비게이션바 숨기기 -->
     <script>
-      const searchBtn = document.querySelector('#search-btn')
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) {
-          navbar.style.backgroundImage = 'none'
+      window.addEventListener("mousewheel", (e) => {
+        const direction = e.deltaY > 0 ? "Scroll Down" : "Scroll Up";
+        if (direction == "Scroll Down") {
+          navbar.style.transform = 'translateY(-100%)'
         } else {
-          navbar.style.backgroundImage = 'linear-gradient(to bottom, rgb(253, 253, 252) 25%, #f0f8ff 75%)'
+          navbar.style.transform = 'translateY(0%)'
         }
       })
     </script>
