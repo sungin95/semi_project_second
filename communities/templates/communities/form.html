@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
 
@@ -7,6 +7,10 @@
   {% if request.resolver_match.url_name == 'article_create' %}
     <h1>
       글쓰기
+    </h1>
+  {% elif request.resolver_match.url_name == 'notion_create' %}
+    <h1>
+      공지 쓰기
     </h1>
   {% else %}
     <h1>

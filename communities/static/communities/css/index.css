@@ -74,6 +74,11 @@
     
 }
 
+.best_link{
+    text-decoration: none;
+    color: black;
+}
+
 .comm_span {
     background-color: #ac0101;
     border-radius: 0.3rem;

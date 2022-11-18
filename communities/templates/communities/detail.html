@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
 
@@ -47,12 +47,22 @@
     </div>
     <!-- 내용 -->
     <h5 class="row mx-2">{{ article.content }}</h5>
+      {% if request.user.is_superuser %}
+      <form class="text-end" action="{% url "communities:article_delete" article.pk %}" method="POST">
+        {% csrf_token %}
+        <a href="{% url "communities:notion_update" article.pk %}" class="btn_modify1" method="POST">수정</a>
+        <input class="btn_modify2" type="submit" value="삭제">
+        <a href="{% url "communities:index" %}" class="btn_modify3">뒤로</a>
+      </form>
+      {% elif request.user.is_authenticated %}
       <form class="text-end" action="{% url "communities:article_delete" article.pk %}" method="POST">
         {% csrf_token %}
         <a href="{% url "communities:update" article.pk %}" class="btn_modify1" method="POST">수정</a>
         <input class="btn_modify2" type="submit" value="삭제">
         <a href="{% url "communities:index" %}" class="btn_modify3">뒤로</a>
       </form>
+      {% else %}
+      {% endif %}
   </div>
 
   <!-- 댓글창 -->
