@@ -5,21 +5,60 @@
     margin-top: 2rem;
 }
 
+.show-detail {
+    overflow: visible;
+    height: 100%;
+}
+
 .sidebar-wrapper {
     padding-right: 2rem;
 }
 
-.sidebar {
+.sidebar-1,
+.sidebar-2,
+.sidebar-3,
+.sidebar-4,
+.sidebar-5,
+.sidebar-6 {
+    padding: 1rem 0px 0rem;
+    padding-right: 10px;
+    margin-bottom: 1rem;
+}
+
+.sidebar-1-size,
+.sidebar-1-resolution,
+.sidebar-3-AMD,
+.sidebar-3-intel,
+.sidebar-3-apple,
+.sidebar-4-external {
+    margin-bottom: 0;
+}
+
+.sidebar-display,
+.sidebar-weight,
+.sidebar-processor,
+.sidebar-graphic,
+.sidebar-storage,
+.sidebar-price {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0px 1rem;
-    padding-right: 10px;
+    padding: 5px 0 5px;
+    font-size: 1.2rem;
+}
+
+.sidebar-size,
+.sidebar-resolution,
+.sidebar-AMD,
+.sidebar-intel,
+.sidebar-apple,
+.sidebar-external {
+    display: flex;
+    justify-content: space-between;
 }
 
 .sidebar-detail {
-    display: flex;
-    justify-content: space-between;
-    padding-right: 10px;
+    font-size: 0.9rem;
+    padding: 3px 0 3px;
 }
 
 .product-brand-banner {
