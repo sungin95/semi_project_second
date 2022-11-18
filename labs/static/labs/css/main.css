@@ -23,8 +23,8 @@
 .main-category-bg {
     width: 8rem;
     height: 8rem;
-    border-radius: 50%;
-    border: 3px solid rgb(205, 205, 255);
+    /* border-radius: 50%;
+    border: 3px solid rgb(205, 205, 255); */
     background: white;
 }
 

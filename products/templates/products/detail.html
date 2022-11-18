@@ -576,10 +576,11 @@
                 </div>
               </div>
         </div>
+        
         {% empty %}
-        <p class="text-center">아직 리뷰가 없습니다. 리뷰를 남겨
-          <b>{{ restaurant.restaurant_name }}</b>의 첫번째 리뷰를 남겨보세요.
-        </p>
+          <p class="review_t text-center">아직 리뷰가 없습니다. 리뷰를 남겨
+            <b>{{ restaurant.restaurant_name }}</b>의 첫번째 리뷰를 남겨보세요.
+          </p>
       {% endfor %}
     </div>
   </div>
