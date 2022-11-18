@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
+{% load humanize %}
 {% load static %}
 
 {% block css %}
@@ -136,6 +137,7 @@
       </div>
       <div class="best-ten">
         {% for product_10 in products_10 %}
+          <a href="{% url 'products:detail' product_10.id %}">
           <a class="now">
             {{ product_10.id}}
             {{ product_10.모델명 }}
@@ -155,10 +157,11 @@
               <p class="card-subtitle mb-2 text-secondary font-weight-bold mt-3">모델명</p>
               <h5 class="card-title fs-6 mt-3">{{ product_10.모델명 }}</h5>
               <p class="card-text">
-                <div class="sale-price fw-bold">최저가 {{ product_10.가격 }}원</div>
+                <div class="sale-price fw-bold">최저가
+                  {{ product_10.가격 | intcomma }}원</div>
               </p>
               <hr class="mb-4">
-              <a href="#" class="btn-color">구매하기</a>
+              <a href="{% url 'products:detail' product_10.id %}" class="btn-color">구매하기</a>
             </div>
           </div>
         </div>
@@ -182,10 +185,11 @@
         <h6 class="card-subtitle mb-2 text-muted text-center">MD770 RGB</h6>
         <p class="card-text">
           <div class="standard-price text-center">
-            <span class="text-center">최저가</span><span style="margin-left: 5px; color: blue;">213,990</span>
+            <span class="text-center">최저가</span><span style="margin-left: 5px; color: blue;">195,000</span>
           </div>
         </p>
         <hr>
+        <a href="https://smartstore.naver.com/kuzza/products/4865163014?NaPm=ct%3Dlalah6nc%7Cci%3D49a8c75f80024744e49e0e00c40dcb3a0a5b2825%7Ctr%3Dsls%7Csn%3D159426%7Chk%3D2e972f68614ea415d4564f9de2a51439d1e1c709" class="btn-color d-flex align-items-center">구매하기</a>
         <div class="d-flex justify-content-center">
         <a href="#" class="btn-color">구매하기</a>
         </div>
@@ -196,18 +200,17 @@
     <div class="card hit-product">
       <div class="card-body">
         <div>
-          <img src="{% static '/labs/img/키보드.jpeg'%}" alt="" class="img-fluid">
+          <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
         </div>
-        <h5 class="card-title">제품명</h5>
-        <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+        <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
         <p class="card-text">
-          <div class="standard-price">
-            <span>기준가</span>기준가격
+          <div class="standard-price text-center">
+            <span class="text-center">최저가</span><span style="margin-left: 5px; color: blue;">1,998,990</span>
           </div>
-          <div class="sale-price">
-            <span>할인가</span>할인가격</div>
         </p>
-        <a href="#" class="btn-color">구매하기</a>
+        <hr>
+        <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758">구매하기</a>
       </div>
     </div>
     <!-- 카드2 한장 끝 -->
