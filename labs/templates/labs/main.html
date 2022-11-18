@@ -145,6 +145,7 @@
           {% endfor %}
         </div>
       </div>
+
       <div class="best-ranking-products">
         {% for product_10 in products_10 %}
           <!-- 1등 제품 시작-->
@@ -163,6 +164,7 @@
                 <hr class="mb-4">
                 <a href="{% url 'products:detail' product_10.id %}" class="btn-color">구매하기</a>
               </div>
+
             </div>
           </div>
         {% endfor %}
