@@ -32,3 +32,13 @@ for (let j = 1; j <= 6; j++) {
         }
     });
 }
+
+/* 스크롤시 네비게이션바 숨기기 */
+window.addEventListener("mousewheel", (e) => {
+    const direction = e.deltaY > 0 ? "Scroll Down" : "Scroll Up";
+    if (direction == "Scroll Down") {
+        navbar.style.transform = "translateY(-100%)";
+    } else {
+        navbar.style.transform = "translateY(0%)";
+    }
+});
