@@ -14,14 +14,14 @@ h2 {
 }
 
 /* section */
-section {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 75vw;
-    background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+section
+{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
 }
 section .color {
     position: absolute;

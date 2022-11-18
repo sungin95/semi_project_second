@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% load django_bootstrap5 %}
 {% load humanize %}
 {% load static %}
@@ -70,7 +70,7 @@
               {{ cart_itme_ }}
             </span>
             <span class="price-big" style="padding-right: 0">
-              {{ cart_item.product.가격 | intcomma }}
+              {{ cart_item.product.가격 | intcomma }}원
             </span>
             <div class="cart-sns">
               <button type="button" class="sns-delete cart_delete-btn" onclick="location.href='{% url 'cart:cart_remove' cart_item.product.id %}'">
