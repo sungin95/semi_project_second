@@ -34,7 +34,9 @@ class MyLoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
         super(MyLoginForm, self).__init__(*args, **kwargs)
-        self.fields["username"].widget = forms.TextInput(attrs={"placeholder": "아이디"})
+        self.fields["username"].widget = forms.TextInput(
+            attrs={"placeholder": "아이디", "maxlength": "16"}
+        )
         self.fields["username"].label = False
         self.fields["password"].widget = forms.PasswordInput(
             attrs={"placeholder": "비밀번호"}
@@ -51,7 +53,7 @@ class MySignupForm(CustomUserCreationForm):
         super(MySignupForm, self).__init__(*args, **kwargs)
         self.fields["username"].widget = forms.TextInput(
             # 아이디
-            attrs={"placeholder": "아이디를 입력해주세요"}
+            attrs={"placeholder": "아이디를 입력해주세요", "maxlength": "16"}
         )
         self.fields["username"].label = False
         # 이메일

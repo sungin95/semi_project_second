@@ -28,3 +28,12 @@ class CommentForm(forms.ModelForm):
         fields = [
             "content",
         ]
+
+
+class NotionForm(forms.ModelForm):
+    class Meta:
+        model = Articles
+        fields = [
+            "title",
+            "content",
+        ]

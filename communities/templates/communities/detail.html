@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
 
@@ -31,28 +31,49 @@
             <span class="spen">{{ comments|length }}</span>
           </div>
           <p class="">┃</p>
-          <!-- 추천 -->
           
-          <div class="likeBtn">
-            {% if request.user in article.like.all %}
-              <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-bookmarks-fill"></i>
-            {% else %}
-              <i id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-bookmarks"></i>
-            {% endif %}
-            <span id="like-count">{{ article.like.count }}</span>
-          </div>
           </div>
         </div>
       </div>
     </div>
     <!-- 내용 -->
+    <!-- 추천 -->
+          
+    
     <h5 class="row mx-2">{{ article.content }}</h5>
+    <br>
+    <br>
+    <br>
+    <div class="likeBtn">
+      
+      {% if request.user in article.like.all %}
+      <button id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-hand-thumbs-up-fill likeSize">
+        <span id="like-count">{{ article.like.count }}</span>
+      </button>
+      {% else %}
+      <button id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-hand-thumbs-up likeSize">
+        <span id="like-count">{{ article.like.count }}</span>
+      </button>
+      {% endif %}
+        
+      
+    </div>
+      {% if request.user.is_superuser %}
+      <form class="text-end" action="{% url "communities:article_delete" article.pk %}" method="POST">
+        {% csrf_token %}
+        <a href="{% url "communities:notion_update" article.pk %}" class="btn_modify1" method="POST">수정</a>
+        <input class="btn_modify2" type="submit" value="삭제">
+        <a href="{% url "communities:index" %}" class="btn_modify3">뒤로</a>
+      </form>
+      {% elif request.user.is_authenticated %}
       <form class="text-end" action="{% url "communities:article_delete" article.pk %}" method="POST">
         {% csrf_token %}
         <a href="{% url "communities:update" article.pk %}" class="btn_modify1" method="POST">수정</a>
         <input class="btn_modify2" type="submit" value="삭제">
         <a href="{% url "communities:index" %}" class="btn_modify3">뒤로</a>
       </form>
+      {% else %}
+      {% endif %}
   </div>
 
   <!-- 댓글창 -->
@@ -345,11 +366,11 @@
   likeBtn.addEventListener("click", (e) => {
     axios({ method: "get", url: `/communities/${e.target.dataset.articleId}/like` }).then((res) => {
       if (res.data.isLiked === true) {
-        e.target.classList.add("bi-bookmarks-fill");
-        e.target.classList.remove("bi-bookmarks");
+        e.target.classList.add("bi-hand-thumbs-up-fill");
+        e.target.classList.remove("bi-hand-thumbs-up");
       } else {
-        e.target.classList.add("bi-bookmarks");
-        e.target.classList.remove("bi-bookmarks-fill");
+        e.target.classList.add("bi-hand-thumbs-up");
+        e.target.classList.remove("bi-hand-thumbs-up-fill");
       }
       const likeCount = document.querySelector("#like-count");
       likeCount.innerText = res.data.likeCount;

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .form import ArticleForm, CommentForm, ArticleImageForm
+from .form import ArticleForm, CommentForm, ArticleImageForm, NotionForm
 from .models import Articles, Comments, ArticlesImages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
@@ -11,15 +11,21 @@ from datetime import date, datetime, timedelta
 from django.forms import modelformset_factory
 from django.http import HttpResponseRedirect
 
+
 # Create your views here.
 def index(request):
-    k = Articles.objects.all().order_by("-id")
+    k = Articles.objects.exclude(category="공지").order_by("-id")
+    bests = Articles.objects.exclude(category="공지").order_by("-like")[:10]
+    notions = Articles.objects.filter(category="공지")
+    print(bests)
     page = request.GET.get("page", "1")
     paginator = Paginator(k, 5)
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
         "question_list": page_obj,
+        "bests": bests,
+        "notions": notions,
     }
     return render(request, "communities/index.html", context)
 
@@ -114,6 +120,44 @@ def article_create(request):
     return render(request, "communities/form.html", context)
 
 
+@login_required
+def update(request, article_pk):
+    article = get_object_or_404(Articles, pk=article_pk)
+    ImageFormSet = modelformset_factory(ArticlesImages, form=ArticleImageForm, extra=3)
+    if article.user == request.user:
+        if request.method == "POST":
+            form = ArticleForm(request.POST, request.FILES, instance=article)
+            formset = ImageFormSet(
+                request.POST,
+                request.FILES,
+                queryset=ArticlesImages.objects.none(),
+            )
+            if form.is_valid() and formset.is_valid():
+                article_ = form.save(commit=False)
+                article_.user = request.user
+                article_.save()
+                for forms in formset.cleaned_data:
+                    if forms:
+                        image = forms["image"]
+                        photo = ArticlesImages(restaurant=article, image=image)
+                        photo.save()
+                return redirect("communities:detail", article.pk)
+            else:
+                print(form.errors, formset.errors)
+        else:
+            form = ArticleForm(instance=article)
+            formset = ImageFormSet(
+                queryset=ArticlesImages.objects.none(),
+            )
+        context = {
+            "article": article,
+            "articleForm": form,
+            "formset": formset,
+        }
+        return render(request, "communities/form.html", context)
+    return redirect("communities:detail", article.pk)
+
+
 def detail(request, article_pk):
     article = get_object_or_404(Articles, pk=article_pk)
     comment_form = CommentForm()
@@ -151,23 +195,7 @@ def article_delete(request, article_pk):
         if request.method == "POST":
             article.delete()
             return redirect("communities:index")
-
-
-@login_required
-def update(request, article_pk):
-    article = get_object_or_404(Articles, pk=article_pk)
-    if request.user == article.user:
-        if request.method == "POST":
-            article_form = ArticleForm(request.POST, instance=article)
-            if article_form.is_valid():
-                article_form.save()
-                return redirect("communities:detail", article.pk)
-        else:
-            article_form = ArticleForm(instance=article)
-        context = {"article_form": article_form}
-        return render(request, "communities/form.html", context)
-    else:
-        return redirect("communities:detail", article.pk)
+    return redirect("communities:detail", article_pk)
 
 
 @login_required
@@ -235,3 +263,75 @@ def like(request, article_pk):
         "likeCount": article.like.count(),
     }
     return JsonResponse(context)
+
+
+@login_required
+def notion_create(request):
+    ImageFormSet = modelformset_factory(ArticlesImages, form=ArticleImageForm, extra=3)
+    if request.user.is_superuser:
+        if request.method == "POST":
+            articleForm = NotionForm(request.POST)
+            formset = ImageFormSet(
+                request.POST, request.FILES, queryset=ArticlesImages.objects.none()
+            )
+            if articleForm.is_valid() and formset.is_valid():
+                article_form = articleForm.save(commit=False)
+                article_form.category = "공지"
+                article_form.user = request.user
+                article_form.save()
+                for forms in formset.cleaned_data:
+                    if forms:
+                        image = forms["image"]
+                        photo = ArticlesImages(articles=article_form, image=image)
+                        photo.save()
+                return redirect("communities:index")
+            else:
+                print(article_form.errors, formset.errors)
+        else:
+            articleForm = NotionForm()
+            formset = ImageFormSet(queryset=ArticlesImages.objects.none())
+        context = {
+            "articleForm": articleForm,
+            "formset": formset,
+        }
+        return render(request, "communities/form.html", context)
+    else:
+        return redirect("communities:index")
+
+
+@login_required
+def notion_update(request, article_pk):
+    article = get_object_or_404(Articles, pk=article_pk)
+    ImageFormSet = modelformset_factory(ArticlesImages, form=ArticleImageForm, extra=3)
+    if article.user == request.user:
+        if request.method == "POST":
+            form = NotionForm(request.POST, request.FILES, instance=article)
+            formset = ImageFormSet(
+                request.POST,
+                request.FILES,
+                queryset=ArticlesImages.objects.none(),
+            )
+            if form.is_valid() and formset.is_valid():
+                article_ = form.save(commit=False)
+                article_.user = request.user
+                article_.save()
+                for forms in formset.cleaned_data:
+                    if forms:
+                        image = forms["image"]
+                        photo = ArticlesImages(restaurant=article, image=image)
+                        photo.save()
+                return redirect("communities:detail", article.pk)
+            else:
+                print(form.errors, formset.errors)
+        else:
+            form = NotionForm(instance=article)
+            formset = ImageFormSet(
+                queryset=ArticlesImages.objects.none(),
+            )
+        context = {
+            "article": article,
+            "articleForm": form,
+            "formset": formset,
+        }
+        return render(request, "communities/form.html", context)
+    return redirect("communities:detail", article.pk)

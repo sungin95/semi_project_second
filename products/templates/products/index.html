@@ -10,26 +10,17 @@
 <!-- 배너 -->
 {% block carousel %}
 
-  <!-- <div class="product-brand-banner">
-    <div class="product-brand-banner-name" style="">
-      {% if category %}
-        <h2>{{ category }}</h2>
-      {% else %}
-        <h2>전체</h2>
-      {% endif %}
-    </div>
-    <div class="product-brand-banner-img" style="width: 100%">
-      <img src="{% static 'products/img/laptops.jpg' %}" width="100%" alt="">
-    </div>
+  <!-- <div class="product-brand-banner"> <div class="product-brand-banner-name" style=""> {% if category %} <h2>{{ category }}</h2> {% else %} <h2>전체</h2> {% endif %} </div> <div class="product-brand-banner-img" style="width: 100%"> <img src="{% static 'products/img/laptops.jpg' %}" width="100%" alt=""> </div> </div> </div> -->
+
+
+  <div class="main_image">
+    <img src="{% static 'products/img/laptops.jpg' %}" alt="">
+    {% if category %}
+      <p class="main_text">{{ category }}</p>
+    {% else %}
+      <p class="main_text">전체</p>
+    {% endif %}
   </div>
-</div>  -->
-
-<!-- <div class="main_image">
-  <img src="{% static 'products/img/laptops.jpg' %}" width="100%" height="500px"alt="">
-  <h1 class="main_text" style="font-size: 50px;">가운데에 글씨 쓰기</h1>
-</div> -->
-
-
 
 <div>
   <div class="main_image visual" style="background: url(https://images.samsung.com/kdp/display/pc/100001610/e43d0030-dea7-4a27-b3fa-8c840648e79e.jpg) center center no-repeat; background-size: cover;">
@@ -440,33 +431,31 @@
 
   <!-- 북마크 비동기 -->
   <script>
-    document
-      .querySelector('.add-event')
-      .addEventListener("click", (e) => {
-        const productId = e.target.dataset.productId;
-        e.preventDefault()
-        axios({method: "get", url: `/products/like/${productId}`}).then(response => {
-          if (response.data.isLiked === true) {
-            e
-              .target
-              .classList
-              .add('bi-bookmarks-fill')
-            e
-              .target
-              .classList
-              .remove('bi-bookmarks')
-          } else {
-            e
-              .target
-              .classList
-              .add('bi-bookmarks')
-            e
-              .target
-              .classList
-              .remove('bi-bookmarks-fill')
-          }
-        })
+    $(document).on("click", ".like-btn1", function (e) {
+      const productId = e.target.dataset.productId;
+      e.preventDefault()
+      axios({method: "get", url: `/products/like/${productId}`}).then(response => {
+        if (response.data.isLiked === true) {
+          e
+            .target
+            .classList
+            .add('bi-bookmarks-fill')
+          e
+            .target
+            .classList
+            .remove('bi-bookmarks')
+        } else {
+          e
+            .target
+            .classList
+            .add('bi-bookmarks')
+          e
+            .target
+            .classList
+            .remove('bi-bookmarks-fill')
+        }
       })
+    })
   </script>
 
 {% endblock js %}
