@@ -6,9 +6,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.container form {
-    height: 60px;
-}
 
 .navbar-img {
     height: 90%;
@@ -31,8 +28,6 @@ html {
     display: none;
 }
 
-.nav-item a {
-}
 
 .black-bg {
     width: 100%;
