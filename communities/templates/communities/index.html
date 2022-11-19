@@ -200,9 +200,9 @@
 
   <!-- 게시글 검색창 -->
   <div class="search_i">
-      <form action="#" method="GET" class="d-flex">
+      <form action="{% url 'communities:search' %}" method="GET" class="d-flex">
         {% csrf_token %}
-        <input class="form-control rounded-2 text-left btn-sm  mr-5" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="q">
+        <input class="form-control rounded-2 text-left btn-sm  mr-5" type="search" placeholder="검색어를 입력해주세요." aria-label="Search" name="search">
         <button type="submit" class="btn">
           <i class="bi bi-search"></i>
         </button>
