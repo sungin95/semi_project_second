@@ -1,0 +1,46 @@
+{% extends 'base1.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'communities/css/index.css' %}">
+{% endblock css %}
+
+{% block content %}
+<!--글 목록-->
+<div class="container article-title">
+  <!-- 게시글 구분 제목 -->
+  <div class="row justify-content-center text-center mt-3 mb-2">
+    <div class="col-1">추천</div>
+    <div class="col-1">분류</div>
+    <div class="col-4">제목</div>
+    <div class="col-2">아이디</div>
+    <div class="col-1">조회수</div>
+    <div class="col-1">날짜</div>
+  </div>
+  {% comment %} <hr class="m-2"> {% endcomment %}
+
+  <!-- 게시글들 -->
+  <div class="articles py-2">
+    {% for article in search_list %}
+    <!-- 게시글 하나씩 -->
+    <a class="detail-article" href="{% url 'communities:detail' article.pk %}" style="text-decoration: none; color: #000000 !important;">
+      <div class="row justify-content-center text-center">
+        <div class="col-1">
+          <span class="recomment">{{ article.like.count }}</span></div>
+        <div class="col-1">
+          <span class="recomment">{{ article.category }}</span></div>
+        <div class="col-4">
+          {{ article.title }}</div>
+        <div class="col-2">{{ article.user.username }}</div>
+        <div class="col-1">{{ article.hits }}</div>
+        <div class="col-1">{{ article.created_string }}</div>
+      </div>
+      <hr class="m-2 my-1">
+    </a>
+    <!-- 게시글 끝 -->
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
