@@ -12,23 +12,14 @@
 
   <!-- <div class="product-brand-banner"> <div class="product-brand-banner-name" style=""> {% if category %} <h2>{{ category }}</h2> {% else %} <h2>전체</h2> {% endif %} </div> <div class="product-brand-banner-img" style="width: 100%"> <img src="{% static 'products/img/laptops.jpg' %}" width="100%" alt=""> </div> </div> </div> -->
 
-  <div class="main_image">
-    <img src="{% static 'products/img/laptops.jpg' %}" alt="">
+
+<div>
+  <div class="main_image visual" style="background: url(https://images.samsung.com/kdp/display/pc/100001610/e43d0030-dea7-4a27-b3fa-8c840648e79e.jpg) center center no-repeat; background-size: cover;">
     {% if category %}
       <p class="main_text">{{ category }}</p>
     {% else %}
       <p class="main_text">전체</p>
     {% endif %}
-  </div>
-
-  <div>
-    <div class="main_image visual" style="background: url(https://images.samsung.com/kdp/display/pc/100001610/e43d0030-dea7-4a27-b3fa-8c840648e79e.jpg) center center no-repeat; background-size: cover;">
-      {% if category %}
-        <p class="main_text">{{ category }}</p>
-      {% else %}
-        <p class="main_text">전체</p>
-      {% endif %}
-    </div>
   </div>
 
 {% endblock carousel %}
@@ -37,17 +28,15 @@
 
   <div class="d-flex align-items-center my-3 justify-content-between">
     <!-- 필터 -->
-    <div class="">
-      <p>
-        <span>상세검색</span>
-        |
-        <span>검색 결과</span>
+    <div class="d-flex box-result">
+        <p class="detail-search pc-var"style="margin-right: 12px;">상세검색</p>
+        <p class="search-result">검색 결과</p>
         {% if category %}
-          <span>{{ products_category.count }}개</span>
+          <p class="now">{{ products_category.count }}개</p>
         {% else %}
-          <span>{{ products.count }}개</span>
+          <p class="now">{{ products.count }}개</p>
         {% endif %}
-      </p>
+      
     </div>
     <!-- 정렬 -->
     <div class="dropdown">
@@ -132,13 +121,13 @@
       <div>
         <div class="sidebar-1" style="overflow: hidden; height: 45px;">
           <div class="sidebar-display">
-            <div>화면</div>
+            <div class="main-text">화면</div>
             <i class="bi bi-plus plus-click-display"></i>
           </div>
 
           <div class="sidebar-1-size" style="overflow: hidden; height: 31px;">
             <div class="sidebar-size">
-              <div>노트북크기</div>
+              <div class="main-text">노트북크기</div>
               <i class="bi bi-plus plus-click-size"></i>
             </div>
             <div>
@@ -159,7 +148,7 @@
 
           <div class="sidebar-1-resolution" style="overflow: hidden; height: 31px;">
             <div class="sidebar-resolution">
-              <div>해상도</div>
+              <div class="main-text">해상도</div>
               <i class="bi bi-plus plus-click-resolution"></i>
             </div>
             <div class="sidebar-detail">
@@ -182,7 +171,7 @@
       <div>
         <div class="sidebar-2" style="overflow: hidden; height: 45px;">
           <div class="sidebar-weight">
-            <div>무게</div>
+            <div class="main-text">무게</div>
             <i class="bi bi-plus plus-click-weight"></i>
           </div>
           <div>
@@ -210,7 +199,7 @@
       <div>
         <div class="sidebar-3" style="overflow: hidden; height: 45px;">
           <div class="sidebar-processor">
-            <div>프로세서</div>
+            <div class="main-text">프로세서</div>
             <i class="bi bi-plus plus-click-processor"></i>
           </div>
           <div class="sidebar-3-AMD" style="overflow: hidden; height: 31px;">
@@ -290,7 +279,7 @@
       <div>
         <div class="sidebar-4" style="overflow: hidden; height: 45px;">
           <div class="sidebar-graphic">
-            <div>그래픽카드</div>
+            <div class="main-text">그래픽카드</div>
             <i class="bi bi-plus plus-click-graphic"></i>
           </div>
           <div class="sidebar-4-internal">
@@ -327,7 +316,7 @@
       <div>
         <div class="sidebar-5" style="overflow: hidden; height: 45px;">
           <div class="sidebar-storage">
-            <div>저장용량</div>
+            <div class="main-text">저장용량</div>
             <i class="bi bi-plus plus-click-storage"></i>
           </div>
           <div class="sidebar-detail">
@@ -353,7 +342,7 @@
       <div>
         <div class="sidebar-6" style="overflow: hidden; height: 45px;">
           <div class="sidebar-price">
-            <div>가격대</div>
+            <div class="main-text">가격대</div>
             <i class="bi bi-plus plus-click-price"></i>
           </div>
           <div class="sidebar-detail">
@@ -390,15 +379,15 @@
         {% if category %}
           {% for product in page_obj %}
             <!-- 카드1 한장 시작 -->
-            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item">
+            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
               <div class="product-card-body test1">
                 <!-- 찜하기 추가 작업 필요 -->
-                <div class="position-absolute top-0 end-0 m-3">
+                <div class="position-absolute " style="top:25px; right:20px;">
                   {% if request.user.is_authenticated %}
                     {% if request.user in product.like_product.all %}
-                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks-fill like-btn1"></i>
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1"></i>
                     {% else %}
-                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks like-btn1"></i>
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1"></i>
                     {% endif %}
                   {% else %}
                     <a href="{% url 'accounts:login' %}">
@@ -407,20 +396,21 @@
                   {% endif %}
                 </div>
                 <div>
-                  <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
+                  <img src="{{ product.썸네일 }}" alt="" class="image" style="height: 250px; width: 250px; margin:50px 0 0 10px;">
                 </div>
-                <a href="{% url 'products:detail' product.pk %}">
-                  <h5 class="card-title">{{ product.모델명 }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
+                <div class="model-text">
+                  <h5 class="card-title mt-2">{{ product.모델명 }}</h5>
                   <p class="card-text">
-                    <div class="standard-price">
+                    <!-- <div class="standard-price">
                       <span>기준가</span>{{ product.ten_price | intcomma }}
-                    </div>
+                    </div> -->
                     <div class="sale-price">
-                      <span>할인가</span>{{ product.가격 | intcomma }}</div>
-                  </p>
-                </a>
-                <a href="#" class="btn-color">구매하기</a>
+                      <p style="color: gray; margin-bottom: 0;">최저가</p>
+                      <p class="class-font">{{ product.가격 | intcomma }}원</p>
+                    </div>
+                   <hr>   
+                  <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>   
+                </div>
               </div>
             </div>
             <!-- 카드1 한장 끝 -->
@@ -428,15 +418,15 @@
         {% elif search %}
           {% for product in page_obj %}
             <!-- 카드1 한장 시작 -->
-            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item">
-              <div class="product-card-body test2">
+            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
+              <div class="product-card-body test2 pb-5" style="height:400px;">
                 <!-- 찜하기 추가 작업 필요 -->
-                <div class="position-absolute top-0 end-0 m-3">
+                <div class="position-absolute " style="top:25px; right:20px;">
                   {% if request.user.is_authenticated %}
                     {% if request.user in product.like_product.all %}
-                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks-fill like-btn1"></i>
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1 fs-5"></i>
                     {% else %}
-                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks like-btn1"></i>
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1 fs-5"></i>
                     {% endif %}
                   {% else %}
                     <a href="{% url 'accounts:login' %}">
@@ -445,60 +435,60 @@
                   {% endif %}
                 </div>
                 <div>
-                  <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
+                  <img src="{{ product.썸네일 }}" alt="" class="image" style="height: 250px; width: 250px; margin:50px 0 0 10px;">
                 </div>
-                <a href="{% url 'products:detail' product.pk %}">
-                  <h5 class="card-title">{{ product.모델명 }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-                  <p class="card-text">
-                    <div class="standard-price">
-                      <span>기준가</span>{{ product.ten_price | intcomma }}
-                    </div>
-                    <div class="sale-price">
-                      <span>할인가</span>{{ product.가격 | intcomma }}</div>
-                  </p>
-                </a>
-                <a href="#" class="btn-color">구매하기</a>
+                  <h5 class="card-title mt-2">{{ product.모델명 }}</h5>
+                  <div class="model-text">  
+                    <!-- <h6 class="card-subtitle mb-2 text-muted">모델명</h6> -->
+                             <!-- <div class="standard-price">
+                          <span>기준가</span>{{ product.ten_price | intcomma }}
+                        </div> -->
+                        <div class="sale-price">
+                          <p style="color: gray; margin-bottom: 0;">최저가</p>
+                          <p class="class-font">{{ product.가격 | intcomma }}원</p>
+                        </div>
+                       <hr>   
+                      <a href="{% url 'products:detail' product.pk %}" class="btn-color mb-md-5">구매하기</a>    
+                  </div>
               </div>
             </div>
             <!-- 카드1 한장 끝 -->
           {% endfor %}
         {% else %}
           {% for product in page_obj %}
-            <!-- 카드1 한장 시작 -->
-            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item">
-              <div class="product-card-body test3">
-                <!-- 찜하기 추가 작업 필요 -->
-                <div class="position-absolute top-0 end-0 m-3">
-                  {% if request.user.is_authenticated %}
-                    {% if request.user in product.like_product.all %}
-                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks-fill like-btn1"></i>
-                    {% else %}
-                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmarks like-btn1"></i>
-                    {% endif %}
+          <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
+            <div class="product-card-body test1 mb-5">
+              <!-- 찜하기 추가 작업 필요 -->
+              <div class="position-absolute " style="top:25px; right:20px;">
+                {% if request.user.is_authenticated %}
+                  {% if request.user in product.like_product.all %}
+                    <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1"></i>
                   {% else %}
-                    <a href="{% url 'accounts:login' %}">
-                      <i class="bi bi-bookmarks"></i>
-                    </a>
+                    <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1"></i>
                   {% endif %}
-                </div>
-                <div>
-                  <img src="{{ product.썸네일 }}" alt="" class="img-fluid">
-                </div>
-                <a href="{% url 'products:detail' product.pk %}">
-                  <h5 class="card-title">{{ product.모델명 }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">모델명</h6>
-                  <p class="card-text">
-                    <div class="standard-price">
-                      <span>기준가</span>{{ product.ten_price | intcomma }}
-                    </div>
-                    <div class="sale-price">
-                      <span>할인가</span>{{ product.가격 | intcomma }}</div>
-                  </p>
-                </a>
-                <a href="#" class="btn-color">구매하기</a>
+                {% else %}
+                  <a href="{% url 'accounts:login' %}">
+                    <i class="bi bi-bookmarks"></i>
+                  </a>
+                {% endif %}
+              </div>
+              <div>
+                <img src="{{ product.썸네일 }}" alt="" class="image" style="height: 250px; width: 250px; margin:50px 0 0 10px;">
+              </div>
+              <div class="model-text">
+                <h5 class="card-title mt-2">{{ product.모델명 }}</h5>
+                  <!-- <div class="standard-price">
+                    <span>기준가</span>{{ product.ten_price | intcomma }}
+                  </div> -->
+                  <div class="sale-price">
+                    <p style="color: gray; margin-bottom: 0;">최저가</p>
+                    <p class="class-font">{{ product.가격 | intcomma }}원</p>
+                  </div>
+                 <hr>   
+                <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>   
               </div>
             </div>
+          </div>
             <!-- 카드1 한장 끝 -->
           {% endfor %}
         {% endif %}

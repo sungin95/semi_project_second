@@ -50,7 +50,7 @@ def login(request):
         )  # request가 없어도 잘 돌아가는거 같음 하지만 대부분이 request를 필수적으로 받아 가지고 편의상 넣겠음
         if form.is_valid():
             auth_login(request, form.get_user())
-            return redirect(request.GET.get("next") or "accounts:index")
+            return redirect(request.GET.get("next") or "labs:main")
     else:
         form = MyLoginForm()
     context = {

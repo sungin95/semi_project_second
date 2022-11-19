@@ -16,7 +16,7 @@
 
   </head>
 
-  <body>
+  <body oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
     <!-- 네비게이션바 -->
     <nav style="background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #f0f8ff 75%);" class="navbar navbar-expand-lg sticky-top navbar-color" id="navbar">
       <div class="container">
@@ -44,15 +44,15 @@
 
           <!-- 검색, 장바구니, 계정 -->
           <div class="d-flex">
-            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:30px;height:30px" type="submit" id="search-click"></lord-icon>
+            <lord-icon src="https://cdn.lordicon.com/xfftupfv.json" trigger="click" style="width:32px;height:32px" type="submit" id="search-click"></lord-icon>
             <a id="cart" class="nav-link mx-3" href="{% url 'cart:detail' %}">
-              <img src="{% static 'img/cart_none.png' %}" alt="" width="25px" height="25px">
+              <i class="bi bi-cart3" style="font-size: 28px; line-height: 28px;"></i>
             </a>
             <div id="login">
               {% if request.user.is_authenticated %}
-                <img src="{% static 'img/login_ing.png' %}" id="loginIng" alt="" width="28px" height="28px">
+                <img src="{% static 'img/login_ing.png' %}" id="loginIng" alt="" width="30px" height="30px">
               {% else %}
-                <img src="{% static 'img/login_none.png' %}" id="loginNone" class="" alt="" width="28px" height="28px">
+                <img src="{% static 'img/login_none.png' %}" id="loginNone" class="" alt="" width="30px" height="30px">
               {% endif %}
             </div>
           </div>
@@ -72,7 +72,7 @@
     </div>
 
     <!-- 프로필 (로그인) -->
-    <div class="profile-black-bg-login">
+    <div class="profile-black-bg-login" style="visibility: hidden; opacity: 0;">
       <div class="container">
         <div class="profile-bg-login">
           <div class="nav-user-login">
@@ -97,7 +97,7 @@
     </div>
 
     <!-- 프로필 (비로그인) -->
-    <div class="profile-black-bg-none">
+    <div class="profile-black-bg-none" style="visibility: hidden; opacity: 0;">
       <div class="container">
         <div class="profile-bg-none">
           <div class="nav-detail-none">
@@ -230,6 +230,11 @@
           .add('show-modal')
       })
       listGroup.addEventListener('mouseleave', () => {
+        blackBg
+          .classList
+          .remove('show-modal')
+      })
+      blackBg.addEventListener('mouseenter',() => {
         blackBg
           .classList
           .remove('show-modal')

@@ -24,9 +24,9 @@
 
 .main-category-bg {
     width: 8rem;
-    height: 8rem;
+    /* height: 8rem;
     border-radius: 50%;
-    border: 3px solid rgb(205, 205, 255); */
+    border: 3px solid rgb(205, 205, 255);  */
     background: white;
 }
 
@@ -74,7 +74,7 @@
     display: flex;
     margin-bottom: 5rem;
     margin-top: 3rem;
-    min-width: 75%;
+    min-width: 100%;
 }
 
 .best-ranking {
@@ -113,7 +113,7 @@
     padding: 20px 10px 10px 10px;
     border-radius: 0.5rem;
     font-size: 0.8rem;
-    height: 320px;
+    height: 100%
     
 }
 
@@ -136,12 +136,13 @@
     display: flex;
     margin-left: 13px;
     width: 300vw;
+    height: 100%;
 }
 
 .best-ten-product {
     margin-left: 13px;
-    height: 90%;
-    min-width: 17%;
+    height: 100%;
+    max-width: 23%;
 }
 
 .best-ten-product .card-body {
@@ -208,18 +209,15 @@
 .card-title {
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
 .card-bodys {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin: 0;
     background-color: #f7f7f7;
     border-radius: 1.5rem;
-    height: 480px;
+    height: 100%;
     margin-right: 5px;
 }
 
@@ -228,10 +226,10 @@
 }
 
 .best-ranking-tag {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 35px;
     border-radius: 10px 0 10px 0;
-    font-size: 9px;
+    font-size: 4px;
     font-weight: bold;
     color: white;
     background-color: skyblue;
@@ -243,22 +241,44 @@
     z-index: 1;
     left: 0;
     top: 0;
-    padding: 8px;
+    padding: 3px;
     font-family: sans-serif;
 }
 
 .blind-container {
     text-align: center;
     padding: 10px;
+    padding-top: 50px;
     position: relative;
+}
+
+.blind-container-down {
+    height: 260px;
+    max-width: 250px;
 }
 
 .img-blind {
     position: absolute;
     background-color: #f7f7f7;
-    bottom: 39%;
-    width: 88.5%;
-    height: 18%;
+    bottom: 35%;
+    width: 94%;
+    height: 20%;
+    z-index: 5;
+}
+
+.img-blind-without {
+    position: relative;
+    background-color: #f7f7f7;
+    width: 90%;
+    height: 12%;
+}
+
+.img-blind h5 {
+    padding-top: 30px;
+}
+
+.what-to-do {
+    z-index: 7;
 }
 
 .inner {
@@ -282,6 +302,7 @@
     border-style: none;
     justify-content: center;
     margin: auto;
+
 }
 
 .sale-price {
