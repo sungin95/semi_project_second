@@ -29,6 +29,18 @@ def index(request):
         elif product.가격 > 2000000:
             product.가격등급 = "5"
         product.save()
+    # 무게 등급 나누기
+    for product in products:
+        product.무게 = int(product.무게)
+        if product.무게 < 1000:
+            product.무게등급 = "1"
+        elif product.무게 >= 1000 and product.무게 < 1500:
+            product.무게등급 = "2"
+        elif product.무게 >= 1500 and product.무게 < 2000:
+            product.무게등급 = "3"
+        elif product.무게 >= 2000:
+            product.무게등급 = "4"
+        product.save()
     # 저장 용량 등급 나누기.
     # for product in products:
     #     product.저장용량 = int(product.저장용량)
@@ -41,12 +53,47 @@ def index(request):
     #     elif product.저장용량 > 2000:
     #         product.저장용량등급 = "4"
     #     product.save()
+    # CPU제조사 분류
+    for product in products:
+        if product.CPU제조사 == "AMD":
+            product.CPU제조사분류 = "AMD"
+            if product.CPU넘버[0] == "4":
+                product.CPU넘버분류 = "4000"
+            elif product.CPU넘버[0] == "5":
+                product.CPU넘버분류 = "5000"
+            elif product.CPU넘버[0] == "6":
+                product.CPU넘버분류 = "6000"
+        elif product.CPU제조사 == "인텔":
+            product.CPU제조사분류 = "INTEL"
+            if product.CPU넘버[0:2] == "i3":
+                product.CPU넘버분류 = "i3"
+            elif product.CPU넘버[0:2] == "i5":
+                product.CPU넘버분류 = "i5"
+            elif product.CPU넘버[0:2] == "i7":
+                product.CPU넘버분류 = "i7"
+            elif product.CPU넘버[0:2] == "i9":
+                product.CPU넘버분류 = "i9"
+            else:
+                product.CPU넘버분류 = "기타"
+        elif product.CPU제조사 == "애플(ARM)":
+            product.CPU제조사분류 == "애플"
+            if product.CPU종류 == "실리콘 M1 PRO" or product.CPU종류 == "실리콘 M1 MAX":
+                product.CPU넘버분류 = "M1"
+            elif product.CPU종류 == "실리콘 M2":
+                product.CPU넘버분류 = "M2"
+        product.save()
     # 그래픽카드 분류
     for product in products:
         if product.GPU종류 == "내장그래픽":
             product.GPU종류등급 = "1"
-        elif product.GPU종류 > "외장그래픽":
+        elif product.GPU종류 == "외장그래픽":
             product.GPU종류등급 = "2"
+            if product.GPU제조사 == "AMD":
+                product.GPU종류등급 = "3"
+            elif product.GPU제조사 == "인텔":
+                product.GPU종류등급 = "4"
+            elif product.GPU제조사 == "엔비디아":
+                product.GPU종류등급 = "5"
         product.save()
     # 해상도 분류
     for product in products:
@@ -104,6 +151,26 @@ def index(request):
         products_price = Products.objects.filter(가격등급__contains=price)
     else:
         products_price = products
+    # 무게 분류  1,2,3,4
+    weight = request.GET.get("weight")
+    if weight:
+        products_weight = Products.objects.filter(무게등급__contains=weight)
+    else:
+        products_weight = products
+    # 프로세스 분류 AMD, INTEL, 애플
+    processor = request.GET.get("processor")
+    if processor:
+        products_processor = Products.objects.filter(CPU제조사분류__contains=processor)
+    else:
+        products_processor = products
+    # 프로세스 분류 4000, 5000, 6000, i3, i5, i7, i9, 기타, m1, m2
+    processor_number = request.GET.get("processor-nunber")
+    if processor_number:
+        products_processor_nunber = Products.objects.filter(
+            CPU넘버분류__contains=processor_number
+        )
+    else:
+        products_processor_nunber = products
     # 저장용량등급 분류  1,2,3,4
     storage = request.GET.get("storage")
     if storage:
@@ -122,7 +189,7 @@ def index(request):
         products_resolution = Products.objects.filter(해상도등급__contains=resolution)
     else:
         products_resolution = products
-    # 화면크기등급 분류  1,2,3,4,5
+    # 화면크기등급 분류  1,2,3
     size = request.GET.get("size")
     if size:
         products_size = Products.objects.filter(화면크기등급__contains=size)
@@ -136,27 +203,34 @@ def index(request):
     b = set()
     for i in products_price:
         b.add(i.pk)
-    # c = set()
-    # for i in products_storage:
-    #     c.add(i.pk)
+    c = set()
+    for i in products_weight:
+        c.add(i.pk)
     d = set()
-    for i in products_graphic:
+    for i in products_processor:
         d.add(i.pk)
-    e = set()
-    for i in products_resolution:
-        e.add(i.pk)
+    d_num = set()
+    for i in products_processor_nunber:
+        d_num.add(i.pk)
+    # e = set()
+    # for i in products_storage:
+    #     e.add(i.pk)
     f = set()
-    for i in products_size:
+    for i in products_graphic:
         f.add(i.pk)
+    g = set()
+    for i in products_resolution:
+        g.add(i.pk)
+    h = set()
+    for i in products_size:
+        h.add(i.pk)
 
-    sum = a & b & d & e & f  # & c
+    sum = a & b & c & d & f & g & h & d_num  # & e
 
     answer = []
     for p in products:
         if p.pk in sum:
             answer.append(p)
-    print(answer)
-    print(type(products_category))
     page = request.GET.get("page", "1")
     paginator = Paginator(answer, 6)
     page_obj = paginator.get_page(page)

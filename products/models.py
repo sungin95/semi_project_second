@@ -117,6 +117,9 @@ class Products(models.Model):
     GPU종류등급 = models.IntegerField(blank=True, null=True)
     해상도등급 = models.TextField(blank=True, null=True)
     화면크기등급 = models.IntegerField(blank=True, null=True)
+    무게등급 = models.IntegerField(blank=True, null=True)
+    CPU제조사분류 = models.TextField(blank=True, null=True)
+    CPU넘버분류 = models.TextField(blank=True, null=True)
 
 
 class Review(models.Model):
