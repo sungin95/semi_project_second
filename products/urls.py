@@ -23,4 +23,5 @@ urlpatterns = [
         views.delete,
         name="delete",
     ),
+    path("detail/calculate/", views.calculate, name="calculate")
 ]

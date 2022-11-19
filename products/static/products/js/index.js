@@ -1,7 +1,7 @@
-const arrTop = ["display", "weight", "processor", "graphic", "storage", "price"];
+const arrTop = ["display", "weight", "processor", "graphic", "storage", "price", "category"];
 var a;
 
-for (let i = 1; i <= 6; i++) {
+for (let i = 1; i <= arrTop.length; i++) {
     eval(`let plusClick` + i);
     a = document.querySelector(`.plus-click-${arrTop[i - 1]}`);
     a.addEventListener("click", (e) => {

@@ -64,11 +64,12 @@
   <div class="main">
     <!-- 사이드바 -->
     <form class="sidebar-wrapper" method="" action="">
+      <input type="submit" name='category' value="{{ category }}">
       <div>
         <div class="sidebar-0" style="overflow: hidden; height: 45px;">
-          <div class="sidebar-weight">
-            <div>카테고리</div>
-            <i class="bi bi-plus plus-click-weight"></i>
+          <div class="sidebar-category">
+            <div class="main-text">카테고리</div>
+            <i class="bi bi-plus plus-click-category"></i>
           </div>
           <div>
             <div class="sidebar-detail">
@@ -121,7 +122,6 @@
             <div class="main-text">화면</div>
             <i class="bi bi-plus plus-click-display"></i>
           </div>
-
           <div class="sidebar-1-size" style="overflow: hidden; height: 31px;">
             <div class="sidebar-size">
               <div class="main-text">노트북크기</div>
@@ -486,6 +486,10 @@
               {% if page_obj.has_next %}
                 <a class="infinite-more-link" href="?category={{ search }}&page={{ page_obj.next_page_number }}">next</a>
               {% endif %}
+            {% elif category %}
+              {% if page_obj.has_next %}
+                <a class="infinite-more-link" href="?category={{ category }}&page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
             {% else %}
               {% if page_obj.has_next %}
                 <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">next</a>
@@ -503,6 +507,8 @@
   <script src="{% static 'products/js/index.js' %}"></script>
   <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
   <script src="{% static 'js/infinite.min.js' %}"></script>
+
+  <!-- 무한스크롤 -->
   <script>
     var infinite = new Waypoint.Infinite({
       element: $('.infinite-container')[0],
@@ -511,6 +517,7 @@
       onAfterPageLoad: () => {}
     })
   </script>
+
   <script>
     function checkOnlyZero(element) {
       const checkboxes = document.getElementsByName("category");
@@ -604,6 +611,15 @@
         }
       })
     })
+  </script>
+
+  <script>
+    window.onkeydown = function () {
+      var kcode = event.keyCode;
+      if (kcode == 116) {
+        history.replaceState({}, null, location.pathname);
+      }
+    }
   </script>
 
 {% endblock js %}
