@@ -18,6 +18,12 @@
           <img src="{% static 'labs/img/final.png' %}" class="d-block w-100" alt="..." draggable="false">
         </div>
         <div class="carousel-item" data-bs-interval="3000">
+          <img src="{% static 'labs/img/banner4.png' %}" class="d-block w-100" alt="..." draggable="false">
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="{% static 'labs/img/banner5.png' %}" class="d-block w-100" alt="..." draggable="false">
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
           <img src="{% static 'labs/img/keyboard.png' %}" class="d-block w-100" alt="..." draggable="false">
         </div>
         <div class="carousel-item" data-bs-interval="3000">
@@ -144,38 +150,40 @@
           {% endfor %}
         </div>
       </div>
-      <div class="best-ranking-products">
-        {% for product_10 in products_10 %}
-          <!-- 1등 제품 시작-->
-          <div class="best-ten-product">
-            <div class="card-bodys has_rank">
-              <div class="best-ranking-tag">best 1</div>
-              <div class="blind-container">
-                <div class="blind-container-down">
-                  <img src="{{ product_10.썸네일 }}" alt="" draggable="false" width="80%" height="80%">
+      <div class="best-container" style="overflow: hidden;">
+        <div class="best-ranking-products" style="transform: translateX(0%);">
+          {% for product_10 in products_10 %}
+            <!-- 1등 제품 시작-->
+            <div class="best-ten-product">
+              <div class="card-bodys has_rank">
+                <div class="best-ranking-tag">best 1</div>
+                <div class="blind-container">
+                  <div class="blind-container-down">
+                    <img src="{{ product_10.썸네일 }}" alt="" draggable="false" width="80%" height="80%">
+                  </div>
+                  <div class="img-blind">
+                    <h5 class="fs-6">{{ product_10.모델명 }}</h5>
+                  </div>
+                  <div class="what-to-do">
+                    {% if product_10.게임용 == True %}
+                      <span class="fs-6">게임용</span>
+                    {% endif %}
+                    {% if product_10.사무_인강용 == True %}
+                      <span class="fs-6">사무/인강용</span>
+                    {% endif %}
+                    {% if product_10.그래픽작업용 == True %}
+                      <span class="fs-6">그래픽작업용</span>
+                    {% endif %}
+                  </div>
+                  <div class="sale-price fw-bold">최저가
+                    {{ product_10.가격 | intcomma }}원</div>
+                  <hr class="mb-4">
+                  <a href="{% url 'products:detail' product_10.id %}" class="btn-color">구매하기</a>
                 </div>
-                <div class="img-blind">
-                  <h5 class="fs-6">{{ product_10.모델명 }}</h5>
-                </div>
-                <div class="what-to-do">
-                  {% if product_10.게임용 == True %}
-                    <span class="fs-6">게임용</span>
-                  {% endif %}
-                  {% if product_10.사무_인강용 == True %}
-                    <span class="fs-6">사무/인강용</span>
-                  {% endif %}
-                  {% if product_10.그래픽작업용 == True %}
-                    <span class="fs-6">그래픽작업용</span>
-                  {% endif %}
-                </div>
-                <div class="sale-price fw-bold">최저가
-                  {{ product_10.가격 | intcomma }}원</div>
-                <hr class="mb-4">
-                <a href="{% url 'products:detail' product_10.id %}" class="btn-color">구매하기</a>
               </div>
             </div>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
     </div>
 
@@ -373,6 +381,49 @@
           bestRankingTag[i].style.backgroundColor = `${bestItemArr[i]}`
           bestRankingTag[i].innerHTML = `best ${i + 1}`
         }
+      })
+    </script>
+
+    <!-- 캐러셀 -->
+    <script>
+      var ttt = 0;
+      var start = 0
+      var clicking = false
+      var next = 0;
+      const bestRankingProducts = document.querySelector('.best-ranking-products')
+
+      bestRankingProducts.addEventListener('mousedown', (e) => {
+        // e.clientX : 현재 마우스위치의 x좌표
+        start = e.clientX
+        clicking = true;
+      })
+      bestRankingProducts.addEventListener('mousemove', (e) => {
+        // e.clientX : 현재 마우스위치의 x좌표
+        if (clicking == true) {
+          ttt = next + e.clientX - start
+          console.log(ttt)
+          bestRankingProducts.style.transition = ``
+          if (ttt <= 0 && ttt > -1800) {
+            bestRankingProducts.style.transform = `translateX(${ttt}px)`
+          }
+          if (ttt > 0) {
+            ttt = 0
+          }
+          if (ttt < -1800) {
+            bestRankingProducts.style.transform = `translateX(-1700px)`
+            bestRankingProducts.style.transition = `all 0.5s`
+            ttt = -1700
+          }
+        }
+      })
+      bestRankingProducts.addEventListener('mouseleave', () => {
+        clicking = false;
+      })
+      bestRankingProducts.addEventListener('mouseup', (e) => {
+        clicking = false
+        next = ttt
+        console.log(next)
+        console.log(typeof(next))
       })
     </script>
   {% endblock js %}

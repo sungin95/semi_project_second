@@ -27,11 +27,15 @@ var time;
 // 멘트
 let time_set = setInterval(() => {
     for (let k of introCommentChange) {
-        k.classList.remove("show");
+        if (k.className == "show") {
+            continue;
+        } else {
+            k.classList.remove("show");
+        }
     }
     introCommentChange[i % count].classList.add("show");
     i++;
-}, 3000);
+}, 2500);
 
 // 멘트 클릭 이벤트
 for (let rel of introCommentChange) {
