@@ -36,7 +36,7 @@
 .btn_group {
     display: inline-flex;
     justify-content: center;
-    border: 1px solid #a4c3fa;
+    border: 1px solid #cba4fa;
     border-radius: 5px;
     overflow: hidden;
     margin-top: 20px;
@@ -49,8 +49,8 @@
     outline: none;
     border: none;
     cursor: pointer;
-    border-right: 1px solid #a0c0f8;
-    background: #a4c3fa;
+    border-right: 1px solid  #cba4fa;
+    background:  #cba4fa;
     color: white;
     text-align: center;
     text-decoration-line: none;
@@ -61,11 +61,12 @@
 }
 
 .btn_btn:hover {
-    background: #5793fa ;
+    background: #bb76ff ;
+    color: white;
 }
 
 .best-today  {
-    background-color: #a4c3fa;
+    background-color:  #e3cefc;
     border-radius: 0.3rem;
     margin-right: 1rem;
     padding: 0.3rem 0.3rem;
@@ -115,9 +116,9 @@
     border: none 10px;
 }
 .recomm{
-    background-color:  #70a2f9;
+    background-color:  #cba4fa;
     border-radius: 0.3rem;
-    border: 1px solid  #70a2f9;
+    border: 1px solid  #cba4fa;
     margin-right: 1rem;
     padding: 0.2rem 0.5rem;
     color: white;
@@ -126,10 +127,15 @@
     text-decoration-line: none;
 }
 
+.recomm:hover{
+    background: #bb76ff ;
+    color: white;
+}
+
 .recomment {
-    background-color:  #d9e7ff;
+    background-color:   #e7d4fe;
     border-radius: 0.5rem;
-    border: 1px solid  #d9e7ff;
+    border: 1px solid  #e7d4fe;
     margin-right: 1rem;
     padding: 0.006rem 0.4rem;
     color: black;

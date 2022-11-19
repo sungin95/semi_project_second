@@ -373,7 +373,7 @@ li {
 .tradecomment-create {
   border: 0px;
   background-color: transparent;
-  width: 100%;
+  width: 300px;
   color: aliceblue;
   height: 50px;
 }
@@ -395,3 +395,7 @@ li {
   justify-content: center;
   margin: auto;
 }
+/* 
+.comment_form {
+  width: 50px;
+} */
