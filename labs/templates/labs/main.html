@@ -33,7 +33,7 @@
   <div class="main-category">
     <a href="{% url 'labs:intro' %}">
       <div class="main-category-bg">
-        <img src="https://cdn-icons-png.flaticon.com/512/4696/4696759.png" class="main-category-img" alt="">
+        <img src="https://cdn-icons-png.flaticon.com/512/4696/4696759.png" class="main-category-img" style="margin-left: 20px;" alt="">
       </div>
       <p>인텔리랩스를 소개합니다</p>
     </a>
@@ -155,7 +155,7 @@
                 <div class="img-blind">
                   <h5 class="card-title fs-6 mt-3">{{ product_10.모델명 }}</h5>
                 </div>
-                <p class="card-subtitle mb-2 text-secondary font-weight-bold mt-3">모델명</p>
+                <p class="card-subtitle mb-2 text-secondary font-weight-bold">구매가</p>
                 <p class="card-text">
                   <div class="sale-price fw-bold">최저가
                     {{ product_10.가격 | intcomma }}원</div>

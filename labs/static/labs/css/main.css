@@ -24,9 +24,9 @@
 
 .main-category-bg {
     width: 8rem;
-    height: 8rem;
+    /* height: 8rem;
     border-radius: 50%;
-    border: 3px solid rgb(205, 205, 255); */
+    border: 3px solid rgb(205, 205, 255);  */
     background: white;
 }
 
@@ -208,7 +208,7 @@
 .card-title {
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
@@ -219,7 +219,7 @@
     margin: 0;
     background-color: #f7f7f7;
     border-radius: 1.5rem;
-    height: 480px;
+    height: 400px;
     margin-right: 5px;
 }
 
@@ -228,8 +228,8 @@
 }
 
 .best-ranking-tag {
-    width: 36px;
-    height: 36px;
+    width: 50px;
+    height: 50px;
     border-radius: 10px 0 10px 0;
     font-size: 9px;
     font-weight: bold;
@@ -258,7 +258,7 @@
     background-color: #f7f7f7;
     bottom: 39%;
     width: 88.5%;
-    height: 18%;
+    height: 20%;
 }
 
 .inner {
@@ -282,6 +282,7 @@
     border-style: none;
     justify-content: center;
     margin: auto;
+
 }
 
 .sale-price {
