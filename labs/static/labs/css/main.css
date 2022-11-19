@@ -24,9 +24,9 @@
 
 .main-category-bg {
     width: 8rem;
-    height: 8rem;
+    /* height: 8rem;
     border-radius: 50%;
-    border: 3px solid rgb(205, 205, 255); */
+    border: 3px solid rgb(205, 205, 255);  */
     background: white;
 }
 
@@ -208,7 +208,7 @@
 .card-title {
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
@@ -299,6 +299,7 @@
     border-style: none;
     justify-content: center;
     margin: auto;
+
 }
 
 .sale-price {

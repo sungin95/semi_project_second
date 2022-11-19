@@ -44,15 +44,15 @@
 
           <!-- 검색, 장바구니, 계정 -->
           <div class="d-flex">
-            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click" style="width:30px;height:30px" type="submit" id="search-click"></lord-icon>
+            <lord-icon src="https://cdn.lordicon.com/xfftupfv.json" trigger="click" style="width:32px;height:32px" type="submit" id="search-click"></lord-icon>
             <a id="cart" class="nav-link mx-3" href="{% url 'cart:detail' %}">
-              <img src="{% static 'img/cart_none.png' %}" alt="" width="25px" height="25px">
+              <i class="bi bi-cart3" style="font-size: 28px; line-height: 28px;"></i>
             </a>
             <div id="login">
               {% if request.user.is_authenticated %}
-                <img src="{% static 'img/login_ing.png' %}" id="loginIng" alt="" width="28px" height="28px">
+                <img src="{% static 'img/login_ing.png' %}" id="loginIng" alt="" width="30px" height="30px">
               {% else %}
-                <img src="{% static 'img/login_none.png' %}" id="loginNone" class="" alt="" width="28px" height="28px">
+                <img src="{% static 'img/login_none.png' %}" id="loginNone" class="" alt="" width="30px" height="30px">
               {% endif %}
             </div>
           </div>
