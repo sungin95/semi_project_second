@@ -86,9 +86,8 @@
   
   .main_text {
     position: absolute;
-    top: 45%;
-    left: 0%;
-    left:0;
+    top: 50%;
+    left: 5%;
     padding:0 5.208vw;
     width:1392px;
     line-height: 1;
@@ -106,15 +105,15 @@
 
 
 
-  .btns {
+.btns {
     outline: none;
-  }
+}
   
-  .product-brand-banner-name {
+.product-brand-banner-name {
     width: 45%;
     align-items: center;
     text-align: center;
-  }
+}
   
   /* .product-brand-banner-img {
     z-index: 1;
@@ -129,23 +128,140 @@
     );
   } */
   
-  aside {
+aside {
     min-width: 20%;
-  }
+}
   
-  .main {
+.main {
     display: flex;
     justify-content: center;
-  }
+}
   
-  .product-card-body {
+.product-card-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: lightgrey;
+    background-color: #f7f7f7;
     border-radius: 15px;
-  }
+    margin-bottom: 30px;
+}
+
+.card-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: center;
+  line-height: 1.3rem;
+}
   
-  .product-card-body div {
-    padding: 10px;
-  }
+
+
+
+.detail-search {
+    padding-left: 1.6667vw;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    background-size: 1px;
+    background: url(https://www.samsungebiz.com/sec/static/_images/icon_dps/icon_search_options.svg) no-repeat 0;
+}
+
+.box-result {
+  margin-top: 10px;
+}
+
+.now {
+  margin-left: 12px;
+  color:rgb(147, 112, 219);
+}
+
+.search-result {
+  padding-left: 5px;
+  background: url(https://www.samsungebiz.com/sec/static/_images/bg/wavelet_1x16.jpg) no-repeat 0 center;
+}
+
+.main-text{
+  font-weight: bold;
+}
+
+.image{
+  max-width: 100%;
+  height: 290px;
+}
+
+.card-title{
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.model-text {
+  text-align: center;
+  height: 200px;
+}
+
+.btn-color {
+  background-color: rgb(147, 112, 219);
+  text-decoration: none;
+  font-size: 1rem;
+  color: white;
+  border-radius: 1.5rem;
+  text-align: center;
+  padding: 10px 50px;
+  border-style: none;
+  justify-content: center;
+}
+.shop-tag{
+    height: 36px;
+    /* border-radius: 10px 0 10px 0; */
+    font-size: 9px;
+    font-weight: bold;
+    color: rgb(147, 112, 219);
+    /* background-color: rgb(147, 112, 219); */
+    white-space: normal;
+    text-align: center;
+    /* box-sizing: border-box; */
+    /* position: relative; */
+    /* z-index: 1; */
+    left: 0px;
+    right: 0px;
+    top: 0;
+    padding: 8px;
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+
+.class-font{
+  font-size: 20px;
+  font-weight: 700 !important;
+}
+
+.bi-bookmark{
+  font-size: 27px;
+  line-height: 27px;
+}
+
+.bi-bookmark-fill{
+  font-size: 27px;
+  line-height: 27px;
+}
+
+.bi-bookmarks{
+  font-size: 27px;
+  line-height: 27px;
+}
+
+
+.infinite-item{
+  height: 530px;
+}
+
+
+.store{
+  float: left;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(147, 112, 219);
+  letter-spacing: 0;
+}
