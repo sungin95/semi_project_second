@@ -55,7 +55,7 @@
       </div>
       <p>커뮤니티</p>
     </a>
-    <a href="">
+    <a href="https://cafe.naver.com/coolnovo">
       <div class="main-category-bg">
         <img src="https://cdn-icons-png.flaticon.com/512/3375/3375341.png" class="main-category-img" id='hotDeal' alt="">
       </div>
@@ -386,7 +386,7 @@
 
     <!-- 캐러셀 -->
     <script>
-      var ttt = 0;
+      var mouseMove = 0;
       var start = 0
       var clicking = false
       var next = 0;
@@ -400,19 +400,18 @@
       bestRankingProducts.addEventListener('mousemove', (e) => {
         // e.clientX : 현재 마우스위치의 x좌표
         if (clicking == true) {
-          ttt = next + e.clientX - start
-          console.log(ttt)
+          mouseMove = next + e.clientX - start
           bestRankingProducts.style.transition = ``
-          if (ttt <= 0 && ttt > -1800) {
-            bestRankingProducts.style.transform = `translateX(${ttt}px)`
+          if (mouseMove <= 0 && mouseMove > -1800) {
+            bestRankingProducts.style.transform = `translateX(${mouseMove}px)`
           }
-          if (ttt > 0) {
-            ttt = 0
+          if (mouseMove > 0) {
+            mouseMove = 0
           }
-          if (ttt < -1800) {
+          if (mouseMove < -1800) {
             bestRankingProducts.style.transform = `translateX(-1700px)`
             bestRankingProducts.style.transition = `all 0.5s`
-            ttt = -1700
+            mouseMove = -1700
           }
         }
       })
@@ -421,9 +420,7 @@
       })
       bestRankingProducts.addEventListener('mouseup', (e) => {
         clicking = false
-        next = ttt
-        console.log(next)
-        console.log(typeof(next))
+        next = mouseMove
       })
     </script>
   {% endblock js %}
