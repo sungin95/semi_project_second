@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block css %}{% endblock css %}
+
+{% block content %}
+  <h1>충전</h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.point }}
+    <button type="submit" class="btn btn-outline-dark">충전하기</button>
+  </form>
+{% endblock content %}

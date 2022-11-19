@@ -9,6 +9,7 @@ from .forms import (
     ProfileCustomUserChangeForm,
     MyLoginForm,
     MySignupForm,
+    CustomUserChargeForm,
 )
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -160,3 +161,24 @@ def database(request):
         user = get_user_model().objects.get(username=username)
         auth_login(request, user)
     return JsonResponse({"username": user.username})
+
+
+def charging(request):
+    if request.method == "POST":
+        form = CustomUserChargeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            charge = form.save(commit=False)
+            if charge.point <= 10000:
+                charge.회원등급 = "i3"
+            elif charge.point > 10000:
+                charge.회원등급 = "i5"
+            elif charge.point >= 100000:
+                charge.회원등급 = "i7"
+            charge.save()
+            return redirect("accounts:charging")
+    else:
+        form = CustomUserChargeForm(instance=request.user)
+    context = {
+        "form": form,
+    }
+    return render(request, "accounts/charging.html", context)
