@@ -112,6 +112,11 @@ class Products(models.Model):
         settings.AUTH_USER_MODEL, related_name="like_user"
     )
     ten_price = models.IntegerField(blank=True, null=True)
+    가격등급 = models.IntegerField(blank=True, null=True)
+    저장용량등급 = models.IntegerField(blank=True, null=True)
+    GPU종류등급 = models.IntegerField(blank=True, null=True)
+    해상도등급 = models.TextField(blank=True, null=True)
+    화면크기등급 = models.IntegerField(blank=True, null=True)
 
 
 class Review(models.Model):

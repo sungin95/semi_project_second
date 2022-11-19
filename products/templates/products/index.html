@@ -12,7 +12,6 @@
 
   <!-- <div class="product-brand-banner"> <div class="product-brand-banner-name" style=""> {% if category %} <h2>{{ category }}</h2> {% else %} <h2>전체</h2> {% endif %} </div> <div class="product-brand-banner-img" style="width: 100%"> <img src="{% static 'products/img/laptops.jpg' %}" width="100%" alt=""> </div> </div> </div> -->
 
-
   <div class="main_image">
     <img src="{% static 'products/img/laptops.jpg' %}" alt="">
     {% if category %}
@@ -22,15 +21,15 @@
     {% endif %}
   </div>
 
-<div>
-  <div class="main_image visual" style="background: url(https://images.samsung.com/kdp/display/pc/100001610/e43d0030-dea7-4a27-b3fa-8c840648e79e.jpg) center center no-repeat; background-size: cover;">
-    {% if category %}
-      <p class="main_text">{{ category }}</p>
-    {% else %}
-      <p class="main_text">전체</p>
-    {% endif %}
+  <div>
+    <div class="main_image visual" style="background: url(https://images.samsung.com/kdp/display/pc/100001610/e43d0030-dea7-4a27-b3fa-8c840648e79e.jpg) center center no-repeat; background-size: cover;">
+      {% if category %}
+        <p class="main_text">{{ category }}</p>
+      {% else %}
+        <p class="main_text">전체</p>
+      {% endif %}
+    </div>
   </div>
-</div>
 
 {% endblock carousel %}
 
@@ -405,7 +404,7 @@
             {% endif %}
           {% else %}
             {% if page_obj.has_next %}
-              <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">next</a>
+              <a class="infinite-more-link" href="?category={{ category }}&page={{ page_obj.next_page_number }}">next</a>
             {% endif %}
             {% endif%}
           </div>
