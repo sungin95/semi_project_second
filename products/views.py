@@ -10,16 +10,237 @@ from django.core.paginator import Paginator
 # Create your views here.
 def index(request):
     products = Products.objects.all()
-    products_high = Products.objects.all().order_by('가격')
-    products_low = Products.objects.all().order_by('-가격')
-    category = request.GET.get("category")
+
+    products_high = Products.objects.all().order_by("가격")
+    products_low = Products.objects.all().order_by("-가격")
     for product in products:
         product.ten_price = int(round((product.가격) * 1.1))
         product.save()
+    # 가격 등급 나누기.
+    for product in products:
+        if product.가격 <= 500000:
+            product.가격등급 = "1"
+        elif product.가격 > 500000 and product.가격 <= 1000000:
+            product.가격등급 = "2"
+        elif product.가격 > 1000000 and product.가격 <= 1500000:
+            product.가격등급 = "3"
+        elif product.가격 > 1500000 and product.가격 <= 2000000:
+            product.가격등급 = "4"
+        elif product.가격 > 2000000:
+            product.가격등급 = "5"
+        product.save()
+    # 무게 등급 나누기
+    for product in products:
+        product.무게 = int(product.무게)
+        if product.무게 < 1000:
+            product.무게등급 = "1"
+        elif product.무게 >= 1000 and product.무게 < 1500:
+            product.무게등급 = "2"
+        elif product.무게 >= 1500 and product.무게 < 2000:
+            product.무게등급 = "3"
+        elif product.무게 >= 2000:
+            product.무게등급 = "4"
+        product.save()
+    # 저장 용량 등급 나누기.
+    # for product in products:
+    #     product.저장용량 = int(product.저장용량)
+    #     if product.저장용량 <= 256:
+    #         product.저장용량등급 = "1"
+    #     elif product.저장용량 > 500 and product.저장용량 <= 516:
+    #         product.저장용량등급 = "2"
+    #     elif product.저장용량 > 999 and product.저장용량 <= 2000:
+    #         product.저장용량등급 = "3"
+    #     elif product.저장용량 > 2000:
+    #         product.저장용량등급 = "4"
+    #     product.save()
+    # CPU제조사 분류
+    for product in products:
+        if product.CPU제조사 == "AMD":
+            product.CPU제조사분류 = "AMD"
+            if product.CPU넘버[0] == "4":
+                product.CPU넘버분류 = "4000"
+            elif product.CPU넘버[0] == "5":
+                product.CPU넘버분류 = "5000"
+            elif product.CPU넘버[0] == "6":
+                product.CPU넘버분류 = "6000"
+        elif product.CPU제조사 == "인텔":
+            product.CPU제조사분류 = "INTEL"
+            if product.CPU넘버[0:2] == "i3":
+                product.CPU넘버분류 = "i3"
+            elif product.CPU넘버[0:2] == "i5":
+                product.CPU넘버분류 = "i5"
+            elif product.CPU넘버[0:2] == "i7":
+                product.CPU넘버분류 = "i7"
+            elif product.CPU넘버[0:2] == "i9":
+                product.CPU넘버분류 = "i9"
+            else:
+                product.CPU넘버분류 = "기타"
+        elif product.CPU제조사 == "애플(ARM)":
+            product.CPU제조사분류 == "애플"
+            if product.CPU종류 == "실리콘 M1 PRO" or product.CPU종류 == "실리콘 M1 MAX":
+                product.CPU넘버분류 = "M1"
+            elif product.CPU종류 == "실리콘 M2":
+                product.CPU넘버분류 = "M2"
+        product.save()
+    # 그래픽카드 분류
+    for product in products:
+        if product.GPU종류 == "내장그래픽":
+            product.GPU종류등급 = "1"
+        elif product.GPU종류 == "외장그래픽":
+            product.GPU종류등급 = "2"
+            if product.GPU제조사 == "AMD":
+                product.GPU종류등급 = "3"
+            elif product.GPU제조사 == "인텔":
+                product.GPU종류등급 = "4"
+            elif product.GPU제조사 == "엔비디아":
+                product.GPU종류등급 = "5"
+        product.save()
+    # 해상도 분류
+    for product in products:
+        if "FHD" in product.해상도:
+            product.해상도등급 = "FHD"
+        elif "QHD" in product.해상도:
+            product.해상도등급 = "QHD"
+        elif "UHD" in product.해상도:
+            product.해상도등급 = "UHD"
+        product.save()
+    # 노트북 크기 분류
+    for product in products:
+        if (
+            product.화면크기 == "35.5cm(14인치)"
+            or product.화면크기 == "33.782cm(13.3인치)"
+            or product.화면크기 == "34.5cm(13.6인치)"
+            or product.화면크기 == "27.4cm(10.9인치)"
+            or product.화면크기 == "33.7cm(13인치)"
+            or product.화면크기 == "33.7cm(13.3인치)"
+            or product.화면크기 == "34.03cm(13.4인치)"
+            or product.화면크기 == "33.78cm(13.3인치)"
+            or product.화면크기 == "35.6cm(14인치)"
+            or product.화면크기 == "35.56cm(14인치)"
+        ):
+            product.화면크기등급 = "1"
+        elif (
+            product.화면크기 == "39.6cm(15.6인치)"
+            or product.화면크기 == "36.8cm(14.5인치)"
+            or product.화면크기 == "39.62cm(15.6인치)"
+            or product.화면크기 == "40.8cm(16인치)"
+            or product.화면크기 == "40.64cm(16인치)"
+            or product.화면크기 == "35.97cm(14.2인치)"
+            or product.화면크기 == "41.05cm(16.2인치)"
+            or product.화면크기 == "38.1cm(15인치)"
+            or product.화면크기 == "40.6cm(16인치)"
+        ):
+            product.화면크기등급 = "2"
+        elif (
+            product.화면크기 == "43.9cm(17.3인치)"
+            or product.화면크기 == "43.1cm(17인치)"
+            or product.화면크기 == "43.94cm(17.3인치"
+            or product.화면크기 == "43.18cm(17인치)"
+        ):
+            product.화면크기등급 = "3"
+        product.save()
+    # 카테고리 분류
+    category = request.GET.get("category")
     if category:
         products_category = Products.objects.filter(제조회사__contains=category)
     else:
         products_category = products
+    # 가격 분류  1,2,3,4,5
+    price = request.GET.get("price")
+    if price:
+        products_price = Products.objects.filter(가격등급__contains=price)
+    else:
+        products_price = products
+    # 무게 분류  1,2,3,4
+    weight = request.GET.get("weight")
+    if weight:
+        products_weight = Products.objects.filter(무게등급__contains=weight)
+    else:
+        products_weight = products
+    # 프로세스 분류 AMD, INTEL, 애플
+    processor = request.GET.get("processor")
+    if processor:
+        products_processor = Products.objects.filter(CPU제조사분류__contains=processor)
+    else:
+        products_processor = products
+    # 프로세스 분류 4000, 5000, 6000, i3, i5, i7, i9, 기타, m1, m2
+    processor_number = request.GET.get("processor-nunber")
+    if processor_number:
+        products_processor_nunber = Products.objects.filter(
+            CPU넘버분류__contains=processor_number
+        )
+    else:
+        products_processor_nunber = products
+    # 저장용량등급 분류  1,2,3,4
+    storage = request.GET.get("storage")
+    if storage:
+        products_storage = Products.objects.filter(저장용량등급__contains=storage)
+    else:
+        products_storage = products
+    # GPU종류등급 분류  1,2
+    graphic = request.GET.get("graphic")
+    if graphic:
+        products_graphic = Products.objects.filter(GPU종류등급__contains=graphic)
+    else:
+        products_graphic = products
+    # 해상도등급 분류  "FHD","QHD","UHD"
+    resolution = request.GET.get("resolution")
+    if resolution:
+        products_resolution = Products.objects.filter(해상도등급__contains=resolution)
+    else:
+        products_resolution = products
+    # 화면크기등급 분류  1,2,3
+    size = request.GET.get("size")
+    if size:
+        products_size = Products.objects.filter(화면크기등급__contains=size)
+    else:
+        products_size = products
+
+    # 합치는 작업
+    a = set()
+    for j in products_category:
+        a.add(j.pk)
+    b = set()
+    for i in products_price:
+        b.add(i.pk)
+    c = set()
+    for i in products_weight:
+        c.add(i.pk)
+    d = set()
+    for i in products_processor:
+        d.add(i.pk)
+    d_num = set()
+    for i in products_processor_nunber:
+        d_num.add(i.pk)
+    # e = set()
+    # for i in products_storage:
+    #     e.add(i.pk)
+    f = set()
+    for i in products_graphic:
+        f.add(i.pk)
+    g = set()
+    for i in products_resolution:
+        g.add(i.pk)
+    h = set()
+    for i in products_size:
+        h.add(i.pk)
+
+    # if category:
+    # if price:
+    # if weight:
+    # if processor:
+    # if processor_number:
+    # if storage:
+    # if graphic:
+    # if resolution:
+    # if size:
+
+    sum = a & b & c & d & f & g & h & d_num  # & e
+
+    answer = []
+    for p in products:
+        if p.pk in sum:
+            answer.append(p)
     page = request.GET.get("page", "1")
     paginator = Paginator(products_category, 6)
     page_obj = paginator.get_page(page)
