@@ -225,6 +225,16 @@ def index(request):
     for i in products_size:
         h.add(i.pk)
 
+    # if category:
+    # if price:
+    # if weight:
+    # if processor:
+    # if processor_number:
+    # if storage:
+    # if graphic:
+    # if resolution:
+    # if size:
+
     sum = a & b & c & d & f & g & h & d_num  # & e
 
     answer = []
@@ -232,7 +242,7 @@ def index(request):
         if p.pk in sum:
             answer.append(p)
     page = request.GET.get("page", "1")
-    paginator = Paginator(answer, 6)
+    paginator = Paginator(products_category, 6)
     page_obj = paginator.get_page(page)
     context = {
         "products": products,
