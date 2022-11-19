@@ -160,3 +160,12 @@ tr {
 .review-t{
   min-width: 50%;
 }
+/* 
+.btn-type6 {
+  padding
+} */
+
+.btn-type6:hover{
+  background: rgba(255,255,255,0.2);
+  transition: 0.7s;
+}

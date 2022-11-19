@@ -6,6 +6,7 @@
     font-family: 'Noto Sans KR', sans-serif;
     margin: 4rem auto 1.5rem;
     width: 60%;
+    text-align: center;
 }
 
 
@@ -13,7 +14,7 @@
 .form {
     color: #434343;
     margin: auto;
-    width: 60%;
+    width: 15%;
 }
 
 
@@ -32,12 +33,12 @@
 
 /* 제출 버튼 조절 */
 .submit {
-    background-color: #666666;
+    background-color:  rgb(205, 205, 255);
     border: none;
     border-radius: 2rem;
-    color: white;
+    color: rgb(147, 112, 219);
     margin-top: 1.5rem;
-    padding: 0.7rem 1rem;
+    padding: 10px 35px 10px 35px;
 }
 
 
@@ -49,11 +50,12 @@
 
 /* 뒤로가기 버튼 */
 .back {
-    background-color: none;
-    border: 0 #666666;
+    color: white;
+    background-color: black;
+    border: none;
     border-radius: 2rem;
-    margin: 1.5rem 0 0 1.7rem;
-    padding: 0.7rem 1rem;
+    margin: 0 0 0 5px;
+    padding: 10px 20px 10px 20px;
 }
 
 .back:hover {
@@ -61,6 +63,5 @@
     border: none;
     border-radius: 2rem;
     color: white;
-    margin-top: 1.5rem;
-    padding: 0.7rem 1rem;
+
 }
