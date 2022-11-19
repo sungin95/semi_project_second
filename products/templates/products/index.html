@@ -445,27 +445,71 @@
               <!-- 카드1 한장 끝 -->
             {% endfor %}
           {% else %}
-          <<<<<<< HEAD {% for product in page_obj %} <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;"> <div class="product-card-body test1 mb-5"> <!-- 찜하기 추가 작업 필요 --> <div class="position-absolute " style="top:25px; right:20px;"> {% if request.user.is_authenticated %} {% if request.user in product.like_product.all %} <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1"></i> {% else %} <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1"></i> {% endif %} {% else %} <a href="{% url 'accounts:login' %}"> <i class="bi bi-bookmarks"></i> </a> {% endif %} </div> <div> <img src="{{ product.썸네일 }}" alt="" class="image" style="height: 250px; width: 250px; margin:50px 0 0 10px;"> </div> <div class="model-text"> <h5 class="card-title mt-2">{{ product.모델명 }}</h5> <div class="sale-price"> <p style="color: gray; margin-bottom: 0;">최저가</p> <p class="class-font">{{ product.가격 | intcomma }}원</p> </div> <hr> <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a> </div> </div> </div> <!-- 카드1 한장 끝 --> {% endfor %} {% endif %} </div> <div class="row"> <div class="col-3"> {% if search %} {% if page_obj.has_next %} <a class="infinite-more-link" href="?category={{ search }}&page={{ page_obj.next_page_number }}">next</a> {% endif %} {% else %} {% if page_obj.has_next %} <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">next</a> {% endif %} {% endif%} </div> ======= {% if page_obj.has_next %} <a class="infinite-more-link" href="?category={{ category }}&page={{ page_obj.next_page_number }}">next</a> {% endif %} {% endif%} >>>>>>> 31fdfc0cb7ed07b53008e4d9d4727928fe8648bb
+            {% for product in page_obj %}
+              <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
+                <div class="product-card-body test1 mb-5">
+                  <!-- 찜하기 추가 작업 필요 -->
+                  <div class="position-absolute " style="top:25px; right:20px;">
+                    {% if request.user.is_authenticated %}
+                      {% if request.user in product.like_product.all %}
+                        <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1"></i>
+                      {% else %}
+                        <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1"></i>
+                      {% endif %}
+                    {% else %}
+                      <a href="{% url 'accounts:login' %}">
+                        <i class="bi bi-bookmarks"></i>
+                      </a>
+                    {% endif %}
+                  </div>
+                  <div>
+                    <img src="{{ product.썸네일 }}" alt="" class="image" style="height: 250px; width: 250px; margin:50px 0 0 10px;">
+                  </div>
+                  <div class="model-text">
+                    <h5 class="card-title mt-2">{{ product.모델명 }}</h5>
+                    <div class="sale-price">
+                      <p style="color: gray; margin-bottom: 0;">최저가</p>
+                      <p class="class-font">{{ product.가격 | intcomma }}원</p>
+                    </div>
+                    <hr>
+                    <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>
+                  </div>
+                </div>
+              </div>
+              <!-- 카드1 한장 끝 -->
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="row">
+          <div class="col-3">
+            {% if search %}
+              {% if page_obj.has_next %}
+                <a class="infinite-more-link" href="?category={{ search }}&page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+            {% else %}
+              {% if page_obj.has_next %}
+                <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+            {% endif %}
           </div>
         </div>
       </div>
     </div>
-  {% endblock content %}
+  </div>
+{% endblock content %}
 
-  <!-- 자바스크립트 -->
-  {% block js %}
-    <script src="{% static 'products/js/index.js' %}"></script>
-    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-    <script src="{% static 'js/infinite.min.js' %}"></script>
-    <script>
-      var infinite = new Waypoint.Infinite({
-        element: $('.infinite-container')[0],
-        offset: 'bottom-in-view',
-        onBeforePageLoad: () => {},
-        onAfterPageLoad: () => {}
-      }) << << << < HEAD
-    </script>
-    ======= })
+<!-- 자바스크립트 -->
+{% block js %}
+  <script src="{% static 'products/js/index.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/infinite.min.js' %}"></script>
+  <script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      offset: 'bottom-in-view',
+      onBeforePageLoad: () => {},
+      onAfterPageLoad: () => {}
+    })
   </script>
   <script>
     function checkOnlyZero(element) {
@@ -532,7 +576,6 @@
       element.checked = true;
     }
   </script>
-  >>>>>>> 31fdfc0cb7ed07b53008e4d9d4727928fe8648bb
 
   <!-- 북마크 비동기 -->
   <script>
