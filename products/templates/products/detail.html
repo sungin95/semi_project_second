@@ -199,8 +199,27 @@
               <div class="box-cto">
                 <ul>
                   <li>
-                    <!-- <a id="btnCart" type="button" class="btn btn-l btn-type6" href="{% url 'cart:add_cart' product.id %}">장바구니</a> -->
-                    <button id="btnCart" type="button" class="btn btn-l btn-type6"><a href="{% url 'cart:add_cart' product.id %}" style="text-decoration: none; color:black;">장바구니</a></button>
+                    <button id="btnCart" type="button" class="add-cart btn btn-l btn-type6" data-product-id="{{ product.pk }}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <a href="{% url 'cart:add_cart' product.id %}" style="text-decoration: none; color:black;">장바구니</a>
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            ...
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </li>
                   <li>
                     <button id="btnCart" type="button" class="btn btn-k btn-type2 ms-3 px-3">바로구매</button>
@@ -782,5 +801,15 @@ buttons: [
             reviewForm.classList.toggle("hidden")
             })
         })
+</script>
+<script>
+  const attention = document.querySelector("#add-cart")
+    attention.addEventListener("click", function (event) {
+    const productId = event.target.dataset.productId;
+    event.preventDefault()
+    axios({method: "get", url: `/cart/add/${productId}`})
+    .then(response => {
+    })
+    })
 </script>
 {% endblock js %}

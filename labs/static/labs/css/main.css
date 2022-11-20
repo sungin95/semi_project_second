@@ -122,7 +122,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .best-ten a {

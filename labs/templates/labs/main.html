@@ -140,287 +140,286 @@
         <h3>베스트랭킹</h3>
         <img src="{% static 'labs/img/gold1.png'%}">
       </div>
-      <div class="best-ten mt-3">
+      <div class="best-ten mt-3 justify-content-between">
         {% for product_10 in products_10 %}
-          <a href="{% url 'products:detail' product_10.id %}">
-            <a class="now">
-              {{ product_10.id}}
-              {{ product_10.모델명 }}
-            </a>
-          {% endfor %}
-        </div>
+          <a class="now" href="{% url 'products:detail' product_10.pk %}">
+            {{ forloop.counter }}
+            {{ product_10.모델명 }}
+          </a>
+        {% endfor %}
       </div>
-      <div class="best-container" style="overflow: hidden;">
-        <div class="best-ranking-products" style="transform: translateX(0%);">
-          {% for product_10 in products_10 %}
-            <!-- 1등 제품 시작-->
-            <div class="best-ten-product">
-              <div class="card-bodys has_rank">
-                <div class="best-ranking-tag">best 1</div>
-                <div class="blind-container">
-                  <div class="blind-container-down">
-                    <img src="{{ product_10.썸네일 }}" alt="" draggable="false" width="80%" height="80%">
-                  </div>
-                  <div class="img-blind">
-                    <h5 class="fs-6">{{ product_10.모델명 }}</h5>
-                  </div>
-                  <div class="what-to-do">
-                    {% if product_10.게임용 == True %}
-                      <span class="fs-6">게임용</span>
-                    {% endif %}
-                    {% if product_10.사무_인강용 == True %}
-                      <span class="fs-6">사무/인강용</span>
-                    {% endif %}
-                    {% if product_10.그래픽작업용 == True %}
-                      <span class="fs-6">그래픽작업용</span>
-                    {% endif %}
-                  </div>
-                  <div class="sale-price fw-bold">최저가
-                    {{ product_10.가격 | intcomma }}원</div>
-                  <hr class="mb-4">
-                  <a href="{% url 'products:detail' product_10.id %}" class="btn-color">구매하기</a>
+    </div>
+    <div class="best-container" style="overflow: hidden;">
+      <div class="best-ranking-products" style="transform: translateX(0%);">
+        {% for product_10 in products_10 %}
+          <!-- 1등 제품 시작-->
+          <div class="best-ten-product">
+            <div class="card-bodys has_rank">
+              <div class="best-ranking-tag">best 1</div>
+              <div class="blind-container">
+                <div class="blind-container-down">
+                  <img src="{{ product_10.썸네일 }}" alt="" draggable="false" width="80%" height="80%">
                 </div>
+                <div class="img-blind">
+                  <h5 class="fs-6">{{ product_10.모델명 }}</h5>
+                </div>
+                <div class="what-to-do">
+                  {% if product_10.게임용 == True %}
+                    <span class="fs-6">게임용</span>
+                  {% endif %}
+                  {% if product_10.사무_인강용 == True %}
+                    <span class="fs-6">사무/인강용</span>
+                  {% endif %}
+                  {% if product_10.그래픽작업용 == True %}
+                    <span class="fs-6">그래픽작업용</span>
+                  {% endif %}
+                </div>
+                <div class="sale-price fw-bold">최저가
+                  {{ product_10.가격 | intcomma }}원</div>
+                <hr class="mb-4">
+                <a href="{% url 'products:detail' product_10.id %}" class="btn-color">구매하기</a>
               </div>
             </div>
-          {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- MD추천 아이템 -->
+  <div class="md-pick">
+    <p></p>
+    <h3>MD Pick</h3>
+  </div>
+  <div class="cards">
+    <!-- 카드1 한장 시작 -->
+    <div class="card hit-product">
+      <div class="card-body">
+        <div>
+          <img src="{% static 'labs/img/키보드.jpeg'%}" alt="" class="img-fluid region_img" style="width: 264.08px; height:154px;">
+          <h5 class="card-title text-center" style="height:48px;">Mistel 키보드</h5>
+          <h6 class="card-subtitle mb-2 text-muted text-center">MD770 RGB</h6>
+          <p class="card-text">
+            <div class="standard-price text-center">
+              <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">195,000</span>
+            </div>
+          </p>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center">
+          <a href="https://smartstore.naver.com/kuzza/products/4865163014?NaPm=ct%3Dlalah6nc%7Cci%3D49a8c75f80024744e49e0e00c40dcb3a0a5b2825%7Ctr%3Dsls%7Csn%3D159426%7Chk%3D2e972f68614ea415d4564f9de2a51439d1e1c709" class="btn-color">구매하기</a>
         </div>
       </div>
     </div>
-
-    <!-- MD추천 아이템 -->
-    <div class="md-pick">
-      <p></p>
-      <h3>MD Pick</h3>
+    <!-- 카드1 한장 끝 -->
+    <!-- 카드2 한장 시작 -->
+    <div class="card hit-product">
+      <div class="card-body">
+        <div>
+          <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+          <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+          <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+          <p class="card-text">
+            <div class="standard-price text-center">
+              <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
+            </div>
+          </p>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center">
+          <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+        </div>
+      </div>
     </div>
-    <div class="cards">
-      <!-- 카드1 한장 시작 -->
-      <div class="card hit-product">
-        <div class="card-body">
-          <div>
-            <img src="{% static 'labs/img/키보드.jpeg'%}" alt="" class="img-fluid region_img"style="width: 264.08px; height:154px;">
-            <h5 class="card-title text-center" style="height:48px;">Mistel 키보드</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-center">MD770 RGB</h6>
-            <p class="card-text">
-              <div class="standard-price text-center">
-                <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">195,000</span>
-              </div>
-            </p>
-          </div>
-          <hr>
-          <div class="d-flex justify-content-center">
-            <a href="https://smartstore.naver.com/kuzza/products/4865163014?NaPm=ct%3Dlalah6nc%7Cci%3D49a8c75f80024744e49e0e00c40dcb3a0a5b2825%7Ctr%3Dsls%7Csn%3D159426%7Chk%3D2e972f68614ea415d4564f9de2a51439d1e1c709" class="btn-color">구매하기</a>
-          </div>
+    <!-- 카드2 한장 끝 -->
+    <!-- 카드3 한장 시작 -->
+    <div class="card hit-product">
+      <div class="card-body">
+        <div>
+          <img src="{% static 'labs/img/맥북에어.jpeg'%}" alt="" class="img-fluid region_img">
+          <h5 class="card-title text-center">APPLE 2022 맥북에어 MLY33KH/A (8core GPU, 8GB, SSD 256GB)</h5>
+          <h6 class="card-subtitle mb-2 text-muted text-center">MLY33KH/A</h6>
+          <p class="card-text">
+            <div class="standard-price text-center">
+              <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,421,900</span>
+            </div>
+          </p>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center">
+          <a href="https://prod.danawa.com/info/?pcode=17203826&cate=11236463#bookmark_price_compare" class="btn-color">구매하기</a>
         </div>
       </div>
-      <!-- 카드1 한장 끝 -->
-      <!-- 카드2 한장 시작 -->
-      <div class="card hit-product">
-        <div class="card-body">
-          <div>
-            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
-            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
-            <p class="card-text">
-              <div class="standard-price text-center">
-                <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
-              </div>
-            </p>
-          </div>
-          <hr>
-          <div class="d-flex justify-content-center">
-            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
-          </div>
-        </div>
-      </div>
-      <!-- 카드2 한장 끝 -->
-      <!-- 카드3 한장 시작 -->
-      <div class="card hit-product">
-        <div class="card-body">
-          <div>
-            <img src="{% static 'labs/img/맥북에어.jpeg'%}" alt="" class="img-fluid region_img">
-            <h5 class="card-title text-center">APPLE 2022 맥북에어 MLY33KH/A (8core GPU, 8GB, SSD 256GB)</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-center">MLY33KH/A</h6>
-            <p class="card-text">
-              <div class="standard-price text-center">
-                <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,421,900</span>
-              </div>
-            </p>
-          </div>
-          <hr>
-          <div class="d-flex justify-content-center">
-            <a href="https://prod.danawa.com/info/?pcode=17203826&cate=11236463#bookmark_price_compare" class="btn-color">구매하기</a>
-          </div>
-        </div>
-      </div>
-      <!-- 카드3 한장 끝 -->
-      <!-- 카드4 한장 시작 -->
-      <div class="card hit-product">
-        <div class="card-body">
-          <div>
-            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
-            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
-            <p class="card-text">
-              <div class="standard-price text-center">
-                <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
-              </div>
-            </p>
-          </div>
-          <hr>
-          <div class="d-flex justify-content-center">
-            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
-          </div>
-        </div>
-      </div>
-      <!-- 카드4 한장 끝 -->
-      <!-- 카드5 한장 시작 -->
-      <div class="card hit-product">
-        <div class="card-body">
-          <div>
-            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
-            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
-            <p class="card-text">
-              <div class="standard-price text-center">
-                <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
-              </div>
-            </p>
-          </div>
-          <hr>
-          <div class="d-flex justify-content-center">
-            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
-          </div>
-        </div>
-      </div>
-      <!-- 카드5 한장 끝 -->
-      <!-- 카드6 한장 시작 -->
-      <div class="card hit-product">
-        <div class="card-body">
-          <div>
-            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
-            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
-            <p class="card-text">
-              <div class="standard-price text-center">
-                <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
-              </div>
-            </p>
-          </div>
-          <hr>
-          <div class="d-flex justify-content-center">
-            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
-          </div>
-        </div>
-      </div>
-      <!-- 카드6 한장 끝 -->
-      <!-- 카드7 한장 시작 -->
-      <div class="card hit-product">
-        <div class="card-body">
-          <div>
-            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
-            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
-            <p class="card-text">
-              <div class="standard-price text-center">
-                <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
-              </div>
-            </p>
-          </div>
-          <hr>
-          <div class="d-flex justify-content-center">
-            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
-          </div>
-        </div>
-      </div>
-      <!-- 카드7 한장 끝 -->
-      <!-- 카드8 한장 시작 -->
-      <div class="card hit-product">
-        <div class="card-body">
-          <div>
-            <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
-            <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
-            <p class="card-text">
-              <div class="standard-price text-center">
-                <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
-              </div>
-            </p>
-          </div>
-          <hr>
-          <div class="d-flex justify-content-center">
-            <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
-          </div>
-        </div>
-      </div>
-      <!-- 카드8 한장 끝 -->
     </div>
+    <!-- 카드3 한장 끝 -->
+    <!-- 카드4 한장 시작 -->
+    <div class="card hit-product">
+      <div class="card-body">
+        <div>
+          <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+          <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+          <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+          <p class="card-text">
+            <div class="standard-price text-center">
+              <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
+            </div>
+          </p>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center">
+          <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+        </div>
+      </div>
+    </div>
+    <!-- 카드4 한장 끝 -->
+    <!-- 카드5 한장 시작 -->
+    <div class="card hit-product">
+      <div class="card-body">
+        <div>
+          <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+          <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+          <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+          <p class="card-text">
+            <div class="standard-price text-center">
+              <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
+            </div>
+          </p>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center">
+          <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+        </div>
+      </div>
+    </div>
+    <!-- 카드5 한장 끝 -->
+    <!-- 카드6 한장 시작 -->
+    <div class="card hit-product">
+      <div class="card-body">
+        <div>
+          <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+          <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+          <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+          <p class="card-text">
+            <div class="standard-price text-center">
+              <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
+            </div>
+          </p>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center">
+          <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+        </div>
+      </div>
+    </div>
+    <!-- 카드6 한장 끝 -->
+    <!-- 카드7 한장 시작 -->
+    <div class="card hit-product">
+      <div class="card-body">
+        <div>
+          <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+          <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+          <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+          <p class="card-text">
+            <div class="standard-price text-center">
+              <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
+            </div>
+          </p>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center">
+          <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+        </div>
+      </div>
+    </div>
+    <!-- 카드7 한장 끝 -->
+    <!-- 카드8 한장 시작 -->
+    <div class="card hit-product">
+      <div class="card-body">
+        <div>
+          <img src="{% static 'labs/img/리전5 프로.jpg'%}" alt="" class="img-fluid region_img">
+          <h5 class="card-title text-center">레노버 LEGION 5i Pro 16IAH7H I7 STORM 3060 32GB램</h5>
+          <h6 class="card-subtitle mb-2 text-muted text-center">82RG0081KR</h6>
+          <p class="card-text">
+            <div class="standard-price text-center">
+              <span class="text-center text-muted">최저가</span><span style="margin-left: 5px; color: black;">1,998,990</span>
+            </div>
+          </p>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center">
+          <a href="https://prod.danawa.com/info/?pcode=17705312&keyword=%EB%A0%88%EB%85%B8%EB%B2%84+%EB%A6%AC%EC%A0%845+%ED%94%84%EB%A1%9C&cate=112758" class="btn-color">구매하기</a>
+        </div>
+      </div>
+    </div>
+    <!-- 카드8 한장 끝 -->
+  </div>
 
-  {% endblock content %}
+{% endblock content %}
 
-  <!-- 자바스크립트 -->
-  {% block js %}
-    <script src="{% static 'labs/js/main.js' %}"></script>
+<!-- 자바스크립트 -->
+{% block js %}
+  <script src="{% static 'labs/js/main.js' %}"></script>
 
-    <!-- 베스트랭킹 배지 -->
-    <script>
-      const bestItemArr = [
-        'red',
-        'orange',
-        'rgb(205, 205, 255)',
-        'orange',
-        'red',
-        'rgb(205, 205, 255)',
-        'red',
-        'orange',
-        'rgb(205, 205, 255)',
-        'orange'
-      ]
-      const bestRankingTag = document.querySelectorAll('.best-ranking-tag')
-      window.addEventListener('load', () => {
-        for (let i = 0; i < bestRankingTag.length; i++) {
-          bestRankingTag[i].style.backgroundColor = `${bestItemArr[i]}`
-          bestRankingTag[i].innerHTML = `best ${i + 1}`
+  <!-- 베스트랭킹 배지 -->
+  <script>
+    const bestItemArr = [
+      'red',
+      'orange',
+      'rgb(205, 205, 255)',
+      'orange',
+      'red',
+      'rgb(205, 205, 255)',
+      'red',
+      'orange',
+      'rgb(205, 205, 255)',
+      'orange'
+    ]
+    const bestRankingTag = document.querySelectorAll('.best-ranking-tag')
+    window.addEventListener('load', () => {
+      for (let i = 0; i < bestRankingTag.length; i++) {
+        bestRankingTag[i].style.backgroundColor = `${bestItemArr[i]}`
+        bestRankingTag[i].innerHTML = `best ${i + 1}`
+      }
+    })
+  </script>
+
+  <!-- 캐러셀 -->
+  <script>
+    var mouseMove = 0;
+    var start = 0
+    var clicking = false
+    var next = 0;
+    const bestRankingProducts = document.querySelector('.best-ranking-products')
+
+    bestRankingProducts.addEventListener('mousedown', (e) => {
+      // e.clientX : 현재 마우스위치의 x좌표
+      start = e.clientX
+      clicking = true;
+    })
+    bestRankingProducts.addEventListener('mousemove', (e) => {
+      // e.clientX : 현재 마우스위치의 x좌표
+      if (clicking == true) {
+        mouseMove = next + e.clientX - start
+        bestRankingProducts.style.transition = ``
+        if (mouseMove <= 0 && mouseMove > -1800) {
+          bestRankingProducts.style.transform = `translateX(${mouseMove}px)`
         }
-      })
-    </script>
-
-    <!-- 캐러셀 -->
-    <script>
-      var mouseMove = 0;
-      var start = 0
-      var clicking = false
-      var next = 0;
-      const bestRankingProducts = document.querySelector('.best-ranking-products')
-
-      bestRankingProducts.addEventListener('mousedown', (e) => {
-        // e.clientX : 현재 마우스위치의 x좌표
-        start = e.clientX
-        clicking = true;
-      })
-      bestRankingProducts.addEventListener('mousemove', (e) => {
-        // e.clientX : 현재 마우스위치의 x좌표
-        if (clicking == true) {
-          mouseMove = next + e.clientX - start
-          bestRankingProducts.style.transition = ``
-          if (mouseMove <= 0 && mouseMove > -1800) {
-            bestRankingProducts.style.transform = `translateX(${mouseMove}px)`
-          }
-          if (mouseMove > 0) {
-            mouseMove = 0
-          }
-          if (mouseMove < -1800) {
-            bestRankingProducts.style.transform = `translateX(-1700px)`
-            bestRankingProducts.style.transition = `all 0.5s`
-            mouseMove = -1700
-          }
+        if (mouseMove > 0) {
+          mouseMove = 0
         }
-      })
-      bestRankingProducts.addEventListener('mouseleave', () => {
-        clicking = false;
-      })
-      bestRankingProducts.addEventListener('mouseup', (e) => {
-        clicking = false
-        next = mouseMove
-      })
-    </script>
-  {% endblock js %}
+        if (mouseMove < -1800) {
+          bestRankingProducts.style.transform = `translateX(-1700px)`
+          bestRankingProducts.style.transition = `all 0.5s`
+          mouseMove = -1700
+        }
+      }
+    })
+    bestRankingProducts.addEventListener('mouseleave', () => {
+      clicking = false;
+    })
+    bestRankingProducts.addEventListener('mouseup', (e) => {
+      clicking = false
+      next = mouseMove
+    })
+  </script>
+{% endblock js %}
