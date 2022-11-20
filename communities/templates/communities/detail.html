@@ -37,17 +37,22 @@
       </div>
     </div>
     <!-- 내용 -->
-    <!-- 추천 -->
-          
-    
     {% for ac in article_content %}
     <h5 class="row mx-2 fw-bold">
-            {{ ac }}
-        </h5>
-        {% endfor %}
+      {{ ac }}
+    </h5>
+      {% endfor %}
+    <div class="">
+      <div class="">
+      {% for img in article.articles_image.all %}
+        <img src="{{ img.image.url }}" style="width: 150px; height: 150px; border-radius: 25px;">
+      {% endfor %}
+      </div>
+  </div>
     <br>
     <br>
     <br>
+  <!-- 추천 --> 
     <div class="likeBtn">
       
       {% if request.user in article.like.all %}
@@ -105,7 +110,7 @@
             <form id="comment-form" data-article-id="{{ article.pk }}" class="comment_n">
               {% csrf_token %}
               <input name="content" placeholder="댓글을 작성해주세요" type="text" required="comment_form" class="tradecomment-create" value="">
-              <input class="btn btn-dark comment_form" type="submit" value="제출">
+              <!-- <input class="btn btn-dark comment_form" type="submit" value="제출"> -->
             </form>
           {% endif %}
 
@@ -126,7 +131,7 @@
               <div id="comments">
                 {% for comment in comments %}
                 {% if comment.parent_id == null %}
-                  <div class="my-1" style="display: inline-block">
+                  <div class="my-2" style="display: inline-block">
                     {% if comment.user.image %}
                       <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
                     {% else %}
@@ -137,28 +142,54 @@
                     {{ comment.user.username }}</span>
                     |
                     <span>{{ comment.content }}</span>
+                    <!-- 대댓글작성, 삭제 폼 -->
+                    <div class="d-flex mx-5">
+                      <p>
+                        <button class="sub_comment-create" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{comment.id}}" aria-expanded="false" aria-controls="collapseExample">
+                          답글 작성
+                        </button>
+                      </p>
+                      {% if request.user == comment.user %}
+                        <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk comment.pk %}" method="POST">
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-danger">삭제</button>
+                        </form>
+                      {% endif %}
+                    </div>
+                    <div class="collapse" id="collapseExample{{comment.id}}">
+                      <div class="d-flex">
+                        {% if request.user.is_authenticated %}
+                        <form class="d-flex" id="comment-form" action="{% url 'communities:sub_comment_create' article.pk comment.pk %}" method="POST">
+                          {% csrf_token %}  
+                          <input name="content" placeholder="댓글을 작성해주세요" type="text" required="comment_form" class="tradecomment-create-2" value="">
+                          <input class="btn_comment" type="submit" value="제출">
+                        </form>
+                        {% endif %}
+                      </div>
+                    </div>
                   <!-- 대댓글내용 -->
                   <div class="mx-5 child-comments">
                     {% for sub_comment in comments %}
                       {% if comment.id == sub_comment.parent_id %}
-                        <div class="rounded-pill">
+                        <div class="text_p">
                           {% if sub_comment.user.image %}
                             <img src="{{ sub_comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
                           {% else %}
                             <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
                           {% endif %}
-                        </div>
-                        <p class="my-2" style="display: inline-block ">
-                          {{ sub_comment.user.username }}
-                          |
-                          {{ sub_comment.content }}</p>
-                        <div class="" style="display: inline-block">
-                          {% if request.user == sub_comment.user %}
-                            <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk sub_comment.pk %}" method="POST">
-                              {% csrf_token %}
-                              <button type="submit" class="btn btn-dange">삭제</button>
-                            </form>
-                          {% endif %}
+                        
+                          <p class="comment_p">
+                            {{ sub_comment.user.username }}
+                            |
+                            {{ sub_comment.content }}</p>
+                          <div class="comment_a" style="">
+                            {% if request.user == sub_comment.user %}
+                              <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk sub_comment.pk %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="comment_a" style="font-size: small;">삭제</button>
+                              </form>
+                            {% endif %}
+                          </div>
                         </div>
                       {% endif %}
                       {% empty %}
@@ -166,31 +197,6 @@
                     {% endfor %}
                   </div>
                   <!-- 대댓글끝 -->
-                  <!-- 대댓글작성, 삭제 폼 -->
-                  <div class="d-flex">
-                    <p>
-                      <button class="sub_comment-create" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{comment.id}}" aria-expanded="false" aria-controls="collapseExample">
-                        대댓글 작성
-                      </button>
-                    </p>
-                    {% if request.user == comment.user %}
-                      <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk comment.pk %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">삭제</button>
-                      </form>
-                    {% endif %}
-                  </div>
-                  <div class="collapse" id="collapseExample{{comment.id}}">
-                    <div class="d-flex">
-                      {% if request.user.is_authenticated %}
-                        <form class="d-flex" id="comment-form" action="{% url 'communities:sub_comment_create' article.pk comment.pk %}" method="POST">
-                        {% csrf_token %}  
-                          <input name="content" placeholder="댓글을 작성해주세요" type="text" required="comment_form" class="tradecomment-create" value="">
-                          <input class="comment_form btn btn-dark" type="submit" value="제출">
-                        </form>
-                      {% endif %}
-                    </div>
-                  </div>
                   <!-- 대댓글작성, 삭제 폼 끝 -->
                   {% endif %}
                 {% endfor %}
@@ -348,16 +354,19 @@
               |
             <span>${response.data.content}</spen>
               <br>
-              <div class="d-flex">
+              <div class="d-flex mx-5">
                 <p>
                   <button class="sub_comment-create" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{comment.id}}" aria-expanded="false" aria-controls="collapseExample">
-                    대댓글 작성
+                    답글 작성
                   </button>
                 </p>
-                  <form class="comment-delete">
-                  {% csrf_token %}
-                  <button type="submit" class="btn btn-danger">삭제</button>
+                {% if request.user == comment.user %}
+                  <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk comment.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">삭제</button>
                   </form>
+                {% endif %}
+              </div>
             </div>
             `)
             commentForm.reset()

@@ -142,7 +142,7 @@ def update(request, article_pk):
                 for forms in formset.cleaned_data:
                     if forms:
                         image = forms["image"]
-                        photo = ArticlesImages(restaurant=article, image=image)
+                        photo = ArticlesImages(articles=article_, image=image)
                         photo.save()
                 return redirect("communities:detail", article.pk)
             else:
@@ -182,8 +182,8 @@ def detail(request, article_pk):
 
     cookie_value = request.COOKIES.get("hitblog", "_")
 
-    if f"_{id}_" not in cookie_value:
-        cookie_value += f"{id}_"
+    if f"_{article_pk}_" not in cookie_value:
+        cookie_value += f"{article_pk}_"
         response.set_cookie(
             "hitblog", value=cookie_value, max_age=max_age, httponly=True
         )

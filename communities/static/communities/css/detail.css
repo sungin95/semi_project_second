@@ -243,6 +243,7 @@ li {
   color: #fafbfc;
   font-size: 0.9rem;
   margin-right: -0.9rem;
+  font-size: small;
 }
 
 .comment-delete button {
@@ -373,7 +374,7 @@ li {
 .tradecomment-create {
   border: 0px;
   background-color: transparent;
-  width: 300px;
+  width: 100%;
   color: aliceblue;
   height: 50px;
 }
@@ -395,7 +396,48 @@ li {
   justify-content: center;
   margin: auto;
 }
-/* 
-.comment_form {
-  width: 50px;
+
+/* .text_create{
+  margin-left: 70px;
 } */
+
+.tradecomment-create-2{
+  font-size: small;
+  border: 0px;
+  background-color: transparent;
+  width: 100%;
+  color: aliceblue;
+  height: 25px;
+  margin-left: 70px;
+  margin-bottom: 10px;
+  border-bottom: #666666;
+}
+
+.btn_comment{
+  font-size: small;
+  background-color:  #fafafa;
+  border-radius: 0.3rem;
+  border: 1px solid  #fafafa;
+  color: rgb(4, 0, 0);
+  display: inline-block;
+  text-decoration-line: none;
+  margin-bottom: 10px;
+}
+
+.btn_comment:hover{
+  background: #bb76ff ;
+  color: white;
+}
+
+.text_p{
+  font-size: small;
+}
+
+.comment_p{
+  display: inline-block;
+  font-size: small;
+}
+
+.comment_a {
+  display: inline-block;
+}
