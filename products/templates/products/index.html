@@ -463,41 +463,6 @@
                 <!-- 카드1 한장 끝 -->
               {% endfor %}
             {% else %}
-              {% for product in page_obj %}
-              <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
-                <div class="product-card-body test1">
-                  <!-- 찜하기 -->
-                  <div class="position-absolute " style="top:25px; right:20px;">
-                    {% if request.user.is_authenticated %}
-                      {% if request.user in product.like_product.all %}
-                        <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1" style="width:25px;"></i>
-                      {% else %}
-                        <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1"></i>
-                      {% endif %}
-                    {% else %}
-                      <a href="{% url 'accounts:login' %}">
-                        <i class="bi bi-bookmark"></i>
-                      </a>
-                    {% endif %}
-                  </div>
-                  <div>
-                    <img src="{{ product.썸네일 }}" alt="" class="image" style="height: 250px; width: 250px; margin:50px 0 0 10px;">
-                  </div>
-                  <div class="model-text">
-                    <h5 class="card-title mt-2">{{ product.모델명 }}</h5>
-                    <p class="card-text">
-                      <div class="sale-price">
-                        <p style="color: gray; margin-bottom: 0;">최저가</p>
-                        <p class="class-font">{{ product.가격 | intcomma }}원</p>
-                      </div>
-                      <hr>
-                      <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- 카드1 한장 끝 -->
-              {% endfor %}
-            {% else %}
               <!-- 3. 그냥 들어갔을때 -->
               {% for product in page_obj %}
                 <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
@@ -649,32 +614,32 @@
       }
     </script>
 
-  <!-- 북마크 비동기 -->
-  <script>
-    $(document).on("click", ".like-btn1", function (e) {
-      const productId = e.target.dataset.productId;
-      e.preventDefault()
-      axios({method: "get", url: `/products/like/${productId}`}).then(response => {
-        if (response.data.isLiked === true) {
-          e
-            .target
-            .classList
-            .add('bi-bookmark-fill')
-          e
-            .target
-            .classList
-            .remove('bi-bookmark')
-        } else {
-          e
-            .target
-            .classList
-            .add('bi-bookmark')
-          e
-            .target
-            .classList
-            .remove('bi-bookmark-fill')
+    <!-- 북마크 비동기 -->
+    <script>
+      $(document).on("click", ".like-btn1", function (e) {
+        const productId = e.target.dataset.productId;
+        e.preventDefault()
+        axios({method: "get", url: `/products/like/${productId}`}).then(response => {
+          if (response.data.isLiked === true) {
+            e
+              .target
+              .classList
+              .add('bi-bookmark-fill')
+            e
+              .target
+              .classList
+              .remove('bi-bookmark')
+          } else {
+            e
+              .target
+              .classList
+              .add('bi-bookmark')
+            e
+              .target
+              .classList
+              .remove('bi-bookmark-fill')
+          }
         }
-      }
     </script>
     <script>
       window.onkeydown = function () {
