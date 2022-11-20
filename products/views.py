@@ -177,6 +177,9 @@ def review_create(request, pk):
         if review_form.is_valid():
             review = review_form.save(commit=False)
             review.user = request.user
+            user = request.user
+            user.point += 100
+            user.save()
             review.products = product
             review.save()
         return redirect("products:detail", product.pk)
