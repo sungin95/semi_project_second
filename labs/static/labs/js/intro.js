@@ -35,7 +35,7 @@ let time_set = setInterval(() => {
     }
     introCommentChange[i % count].classList.add("show");
     i++;
-}, 2500);
+}, 3300);
 
 // 멘트 클릭 이벤트
 for (let rel of introCommentChange) {
