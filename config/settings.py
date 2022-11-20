@@ -46,7 +46,12 @@ else:
         AWS_REGION,
     )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    # "Elastic Beanstalk URL",
+    "Intellilabs-env.eba-cynacmth.ap-northeast-2.elasticbeanstalk.com", # 예시입니다. 본인 URL로 해주세요.
+    "127.0.0.1",
+    "localhost",
+]
 
 
 # Application definition
@@ -175,7 +180,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
