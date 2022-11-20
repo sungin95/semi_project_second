@@ -235,6 +235,12 @@
         blackBg
           .classList
           .add('show-modal')
+        searchForm.style.visibility = 'hidden';
+        searchForm.style.opacity = '0';
+        profileBlackBgNone.style.visibility = 'hidden'
+        profileBlackBgNone.style.opacity = '0'
+        profileBlackBgLogin.style.visibility = 'hidden'
+        profileBlackBgLogin.style.opacity = '0'
       })
       listGroup.addEventListener('mouseleave', () => {
         blackBg
@@ -257,7 +263,8 @@
         loginNone.addEventListener('click', () => {
           if (profileBlackBgNone.style.visibility == 'hidden') {
             profileBlackBgNone.style.visibility = 'visible'
-          profileBlackBgNone.style.opacity = '1'
+            profileBlackBgNone.style.opacity = '1'
+            blackBg.classList.remove('show-modal')
           } else {
             profileBlackBgNone.style.visibility = 'hidden'
             profileBlackBgNone.style.opacity = '0'
@@ -277,11 +284,14 @@
         const loginIng = document.querySelector('#loginIng')
         loginIng.addEventListener('click', () => {
           if (profileBlackBgLogin.style.visibility == 'hidden') {
-            profileBlackBgLogin.style.visibility = 'visible'
-          profileBlackBgLogin.style.opacity = '1'
+            profileBlackBgLogin.style.visibility = 'visible';
+            profileBlackBgLogin.style.opacity = '1';
+            blackBg.classList.remove('show-modal');
+            searchForm.style.visibility = 'hidden';
+            searchForm.style.opacity = '0';
           } else {
             profileBlackBgLogin.style.visibility = 'hidden'
-          profileBlackBgLogin.style.opacity = '0'
+            profileBlackBgLogin.style.opacity = '0'
           }
         })
         profileBgLogin.addEventListener('mouseleave', () => {
@@ -303,6 +313,9 @@
         if (searchForm.style.visibility == 'hidden') {
           searchForm.style.visibility = 'visible'
           searchForm.style.opacity = '1'
+          blackBg.classList.remove('show-modal')
+          profileBlackBgLogin.style.visibility = 'hidden'
+          profileBlackBgLogin.style.opacity = '0'
         } else {
           searchForm.style.visibility = 'hidden'
           searchForm.style.opacity = '0'
