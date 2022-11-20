@@ -84,7 +84,7 @@
           <div class="nav-user-login">
             <p class="nav-link mb-0 fw-bold">
               {% if request.user.image %}
-                <img src="#" alt="" style="width: 30px; height: 28px; border-radius: 500px">
+                <img src="{{ request.user.image.url }}" alt="" style="width: 30px; height: 28px; border-radius: 500px">
               {% endif %}
               <a href="#">{{ request.user }}님 안녕하세요!</a>
             </p>
