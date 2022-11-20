@@ -374,7 +374,7 @@ li {
 .tradecomment-create {
   border: 0px;
   background-color: transparent;
-  width: 100%;
+  width: 1070px;
   color: aliceblue;
   height: 50px;
 }
@@ -440,4 +440,19 @@ li {
 
 .comment_a {
   display: inline-block;
+}
+
+.comment_form{
+  background-color:  #fafafa;
+  border-radius: 0.3rem;
+  border: 1px solid  #fafafa;
+  color: rgb(4, 0, 0);
+  display: inline-block;
+  text-decoration-line: none;
+  margin-bottom: 10px; 
+}
+
+.comment_form:hover{
+  background: #bb76ff ;
+  color: white;
 }

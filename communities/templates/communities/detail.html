@@ -110,7 +110,7 @@
             <form id="comment-form" data-article-id="{{ article.pk }}" class="comment_n">
               {% csrf_token %}
               <input name="content" placeholder="댓글을 작성해주세요" type="text" required="comment_form" class="tradecomment-create" value="">
-              <!-- <input class="btn btn-dark comment_form" type="submit" value="제출"> -->
+              <input class="comment_form" type="submit" value="제출">
             </form>
           {% endif %}
 
@@ -131,7 +131,7 @@
               <div id="comments">
                 {% for comment in comments %}
                 {% if comment.parent_id == null %}
-                  <div class="my-2" style="display: inline-block">
+                  <div class="my-2" style="display: inline-block;">
                     {% if comment.user.image %}
                       <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
                     {% else %}
@@ -342,7 +342,7 @@
       }).then(response => {
         const comments = document.querySelector("#comments")
             comments.insertAdjacentHTML('beforeend',`
-            <div class="my-1" style="display: inline-block">
+            <div class="my-2" style="display: inline-block">
               {% if comment.user.image %}
                 <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
               {% else %}
@@ -350,10 +350,10 @@
               {% endif %}
             </div>
             <span class="user-c-name">
-              ${response.data.userName}</span>
+              {{ comment.user.username }}</span>
               |
-            <span>${response.data.content}</spen>
-              <br>
+              <span>{{ comment.content }}</span>
+              <!-- 대댓글작성, 삭제 폼 -->
               <div class="d-flex mx-5">
                 <p>
                   <button class="sub_comment-create" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{comment.id}}" aria-expanded="false" aria-controls="collapseExample">
@@ -367,7 +367,6 @@
                   </form>
                 {% endif %}
               </div>
-            </div>
             `)
             commentForm.reset()
       })
