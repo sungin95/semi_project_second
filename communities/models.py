@@ -112,3 +112,7 @@ class Comments(models.Model):
             return str(time.days) + "일 전"
         else:
             return False
+
+class Search(models.Model):
+    keyword = models.TextField(max_length=30)
+    count = models.IntegerField(default=0)

@@ -18,6 +18,12 @@ class CustomUserChangeForm(UserChangeForm):
         fields = ("email", "first_name", "last_name")
 
 
+class CustomUserChargeForm(UserChangeForm):
+    class Meta(UserChangeForm.Meta):
+        model = get_user_model()
+        fields = ("point",)
+
+
 class ProfileCustomUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = get_user_model()

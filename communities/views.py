@@ -5,12 +5,12 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Articles
+from .models import Articles, Search
 from django.core.paginator import Paginator
 from datetime import date, datetime, timedelta
 from django.forms import modelformset_factory
 from django.http import HttpResponseRedirect
-
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
@@ -335,3 +335,27 @@ def notion_update(request, article_pk):
         }
         return render(request, "communities/form.html", context)
     return redirect("communities:detail", article.pk)
+
+
+def search(request):
+    if request.method == "GET":
+        communities= Articles.objects.all()
+        search = request.GET.get("search","")
+
+        if len(search) >= 1:
+            if Search.objects.filter(keyword=search).exists():
+                search_keyword = Search.objects.get(keyword=search)
+                search_keyword.count += 1
+                search_keyword.save()
+            else:
+                Search.objects.create(keyword=search, count=1)
+
+        if search:
+            search_list = communities.filter(
+                Q(category__icontains=search) | Q(title__icontains=search) | Q(content__icontains=search) | Q(user__username__icontains=search)
+            )
+            context = {
+                "search_list": search_list,
+                "search" : search,
+            }
+            return render(request, "communities/search.html", context)

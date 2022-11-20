@@ -28,4 +28,5 @@ urlpatterns = [
     path("<int:article_pk>/like/", views.like, name="like"),
     path("notion_create/", views.notion_create, name="notion_create"),
     path("<int:article_pk>/notion_update/", views.notion_update, name="notion_update"),
+    path("search/", views.search, name="search"),
 ]

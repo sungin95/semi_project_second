@@ -23,7 +23,7 @@
   <!--경로-->
   <div class="pg-location">
     <div class="pg-location-inner d-flex justify-content-start; mt-3">
-      <a href="" class="ml-3 mr-2" style="text-decoration:none; color:gray; font-size: 15px;">HOME
+      <a href="{% url 'labs:main' %}" class="ml-3 mr-2" style="text-decoration:none; color:gray; font-size: 15px;">HOME
         <i class="bi bi-chevron-right"></i>
       </a>
       <form action="{% url 'products:index' %}">
@@ -199,7 +199,8 @@
               <div class="box-cto">
                 <ul>
                   <li>
-                    <a id="btnCart" type="button" class="btn btn-l btn-type6" href="{% url 'cart:add_cart' product.id %}">장바구니</a>
+                    <!-- <a id="btnCart" type="button" class="btn btn-l btn-type6" href="{% url 'cart:add_cart' product.id %}">장바구니</a> -->
+                    <button id="btnCart" type="button" class="btn btn-l btn-type6"><a href="{% url 'cart:add_cart' product.id %}" style="text-decoration: none; color:black;">장바구니</a></button>
                   </li>
                   <li>
                     <button id="btnCart" type="button" class="btn btn-k btn-type2 ms-3 px-3">바로구매</button>
