@@ -165,13 +165,17 @@ def detail(request, article_pk):
     article = get_object_or_404(Articles, pk=article_pk)
     comment_form = CommentForm()
     comments = article.comments_set.all()
+
+    article_content = article.content.split("\n")
+    print(article_content)
     content = {
+        "article_content": article_content,
         "article": article,
         "comments": comments,
         "comment_form": comment_form,
     }
     response = render(request, "communities/detail.html", content)
-
+    print(article.content)
     expire_date, now = datetime.now(), datetime.now()
     expire_date += timedelta(days=1)
     expire_date = expire_date.replace(hour=0, minute=0, second=0, microsecond=0)
