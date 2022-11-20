@@ -231,16 +231,22 @@
         blackBg
           .classList
           .add('show-modal')
-      })
-      blackBg.addEventListener('mouseenter',() => {
-        blackBg
-          .classList
-          .remove('show-modal')
+        searchForm.style.visibility = 'hidden';
+        searchForm.style.opacity = '0';
+        profileBlackBgNone.style.visibility = 'hidden'
+        profileBlackBgNone.style.opacity = '0'
+        profileBlackBgLogin.style.visibility = 'hidden'
+        profileBlackBgLogin.style.opacity = '0'
       })
       listGroup.addEventListener('mouseleave', () => {
         blackBg
           .classList
           .remove('show-modal')
+      })
+      navbar.addEventListener('mouseover', () => {
+        navbar.style.backgroundImage = 'linear-gradient(to bottom, rgb(253, 253, 252) 25%, #f0f8ff 75%)'
+        navbar.style.backgroundColor = ''
+        navbar.style.transition = 'all 1s'
       })
       listGroup.addEventListener('mouseleave', () => {
         navbar.style.backgroundImage = 'none'
@@ -253,7 +259,8 @@
         loginNone.addEventListener('click', () => {
           if (profileBlackBgNone.style.visibility == 'hidden') {
             profileBlackBgNone.style.visibility = 'visible'
-          profileBlackBgNone.style.opacity = '1'
+            profileBlackBgNone.style.opacity = '1'
+            blackBg.classList.remove('show-modal')
           } else {
             profileBlackBgNone.style.visibility = 'hidden'
             profileBlackBgNone.style.opacity = '0'
@@ -273,11 +280,14 @@
         const loginIng = document.querySelector('#loginIng')
         loginIng.addEventListener('click', () => {
           if (profileBlackBgLogin.style.visibility == 'hidden') {
-            profileBlackBgLogin.style.visibility = 'visible'
-          profileBlackBgLogin.style.opacity = '1'
+            profileBlackBgLogin.style.visibility = 'visible';
+            profileBlackBgLogin.style.opacity = '1';
+            blackBg.classList.remove('show-modal');
+            searchForm.style.visibility = 'hidden';
+            searchForm.style.opacity = '0';
           } else {
             profileBlackBgLogin.style.visibility = 'hidden'
-          profileBlackBgLogin.style.opacity = '0'
+            profileBlackBgLogin.style.opacity = '0'
           }
         })
         profileBgLogin.addEventListener('mouseleave', () => {
@@ -294,12 +304,14 @@
       const searchClick = document.querySelector("#search-click")
       const searchForm = document.querySelector('#searchForm')
       const searchCancel = document.querySelector('.search-cancel')
-      const searchBtn = document.querySelector('#search-btn')
 
       searchClick.addEventListener('click', () => {
         if (searchForm.style.visibility == 'hidden') {
           searchForm.style.visibility = 'visible'
           searchForm.style.opacity = '1'
+          blackBg.classList.remove('show-modal')
+          profileBlackBgLogin.style.visibility = 'hidden'
+          profileBlackBgLogin.style.opacity = '0'
         } else {
           searchForm.style.visibility = 'hidden'
           searchForm.style.opacity = '0'
