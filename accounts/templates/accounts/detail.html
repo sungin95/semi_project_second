@@ -23,8 +23,8 @@
 
       {% if request.user.pk == user.pk %}
         <div>
-          <span class="mx-3">현재 포인트:{{user.point}}p</span>
-          <span class="mx-3">{{user.회원등급}}</span>
+          <span class="rating mx-3">{{user.회원등급}}</span>
+          <span class="mx-3">현재 포인트: {{user.point}}p</span>
         </div>
         <div class="user_buttons">
           <button>
@@ -68,7 +68,7 @@
     </div>
     <hr class="hr">
     <div class="bookmarked">
-      <p class="bookmarked_p">게시글</p>
+      <p class="bookmarked_p">추천 게시글</p>
       <p class="explanation">*사용자의 추천 게시글을 볼 수 있습니다.</p>
       <table class="table">
         <thead>
