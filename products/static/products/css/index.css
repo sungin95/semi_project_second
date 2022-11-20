@@ -10,8 +10,23 @@
     height: 100%;
 }
 
+.choice1 {
+    position: fixed;
+    bottom: 5%;
+    width: 14%;
+}
+.choice2 {
+    position: fixed;
+    bottom: 9%;
+    width: 14%;
+}
+
 .sidebar-wrapper {
-    padding-right: 2rem;
+    min-width: 20%;
+    padding-right: 10px;
+    position: sticky;
+    height: 20%;
+    top: 0%;
 }
 
 .sidebar-0,
@@ -21,7 +36,7 @@
 .sidebar-4,
 .sidebar-5,
 .sidebar-6 {
-    padding: 1rem 0px 0rem;
+    padding: 5px 0px 0rem;
     padding-right: 10px;
     margin-bottom: 1rem;
 }
@@ -32,7 +47,7 @@
 .sidebar-3-intel,
 .sidebar-3-apple,
 .sidebar-4-external {
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
 .sidebar-brand,
@@ -56,11 +71,13 @@
 .sidebar-external {
     display: flex;
     justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .sidebar-detail {
     font-size: 0.9rem;
-    padding: 3px 0 3px;
+    padding: 5px 0px 3px 10px;
 }
 
 /* .product-brand-banner {
@@ -237,7 +254,6 @@ aside {
     font-size: 27px;
     line-height: 27px;
 }
-
 
 .infinite-item {
     height: 530px;
