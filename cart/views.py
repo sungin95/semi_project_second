@@ -37,8 +37,7 @@ def add_cart(request, product_id):
         )
         cart_item.save()
         messages.success(request, "상품이 장바구니에 추가 되었습니다.")
-    context = {}
-    return JsonResponse(context)
+    return redirect("products:detail", product_id)
 
 
 def detail(request, total=0, counter=0, total_plus=0, total_dc=0, cart_items=None):
