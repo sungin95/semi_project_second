@@ -16,5 +16,5 @@ class User(AbstractUser):
         symmetrical=False,
         related_name="followers",
     )
-    point = models.IntegerField(blank=True, null=True)
-    회원등급 = models.TextField(blank=True, null=True)
+    point = models.IntegerField(default=1, blank=True, null=True)
+    회원등급 = models.TextField(default="i3", blank=True, null=True)
