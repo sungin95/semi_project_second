@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cart, CartItem
 from products.models import Products
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import JsonResponse
 
+# from django.contrib.auth import get_user_model
 # Create your views here.
 # 장바구니 생성 함수
 def _cart_id(request):
@@ -36,6 +38,7 @@ def add_cart(request, product_id):
 
 
 def detail(request, total=0, counter=0, total_plus=0, total_dc=0, cart_items=None):
+    user = request.user
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, active=True)
@@ -48,13 +51,13 @@ def detail(request, total=0, counter=0, total_plus=0, total_dc=0, cart_items=Non
             cart_item.product.ten_price = int(round((cart_item.product.가격) * 1.1))
             cart_item.product.save()
         total_dc = total_plus - total
-
     except ObjectDoesNotExist:
         pass
     return render(
         request,
         "cart/cart.html",
         dict(
+            user=user,
             cart_items=cart_items,
             total=total,
             counter=counter,
@@ -62,6 +65,18 @@ def detail(request, total=0, counter=0, total_plus=0, total_dc=0, cart_items=Non
             total_dc=total_dc,
         ),
     )
+
+
+def user_point(request, value):
+    cart = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItem.objects.filter(cart=cart, active=True)
+    total = 0
+    for cart_item in cart_items:
+        total += cart_item.product.가격 * cart_item.quantity
+    total = total - value
+    print(value)
+    context = {"total": total}
+    return JsonResponse(context)
 
 
 def cart_remove(request, product_id):
