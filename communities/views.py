@@ -142,7 +142,7 @@ def update(request, article_pk):
                 for forms in formset.cleaned_data:
                     if forms:
                         image = forms["image"]
-                        photo = ArticlesImages(restaurant=article, image=image)
+                        photo = ArticlesImages(articles=article_, image=image)
                         photo.save()
                 return redirect("communities:detail", article.pk)
             else:
@@ -167,7 +167,6 @@ def detail(request, article_pk):
     comments = article.comments_set.all()
 
     article_content = article.content.split("\n")
-    print(article_content)
     content = {
         "article_content": article_content,
         "article": article,
@@ -175,7 +174,6 @@ def detail(request, article_pk):
         "comment_form": comment_form,
     }
     response = render(request, "communities/detail.html", content)
-    print(article.content)
     expire_date, now = datetime.now(), datetime.now()
     expire_date += timedelta(days=1)
     expire_date = expire_date.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -184,8 +182,8 @@ def detail(request, article_pk):
 
     cookie_value = request.COOKIES.get("hitblog", "_")
 
-    if f"_{id}_" not in cookie_value:
-        cookie_value += f"{id}_"
+    if f"_{article_pk}_" not in cookie_value:
+        cookie_value += f"{article_pk}_"
         response.set_cookie(
             "hitblog", value=cookie_value, max_age=max_age, httponly=True
         )
