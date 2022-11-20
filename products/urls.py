@@ -23,5 +23,6 @@ urlpatterns = [
         views.delete,
         name="delete",
     ),
-    path("detail/calculate/", views.calculate, name="calculate")
+    path("detail/calculate/", views.calculate, name="calculate"),
+    path("purchase/<int:product_pk>", views.purchase, name="purchase"),
 ]

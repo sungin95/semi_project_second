@@ -3,10 +3,11 @@ from .models import Products, Review
 from dotenv import load_dotenv
 import os
 from .models import Products
-from .forms import ReviewForm
+from .forms import ReviewForm, PurchaseForm
 from django.http import JsonResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -79,7 +80,6 @@ def index(request):
 
     print(request.GET.keys()) 
     print(list(request.GET.values()))
-
     result = products_category&products_price&products_weight&products_processor&products_processor_number&products_storage&products_graphic&products_resolution&products_size&products_brand
     print(len(result))
     products_category = result
@@ -181,6 +181,9 @@ def review_create(request, pk):
         if review_form.is_valid():
             review = review_form.save(commit=False)
             review.user = request.user
+            user = request.user
+            user.point += 100
+            user.save()
             review.products = product
             review.save()
         return redirect("products:detail", product.pk)
@@ -340,3 +343,22 @@ def calculate(request):
             product.화면크기등급 = "3"
         product.save()
     return redirect("products:index")
+
+
+@login_required
+def purchase(request, product_pk):
+    product = Products.objects.get(pk=product_pk)
+    if request.method == "POST":
+        purchaseForm = PurchaseForm(request.POST)
+        if purchaseForm.is_valid():
+            purchase_ = purchaseForm.save(commit=False)
+            purchase_.user = request.user
+            purchase_.products = product
+            purchase_.save()
+            return redirect("products:index")
+    else:
+        purchaseForm = PurchaseForm()
+    context = {
+        "purchaseForm": purchaseForm,
+    }
+    return render(request, "products/index.html", context)
