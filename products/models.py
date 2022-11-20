@@ -120,6 +120,10 @@ class Products(models.Model):
     무게등급 = models.IntegerField(blank=True, null=True)
     CPU제조사분류 = models.TextField(blank=True, null=True)
     CPU넘버분류 = models.TextField(blank=True, null=True)
+    표준텐키리스 = models.BooleanField(blank=True, null=True)
+    와이드뷰 = models.BooleanField(blank=True, null=True)
+    AppleT2 = models.BooleanField(blank=True, null=True)
+    기계식키보드 = models.BooleanField(blank=True, null=True)
 
 
 class Review(models.Model):

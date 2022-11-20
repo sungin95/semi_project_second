@@ -13,6 +13,14 @@
     <div class="main_image visual" style="background: url(https://images.samsung.com/kdp/display/pc/100001610/e43d0030-dea7-4a27-b3fa-8c840648e79e.jpg) center center no-repeat; background-size: cover;">
       {% if category %}
         <p class="main_text">{{ category }}</p>
+      {% elif result %}
+        <p class="main_text">
+          검색결과</p>
+      {% elif filter %}
+        <p class="main_text">
+          검색결과</p>
+      {% elif filter == 0 %}
+        <p class="main_text">검색 결과가 없습니다.</p>
       {% else %}
         <p class="main_text">전체</p>
       {% endif %}
@@ -30,7 +38,11 @@
       {% if category %}
         <p class="now">{{ products_category.count }}개</p>
       {% elif search %}
-      <p class="now">{{ search_lists.count }}개</p>
+        <p class="now">{{ search_count }}개</p>
+      {% elif filter %}
+        <p class="now">{{ filter }}개</p>
+      {% elif filter == 0 %}
+        <p class="now">{{ filter }}개</p>
       {% else %}
         <p class="now">{{ products.count }}개</p>
       {% endif %}
@@ -65,7 +77,6 @@
   <div class="main">
     <!-- 사이드바 -->
     <form class="sidebar-wrapper" method="" action="">
-      <input type="submit" name='category' value="{{ category }}">
       <div>
         <div class="sidebar-0" style="overflow: hidden; height: 45px;">
           <div class="sidebar-brand">
@@ -297,7 +308,7 @@
                 <input type='checkbox' name='graphic' value='3' onclick='checkOnlyFive(this)'/>
                 인텔
               </div>
-              <div class="sidebar-detail"> 
+              <div class="sidebar-detail">
                 <input type='checkbox' name='graphic' value='4' onclick='checkOnlyFive(this)'/>
                 AMD
               </div>
@@ -367,6 +378,8 @@
         </div>
       </div>
       <hr>
+      <input type="checkbox" name='category' value="{{ category }}" checked="true" class="d-none">
+      <input type="checkbox" name='search' value="{{ search }}" checked="true" class="d-none">
       <input type="submit" class="form-control form-control-lg" value="조회">
     </form>
 
@@ -411,49 +424,14 @@
               </div>
               <!-- 카드1 한장 끝 -->
             {% endfor %}
-            
+
           {% elif search %}
-          <!-- 2. 검색으로 들어갔을때 -->
+            <!-- 2. 검색으로 들어갔을때 -->
             {% for product in page_obj %}
               <!-- 카드1 한장 시작 -->
-            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
-              <div class="product-card-body test1">
-                <!-- 찜하기 -->
-                <div class="position-absolute " style="top:25px; right:20px;">
-                  {% if request.user.is_authenticated %}
-                    {% if request.user in product.like_product.all %}
-                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1"></i>
-                    {% else %}
-                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1"></i>
-                    {% endif %}
-                  {% else %}
-                    <a href="{% url 'accounts:login' %}">
-                      <i class="bi bi-bookmarks"></i>
-                    </a>
-                  {% endif %}
-                </div>
-                <div>
-                  <img src="{{ product.썸네일 }}" alt="" class="image" style="height: 250px; width: 250px; margin:50px 0 0 10px;">
-                </div>
-                <div class="model-text">
-                  <h5 class="card-title mt-2">{{ product.모델명 }}</h5>
-                  <p class="card-text">
-                    <div class="sale-price">
-                      <p style="color: gray; margin-bottom: 0;">최저가</p>
-                      <p class="class-font">{{ product.가격 | intcomma }}원</p>
-                    </div>
-                    <hr>
-                    <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>
-                  </div>
-                </div>
-              </div>
-              <!-- 카드1 한장 끝 -->
-            {% endfor %}
-          {% else %}
-            {% for product in page_obj %}
               <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
-                <div class="product-card-body test1 mb-5">
-                  <!-- 찜하기 추가 작업 필요 -->
+                <div class="product-card-body test1">
+                  <!-- 찜하기 -->
                   <div class="position-absolute " style="top:25px; right:20px;">
                     {% if request.user.is_authenticated %}
                       {% if request.user in product.like_product.all %}
@@ -472,171 +450,206 @@
                   </div>
                   <div class="model-text">
                     <h5 class="card-title mt-2">{{ product.모델명 }}</h5>
-                    <div class="sale-price">
-                      <p style="color: gray; margin-bottom: 0;">최저가</p>
-                      <p class="class-font">{{ product.가격 | intcomma }}원</p>
+                    <p class="card-text">
+                      <div class="sale-price">
+                        <p style="color: gray; margin-bottom: 0;">최저가</p>
+                        <p class="class-font">{{ product.가격 | intcomma }}원</p>
+                      </div>
+                      <hr>
+                      <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>
                     </div>
-                    <hr>
-                    <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>
                   </div>
                 </div>
-              </div>
-              <!-- 카드1 한장 끝 -->
-            {% endfor %}
-          {% endif %}
-        </div>
-        <div class="d-flex position-absolute">
-          <button class="btn btn-primary loading">
-            <span class="spinner-border spinner-border-sm"></span>
-            로딩중입니다.
-          </button>
-        </div>
-
-        <div class="row">
-          <div class="col-3">
-            {% if search %}
-              {% if page_obj.has_next %}
-                <a class="infinite-more-link" href="?search={{ search }}&page={{ page_obj.next_page_number }}">next</a>
-              {% endif %}
-            {% elif category %}
-              {% if page_obj.has_next %}
-                <a class="infinite-more-link" href="?category={{ category }}&page={{ page_obj.next_page_number }}">next</a>
-              {% endif %}
+                <!-- 카드1 한장 끝 -->
+              {% endfor %}
             {% else %}
-              {% if page_obj.has_next %}
-                <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}&price={{ price }}&weight={{ weight }}&processor={{ processor }}&processor_nunber={{ processor_nunber }}&storage={{ storage }}&graphic={{ graphic }}&resolution={{ resolution }}&size={{ size }}">next</a>
-              {% endif %}
+              <!-- 3. 그냥 들어갔을때 -->
+              {% for product in page_obj %}
+                <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
+                  <div class="product-card-body test1 mb-5">
+                    <!-- 찜하기 추가 작업 필요 -->
+                    <div class="position-absolute " style="top:25px; right:20px;">
+                      {% if request.user.is_authenticated %}
+                        {% if request.user in product.like_product.all %}
+                          <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1"></i>
+                        {% else %}
+                          <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1"></i>
+                        {% endif %}
+                      {% else %}
+                        <a href="{% url 'accounts:login' %}">
+                          <i class="bi bi-bookmarks"></i>
+                        </a>
+                      {% endif %}
+                    </div>
+                    <div>
+                      <img src="{{ product.썸네일 }}" alt="" class="image" style="height: 250px; width: 250px; margin:50px 0 0 10px;">
+                    </div>
+                    <div class="model-text">
+                      <h5 class="card-title mt-2">{{ product.모델명 }}</h5>
+                      <div class="sale-price">
+                        <p style="color: gray; margin-bottom: 0;">최저가</p>
+                        <p class="class-font">{{ product.가격 | intcomma }}원</p>
+                      </div>
+                      <hr>
+                      <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- 카드1 한장 끝 -->
+              {% endfor %}
             {% endif %}
+          </div>
+          <div class="d-flex position-absolute">
+            <button class="btn btn-primary loading">
+              <span class="spinner-border spinner-border-sm"></span>
+              로딩중입니다.
+            </button>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              {% if search %}
+                {% if page_obj.has_next %}
+                  <a class="infinite-more-link" href="?search={{ search }}&page={{ page_obj.next_page_number }}&brand={{ brand }}&price={{ price }}&weight={{ weight }}&processor={{ processor }}&processor_number={{ processor_number }}&storage={{ storage }}&graphic={{ graphic }}&resolution={{ resolution }}&size={{ size }}">next</a>
+                {% endif %}
+              {% elif category %}
+                {% if page_obj.has_next %}
+                  <a class="infinite-more-link" href="?category={{ category }}&page={{ page_obj.next_page_number }}&brand={{ brand }}&price={{ price }}&weight={{ weight }}&processor={{ processor }}&processor_number={{ processor_number }}&storage={{ storage }}&graphic={{ graphic }}&resolution={{ resolution }}&size={{ size }}">next</a>
+                {% endif %}
+              {% else %}
+                {% if page_obj.has_next %}
+                  <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}&brand={{ brand }}&price={{ price }}&weight={{ weight }}&processor={{ processor }}&processor_number={{ processor_number }}&storage={{ storage }}&graphic={{ graphic }}&resolution={{ resolution }}&size={{ size }}">next</a>
+                {% endif %}
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  {% comment %} category&price&weight&processor&processor_nunber&storage&graphic&resolution&size {% endcomment %}
-{% endblock content %}
+  {% endblock content %}
 
-<!-- 자바스크립트 -->
-{% block js %}
-  <script src="{% static 'products/js/index.js' %}"></script>
-  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
-  <script src="{% static 'js/infinite.min.js' %}"></script>
+  <!-- 자바스크립트 -->
+  {% block js %}
+    <script src="{% static 'products/js/index.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/infinite.min.js' %}"></script>
 
-  <!-- 무한스크롤 -->
-  <script>
-    var infinite = new Waypoint.Infinite({
-      element: $('.infinite-container')[0],
-      offset: 'bottom-in-view',
-      onBeforePageLoad: function () {
-        $('.loading').show();
-      },
-      onAfterPageLoad: function () {
-        $('.loading').hide();
-      }
-    })
-  </script>
-
-  <script>
-    function checkOnlyZero(element) {
-      const checkboxes = document.getElementsByName("brand");
-      checkboxes.forEach((cb) => {
-        cb.checked = false;
-      })
-      element.checked = true;
-    }
-
-    function checkOnlyOne(element) {
-      const checkboxes = document.getElementsByName("size");
-      checkboxes.forEach((cb) => {
-        cb.checked = false;
-      })
-      element.checked = true;
-    }
-
-    function checkOnlyTwo(element) {
-      const checkboxes = document.getElementsByName("resolution");
-      checkboxes.forEach((cb) => {
-        cb.checked = false;
-      })
-      element.checked = true;
-    }
-
-    function checkOnlyThree(element) {
-      const checkboxes = document.getElementsByName("weight");
-      checkboxes.forEach((cb) => {
-        cb.checked = false;
-      })
-      element.checked = true;
-    }
-
-    function checkOnlyFour(element) {
-      const checkboxes = document.getElementsByName("processor");
-      checkboxes.forEach((cb) => {
-        cb.checked = false;
-      })
-      element.checked = true;
-    }
-
-    function checkOnlyFive(element) {
-      const checkboxes = document.getElementsByName("graphic");
-      checkboxes.forEach((cb) => {
-        cb.checked = false;
-      })
-      element.checked = true;
-    }
-
-    function checkOnlySix(element) {
-      const checkboxes = document.getElementsByName("storage");
-      checkboxes.forEach((cb) => {
-        cb.checked = false;
-      })
-      element.checked = true;
-    }
-
-    function checkOnlySeven(element) {
-      const checkboxes = document.getElementsByName("price");
-      checkboxes.forEach((cb) => {
-        cb.checked = false;
-      })
-      element.checked = true;
-    }
-  </script>
-
-  <!-- 북마크 비동기 -->
-  <script>
-    $(document).on("click", ".like-btn1", function (e) {
-      const productId = e.target.dataset.productId;
-      e.preventDefault()
-      axios({method: "get", url: `/products/like/${productId}`}).then(response => {
-        if (response.data.isLiked === true) {
-          e
-            .target
-            .classList
-            .add('bi-bookmarks-fill')
-          e
-            .target
-            .classList
-            .remove('bi-bookmarks')
-        } else {
-          e
-            .target
-            .classList
-            .add('bi-bookmarks')
-          e
-            .target
-            .classList
-            .remove('bi-bookmarks-fill')
+    <!-- 무한스크롤 -->
+    <script>
+      var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        offset: 'bottom-in-view',
+        onBeforePageLoad: function () {
+          $('.loading').show();
+        },
+        onAfterPageLoad: function () {
+          $('.loading').hide();
         }
       })
-    })
-  </script>
+    </script>
 
-  <script>
-    window.onkeydown = function () {
-      var kcode = event.keyCode;
-      if (kcode == 116) {
-        history.replaceState({}, null, location.pathname);
+    <script>
+      function checkOnlyZero(element) {
+        const checkboxes = document.getElementsByName("brand");
+        checkboxes.forEach((cb) => {
+          cb.checked = false;
+        })
+        element.checked = true;
       }
-    }
-  </script>
 
-{% endblock js %}
+      function checkOnlyOne(element) {
+        const checkboxes = document.getElementsByName("size");
+        checkboxes.forEach((cb) => {
+          cb.checked = false;
+        })
+        element.checked = true;
+      }
+
+      function checkOnlyTwo(element) {
+        const checkboxes = document.getElementsByName("resolution");
+        checkboxes.forEach((cb) => {
+          cb.checked = false;
+        })
+        element.checked = true;
+      }
+
+      function checkOnlyThree(element) {
+        const checkboxes = document.getElementsByName("weight");
+        checkboxes.forEach((cb) => {
+          cb.checked = false;
+        })
+        element.checked = true;
+      }
+
+      function checkOnlyFour(element) {
+        const checkboxes = document.getElementsByName("processor");
+        checkboxes.forEach((cb) => {
+          cb.checked = false;
+        })
+        element.checked = true;
+      }
+
+      function checkOnlyFive(element) {
+        const checkboxes = document.getElementsByName("graphic");
+        checkboxes.forEach((cb) => {
+          cb.checked = false;
+        })
+        element.checked = true;
+      }
+
+      function checkOnlySix(element) {
+        const checkboxes = document.getElementsByName("storage");
+        checkboxes.forEach((cb) => {
+          cb.checked = false;
+        })
+        element.checked = true;
+      }
+
+      function checkOnlySeven(element) {
+        const checkboxes = document.getElementsByName("price");
+        checkboxes.forEach((cb) => {
+          cb.checked = false;
+        })
+        element.checked = true;
+      }
+    </script>
+
+    <!-- 북마크 비동기 -->
+    <script>
+      $(document).on("click", ".like-btn1", function (e) {
+        const productId = e.target.dataset.productId;
+        e.preventDefault()
+        axios({method: "get", url: `/products/like/${productId}`}).then(response => {
+          if (response.data.isLiked === true) {
+            e
+              .target
+              .classList
+              .add('bi-bookmarks-fill')
+            e
+              .target
+              .classList
+              .remove('bi-bookmarks')
+          } else {
+            e
+              .target
+              .classList
+              .add('bi-bookmarks')
+            e
+              .target
+              .classList
+              .remove('bi-bookmarks-fill')
+          }
+        })
+      })
+    </script>
+
+    <script>
+      window.onkeydown = function () {
+        var kcode = event.keyCode;
+        if (kcode == 116) {
+          history.replaceState({}, null, location.pathname);
+        }
+      }
+    </script>
+
+  {% endblock js %}

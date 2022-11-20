@@ -12,10 +12,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     products = Products.objects.all()
-    for product in products:
-        product.ten_price = int(round((product.가격) * 1.1))
-        product.save()
-
     # 카테고리 분류
     category = request.GET.get("category","")
     if category:
@@ -98,7 +94,9 @@ def index(request):
         "graphic": graphic,
         "resolution": graphic,
         "size": size,
+        "result": result,
         "category": category,
+        "filter": len(result),
         "products_category": products_category,
         "page_obj": page_obj,
     }
@@ -342,6 +340,9 @@ def calculate(request):
         ):
             product.화면크기등급 = "3"
         product.save()
+        for product in products:
+            product.ten_price = int(round((product.가격) * 1.1))
+            product.save()
     return redirect("products:index")
 
 
