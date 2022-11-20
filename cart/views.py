@@ -3,6 +3,7 @@ from .models import Cart, CartItem
 from products.models import Products
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
+from django.contrib import messages
 
 # from django.contrib.auth import get_user_model
 # Create your views here.
@@ -27,6 +28,7 @@ def add_cart(request, product_id):
         cart_item = CartItem.objects.get(product=product, cart=cart)
         cart_item.quantity += 1
         cart_item.save()
+        messages.success(request, "상품이 장바구니에 추가 되었습니다.")
     except CartItem.DoesNotExist:
         cart_item = CartItem.objects.create(
             product=product,
@@ -34,7 +36,9 @@ def add_cart(request, product_id):
             cart=cart,
         )
         cart_item.save()
-    return redirect("products:detail", product_id)
+        messages.success(request, "상품이 장바구니에 추가 되었습니다.")
+    context = {}
+    return JsonResponse(context)
 
 
 def detail(request, total=0, counter=0, total_plus=0, total_dc=0, cart_items=None):
