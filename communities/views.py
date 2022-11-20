@@ -19,7 +19,7 @@ def index(request):
     notions = Articles.objects.filter(category="공지")
     print(bests)
     page = request.GET.get("page", "1")
-    paginator = Paginator(k, 5)
+    paginator = Paginator(k, 20)
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
@@ -33,7 +33,7 @@ def index(request):
 def index_jab(request):
     k = Articles.objects.filter(category="잡담").order_by("-id")
     page = request.GET.get("page", "1")
-    paginator = Paginator(k, 5)
+    paginator = Paginator(k, 20)
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
@@ -45,7 +45,7 @@ def index_jab(request):
 def index_question(request):
     k = Articles.objects.filter(category="질문").order_by("-id")
     page = request.GET.get("page", "1")
-    paginator = Paginator(k, 5)
+    paginator = Paginator(k, 20)
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
@@ -57,7 +57,7 @@ def index_question(request):
 def index_boast(request):
     k = Articles.objects.filter(category="자랑").order_by("-id")
     page = request.GET.get("page", "1")
-    paginator = Paginator(k, 5)
+    paginator = Paginator(k, 20)
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
@@ -69,7 +69,7 @@ def index_boast(request):
 def index_consult(request):
     k = Articles.objects.filter(category="고민/상담").order_by("-id")
     page = request.GET.get("page", "1")
-    paginator = Paginator(k, 5)
+    paginator = Paginator(k, 20)
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
@@ -81,7 +81,7 @@ def index_consult(request):
 def index_hello(request):
     k = Articles.objects.filter(category="인사").order_by("-id")
     page = request.GET.get("page", "1")
-    paginator = Paginator(k, 5)
+    paginator = Paginator(k, 20)
     page_obj = paginator.get_page(page)
     context = {
         "v": k,
@@ -93,6 +93,7 @@ def index_hello(request):
 @login_required
 def article_create(request):
     ImageFormSet = modelformset_factory(ArticlesImages, form=ArticleImageForm, extra=3)
+    user = request.user
     if request.method == "POST":
         articleForm = ArticleForm(request.POST)
         formset = ImageFormSet(
@@ -102,6 +103,8 @@ def article_create(request):
             article_form = articleForm.save(commit=False)
             article_form.user = request.user
             article_form.save()
+            user.point += 1000
+            user.save()
             for forms in formset.cleaned_data:
                 if forms:
                     image = forms["image"]
@@ -162,13 +165,17 @@ def detail(request, article_pk):
     article = get_object_or_404(Articles, pk=article_pk)
     comment_form = CommentForm()
     comments = article.comments_set.all()
+
+    article_content = article.content.split("\n")
+    print(article_content)
     content = {
+        "article_content": article_content,
         "article": article,
         "comments": comments,
         "comment_form": comment_form,
     }
     response = render(request, "communities/detail.html", content)
-
+    print(article.content)
     expire_date, now = datetime.now(), datetime.now()
     expire_date += timedelta(days=1)
     expire_date = expire_date.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -206,6 +213,9 @@ def comment_create(request, article_pk):
         comment = comment_form.save(commit=False)
         comment.Articles = article
         comment.user = request.user
+        user = request.user
+        user.point += 100
+        user.save()
         comment.save()
         context = {
             "content": comment.content,
@@ -234,6 +244,9 @@ def sub_comment_create(request, article_pk, comment_pk):
         comment.Articles = article
         comment.user = request.user
         comment.parent = parent
+        user = request.user
+        user.point += 100
+        user.save()
         comment.save()
         return redirect("communities:detail", article_pk)
     return redirect("communities:detail", article_pk)
@@ -339,8 +352,8 @@ def notion_update(request, article_pk):
 
 def search(request):
     if request.method == "GET":
-        communities= Articles.objects.all()
-        search = request.GET.get("search","")
+        communities = Articles.objects.all()
+        search = request.GET.get("search", "")
 
         if len(search) >= 1:
             if Search.objects.filter(keyword=search).exists():
@@ -352,10 +365,13 @@ def search(request):
 
         if search:
             search_list = communities.filter(
-                Q(category__icontains=search) | Q(title__icontains=search) | Q(content__icontains=search) | Q(user__username__icontains=search)
+                Q(category__icontains=search)
+                | Q(title__icontains=search)
+                | Q(content__icontains=search)
+                | Q(user__username__icontains=search)
             )
             context = {
                 "search_list": search_list,
-                "search" : search,
+                "search": search,
             }
             return render(request, "communities/search.html", context)

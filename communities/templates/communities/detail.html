@@ -40,7 +40,11 @@
     <!-- 추천 -->
           
     
-    <h5 class="row mx-2">{{ article.content }}</h5>
+    {% for ac in article_content %}
+    <h5 class="row mx-2 fw-bold">
+            {{ ac }}
+        </h5>
+        {% endfor %}
     <br>
     <br>
     <br>

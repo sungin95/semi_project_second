@@ -1,4 +1,4 @@
-const arrTop = ["display", "weight", "processor", "graphic", "storage", "price", "category"];
+const arrTop = ["display", "weight", "processor", "graphic", "storage", "price", "brand"];
 var a;
 
 for (let i = 1; i <= arrTop.length; i++) {

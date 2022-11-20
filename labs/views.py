@@ -30,7 +30,7 @@ def search(request):
     s = Search.objects.filter().order_by("count")[1:12]
     if request.method == "GET":
         products = Products.objects.all()
-        search = request.GET.get("category", "")
+        search = request.GET.get("search", "")
 
         if len(search) >= 1:
             if Search.objects.filter(keyword=search).exists():
@@ -70,6 +70,7 @@ def search(request):
                 Q(쿨링팬__icontains=search) |Q(터치스크린__icontains=search) |
                 Q(트루톤__icontains=search) |Q(화면회전각__icontains=search) 
             )
+            print(len(search_lists))
             page = request.GET.get("page", "1")
             paginator = Paginator(search_lists, 6)
             page_obj = paginator.get_page(page)

@@ -22,7 +22,6 @@
 {% endblock carousel %}
 
 {% block content %}
-
   <div class="d-flex align-items-center my-3 justify-content-between">
     <!-- 필터 -->
     <div class="d-flex box-result">
@@ -30,11 +29,13 @@
       <p class="search-result">검색 결과</p>
       {% if category %}
         <p class="now">{{ products_category.count }}개</p>
+      {% elif search %}
+      <p class="now">{{ search_lists.count }}개</p>
       {% else %}
         <p class="now">{{ products.count }}개</p>
       {% endif %}
-
     </div>
+
     <!-- 정렬 -->
     <div class="dropdown">
       <button class="btn btns dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,49 +68,49 @@
       <input type="submit" name='category' value="{{ category }}">
       <div>
         <div class="sidebar-0" style="overflow: hidden; height: 45px;">
-          <div class="sidebar-category">
-            <div class="main-text">카테고리</div>
-            <i class="bi bi-plus plus-click-category"></i>
+          <div class="sidebar-brand">
+            <div class="main-text">브랜드</div>
+            <i class="bi bi-plus plus-click-brand"></i>
           </div>
           <div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='category' value='삼성' onclick='checkOnlyZero(this)'/>
+              <input type='checkbox' name='brand' value='삼성' onclick='checkOnlyZero(this)'/>
               삼성
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='category' value='LG전자' onclick='checkOnlyZero(this)'/>
+              <input type='checkbox' name='brand' value='LG전자' onclick='checkOnlyZero(this)'/>
               LG전자
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='category' value='APPLE' onclick='checkOnlyZero(this)'/>
+              <input type='checkbox' name='brand' value='APPLE' onclick='checkOnlyZero(this)'/>
               APPLE
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='category' value='ASUS' onclick='checkOnlyZero(this)'/>
+              <input type='checkbox' name='brand' value='ASUS' onclick='checkOnlyZero(this)'/>
               ASUS
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='category' value='레노버' onclick='checkOnlyZero(this)'/>
+              <input type='checkbox' name='brand' value='레노버' onclick='checkOnlyZero(this)'/>
               레노버
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='category' value='MSI' onclick='checkOnlyZero(this)'/>
+              <input type='checkbox' name='brand' value='MSI' onclick='checkOnlyZero(this)'/>
               MSI
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='category' value='DELL' onclick='checkOnlyZero(this)'/>
+              <input type='checkbox' name='brand' value='DELL' onclick='checkOnlyZero(this)'/>
               DELL
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='category' value='한성' onclick='checkOnlyZero(this)'/>
+              <input type='checkbox' name='brand' value='한성' onclick='checkOnlyZero(this)'/>
               한성
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='category' value='GIGABYTE' onclick='checkOnlyZero(this)'/>
+              <input type='checkbox' name='brand' value='GIGABYTE' onclick='checkOnlyZero(this)'/>
               GIGABYTE
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='category' value='HP' onclick='checkOnlyZero(this)'/>
+              <input type='checkbox' name='brand' value='HP' onclick='checkOnlyZero(this)'/>
               HP
             </div>
           </div>
@@ -122,7 +123,7 @@
             <div class="main-text">화면</div>
             <i class="bi bi-plus plus-click-display"></i>
           </div>
-          <div class="sidebar-1-size" style="overflow: hidden; height: 31px;">
+          <div class="sidebar-1-size" style="overflow: hidden; height: 29px;">
             <div class="sidebar-size">
               <div class="main-text">노트북크기</div>
               <i class="bi bi-plus plus-click-size"></i>
@@ -143,7 +144,7 @@
             </div>
           </div>
 
-          <div class="sidebar-1-resolution" style="overflow: hidden; height: 31px;">
+          <div class="sidebar-1-resolution" style="overflow: hidden; height: 29px;">
             <div class="sidebar-resolution">
               <div class="main-text">해상도</div>
               <i class="bi bi-plus plus-click-resolution"></i>
@@ -199,7 +200,7 @@
             <div class="main-text">프로세서</div>
             <i class="bi bi-plus plus-click-processor"></i>
           </div>
-          <div class="sidebar-3-AMD" style="overflow: hidden; height: 31px;">
+          <div class="sidebar-3-AMD" style="overflow: hidden; height: 29px;">
             <div class="sidebar-AMD">
               <div>
                 <input type='checkbox' name='processor' value='AMD' onclick='checkOnlyFour(this)'/>
@@ -223,7 +224,7 @@
               </div>
             </div>
           </div>
-          <div class="sidebar-3-intel" style="overflow: hidden; height: 31px;">
+          <div class="sidebar-3-intel" style="overflow: hidden; height: 29px;">
             <div class="sidebar-intel">
               <div>
                 <input type='checkbox' name='processor' value='INTEL' onclick='checkOnlyFour(this)'/>
@@ -252,7 +253,7 @@
               기타
             </div>
           </div>
-          <div class="sidebar-3-apple" style="overflow: hidden; height: 31px;">
+          <div class="sidebar-3-apple" style="overflow: hidden; height: 29px;">
             <div class="sidebar-apple">
               <div>
                 <input type='checkbox' name='processor' value='애플' onclick='checkOnlyFour(this)'/>
@@ -283,7 +284,7 @@
             <input type='checkbox' name='graphic' value='1' onclick='checkOnlyFive(this)'/>
             내장그래픽
           </div>
-          <div class="sidebar-4-external" style="overflow: hidden; height: 31px;">
+          <div class="sidebar-4-external" style="overflow: hidden; height: 29px;">
             <div class="sidebar-external">
               <div>
                 <input type='checkbox' name='graphic' value='2' onclick='checkOnlyFive(this)'/>
@@ -296,7 +297,7 @@
                 <input type='checkbox' name='graphic' value='3' onclick='checkOnlyFive(this)'/>
                 인텔
               </div>
-              <div class="sidebar-detail">
+              <div class="sidebar-detail"> 
                 <input type='checkbox' name='graphic' value='4' onclick='checkOnlyFive(this)'/>
                 AMD
               </div>
@@ -373,12 +374,13 @@
     <div class="container">
       <div class="row"></div>
       <div class="row g-3 infinite-container add-event">
+        <!-- 1. 네비게이션바로 들어갔을때 -->
         {% if category %}
           {% for product in page_obj %}
             <!-- 카드1 한장 시작 -->
             <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
               <div class="product-card-body test1">
-                <!-- 찜하기 추가 작업 필요 -->
+                <!-- 찜하기 -->
                 <div class="position-absolute " style="top:25px; right:20px;">
                   {% if request.user.is_authenticated %}
                     {% if request.user in product.like_product.all %}
@@ -409,36 +411,39 @@
               </div>
               <!-- 카드1 한장 끝 -->
             {% endfor %}
+            
           {% elif search %}
+          <!-- 2. 검색으로 들어갔을때 -->
             {% for product in page_obj %}
               <!-- 카드1 한장 시작 -->
-              <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
-                <div class="product-card-body test2 pb-5" style="height:400px;">
-                  <!-- 찜하기 추가 작업 필요 -->
-                  <div class="position-absolute " style="top:25px; right:20px;">
-                    {% if request.user.is_authenticated %}
-                      {% if request.user in product.like_product.all %}
-                        <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1 fs-5"></i>
-                      {% else %}
-                        <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1 fs-5"></i>
-                      {% endif %}
+            <div class="hit-product col-12 col-sm-6 col-lg-4 position-relative infinite-item" style="padding:15px;">
+              <div class="product-card-body test1">
+                <!-- 찜하기 -->
+                <div class="position-absolute " style="top:25px; right:20px;">
+                  {% if request.user.is_authenticated %}
+                    {% if request.user in product.like_product.all %}
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1"></i>
                     {% else %}
-                      <a href="{% url 'accounts:login' %}">
-                        <i class="bi bi-bookmarks"></i>
-                      </a>
+                      <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1"></i>
                     {% endif %}
-                  </div>
-                  <div>
-                    <img src="{{ product.썸네일 }}" alt="" class="image" style="height: 250px; width: 250px; margin:50px 0 0 10px;">
-                  </div>
+                  {% else %}
+                    <a href="{% url 'accounts:login' %}">
+                      <i class="bi bi-bookmarks"></i>
+                    </a>
+                  {% endif %}
+                </div>
+                <div>
+                  <img src="{{ product.썸네일 }}" alt="" class="image" style="height: 250px; width: 250px; margin:50px 0 0 10px;">
+                </div>
+                <div class="model-text">
                   <h5 class="card-title mt-2">{{ product.모델명 }}</h5>
-                  <div class="model-text">
+                  <p class="card-text">
                     <div class="sale-price">
                       <p style="color: gray; margin-bottom: 0;">최저가</p>
                       <p class="class-font">{{ product.가격 | intcomma }}원</p>
                     </div>
                     <hr>
-                    <a href="{% url 'products:detail' product.pk %}" class="btn-color mb-md-5">구매하기</a>
+                    <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>
                   </div>
                 </div>
               </div>
@@ -480,11 +485,18 @@
             {% endfor %}
           {% endif %}
         </div>
+        <div class="d-flex position-absolute">
+          <button class="btn btn-primary loading">
+            <span class="spinner-border spinner-border-sm"></span>
+            로딩중입니다.
+          </button>
+        </div>
+
         <div class="row">
           <div class="col-3">
             {% if search %}
               {% if page_obj.has_next %}
-                <a class="infinite-more-link" href="?category={{ search }}&page={{ page_obj.next_page_number }}">next</a>
+                <a class="infinite-more-link" href="?search={{ search }}&page={{ page_obj.next_page_number }}">next</a>
               {% endif %}
             {% elif category %}
               {% if page_obj.has_next %}
@@ -492,7 +504,7 @@
               {% endif %}
             {% else %}
               {% if page_obj.has_next %}
-                <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">next</a>
+                <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}&price={{ price }}&weight={{ weight }}&processor={{ processor }}&processor_nunber={{ processor_nunber }}&storage={{ storage }}&graphic={{ graphic }}&resolution={{ resolution }}&size={{ size }}">next</a>
               {% endif %}
             {% endif %}
           </div>
@@ -500,6 +512,7 @@
       </div>
     </div>
   </div>
+  {% comment %} category&price&weight&processor&processor_nunber&storage&graphic&resolution&size {% endcomment %}
 {% endblock content %}
 
 <!-- 자바스크립트 -->
@@ -513,14 +526,18 @@
     var infinite = new Waypoint.Infinite({
       element: $('.infinite-container')[0],
       offset: 'bottom-in-view',
-      onBeforePageLoad: () => {},
-      onAfterPageLoad: () => {}
+      onBeforePageLoad: function () {
+        $('.loading').show();
+      },
+      onAfterPageLoad: function () {
+        $('.loading').hide();
+      }
     })
   </script>
 
   <script>
     function checkOnlyZero(element) {
-      const checkboxes = document.getElementsByName("category");
+      const checkboxes = document.getElementsByName("brand");
       checkboxes.forEach((cb) => {
         cb.checked = false;
       })
