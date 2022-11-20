@@ -13,12 +13,8 @@
     <div class="main_image visual" style="background: url(https://images.samsung.com/kdp/display/pc/100001610/e43d0030-dea7-4a27-b3fa-8c840648e79e.jpg) center center no-repeat; background-size: cover;">
       {% if category %}
         <p class="main_text">{{ category }}</p>
-      {% elif result %}
-        <p class="main_text">
-          검색결과</p>
-      {% elif filter %}
-        <p class="main_text">
-          검색결과</p>
+      {% elif category == "" and brand%}
+        <p class="main_text">{{ brand }}</p>
       {% elif filter == 0 %}
         <p class="main_text">검색 결과가 없습니다.</p>
       {% else %}
@@ -46,6 +42,7 @@
       {% else %}
         <p class="now">{{ products.count }}개</p>
       {% endif %}
+      <!--<p> {% if category == "" %} {{brand}} {% else %} {{category}} {% endif %} {% if processor %} {{processor}}번대 {% endif %} {{price}} {{weight}} {{processor_number}} {{storage}} {{graphic}} {{size}} {{category}} </p>-->
     </div>
 
     <!-- 정렬 -->
@@ -77,6 +74,8 @@
   <div class="main">
     <!-- 사이드바 -->
     <form class="sidebar-wrapper" method="" action="">
+      <input type="submit" class="btn btn-secondary choice1" value="조회">
+      <input type="button" class="btn btn-secondary choice2" value="조건리셋" id="resetBtn">
       <div>
         <div class="sidebar-0" style="overflow: hidden; height: 45px;">
           <div class="sidebar-brand">
@@ -134,10 +133,10 @@
             <div class="main-text">화면</div>
             <i class="bi bi-plus plus-click-display"></i>
           </div>
-          <div class="sidebar-1-size" style="overflow: hidden; height: 29px;">
+          <div class="sidebar-1-size">
             <div class="sidebar-size">
               <div class="main-text">노트북크기</div>
-              <i class="bi bi-plus plus-click-size"></i>
+              <i class="bi bi-dash plus-click-size"></i>
             </div>
             <div>
               <div class="sidebar-detail">
@@ -155,10 +154,10 @@
             </div>
           </div>
 
-          <div class="sidebar-1-resolution" style="overflow: hidden; height: 29px;">
+          <div class="sidebar-1-resolution">
             <div class="sidebar-resolution">
               <div class="main-text">해상도</div>
-              <i class="bi bi-plus plus-click-resolution"></i>
+              <i class="bi bi-dash plus-click-resolution"></i>
             </div>
             <div class="sidebar-detail">
               <input type='checkbox' name='resolution' value='FHD' onclick='checkOnlyTwo(this)'/>
@@ -204,80 +203,76 @@
         </div>
       </div>
       <hr>
-
       <div>
         <div class="sidebar-3" style="overflow: hidden; height: 45px;">
           <div class="sidebar-processor">
             <div class="main-text">프로세서</div>
             <i class="bi bi-plus plus-click-processor"></i>
           </div>
-          <div class="sidebar-3-AMD" style="overflow: hidden; height: 29px;">
+          <div class="sidebar-3-AMD">
             <div class="sidebar-AMD">
-              <div>
+              <div class="main-text">
                 <input type='checkbox' name='processor' value='AMD' onclick='checkOnlyFour(this)'/>
                 AMD
               </div>
-              <i class="bi bi-plus plus-click-AMD"></i>
+              <i class="bi bi-dash plus-click-AMD"></i>
             </div>
-
             <div class="sidebar-detail">
-              <input type='checkbox' name='processor-nunber' value='4000' onclick='checkOnlyFour(this)'/>
+              <input type='checkbox' name='processor_number' value='4000' onclick='checkOnlyFour(this)'/>
               AMD 4000번대
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='processor-nunber' value='5000' onclick='checkOnlyFour(this)'/>
+              <input type='checkbox' name='processor_number' value='5000' onclick='checkOnlyFour(this)'/>
               AMD 5000번대
             </div>
             <div class="sidebar-detail">
-              <div class="sidebar-detail">
-                <input type='checkbox' name='processor-nunber' value='6000' onclick='checkOnlyFour(this)'/>
-                AMD 6000번대
-              </div>
+              <input type='checkbox' name='processor_number' value='6000' onclick='checkOnlyFour(this)'/>
+              AMD 6000번대
             </div>
           </div>
-          <div class="sidebar-3-intel" style="overflow: hidden; height: 29px;">
+          <div class="sidebar-3-intel">
             <div class="sidebar-intel">
-              <div>
+              <div class="main-text">
                 <input type='checkbox' name='processor' value='INTEL' onclick='checkOnlyFour(this)'/>
                 INTEL
               </div>
-              <i class="bi bi-plus plus-click-intel"></i>
+              <i class="bi bi-dash plus-click-intel"></i>
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='processor-nunber' value='i3' onclick='checkOnlyFour(this)'/>
+              <input type='checkbox' name='processor_number' value='i3' onclick='checkOnlyFour(this)'/>
               i3
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='processor-nunber' value='i5' onclick='checkOnlyFour(this)'/>
+              <input type='checkbox' name='processor_number' value='i5' onclick='checkOnlyFour(this)'/>
               i5
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='processor-nunber' value='i7' onclick='checkOnlyFour(this)'/>
+              <input type='checkbox' name='processor_number' value='i7' onclick='checkOnlyFour(this)'/>
               i7
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='processor-nunber' value='i9' onclick='checkOnlyFour(this)'/>
+              <input type='checkbox' name='processor_number' value='i9' onclick='checkOnlyFour(this)'/>
               i9
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='processor-nunber' value='기타' onclick='checkOnlyFour(this)'/>
+              <input type='checkbox' name='processor_number' value='기타' onclick='checkOnlyFour(this)'/>
               기타
             </div>
           </div>
-          <div class="sidebar-3-apple" style="overflow: hidden; height: 29px;">
+          <div class="sidebar-3-apple">
             <div class="sidebar-apple">
-              <div>
+              <div class="main-text">
                 <input type='checkbox' name='processor' value='애플' onclick='checkOnlyFour(this)'/>
                 애플
               </div>
-              <i class="bi bi-plus plus-click-apple"></i>
+              <i class="bi bi-dash plus-click-apple"></i>
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='processor-nunber' value='M1' onclick='checkOnlyFour(this)'/>
+              <input type='checkbox' name='processor_number' value='M1' onclick='checkOnlyFour(this)'/>
               M1
             </div>
             <div class="sidebar-detail">
-              <input type='checkbox' name='processor-nunber' value='M2' onclick='checkOnlyFour(this)'/>
+              <input type='checkbox' name='processor_number' value='M2' onclick='checkOnlyFour(this)'/>
               M2
             </div>
           </div>
@@ -295,13 +290,13 @@
             <input type='checkbox' name='graphic' value='1' onclick='checkOnlyFive(this)'/>
             내장그래픽
           </div>
-          <div class="sidebar-4-external" style="overflow: hidden; height: 29px;">
+          <div class="sidebar-4-external">
             <div class="sidebar-external">
               <div>
                 <input type='checkbox' name='graphic' value='2' onclick='checkOnlyFive(this)'/>
                 외장그래픽
               </div>
-              <i class="bi bi-plus plus-click-external"></i>
+              <i class="bi bi-dash plus-click-external"></i>
             </div>
             <div>
               <div class="sidebar-detail">
@@ -380,7 +375,6 @@
       <hr>
       <input type="checkbox" name='category' value="{{ category }}" checked="true" class="d-none">
       <input type="checkbox" name='search' value="{{ search }}" checked="true" class="d-none">
-      <input type="submit" class="form-control form-control-lg" value="조회">
     </form>
 
     <!-- 제품 목록 -->
@@ -533,6 +527,7 @@
     <script src="{% static 'products/js/index.js' %}"></script>
     <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
     <script src="{% static 'js/infinite.min.js' %}"></script>
+    <script></script>
 
     <!-- 무한스크롤 -->
     <script>
@@ -546,9 +541,91 @@
           $('.loading').hide();
         }
       })
+
+      // 인풋값 자동 선택
+      var category = "{{ category }}";
+      var chkList = document.querySelectorAll("input[name=brand]");
+      chkList.forEach(function (ch) {
+        if (ch.value == category) {
+          ch.checked = true;
+        }
+      });
+      var brand = "{{ brand }}";
+      var chkList = document.querySelectorAll("input[name=brand]");
+      chkList.forEach(function (ch) {
+        if (ch.value == brand) {
+          ch.checked = true;
+        }
+      });
+      var size = "{{ size }}";
+      var chkList = document.querySelectorAll("input[name=size]");
+      chkList.forEach(function (ch) {
+        if (ch.value == size) {
+          ch.checked = true;
+        }
+      });
+      var resolution = "{{ resolution }}";
+      var chkList = document.querySelectorAll("input[name=resolution]");
+      chkList.forEach(function (ch) {
+        if (ch.value == resolution) {
+          ch.checked = true;
+        }
+      });
+      var weight = "{{ weight }}";
+      var chkList = document.querySelectorAll("input[name=weight]");
+      chkList.forEach(function (ch) {
+        if (ch.value == weight) {
+          ch.checked = true;
+        }
+      });
+      var processor = "{{ processor }}";
+      var chkList = document.querySelectorAll("input[name=processor]");
+      chkList.forEach(function (ch) {
+        if (ch.value == processor) {
+          ch.checked = true;
+        }
+      });
+      var processorNumber = "{{ processor_number }}";
+      var chkList = document.querySelectorAll("input[name=processor_number]");
+      chkList.forEach(function (ch) {
+        if (ch.value == processorNumber) {
+          ch.checked = true;
+        }
+      });
+      var graphic = "{{ graphic }}";
+      var chkList = document.querySelectorAll("input[name=graphic]");
+      chkList.forEach(function (ch) {
+        if (ch.value == graphic) {
+          ch.checked = true;
+        }
+      });
+      var storage = "{{ storage }}";
+      var chkList = document.querySelectorAll("input[name=storage]");
+      chkList.forEach(function (ch) {
+        if (ch.value == storage) {
+          ch.checked = true;
+        }
+      });
+      var price = "{{ price }}";
+      var chkList = document.querySelectorAll("input[name=price]");
+      chkList.forEach(function (ch) {
+        if (ch.value == price) {
+          ch.checked = true;
+        }
+      });
     </script>
 
     <script>
+      // 리셋버튼
+      document
+        .querySelector('#resetBtn')
+        .addEventListener('click', () => {
+          var resetBtn = document.querySelectorAll("input");
+          resetBtn.forEach(function (ch) {
+            ch.checked = false;
+          })
+        })
+
       function checkOnlyZero(element) {
         const checkboxes = document.getElementsByName("brand");
         checkboxes.forEach((cb) => {
@@ -614,38 +691,33 @@
       }
     </script>
 
-    <!-- 북마크 비동기 -->
     <script>
+      // 북마크 비동기
       $(document).on("click", ".like-btn1", function (e) {
         const productId = e.target.dataset.productId;
-        e.preventDefault()
+        e.preventDefault();
         axios({method: "get", url: `/products/like/${productId}`}).then(response => {
           if (response.data.isLiked === true) {
             e
               .target
               .classList
-              .add('bi-bookmark-fill')
+              .add('bi-bookmark-fill');
             e
               .target
               .classList
-              .remove('bi-bookmark')
+              .remove('bi-bookmark');
           } else {
             e
               .target
               .classList
-              .add('bi-bookmark')
+              .add('bi-bookmark');
             e
               .target
               .classList
-              .remove('bi-bookmark-fill')
+              .remove('bi-bookmark-fill');
           }
-        }
-    </script>
-    <script>
-      window.onkeydown = function () {
-        var kcode = event.keyCode;
-        if (kcode == 116) {
-          history.replaceState({}, null, location.pathname);
+        })
+      })
     </script>
 
   {% endblock js %}

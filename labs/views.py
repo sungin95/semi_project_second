@@ -102,7 +102,7 @@ def search(request):
             else:
                 products_processor = products
             # 프로세스 분류 4000, 5000, 6000, i3, i5, i7, i9, 기타, m1, m2
-            processor_number = request.GET.get("processor-nunber","")
+            processor_number = request.GET.get("processor_number","")
             if processor_number:
                 products_processor_number = Products.objects.filter(
                     Q(CPU넘버분류__contains=processor_number)
