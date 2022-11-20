@@ -151,3 +151,16 @@ class Review(models.Model):
             return str(time.days) + "일 전"
         else:
             return False
+
+    # purchase = models.ManyToManyField(
+    #     settings.AUTH_USER_MODEL, related_name="purchased_users"
+    # )
+
+
+class Purchase(models.Model):
+    products = models.ForeignKey("Products", on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1, validators=[MinValueValidator(1)])
+    content = models.TextField(blank=True, null=True)  # 배송 메시지
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)

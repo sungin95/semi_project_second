@@ -21,8 +21,12 @@
           {{ user.email }}</p>
       </div>
 
-      <div class="user_buttons">
-        {% if request.user.pk == user.pk %}
+      {% if request.user.pk == user.pk %}
+        <div>
+          <span class="mx-3">현재 포인트:{{user.point}}p</span>
+          <span class="mx-3">{{user.회원등급}}</span>
+        </div>
+        <div class="user_buttons">
           <button>
             <a href="{% url 'accounts:profile' %}">프로필<br>사진 설정</a>
           </button>
@@ -32,8 +36,8 @@
           <button>
             <a href="{% url 'accounts:change_password' %}">비밀번호<br>수정</a>
           </button>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
     </div>
 
     <hr class="hr">
