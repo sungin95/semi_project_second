@@ -52,10 +52,8 @@ def login(request):
         if form.is_valid():
             auth_login(request, form.get_user())
             user = form.get_user()
-            print(user.point)
             user.point += 500
             user.save()
-            print(user.point)
             return redirect(request.GET.get("next") or "labs:main")
     else:
         form = MyLoginForm()
@@ -85,6 +83,13 @@ def delete(request):
     request.user.delete()
     auth_logout(request)
     return redirect("accounts:login")
+
+
+@login_required
+def detail_all(request, pk):
+    user = get_user_model().objects.get(pk=pk)
+    user.delete()
+    return redirect("accounts:index")
 
 
 @login_required
@@ -150,24 +155,7 @@ def follow(request, user_pk):
     return redirect("accounts:profile", person.username)
 
 
-def database(request):
-    jsonObject = json.loads(request.body)
-    username = jsonObject.get("username")
-    users = get_user_model().objects.filter(username=username)
-
-    if users:
-        user = get_user_model().objects.get(username=username)
-        auth_login(request, user)
-    else:
-        user = get_user_model()
-        user.username = jsonObject.get("username")
-        print(user)
-        user.save()
-        user = get_user_model().objects.get(username=username)
-        auth_login(request, user)
-    return JsonResponse({"username": user.username})
-
-
+@login_required
 def charging(request):
     if request.method == "POST":
         form = CustomUserChargeForm(request.POST, instance=request.user)
