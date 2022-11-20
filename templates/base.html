@@ -212,18 +212,6 @@
       <img src="{% static 'img/down.png' %}" alt="">
     </div>
 
-    <!-- 푸터1 -->
-    <footer class="sticky-bottom">
-      <div class="card" style="background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #F0F8FF 65%);">
-        <div class="card-body text-center">
-          made by. 유영, 호빈, 성인, 윤식, 창현
-        </div>
-      </div>
-    </footer>
-
-    <!-- 푸터2 -->
-    <!-- <footer> <div>아이콘 출처 : <a href="https://www.flaticon.com/kr/free-animated-icons/" title="컴퓨터 애니메이션 아이콘">컴퓨터 애니메이션 아이콘 제작자: Freepik - Flaticon</a> </div> </footer> -->
-
     <!-- 스크립트 -->
     {% bootstrap_javascript %}
     <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
@@ -263,22 +251,41 @@
       if (login.children[0].id == 'loginNone') {
         // 비로그인 중 프로필 팝업
         const loginNone = document.querySelector('#loginNone')
-        loginNone.addEventListener('mouseenter', () => {
-          profileBlackBgNone.style.visibility = 'visible'
+        loginNone.addEventListener('click', () => {
+          if (profileBlackBgNone.style.visibility == 'hidden') {
+            profileBlackBgNone.style.visibility = 'visible'
           profileBlackBgNone.style.opacity = '1'
+          } else {
+            profileBlackBgNone.style.visibility = 'hidden'
+            profileBlackBgNone.style.opacity = '0'
+          }
         })
         profileBgNone.addEventListener('mouseleave', () => {
           profileBlackBgNone.style.visibility = 'hidden'
           profileBlackBgNone.style.opacity = '0'
         })
+        profileBlackBgNone.addEventListener('click',() => {
+          profileBlackBgNone.style.visibility = 'hidden'
+          profileBlackBgNone.style.opacity = '0'
+        })
+
       } else {
         // 로그인 중 프로필 팝업
         const loginIng = document.querySelector('#loginIng')
-        loginIng.addEventListener('mouseenter', () => {
-          profileBlackBgLogin.style.visibility = 'visible'
+        loginIng.addEventListener('click', () => {
+          if (profileBlackBgLogin.style.visibility == 'hidden') {
+            profileBlackBgLogin.style.visibility = 'visible'
           profileBlackBgLogin.style.opacity = '1'
+          } else {
+            profileBlackBgLogin.style.visibility = 'hidden'
+          profileBlackBgLogin.style.opacity = '0'
+          }
         })
         profileBgLogin.addEventListener('mouseleave', () => {
+          profileBlackBgNone.style.visibility = 'hidden'
+          profileBlackBgNone.style.opacity = '0'
+        })
+        profileBgLogin.addEventListener('click', () => {
           profileBlackBgLogin.style.visibility = 'hidden'
           profileBlackBgLogin.style.opacity = '0'
         })
