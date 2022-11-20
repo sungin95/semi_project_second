@@ -293,10 +293,10 @@
 }
 
 .btn-color {
-    background-color: rgb(147, 112, 219);
+    background-color: rgb(205, 205, 255);
     text-decoration: none;
     font-size: 1rem;
-    color: white;
+    color: rgb(147, 112, 219);
     border-radius: 1.5rem;
     text-align: center;
     padding: 10px 30px;
