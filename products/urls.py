@@ -23,6 +23,12 @@ urlpatterns = [
         views.delete,
         name="delete",
     ),
-    path("detail/calculate/", views.calculate, name="calculate"),
+    path("detail/calculate_weight/", views.calculate_weight, name="calculate_weight"),
+    path("detail/calculate_price/", views.calculate_price, name="calculate_price"),
+    path("detail/calculate_storage/", views.calculate_storage, name="calculate_storage"),
+    path("detail/calculate_processor/", views.calculate_processor, name="calculate_processor"),
+    path("detail/calculate_graphic/", views.calculate_graphic, name="calculate_graphic"),
+    path("detail/calculate_resolution/", views.calculate_resolution, name="calculate_resolution"),
+    path("detail/calculate_size/", views.calculate_size, name="calculate_size"),
     path("purchase/<int:product_pk>", views.purchase, name="purchase"),
 ]

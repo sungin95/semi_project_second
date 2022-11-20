@@ -215,7 +215,24 @@ def delete(request, product_pk, review_pk):
     return JsonResponse(context)
 
 
-def calculate(request):
+# 필터링 계산
+def calculate_weight(request):
+    products = Products.objects.all()
+    # 무게 등급 나누기
+    for product in products:
+        product.무게 = int(product.무게)
+        if product.무게 < 1000:
+            product.무게등급 = "1"
+        elif product.무게 >= 1000 and product.무게 < 1500:
+            product.무게등급 = "2"
+        elif product.무게 >= 1500 and product.무게 < 2000:
+            product.무게등급 = "3"
+        elif product.무게 >= 2000:
+            product.무게등급 = "4"
+        product.save()
+    return redirect("products:index")
+
+def calculate_price(request):
     products = Products.objects.all()
     # 가격 등급 나누기.
     for product in products:
@@ -230,30 +247,27 @@ def calculate(request):
         elif product.가격 > 2000000:
             product.가격등급 = "5"
         product.save()
-    # 무게 등급 나누기
-    for product in products:
-        product.무게 = int(product.무게)
-        if product.무게 < 1000:
-            product.무게등급 = "1"
-        elif product.무게 >= 1000 and product.무게 < 1500:
-            product.무게등급 = "2"
-        elif product.무게 >= 1500 and product.무게 < 2000:
-            product.무게등급 = "3"
-        elif product.무게 >= 2000:
-            product.무게등급 = "4"
-        product.save()
+    return redirect("products:index")
+
+def calculate_storage(request):
+    products = Products.objects.all()
     # 저장 용량 등급 나누기.
-    # for product in products:
-    #     product.저장용량 = int(product.저장용량)
-    #     if product.저장용량 <= 256:
-    #         product.저장용량등급 = "1"
-    #     elif product.저장용량 > 500 and product.저장용량 <= 516:
-    #         product.저장용량등급 = "2"
-    #     elif product.저장용량 > 999 and product.저장용량 <= 2000:
-    #         product.저장용량등급 = "3"
-    #     elif product.저장용량 > 2000:
-    #         product.저장용량등급 = "4"
-    #     product.save()
+    for product in products:
+        product.저장용량 = int(product.저장용량)
+        if product.저장용량 <= 256:
+            product.저장용량등급 = "1"
+        elif product.저장용량 > 500 and product.저장용량 <= 516:
+            product.저장용량등급 = "2"
+        elif product.저장용량 > 999 and product.저장용량 <= 2000:
+            product.저장용량등급 = "3"
+        elif product.저장용량 > 2000:
+            product.저장용량등급 = "4"
+        product.save()
+    return redirect("products:index")
+
+
+def calculate_processor(request):
+    products = Products.objects.all()
     # CPU제조사 분류
     for product in products:
         if product.CPU제조사 == "AMD":
@@ -283,6 +297,11 @@ def calculate(request):
             elif product.CPU종류 == "실리콘 M2":
                 product.CPU넘버분류 = "M2"
         product.save()
+    return redirect("products:index")
+
+
+def calculate_graphic(request):
+    products = Products.objects.all()
     # 그래픽카드 분류
     for product in products:
         if product.GPU종류 == "내장그래픽":
@@ -296,6 +315,10 @@ def calculate(request):
             elif product.GPU제조사 == "엔비디아":
                 product.GPU종류등급 = "5"
         product.save()
+    return redirect("products:index")
+
+def calculate_resolution(request):
+    products = Products.objects.all()
     # 해상도 분류
     for product in products:
         if "FHD" in product.해상도:
@@ -305,6 +328,10 @@ def calculate(request):
         elif "UHD" in product.해상도:
             product.해상도등급 = "UHD"
         product.save()
+    return redirect("products:index")
+
+def calculate_size(request):
+    products = Products.objects.all()
     # 노트북 크기 분류
     for product in products:
         if (
