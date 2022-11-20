@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from dotenv import load_dotenv
 import os
 from products.models import Products
@@ -71,13 +71,81 @@ def search(request):
                 Q(트루톤__icontains=search) |Q(화면회전각__icontains=search) 
             )
             print(len(search_lists))
+            products = Products.objects.all()
+            # 카테고리 분류
+            category = request.GET.get("category","")
+            if category:
+                products_category = Products.objects.filter(Q(제조회사__contains=category))
+            else:
+                products_category = products
+            brand = request.GET.get("brand","")
+            if brand:
+                products_brand = Products.objects.filter(Q(제조회사__contains=brand))
+            else:
+                products_brand = products
+            # 가격 분류  1,2,3,4,5
+            price = request.GET.get("price","")
+            if price:
+                products_price = Products.objects.filter(Q(가격등급__contains=price))
+            else:
+                products_price = products
+            # 무게 분류  1,2,3,4
+            weight = request.GET.get("weight","")
+            if weight:
+                products_weight = Products.objects.filter(Q(무게등급__contains=weight))
+            else:
+                products_weight = products
+            # 프로세스 분류 AMD, INTEL, 애플
+            processor = request.GET.get("processor","")
+            if processor:
+                products_processor = Products.objects.filter(Q(CPU제조사분류__contains=processor))
+            else:
+                products_processor = products
+            # 프로세스 분류 4000, 5000, 6000, i3, i5, i7, i9, 기타, m1, m2
+            processor_number = request.GET.get("processor-nunber","")
+            if processor_number:
+                products_processor_number = Products.objects.filter(
+                    Q(CPU넘버분류__contains=processor_number)
+                )
+            else:
+                products_processor_number = products
+            # 저장용량등급 분류  1,2,3,4
+            storage = request.GET.get("storage","")
+            if storage:
+                products_storage = Products.objects.filter(Q(저장용량등급__contains=storage))
+            else:
+                products_storage = products
+            # GPU종류등급 분류  1,2
+            graphic = request.GET.get("graphic","")
+            if graphic:
+                products_graphic = Products.objects.filter(Q(GPU종류등급__contains=graphic))
+            else:
+                products_graphic = products
+            # 해상도등급 분류  "FHD","QHD","UHD"
+            resolution = request.GET.get("resolution","")
+            if resolution:
+                products_resolution = Products.objects.filter(Q(해상도등급__contains=resolution))
+            else:
+                products_resolution = products
+            # 화면크기등급 분류  1,2,3
+            size = request.GET.get("size","")
+            if size:
+                products_size = Products.objects.filter(Q(화면크기등급__contains=size))
+            else:
+                products_size = products
+            result = search_lists&products_category&products_price&products_weight&products_processor&products_processor_number&products_storage&products_graphic&products_resolution&products_size&products_brand
+            print(len(result))
             page = request.GET.get("page", "1")
-            paginator = Paginator(search_lists, 6)
+            paginator = Paginator(result, 6)
             page_obj = paginator.get_page(page)
             context = {
                 "search_lists": search_lists,
                 "s": s,
                 "search": search,
+                "search_count": len(result),
                 "page_obj": page_obj,
             }
             return render(request, "products/index.html", context)
+        
+        else:
+            return redirect('products:index')
