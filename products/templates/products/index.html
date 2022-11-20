@@ -390,7 +390,7 @@
                     {% endif %}
                   {% else %}
                     <a href="{% url 'accounts:login' %}">
-                      <i class="bi bi-bookmarks"></i>
+                      <i class="bi bi-bookmark"></i>
                     </a>
                   {% endif %}
                 </div>
@@ -428,7 +428,7 @@
                     {% endif %}
                   {% else %}
                     <a href="{% url 'accounts:login' %}">
-                      <i class="bi bi-bookmarks"></i>
+                      <i class="bi bi-bookmark"></i>
                     </a>
                   {% endif %}
                 </div>
@@ -457,13 +457,13 @@
                   <div class="position-absolute " style="top:25px; right:20px;">
                     {% if request.user.is_authenticated %}
                       {% if request.user in product.like_product.all %}
-                        <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1"></i>
+                        <i data-product-id="{{ product.pk }}" class="bi bi-bookmark-fill like-btn1" style="width:25px;"></i>
                       {% else %}
                         <i data-product-id="{{ product.pk }}" class="bi bi-bookmark like-btn1"></i>
                       {% endif %}
                     {% else %}
                       <a href="{% url 'accounts:login' %}">
-                        <i class="bi bi-bookmarks"></i>
+                        <i class="bi bi-bookmark"></i>
                       </a>
                     {% endif %}
                   </div>
@@ -611,20 +611,20 @@
           e
             .target
             .classList
-            .add('bi-bookmarks-fill')
+            .add('bi-bookmark-fill')
           e
             .target
             .classList
-            .remove('bi-bookmarks')
+            .remove('bi-bookmark')
         } else {
           e
             .target
             .classList
-            .add('bi-bookmarks')
+            .add('bi-bookmark')
           e
             .target
             .classList
-            .remove('bi-bookmarks-fill')
+            .remove('bi-bookmark-fill')
         }
       })
     })

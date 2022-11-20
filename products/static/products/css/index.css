@@ -168,7 +168,7 @@ aside {
 }
 
 .search-result {
-    padding-left: 5px;
+    padding-left: 10px;
     background: url(https://www.samsungebiz.com/sec/static/_images/bg/wavelet_1x16.jpg) no-repeat 0 center;
 }
 
@@ -238,10 +238,6 @@ aside {
     line-height: 27px;
 }
 
-.bi-bookmarks {
-    font-size: 27px;
-    line-height: 27px;
-}
 
 .infinite-item {
     height: 530px;
