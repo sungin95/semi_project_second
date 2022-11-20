@@ -29,11 +29,11 @@ SECRET_KEY = "django-insecure-521vp4trtfmrcdkcq-rw#0ld=r))6&3_z0&gj$iyykg$4q6r39
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
 
-if DEBUG: 
+if DEBUG:
     MEDIA_URL = "/media/"
     MEDIA_ROOT = BASE_DIR / "media"
 
-else:   
+else:
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
     AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
@@ -119,19 +119,19 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 if DEBUG:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
         }
     }
 else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv("DATABASE_NAME"), # 코드 블럭 아래 이미지 참고하여 입력
+            "NAME": os.getenv("DATABASE_NAME"),  # 코드 블럭 아래 이미지 참고하여 입력
             "USER": "postgres",
-            "PASSWORD": os.getenv("DATABASE_PASSWORD"), # 데이터베이스 생성 시 작성한 패스워드
-            "HOST": os.getenv("DATABASE_HOST"), # 코드 블럭 아래 이미지 참고하여 입력
+            "PASSWORD": os.getenv("DATABASE_PASSWORD"),  # 데이터베이스 생성 시 작성한 패스워드
+            "HOST": os.getenv("DATABASE_HOST"),  # 코드 블럭 아래 이미지 참고하여 입력
             "PORT": "5432",
         }
     }
