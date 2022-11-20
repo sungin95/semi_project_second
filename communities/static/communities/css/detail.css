@@ -374,7 +374,7 @@ li {
 .tradecomment-create {
   border: 0px;
   background-color: transparent;
-  width: 1070px;
+  width: 1050px;
   color: aliceblue;
   height: 50px;
 }
@@ -400,6 +400,12 @@ li {
 /* .text_create{
   margin-left: 70px;
 } */
+
+.tradecomment-create-2:focus {
+  outline: none;
+  color: rgb(0, 0, 0);
+}
+
 
 .tradecomment-create-2{
   font-size: small;
