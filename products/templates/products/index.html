@@ -30,18 +30,19 @@
     <!-- 필터 -->
     <div class="d-flex box-result">
       <p class="detail-search pc-var" style="margin-right: 12px;">상세검색</p>
-      <p class="search-result">검색 결과</p>
+      <p class="search-result ">검색 결과</p>
       {% if category %}
-        <p class="now">{{ products_category.count }}개</p>
+        <p class="manu_name" style="margin:0 10px 0 10px; text-align: center;">{{ products_category.count }}개</p>
       {% elif search %}
-        <p class="now">{{ search_count }}개</p>
+        <p class="manu_name" style="margin:0 10px 0 10px; text-align: center;">{{ search_count }}개</p>
       {% elif filter %}
-        <p class="now">{{ filter }}개</p>
+        <p class="manu_name" style="margin:0 10px 0 10px; text-align: center;">{{ filter }}개</p>
       {% elif filter == 0 %}
-        <p class="now">{{ filter }}개</p>
+        <p class="manu_name" style="margin:0 10px 0 10px; text-align: center;">{{ filter }}개</p>
       {% else %}
-        <p class="now">{{ products.count }}개</p>
+        <p class="manu_name" style="margin:0 10px 0 10px; text-align: center;">{{ products.count }}개</p>
       {% endif %}
+      <span class="manu_name"><p style="margin:0 0px; text-align: center;">삼성</p></span>
       <!--<p> {% if category == "" %} {{brand}} {% else %} {{category}} {% endif %} {% if processor %} {{processor}}번대 {% endif %} {{price}} {{weight}} {{processor_number}} {{storage}} {{graphic}} {{size}} {{category}} </p>-->
     </div>
 

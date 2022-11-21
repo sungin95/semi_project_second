@@ -195,7 +195,7 @@ aside {
 }
 
 .now {
-    margin-left: 12px;
+    /* margin-left: 12px; */
     color: rgb(147, 112, 219);
 }
 
@@ -234,6 +234,10 @@ aside {
     padding: 10px 50px;
     border-style: none;
     justify-content: center;
+}
+.btn-color:hover{
+    color: black;
+    background-color: white;
 }
 .shop-tag {
     height: 36px;
@@ -281,4 +285,15 @@ aside {
     font-size: 14px;
     color: rgb(147, 112, 219);
     letter-spacing: 0;
+}
+
+
+.manu_name {
+    color:#f7f7f7;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 0.5rem; 
+    width: 50px; 
+    height: 25px;
+    font-size: 13px;
 }
