@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
 });
 window.addEventListener("scroll", () => {
     if (window.scrollY < 200) {
-        introNabvar.style.backgroundImage = "none";
+        navbar.style.transform = "translateY(0%)";
     }
 });
 introNabvar.addEventListener("mouseleave", () => {
