@@ -35,47 +35,107 @@
       <div class="today-best-ten">
         <div class="today-best-left">
           <div class="today">
+            {% if bests.0 %}
+            <a class="best_link" href="{% url 'communities:detail' bests.0.pk %}">
+              <span class="best-today">01</span>{{ bests.0.title }}</div>
+            </a>
+            {% else %}
             <a class="best_link" href="">
               <span class="best-today">01</span>{{ bests.0.title }}</div>
             </a>
+            {% endif %}
           <div class="today">
+            {% if bests.1 %}
+            <a class="best_link" href="{% url 'communities:detail' bests.1.pk %}">
+              <span class="best-today">02</span>{{ bests.1.title }}</div>
+            </a>
+            {% else %}
             <a class="best_link" href="">
               <span class="best-today">02</span>{{ bests.1.title }}</div>
             </a>
+            {% endif %}
           <div class="today">
-            <a class="best_link" href=""> 
+            {% if bests.2 %}
+            <a class="best_link" href="{% url 'communities:detail' bests.2.pk %}">
               <span class="best-today">03</span>{{ bests.2.title }}</div>
             </a>
+            {% else %}
+            <a class="best_link" href="">
+              <span class="best-today">03</span>{{ bests.2.title }}</div>
+            </a>
+            {% endif %}
           <div class="today">
+            {% if bests.3 %}
+            <a class="best_link" href="{% url 'communities:detail' bests.3.pk %}">
+              <span class="best-today">04</span>{{ bests.3.title }}</div>
+            </a>
+            {% else %}
             <a class="best_link" href="">
               <span class="best-today">04</span>{{ bests.3.title }}</div>
             </a>
+            {% endif %}
           <div class="today">
+            {% if bests.4 %}
+            <a class="best_link" href="{% url 'communities:detail' bests.4.pk %}">
+              <span class="best-today">05</span>{{ bests.4.title }}</div>
+            </a>
+            {% else %}
             <a class="best_link" href="">
               <span class="best-today">05</span>{{ bests.4.title }}</div>
             </a>
+            {% endif %}
         </div>
         <div class="today-best-right">
           <div class="today">
+            {% if bests.5 %}
+            <a class="best_link" href="{% url 'communities:detail' bests.5.pk %}">
+              <span class="best-today">06</span>{{ bests.5.title }}</div>
+            </a>
+            {% else %}
             <a class="best_link" href="">
               <span class="best-today">06</span>{{ bests.5.title }}</div>
             </a>
+            {% endif %}
           <div class="today">
+            {% if bests.6 %}
+            <a class="best_link" href="{% url 'communities:detail' bests.6.pk %}">
+              <span class="best-today">07</span>{{ bests.6.title }}</div>
+            </a>
+            {% else %}
             <a class="best_link" href="">
               <span class="best-today">07</span>{{ bests.6.title }}</div>
             </a>
+            {% endif %}
           <div class="today">
+            {% if bests.7 %}
+            <a class="best_link" href="{% url 'communities:detail' bests.7.pk %}">
+              <span class="best-today">08</span>{{ bests.7.title }}</div>
+            </a>
+            {% else %}
             <a class="best_link" href="">
               <span class="best-today">08</span>{{ bests.7.title }}</div>
             </a>
+            {% endif %}
           <div class="today">
+            {% if bests.8 %}
+            <a class="best_link" href="{% url 'communities:detail' bests.8.pk %}">
+              <span class="best-today">09</span>{{ bests.8.title }}</div>
+            </a>
+            {% else %}
             <a class="best_link" href="">
               <span class="best-today">09</span>{{ bests.8.title }}</div>
             </a>
+            {% endif %}
           <div class="today">
+            {% if bests.9 %}
+            <a class="best_link" href="{% url 'communities:detail' bests.9.pk %}">
+              <span class="best-today">10</span>{{ bests.9.title }}</div>
+            </a>
+            {% else %}
             <a class="best_link" href="">
               <span class="best-today">10</span>{{ bests.9.title }}</div>
             </a>
+            {% endif %}
         </div>
         
       </div>
