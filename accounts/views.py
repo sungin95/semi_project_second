@@ -32,7 +32,7 @@ def signup(request):
             form = CustomUserCreationForm(request.POST)
             if form.is_valid():
                 user = form.save()
-                # auth_login(request, user)
+                auth_login(request, user)
                 return redirect("accounts:login")
     else:
         form = MySignupForm()

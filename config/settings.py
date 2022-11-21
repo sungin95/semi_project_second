@@ -178,13 +178,3 @@ AUTH_USER_MODEL = "accounts.User"
 # MEDIAFILES_LOCATION = "media"
 # MEDIA_ROOT = BASE_DIR / "media"
 # MEDIA_URL = "/media/"
-
-AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
-
-SITE_ID = 1
-
-
-LOGIN_REDIRECT_URL = "/accounts"  # 로그인 후 리다이렉트 될 경로
