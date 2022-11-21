@@ -108,22 +108,22 @@ class Products(models.Model):
     전용펜지원 = models.BooleanField(blank=True, null=True)
     DPAltMode = models.BooleanField(blank=True, null=True)
     리프트힌지 = models.BooleanField(blank=True, null=True)
-    like_product = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name="like_user"
-    )
-    ten_price = models.IntegerField(blank=True, null=True)
-    가격등급 = models.IntegerField(blank=True, null=True)
-    저장용량등급 = models.IntegerField(blank=True, null=True)
-    GPU종류등급 = models.IntegerField(blank=True, null=True)
-    해상도등급 = models.TextField(blank=True, null=True)
-    화면크기등급 = models.IntegerField(blank=True, null=True)
-    무게등급 = models.IntegerField(blank=True, null=True)
     CPU제조사분류 = models.TextField(blank=True, null=True)
     CPU넘버분류 = models.TextField(blank=True, null=True)
     표준텐키리스 = models.BooleanField(blank=True, null=True)
     와이드뷰 = models.BooleanField(blank=True, null=True)
     AppleT2 = models.BooleanField(blank=True, null=True)
     기계식키보드 = models.BooleanField(blank=True, null=True)
+    like_product = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name="like_user"
+    )
+    ten_price = models.IntegerField(blank=True, null=True)
+    가격등급 = models.TextField(blank=True, null=True)
+    저장용량등급 = models.TextField(blank=True, null=True)
+    GPU종류등급 = models.TextField(blank=True, null=True)
+    해상도등급 = models.TextField(blank=True, null=True)
+    화면크기등급 = models.TextField(blank=True, null=True)
+    무게등급 = models.TextField(blank=True, null=True)
 
 
 class Review(models.Model):
