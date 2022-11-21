@@ -90,11 +90,10 @@
             </p>
             <hr>
             <div class="nav-detail-login">
+              <a>등급: </a><a class="rate" href="#">{{ user.회원등급 }}</a><a class="rate">{{user.point}}P</a>
               {% if request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'accounts:detail' request.user.pk %}">회원정보 관리</a>
               {% endif %}
-              <a class="nav-link" href="#">주문/배송 조회</a>
-              <a class="nav-link" href="#">쿠폰존</a>
               <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
             </div>
           </div>
