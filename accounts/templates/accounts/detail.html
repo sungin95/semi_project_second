@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% load django_bootstrap5 %}
 {% load static %}
 {% block css %}
@@ -21,15 +21,13 @@
             <span class="rate mx-2">{{user.회원등급}}</span>
           </div>
         </div>
-          <p class="mt-3">{{ user.email }}</p>
-          <p style="color: black;">현재 포인트: {{user.point}}P</p>
+        <p class="mt-3">{{ user.email }}</p>
+        <p style="color: black;">현재 포인트:
+          {{user.point}}P</p>
       </div>
 
       {% if request.user.pk == user.pk %}
-        <!-- <div>
-          <span class="rating mx-3">{{user.회원등급}}</span>
-          <p class="mx-3">현재 포인트: {{user.point}}p</p>
-        </div> -->
+        <!-- <div> <span class="rating mx-3">{{user.회원등급}}</span> <p class="mx-3">현재 포인트: {{user.point}}p</p> </div> -->
         <div class="user_buttons">
           <button>
             <a href="{% url 'accounts:profile' %}">프로필<br>사진 설정</a>
@@ -147,4 +145,4 @@
           </table>
         </div>
 
-    {% endblock content %}
+      {% endblock content %}
