@@ -11,19 +11,18 @@
       <span class="user">{{user}}</span>
       님의 정보</h2>
 
-    <div class="infos">
+    <div class="infos d-flex align-items-center">
       <div class="small_info">
         <!-- {{ user.pk }}-->
-        <p>
-          <span class="name">
+        <div>
+          <div class="name">
             {{ user.first_name }}
-            {{ user.last_name }}</span><br>
-          {{ user.email }}</p>
-          <div>
-          <p class="mx-3">등급</p>
-          <span class="rating mx-3">{{user.회원등급}}</span>
-          <p class="mx-3">현재 포인트: {{user.point}}p</p>
+            {{ user.last_name }}
+            <span class="rate mx-2">{{user.회원등급}}</span>
           </div>
+        </div>
+          <p class="mt-3">{{ user.email }}</p>
+          <p style="color: black;">현재 포인트: {{user.point}}P</p>
       </div>
 
       {% if request.user.pk == user.pk %}
@@ -125,12 +124,12 @@
       <div class="review">
         <p class="bookmarked_p">커뮤니티 댓글</p>
         <p class="explanation">*사용자가 쓴 댓글을 볼 수 있습니다.</p>
-      </div>  
         {% for comment in user.comments_set.all %}
           <p>
             {{ comment.content }}
           </p>
         {% endfor %}    
+      </div>  
     </div>
 
     {% endblock content %}

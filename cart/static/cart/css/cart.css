@@ -754,8 +754,8 @@
   }
   
   .btn.btn-type3 {
-    background-color: rgb(230, 230, 250);
-    color: rgb(147, 112, 219);
+    background-color: rgb(147, 112, 219);
+    color: white;
   }
   
   .cart-payment-area .btn-l {

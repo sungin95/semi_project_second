@@ -622,10 +622,10 @@ li {
 }
 
 .btn.btn-k {
-  background-color: rgb(230, 230, 250);
+  background-color: rgb(147, 112, 219);
   border-radius: 30px;
   font-weight: bold;
-  color: rgb(147, 112, 219);
+  color: white;
 }
 
 .btn {
