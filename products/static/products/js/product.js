@@ -1,19 +1,21 @@
 function count(type) {
   //결과를 표시할 element
   const resultElement = document.getElementById('result');
-  //현재 화면에 표시할 값
-  let number = resultElement.innerText;
   //더하기 빼기
-  if(type === "plus" && number >= 0) {
-    number = parseInt(number) + 1;
-  } else if(type === "minus" && number >= 1) {
-    number = parseInt(number) -1 ;
+  let value = parseInt(resultElement.value)
+  console.log(resultElement)
+  console.log(type === "minus", value >= 1)
+  if(type === "plus" && value >= 0) {
+
+    resultElement.value = parseInt(value)+1;  
+  } else if(type === "minus" && value >= 1) {
+
+    resultElement.value = parseInt(value)-1;
+
   }
   
   //결과 출력
-  resultElement.innerText = number;
 }
-
 
 
 
