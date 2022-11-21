@@ -134,7 +134,7 @@
           <span class="head">사용 할 포인트</span>
           <span class="text color-sb">
             <strong id="order_payment_total_dc_amt_view">
-              <input id="use-point" max="{{user.point}}" min="0" type="number">
+              <input id="use-point" max="{{user.point}}" min="0" type="number" onkeyup=enforceMinMax(this)>
             </strong>
             원
           </span>
@@ -182,6 +182,19 @@
       })
     })
   </script>
+  <script>
+    function enforceMinMax(el) {
+  if (el.value != "") {
+    if (parseInt(el.value) < parseInt(el.min)) {
+      el.value = el.min;
+    }
+    if (parseInt(el.value) > parseInt(el.max)) {
+      el.value = el.max;
+    }
+  }
+}
+  </script>
+  
 {% endblock js %}
 
 <!-- {% comment %} 상품이 비어 있을때 {% endcomment %} {% if not cart_items %} <div> <div class="text-center"> <br> <h1 class="text-center my_title"> 장바구니가 비어 있습니다. </h1> <br> <p class="text-center"> <a href="">여기</a>를 누르셔서 쇼핑을 계속 해주시기 바랍니다. </p> </div> </div> {% comment %} 상품이 있다면 {% endcomment %} {% else %} <div> <div class="text_center"> <br> <h1 class="text-center my_title"> 당신의 장바구니 입니다. </h1> <br> </div> </div> <div class="row mx-auto"> <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center"> <table class="table my_custom_table"> <thread class="my_custom_thread"> <tr> <th colspan="5"> 당신의 상품 입니다. </th> </tr> </thread> <tbody> {% for cart_item in cart_items %} <tr> <td> <a href="{{ cart_item.product.get_absolute_url }}"> <img src="https://dummyimage.com/200x200/000000/c4c4c4" alt="" class="float-left rounded custom_image"> </a> </td> <td class="text-left"> {{ cart_item.product.name }} <br> {{ cart_item.product.id }} <br> 개별 가격 : {{ cart_item.product.price }}원 <br> 갯수 : {{ cart_item.quantity }} x {{ cart_item.product.price }}원 </td> <td> 총 : {{ cart_item.sub_total }}원 </td> {% if cart_item.quantity <= cart_itme.product.stock %} <td> <a href="{% url 'cart:add_cart' cart_item.product.id %}" class="custom_a"> <i class="fas fa-plus-circle custom_icon"></i> </a>&nbsp; <a href="" class="custom_a"> <i class="fas fa-mius-circle custom_icon"></i> </a>&nbsp; <a href="" class="custom_a"> <i class="fas fa-trash-alt custom_icon"></i> </a> </td> {% else %} <td> &nbsp;<a href="" class="custom_a"> <i class="fas fa-minus-circle custom_icon"></i> </a>&nbsp; <a href="" class="custom_a"> <i class="fas fa-trash-alt custom_icon"></i> </a> </td> <td></td> {% endif %} </tr> {% endfor %} </tbody> </table> </div> <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center"> <table class="table my_custom_table"> <thread class="my_custom_thread"> <tr> <th> 총 견적 </th> </tr> </thread> <tbody> <tr> <td> 결제를 진행하시기 전에 장바구니를 보시고 상품들과 최종 금액을 확인해 주세요. </td> </tr> <tr> <td class="text-left"> 최종 금액 : <strong>{{ total }}원</strong> </td> </tr> </tbody> </table> <div class="mx-auto"> <a href="" class="btn btn-secondary btn-block my_custom_button">계속 쇼핑</a> </div> </div> </div> {% endif %} -->
