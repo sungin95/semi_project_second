@@ -50,9 +50,183 @@ window.addEventListener("mousewheel", (e) => {
 });
 
 // 클릭 제한
-window.onkeydown = function () {
+window.onkeydown = function (event) {
     var kcode = event.keyCode;
     if (kcode == 116) {
         history.replaceState({}, null, location.pathname);
     }
 };
+
+// 리셋버튼
+document.querySelector("#resetBtn").addEventListener("click", () => {
+    document.querySelectorAll(".input-tag").forEach(function (ch) {
+        ch.checked = false;
+    });
+});
+
+// 다중 클릭금지
+function NoMultiChkBrand(chk) {
+    var obj = document.getElementsByName("brand");
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i] != chk) {
+            obj[i].checked = false;
+        }
+    }
+}
+
+function NoMultiChkSize(chk) {
+    var obj = document.getElementsByName("size");
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i] != chk) {
+            obj[i].checked = false;
+        }
+    }
+}
+
+function NoMultiChkResolution(chk) {
+    var obj = document.getElementsByName("resolution");
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i] != chk) {
+            obj[i].checked = false;
+        }
+    }
+}
+
+function NoMultiChkWeight(chk) {
+    var obj = document.getElementsByName("weight");
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i] != chk) {
+            obj[i].checked = false;
+        }
+    }
+}
+
+var objProcessor = document.getElementsByName("processor_number");
+function NoMultiChkProcessor(chk) {
+    var obj = document.getElementsByName("processor");
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i] != chk) {
+            obj[i].checked = false;
+        }
+    }
+    objProcessor.forEach((ch) => {
+        ch.checked = false;
+    });
+}
+
+var objProcessorA = document.getElementsByName("processor");
+function NoMultiChkProcessorNumber(chk) {
+    var obj = document.getElementsByName("processor_number");
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i] != chk) {
+            obj[i].checked = false;
+        }
+    }
+    objProcessorA.forEach((ch) => {
+        ch.checked = false;
+    });
+}
+
+function NoMultiChkGraphic(chk) {
+    var obj = document.getElementsByName("graphic");
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i] != chk) {
+            obj[i].checked = false;
+        }
+    }
+}
+
+function NoMultiChkStorage(chk) {
+    var obj = document.getElementsByName("storage");
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i] != chk) {
+            obj[i].checked = false;
+        }
+    }
+}
+
+function NoMultiChkPrice(chk) {
+    var obj = document.getElementsByName("price");
+    for (var i = 0; i < obj.length; i++) {
+        if (obj[i] != chk) {
+            obj[i].checked = false;
+        }
+    }
+}
+
+// 인풋값 자동 선택
+var category = "{{ category }}";
+var chkList = document.querySelectorAll("input[name=brand]");
+chkList.forEach(function (ch) {
+    if (ch.value == category) {
+        ch.checked = true;
+    }
+});
+
+var brand = "{{ brand }}";
+var chkList = document.querySelectorAll("input[name=brand]");
+chkList.forEach(function (ch) {
+    if (ch.value == brand) {
+        ch.checked = true;
+    }
+    ch.addEventListener("click", (e) => {
+        document.querySelector("#category").checked = false;
+    });
+});
+
+var size = "{{ size }}";
+var chkList = document.querySelectorAll("input[name=size]");
+chkList.forEach(function (ch) {
+    if (ch.value == size) {
+        ch.checked = true;
+    }
+});
+var resolution = "{{ resolution }}";
+var chkList = document.querySelectorAll("input[name=resolution]");
+chkList.forEach(function (ch) {
+    if (ch.value == resolution) {
+        ch.checked = true;
+    }
+});
+var weight = "{{ weight }}";
+var chkList = document.querySelectorAll("input[name=weight]");
+chkList.forEach(function (ch) {
+    if (ch.value == weight) {
+        ch.checked = true;
+    }
+});
+var processor = "{{ processor }}";
+var chkList = document.querySelectorAll("input[name=processor]");
+chkList.forEach(function (ch) {
+    if (ch.value == processor) {
+        ch.checked = true;
+    }
+});
+var processorNumber = "{{ processor_number }}";
+var chkList = document.querySelectorAll("input[name=processor_number]");
+chkList.forEach(function (ch) {
+    if (ch.value == processorNumber) {
+        ch.checked = true;
+    }
+});
+var graphic = "{{ graphic }}";
+var chkList = document.querySelectorAll("input[name=graphic]");
+chkList.forEach(function (ch) {
+    if (ch.value == graphic) {
+        ch.checked = true;
+    }
+});
+var storage = "{{ storage }}";
+var chkList = document.querySelectorAll("input[name=storage]");
+chkList.forEach(function (ch) {
+    if (ch.value == storage) {
+        ch.checked = true;
+    }
+});
+var price = "{{ price }}";
+var chkList = document.querySelectorAll("input[name=price]");
+chkList.forEach(function (ch) {
+    if (ch.value == price) {
+        ch.checked = true;
+    }
+});

@@ -108,7 +108,7 @@ def index(request):
         "processor_number": processor_number,
         "storage": storage,
         "graphic": graphic,
-        "resolution": graphic,
+        "resolution": resolution,
         "size": size,
         "result": result,
         "category": category,
@@ -238,20 +238,19 @@ def delete(request, product_pk, review_pk):
 
 # 필터링 계산
 @login_required
-@require_http_methods(["GET", "POST"])
 def calculate_weight(request):
     products = Products.objects.all()
     # 무게 등급 나누기
     for product in products:
         product.무게 = int(product.무게)
         if product.무게 < 1000:
-            product.무게등급 = "1"
+            product.무게등급 = "1kg미만"
         elif product.무게 >= 1000 and product.무게 < 1500:
-            product.무게등급 = "2"
+            product.무게등급 = "1kg~1.5kg미만"
         elif product.무게 >= 1500 and product.무게 < 2000:
-            product.무게등급 = "3"
+            product.무게등급 = "1.5kg~2.0kg미만"
         elif product.무게 >= 2000:
-            product.무게등급 = "4"
+            product.무게등급 = "2kg이상"
         product.save()
     return redirect("products:index")
 
@@ -261,15 +260,15 @@ def calculate_price(request):
     # 가격 등급 나누기.
     for product in products:
         if product.가격 <= 500000:
-            product.가격등급 = "1"
+            product.가격등급 = "50만원이하"
         elif product.가격 > 500000 and product.가격 <= 1000000:
-            product.가격등급 = "2"
+            product.가격등급 = "50만원이상~100만원미만"
         elif product.가격 > 1000000 and product.가격 <= 1500000:
-            product.가격등급 = "3"
+            product.가격등급 = "100만원이상~150만원미만"
         elif product.가격 > 1500000 and product.가격 <= 2000000:
-            product.가격등급 = "4"
+            product.가격등급 = "150만원이상~200만원미만"
         elif product.가격 > 2000000:
-            product.가격등급 = "5"
+            product.가격등급 = "200만원이상"
         product.save()
     return redirect("products:index")
 
@@ -279,13 +278,13 @@ def calculate_storage(request):
     # 저장 용량 등급 나누기.
     for product in products:
         if product.저장용량 <= 256:
-            product.저장용량등급 = "1"
+            product.저장용량등급 = "250GB~256GB이하"
         elif product.저장용량 >= 500 and product.저장용량 <= 516:
-            product.저장용량등급 = "2"
+            product.저장용량등급 = "500GB~512GB이하"
         elif product.저장용량 >= 1024 and product.저장용량 < 2048:
-            product.저장용량등급 = "3"
+            product.저장용량등급 = "1TB이상~2TB미만"
         elif product.저장용량 >= 2048:
-            product.저장용량등급 = "4"
+            product.저장용량등급 = "2TB이상"
         product.save()
     return redirect("products:index")
 
@@ -297,11 +296,11 @@ def calculate_processor(request):
         if product.CPU제조사 == "AMD":
             product.CPU제조사분류 = "AMD"
             if product.CPU넘버[0] == "4":
-                product.CPU넘버분류 = "4000"
+                product.CPU넘버분류 = "AMD4000번대"
             elif product.CPU넘버[0] == "5":
-                product.CPU넘버분류 = "5000"
+                product.CPU넘버분류 = "AMD5000번대"
             elif product.CPU넘버[0] == "6":
-                product.CPU넘버분류 = "6000"
+                product.CPU넘버분류 = "AMD6000번대"
         elif product.CPU제조사 == "인텔":
             product.CPU제조사분류 = "INTEL"
             if product.CPU넘버[0:2] == "i3":
@@ -315,7 +314,7 @@ def calculate_processor(request):
             else:
                 product.CPU넘버분류 = "기타"
         elif product.CPU제조사 == "애플(ARM)":
-            product.CPU제조사분류 == "애플"
+            product.CPU제조사분류 = "애플"
             if product.CPU종류 == "실리콘 M1 PRO" or product.CPU종류 == "실리콘 M1 MAX":
                 product.CPU넘버분류 = "M1"
             elif product.CPU종류 == "실리콘 M2":
@@ -329,15 +328,15 @@ def calculate_graphic(request):
     # 그래픽카드 분류
     for product in products:
         if product.GPU종류 == "내장그래픽":
-            product.GPU종류등급 = "1"
+            product.GPU종류등급 = "내장그래픽"
         elif product.GPU종류 == "외장그래픽":
-            product.GPU종류등급 = "2"
+            product.GPU종류등급 = "외장그래픽"
             if product.GPU제조사 == "AMD":
-                product.GPU종류등급 = "3"
+                product.GPU종류등급 = "AMD외장그래픽"
             elif product.GPU제조사 == "인텔":
-                product.GPU종류등급 = "4"
+                product.GPU종류등급 = "인텔외장그래픽"
             elif product.GPU제조사 == "엔비디아":
-                product.GPU종류등급 = "5"
+                product.GPU종류등급 = "엔비디아외장그래픽"
         product.save()
     return redirect("products:index")
 
@@ -373,7 +372,7 @@ def calculate_size(request):
             or product.화면크기 == "35.56cm(14인치)"
             or product.화면크기 == "35.97cm(14.2인치)"
         ):
-            product.화면크기등급 = "1"
+            product.화면크기등급 = "14인치이하"
         elif (
             product.화면크기 == "39.6cm(15.6인치)"
             or product.화면크기 == "36.8cm(14.5인치)"
@@ -387,14 +386,14 @@ def calculate_size(request):
             or product.화면크기 == "38.1cm(15인치)"
             or product.화면크기 == "40.6cm(16인치)"
         ):
-            product.화면크기등급 = "2"
+            product.화면크기등급 = "15인치~16.2인치"
         elif (
             product.화면크기 == "43.9cm(17.3인치)"
             or product.화면크기 == "43.1cm(17인치)"
             or product.화면크기 == "43.94cm(17.3인치)"
             or product.화면크기 == "43.18cm(17인치)"
         ):
-            product.화면크기등급 = "3"
+            product.화면크기등급 = "17인치~17.3인치"
         product.save()
     return redirect("products:index")
 

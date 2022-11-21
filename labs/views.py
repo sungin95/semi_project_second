@@ -143,6 +143,15 @@ def search(request):
             paginator = Paginator(result, 6)
             page_obj = paginator.get_page(page)
             context = {
+                "brand": brand,
+                "price": price,
+                "weight": weight,
+                "processor": processor,
+                "processor_number": processor_number,
+                "storage": storage,
+                "graphic": graphic,
+                "resolution": resolution,
+                "size": size,
                 "search_lists": search_lists,
                 "s": s,
                 "search": search,
