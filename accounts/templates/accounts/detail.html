@@ -6,10 +6,22 @@
 {% endblock css %}
 
 {% block content %}
+  {% if messages %}
+    <div class="messages container" style="background-color: #d5caff;">
+      {% for message in messages %}
+        <div class="d-flex alert {{ message.tags }} alert-auto-dismissible alert-dismissible notification-container text-center" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
   <div class="container">
     <h2 class="title">
       {% if request.user.image %}
-      <img src="{{ request.user.image.url }}" alt="" style="width: 50px; height: 50px; border-radius: 500px">
+        <img src="{{ request.user.image.url }}" alt="" style="width: 50px; height: 50px; border-radius: 500px">
       {% endif %}
       <span class="user">{{user}}</span>
       님의 정보</h2>
