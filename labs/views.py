@@ -5,8 +5,10 @@ from products.models import Products
 from django.db.models import Q
 from .models import Search
 from django.core.paginator import Paginator
+from django.views.decorators.http import require_safe, require_http_methods, require_POST
 
 # Create your views here.
+require_safe
 def main(request):
     products = Products.objects.all()
     context = {
@@ -18,6 +20,7 @@ def main(request):
 def rating(request):
     return render(request, "labs/rating.html")
 
+require_safe
 def intro(request):
     load_dotenv()
     MAPKEY = os.getenv("MAPKEY")
@@ -26,6 +29,7 @@ def intro(request):
     }
     return render(request, "labs/intro.html", context)
 
+require_safe
 def search(request):
     s = Search.objects.filter().order_by("count")[1:12]
     if request.method == "GET":
