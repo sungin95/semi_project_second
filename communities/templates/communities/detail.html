@@ -134,7 +134,7 @@
               |
               <span>{{ comment.content }}</span>
               <!-- 대댓글작성, 삭제 폼 -->
-              <div class="d-flex mx-5">
+              <div class="d-flex">
                 <p>
                   <button class="sub_comment-create" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{comment.id}}" aria-expanded="false" aria-controls="collapseExample">
                     답글 작성
@@ -154,7 +154,7 @@
                       {% csrf_token %}
                       <!-- 이미지 추가 필요 -->
                       {% if request.user.image %}
-                        <img src="{{ request.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
+                        <img src="{{ request.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 25px; border-radius: 500px">
                       {% else %}
                         <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
                       {% endif %}

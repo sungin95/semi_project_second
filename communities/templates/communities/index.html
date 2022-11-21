@@ -8,7 +8,7 @@
 
 {% block content %}
   <!-- 공지사항-->
-  <div class="container">
+  <div class="container my-5">
     <h4 class="m-3">공지사항</h4>
     <!-- 공지사항 시작 -->
     {% for notion in notions %}
@@ -23,13 +23,13 @@
       <div class="col-2">{{ notion.created_string }}</div>
       
     </div>
-    <hr class="my-2">
+    <hr class="my-1">
     {% endfor %}
     <!-- 공지사항 종료 -->
   </div>
 
   <!--오늘의 BEST-->
-  <div class="container">
+  <div class="best">
     <h4 class="m-2 mt-5">오늘의 BEST</h4>
     <div>
       <div class="today-best-ten">
@@ -146,23 +146,6 @@
     <a class="recomm" method="POST" href="{% url 'communities:notion_create' %}">공지쓰기</a>
     {% endif %}
     <a class="recomm" method="POST" href="{% url 'communities:article_create' %}">글쓰기</a>
-        <!-- 게시글 정렬 -->
-        <div class="dropdown">
-          <button class="recomm dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            추천순
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li>
-              <a class="dropdown-item" href="#">추천순</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">최신순</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">인기순</a>
-            </li>
-          </ul>
-        </div>
   </div>
   <!--탭 버튼-->
   <div class="btn_group" data-toggle="buttons">
@@ -227,7 +210,7 @@
           <div class="col-1">{{ article.hits }}</div>
           <div class="col-1">{{ article.created_string }}</div>
         </div>
-        <hr class="m-2 my-1">
+        <hr class="m-3 my-2">
       </a>
       <!-- 게시글 끝 -->
       {% endfor %}

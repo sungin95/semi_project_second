@@ -208,6 +208,8 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    padding: 0 50px 0 50px;
+
 }
 
 .card-bodys {
@@ -262,6 +264,13 @@
     width: 94%;
     height: 20%;
     z-index: 5;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1.5rem;
+    padding:0 20px 10px 20px;
+
 }
 
 .img-blind-without {
