@@ -237,7 +237,6 @@ def calculate_weight(request):
     return redirect("products:index")
 
 @login_required
-
 def calculate_price(request):
     products = Products.objects.all()
     # 가격 등급 나누기.
@@ -256,7 +255,6 @@ def calculate_price(request):
     return redirect("products:index")
 
 @login_required
-
 def calculate_storage(request):
     products = Products.objects.all()
     # 저장 용량 등급 나누기.
@@ -273,7 +271,6 @@ def calculate_storage(request):
     return redirect("products:index")
 
 @login_required
-
 def calculate_processor(request):
     products = Products.objects.all()
     # CPU제조사 분류
@@ -308,7 +305,6 @@ def calculate_processor(request):
     return redirect("products:index")
 
 @login_required
-
 def calculate_graphic(request):
     products = Products.objects.all()
     # 그래픽카드 분류
@@ -327,22 +323,20 @@ def calculate_graphic(request):
     return redirect("products:index")
 
 @login_required
-
 def calculate_resolution(request):
     products = Products.objects.all()
     # 해상도 분류
     for product in products:
-        if "FHD" in product.해상도:
+        if int(product.해상도[5:9]) <= 1200:
             product.해상도등급 = "FHD"
-        elif "QHD" in product.해상도:
+        elif int(product.해상도[5:9]) <= 1600:
             product.해상도등급 = "QHD"
-        elif "UHD" in product.해상도:
+        elif int(product.해상도[5:9]) <= 2400:
             product.해상도등급 = "UHD"
         product.save()
     return redirect("products:index")
 
 @login_required
-
 def calculate_size(request):
     products = Products.objects.all()
     # 노트북 크기 분류
@@ -358,6 +352,7 @@ def calculate_size(request):
             or product.화면크기 == "33.78cm(13.3인치)"
             or product.화면크기 == "35.6cm(14인치)"
             or product.화면크기 == "35.56cm(14인치)"
+            or product.화면크기 == "35.97cm(14.2인치)"
         ):
             product.화면크기등급 = "1"
         elif (
@@ -368,6 +363,8 @@ def calculate_size(request):
             or product.화면크기 == "40.64cm(16인치)"
             or product.화면크기 == "35.97cm(14.2인치)"
             or product.화면크기 == "41.05cm(16.2인치)"
+            or product.화면크기 == "40.9cm(16.1인치)"
+            or product.화면크기 == "40.89cm(16.1인치)"
             or product.화면크기 == "38.1cm(15인치)"
             or product.화면크기 == "40.6cm(16인치)"
         ):
@@ -375,7 +372,7 @@ def calculate_size(request):
         elif (
             product.화면크기 == "43.9cm(17.3인치)"
             or product.화면크기 == "43.1cm(17인치)"
-            or product.화면크기 == "43.94cm(17.3인치"
+            or product.화면크기 == "43.94cm(17.3인치)"
             or product.화면크기 == "43.18cm(17인치)"
         ):
             product.화면크기등급 = "3"
