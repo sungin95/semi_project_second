@@ -26,6 +26,7 @@ def index(request):
         "question_list": page_obj,
         "bests": bests,
         "notions": notions,
+        "category": "전체",
     }
     return render(request, "communities/index.html", context)
 
@@ -42,6 +43,7 @@ def index_jab(request):
         "question_list": page_obj,
         "bests": bests,
         "notions": notions,
+        "category": "잡담",
     }
     return render(request, "communities/index.html", context)
 
@@ -58,6 +60,7 @@ def index_question(request):
         "question_list": page_obj,
         "bests": bests,
         "notions": notions,
+        "category": "질문",
     }
     return render(request, "communities/index.html", context)
 
@@ -74,6 +77,7 @@ def index_boast(request):
         "question_list": page_obj,
         "bests": bests,
         "notions": notions,
+        "category": "자랑",
     }
     return render(request, "communities/index.html", context)
 
@@ -90,6 +94,7 @@ def index_consult(request):
         "question_list": page_obj,
         "bests": bests,
         "notions": notions,
+        "category": "고민/상담",
     }
     return render(request, "communities/index.html", context)
 
@@ -106,6 +111,7 @@ def index_hello(request):
         "question_list": page_obj,
         "bests": bests,
         "notions": notions,
+        "category": "인사",
     }
     return render(request, "communities/index.html", context)
 

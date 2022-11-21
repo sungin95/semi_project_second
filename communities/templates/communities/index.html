@@ -165,14 +165,37 @@
         </div>
   </div>
   <!--탭 버튼-->
-  <div class="btn_group">
-    <a class="btn_btn" href="{% url 'communities:index' %}">베스트</a>
+  <div class="btn_group" data-toggle="buttons">
+    {% if category == '전체' %}
     <a class="btn_btn" href="{% url 'communities:index' %}">전체</a>
+    {% else %}
+    <a class="btn_btn_dis" href="{% url 'communities:index' %}">전체</a>
+    {% endif %}
+    {% if category == '잡담' %}
     <a class="btn_btn" href="{% url 'communities:index_jab' %}">잡담</a>
+    {% else %}
+    <a class="btn_btn_dis" href="{% url 'communities:index_jab' %}">잡담</a>
+    {% endif %}
+    {% if category == '질문' %}
     <a class="btn_btn" href="{% url 'communities:index_question' %}">질문</a>
+    {% else %}
+    <a class="btn_btn_dis" href="{% url 'communities:index_question' %}">질문</a>
+    {% endif %}
+    {% if category == '자랑' %}
     <a class="btn_btn" href="{% url 'communities:index_boast' %}">자랑</a>
+    {% else %}
+    <a class="btn_btn_dis" href="{% url 'communities:index_boast' %}">자랑</a>
+    {% endif %}
+    {% if category == '고민/상담' %}
     <a class="btn_btn" href="{% url 'communities:index_consult' %}">고민/상담</a>
+    {% else %}
+    <a class="btn_btn_dis" href="{% url 'communities:index_consult' %}">고민/상담</a>
+    {% endif %}
+    {% if category == '인사' %}
     <a class="btn_btn" href="{% url 'communities:index_hello' %}">인사</a>
+    {% else %}
+    <a class="btn_btn_dis" href="{% url 'communities:index_hello' %}">인사</a>
+    {% endif %}
   </div>
 
   <!--글 목록-->

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from django.contrib import messages
 
 load_dotenv()
 
@@ -119,6 +120,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = "config.wsgi.application"
 

@@ -56,6 +56,19 @@
     text-decoration-line: none;
 }
 
+.btn_btn_dis {
+    width: 100%;
+    padding: 13px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-right: 1px solid  #f8f2ff;
+    background:  #f8f2ff;
+    color: rgb(85, 85, 85);
+    text-align: center;
+    text-decoration-line: none;
+}
+
 .btn_btn:last-child {
     border-right: none;
 }
@@ -154,4 +167,8 @@
     display: inline-block;
     margin-top: 20px;
     padding: 0;
+}
+
+.writing {
+    justify-content: center;
 }
