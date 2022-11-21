@@ -11,22 +11,14 @@
 }
 
 .choice1 {
-    position: fixed;
-    bottom: 5%;
-    width: 14%;
 }
 .choice2 {
-    position: fixed;
-    bottom: 9%;
-    width: 14%;
 }
 
 .sidebar-wrapper {
     min-width: 20%;
     padding-right: 10px;
-    position: sticky;
     height: 20%;
-    top: 0%;
 }
 
 .sidebar-0,
