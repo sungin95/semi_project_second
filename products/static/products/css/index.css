@@ -278,7 +278,5 @@ aside {
 
 .loading-state {
     display: flex;
-    position: fixed;
-    top: 50%;
-    left: 50%;
+    justify-content: center;
 }

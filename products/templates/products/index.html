@@ -408,7 +408,7 @@
         <input type="button" class="btn btn-dark choice2" value="조건리셋" id="resetBtn">
       </div>
       <input type="checkbox" name='category' value="{{ category }}" checked="true" class="d-none" id="category">
-      <input type="checkbox" name='search' value="{{ search }}" checked="true" class="d-none">
+      <input type="checkbox" name='search' value="{{ search }}" checked="true" class="d-none" id="searchBtn">
     </form>
 
     <!-- 제품 목록 -->
@@ -626,6 +626,9 @@
           document
             .querySelector("#category")
             .checked = false;
+          document
+            .querySelector("#searchBtn")
+            .checked = false;
         });
       });
 
@@ -686,4 +689,5 @@
         }
       });
     </script>
+
   {% endblock js %}

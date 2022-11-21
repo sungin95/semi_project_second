@@ -337,6 +337,15 @@
         const direction = e.deltaY > 0 ? "Scroll Down" : "Scroll Up";
         if (direction == "Scroll Down") {
           navbar.style.transform = 'translateY(-100%)'
+          searchForm.style.visibility = 'hidden';
+          searchForm.style.opacity = '0';
+          profileBlackBgNone.style.visibility = 'hidden'
+          profileBlackBgNone.style.opacity = '0'
+          profileBlackBgLogin.style.visibility = 'hidden'
+          profileBlackBgLogin.style.opacity = '0'
+          blackBg
+          .classList
+          .remove('show-modal')
         } else {
           navbar.style.transform = 'translateY(0%)'
         }
