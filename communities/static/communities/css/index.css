@@ -138,6 +138,7 @@
     display: inline-block;
     margin-top: 20px;
     text-decoration-line: none;
+    text-align: end;
 }
 
 .recomm:hover{
@@ -170,5 +171,12 @@
 }
 
 .writing {
-    justify-content: center;
+    display: flex;
+    justify-content: end;
+    padding: 50px 0 0 0 ;
+}
+
+.best{
+    margin-top: 100px;
+
 }
