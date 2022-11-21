@@ -127,7 +127,7 @@ html {
 }
 
 .nav-detail-login a {
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     margin-left: 3px;
     font-size: 14px;
 }
@@ -326,4 +326,14 @@ html {
 .hamburger-click-down img {
     width: 70%;
     height: 70%;
+}
+
+.rate{
+    background-color: #a551fa;
+    color: white;
+    border-radius: 0.3rem;
+    padding: 0.01rem 0.4rem 0.01rem 0.4rem;
+    letter-spacing: 0.1px;
+    font-size: large;
+    text-decoration: none;
 }
