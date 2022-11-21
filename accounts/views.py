@@ -43,12 +43,10 @@ def signup(request):
 
 
 def login(request):
-    if request.user.is_authenticated:  # 로그인이 된 상태에서는 로그인 화면에 들어갈 수 없다.
+    if request.user.is_authenticated:
         return redirect("accounts:index")
     if request.method == "POST":
-        form = AuthenticationForm(
-            request, data=request.POST
-        )  # request가 없어도 잘 돌아가는거 같음 하지만 대부분이 request를 필수적으로 받아 가지고 편의상 넣겠음
+        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
             user = form.get_user()
