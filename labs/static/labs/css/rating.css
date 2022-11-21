@@ -3,15 +3,12 @@
   background: rgb(219, 219, 255);
 } */
 
-
-
-
 .info {
     text-align: center;
     margin: 2;
 }
 
-.info .mem_rate:before{
+.info .mem_rate:before {
     content: "";
     background: rgb(230, 230, 250);
     width: 12%;
@@ -22,7 +19,6 @@
     top: 55%;
     transform: translateX(-50%);
     opacity: 0.11;
-
 }
 
 .info h2 {
@@ -33,7 +29,6 @@
     margin-bottom: 20px;
     color: rgb(147, 112, 219);
     font-weight: bold;
-
 }
 
 .info h2 + div > p {
@@ -43,7 +38,8 @@
 }
 
 .info-rating {
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
 }
@@ -65,7 +61,7 @@
 }
 
 .info-rating ul > button:hover {
-    color:white;
+    color: white;
     background-color: rgb(147, 112, 219);
 }
 .info-rating ul > button > span {
@@ -73,15 +69,13 @@
 }
 
 .custom {
-    width:180px !important
+    width: 180px !important;
 }
-
-
 
 .infomation {
     height: 100%;
     width: 100%;
-    background-color: rgba(230, 230, 250, 0.9);  
+    background-color: rgba(230, 230, 250, 0.9);
     border-radius: 20px;
     padding: 45px 50px;
     text-align: center;
@@ -100,62 +94,54 @@
     flex-wrap: wrap;
 } */
 
-.member-benefit p:after{
+.member-benefit p:after {
     content: "+";
     position: absolute;
     margin-left: 5px;
-    top:33px;
+    top: 33px;
     width: 25px;
-    height:25px;
+    height: 25px;
     line-height: 20px;
     color: #fff;
     border-radius: 50%;
     background: rgb(147, 112, 219);
     font-size: 28px;
     text-align: center;
-  }
-  
-
-
+}
 
 .gc_lv_standard li {
     position: relative;
     background: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-gc-intro-cart.svg) no-repeat top/auto;
     padding-top: 110px;
     width: 32%;
-    padding-left:0;
+    padding-left: 0;
     margin-top: 15px;
     font-size: 16px;
     line-height: 18px;
     text-align: center;
-
 }
 
 .gc_lv_standard li:nth-child(2) {
     background-image: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-gc-intro-fr.svg);
 }
 
-.gc_lv_standard li:last-child{
+.gc_lv_standard li:last-child {
     background-image: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-gc-intro-fr.svg);
 }
 
-
-.gc_lv_standard li + li:before{
+.gc_lv_standard li + li:before {
     content: "or";
     position: absolute;
     left: -18px;
-    top:46px;
+    top: 46px;
     width: 25px;
     height: 25px;
     line-height: 25px;
     color: #fff;
     border-radius: 50%;
-    background: #699FFF;
+    background: #699fff;
     font-size: 14px;
 }
-
-
-
 
 .member-box {
     margin-top: 30px;
@@ -164,15 +150,13 @@
     justify-content: center;
     align-items: center;
     width: 40%;
-    border: 2px solid #CCDFFF;
+    border: 2px solid #ccdfff;
     border-radius: 20px;
     background: #fff;
     height: 190px;
     position: relative;
     padding: 30px;
 }
-
-
 
 .member-box h3 {
     position: absolute;
@@ -190,19 +174,16 @@
     text-align: center;
 }
 
-
 .card-body {
-    background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #F0F8FF 65%);
-  }
-  
-  .navbar {
-    background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #F0F8FF 75%);
-  }
+    background-image: linear-gradient(to top, rgb(252, 252, 252) 35%, #f0f8ff 65%);
+}
 
+.navbar {
+    background-image: linear-gradient(to bottom, rgb(253, 253, 252) 25%, #f0f8ff 75%);
+}
 
-
-  /* i5 */
-.ul-tabs .ui-tabs-panel{
+/* i5 */
+.ul-tabs .ui-tabs-panel {
     display: block;
     border-width: 0;
     background: none;
@@ -212,7 +193,7 @@
     border-bottom-right-radius: 3px;
 }
 
-.ui-widget-content{
+.ui-widget-content {
     border: 1px solid #ddd;
     color: #333;
 }
@@ -239,19 +220,17 @@
     display: block;
 }
 
-
 .gc_member_lv_box {
     display: flex;
     justify-content: center;
-    width:100%;
+    width: 100%;
     align-items: center;
     border: 2px solid rgb(147, 112, 219);
     border-radius: 20px;
     background: #fff;
     height: 190px;
     position: relative;
-    padding:30px;
-
+    padding: 30px;
 }
 
 .mo-ver {
@@ -286,47 +265,41 @@
     text-align: center;
 }
 
-
-
-
-
-.gc_member_lv_cont:not(.level1).gc_member_lv_box:first-child.gc_lv_cont p:after{
+.gc_member_lv_cont:not(.level1).gc_member_lv_box:first-child.gc_lv_cont p:after {
     content: "+";
     position: absolute;
     right: 17px;
     top: 3px;
     width: 25px;
-    height:25px;
+    height: 25px;
     line-height: 25px;
-    color:#fff;
+    color: #fff;
     border-radius: 50%;
     background-color: rgb(147, 112, 219);
     font-size: 28px;
     text-align: center;
 }
 
-
-
 .gc_lv_benefit li:before {
-    content:"";
+    content: "";
     display: inline-block;
     background: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-check.svg) no-repeat left/auto;
     width: 13px;
     height: 10px;
     margin-left: -20px;
-    top:22%;
+    top: 22%;
     margin-right: 10px;
 }
 
-ol, ul, li {
+ol,
+ul,
+li {
     list-style: none;
 }
-
 
 .gc_lv_standard {
     display: flex;
     justify-content: space-between;
-
 }
 
 .gc_lv_standard li {
@@ -339,7 +312,6 @@ ol, ul, li {
     font-size: 16px;
     line-height: 15px;
     text-align: center;
-
 }
 
 .gc_member_lv_inner .gc_lv_standard li:nth-child(2) {
@@ -350,30 +322,30 @@ ol, ul, li {
     content: "or";
     position: absolute;
     left: -18px;
-    top:46px;
+    top: 46px;
     width: 25px;
     height: 25px;
     line-height: 25px;
-    color:#fff;
+    color: #fff;
     border-radius: 50%;
     background: rgb(147, 112, 219);
     font-size: 14px;
 }
 
-.gc_member_lv_inner .gc_lv_standard li:last-child{
+.gc_member_lv_inner .gc_lv_standard li:last-child {
     background-image: url(https://www.samsungebiz.com/sec/static/evt/_images/icons/i-gc-intro-act.svg);
 }
 
 .gc_member_lv_box + p {
     font-size: 16px;
-    color: #8B8B8B;
+    color: #8b8b8b;
     margin-top: 10px;
 }
 
 .information {
     height: 100%;
     width: 100%;
-    background-color: rgba(230, 230, 250, 0.9);  
+    background-color: rgba(230, 230, 250, 0.9);
     border-radius: 20px;
     padding: 45px 50px;
     text-align: center;
