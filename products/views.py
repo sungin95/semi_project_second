@@ -253,14 +253,13 @@ def calculate_storage(request):
     products = Products.objects.all()
     # 저장 용량 등급 나누기.
     for product in products:
-        product.저장용량 = int(product.저장용량)
         if product.저장용량 <= 256:
             product.저장용량등급 = "1"
-        elif product.저장용량 > 500 and product.저장용량 <= 516:
+        elif product.저장용량 >= 500 and product.저장용량 <= 516:
             product.저장용량등급 = "2"
-        elif product.저장용량 > 999 and product.저장용량 <= 2000:
+        elif product.저장용량 >= 1024 and product.저장용량 < 2048:
             product.저장용량등급 = "3"
-        elif product.저장용량 > 2000:
+        elif product.저장용량 >= 2048:
             product.저장용량등급 = "4"
         product.save()
     return redirect("products:index")
@@ -367,11 +366,14 @@ def calculate_size(request):
         ):
             product.화면크기등급 = "3"
         product.save()
-        for product in products:
-            product.ten_price = int(round((product.가격) * 1.1))
-            product.save()
     return redirect("products:index")
 
+def calculate_ten(request):
+    products = Products.objects.all()
+    for product in products:
+        product.ten_price = int(round((product.가격) * 1.1))
+        product.save()
+    return redirect("products:index")
 
 @login_required
 def purchase(request, product_pk):

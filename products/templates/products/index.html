@@ -74,8 +74,6 @@
   <div class="main">
     <!-- 사이드바 -->
     <form class="sidebar-wrapper" method="" action="">
-      <input type="submit" class="btn btn-secondary choice1" value="조회">
-      <input type="button" class="btn btn-secondary choice2" value="조건리셋" id="resetBtn">
       <div>
         <div class="sidebar-0" style="overflow: hidden; height: 45px;">
           <div class="sidebar-brand">
@@ -373,6 +371,8 @@
         </div>
       </div>
       <hr>
+      <input type="submit" class="btn btn-secondary choice1" value="조회">
+      <input type="button" class="btn btn-secondary choice2" value="조건리셋" id="resetBtn">
       <input type="checkbox" name='category' value="{{ category }}" checked="true" class="d-none">
       <input type="checkbox" name='search' value="{{ search }}" checked="true" class="d-none">
     </form>
@@ -412,7 +412,7 @@
                       <p class="class-font">{{ product.가격 | intcomma }}원</p>
                     </div>
                     <hr>
-                    <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>
+                    <a href="{% url 'products:detail' product.pk %}" class="btn-color">자세히보기</a>
                   </div>
                 </div>
               </div>
@@ -450,7 +450,7 @@
                         <p class="class-font">{{ product.가격 | intcomma }}원</p>
                       </div>
                       <hr>
-                      <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>
+                      <a href="{% url 'products:detail' product.pk %}" class="btn-color">자세히보기</a>
                     </div>
                   </div>
                 </div>
@@ -485,7 +485,7 @@
                         <p class="class-font">{{ product.가격 | intcomma }}원</p>
                       </div>
                       <hr>
-                      <a href="{% url 'products:detail' product.pk %}" class="btn-color">구매하기</a>
+                      <a href="{% url 'products:detail' product.pk %}" class="btn-color">자세히보기</a>
                     </div>
                   </div>
                 </div>
