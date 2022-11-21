@@ -279,11 +279,11 @@ def calculate_storage(request):
     for product in products:
         if int(product.저장용량) <= 256:
             product.저장용량등급 = "250GB~256GB이하"
-        elif product.저장용량 >= 500 and product.저장용량 <= 512:
+        elif int(product.저장용량) >= 500 and int(product.저장용량) <= 512:
             product.저장용량등급 = "500GB~512GB이하"
-        elif product.저장용량 >= 1024 and product.저장용량 < 2048:
+        elif int(product.저장용량) >= 1024 and int(product.저장용량) < 2048:
             product.저장용량등급 = "1TB이상~2TB미만"
-        elif product.저장용량 >= 2048:
+        elif int(product.저장용량) >= 2048:
             product.저장용량등급 = "2TB이상"
         product.save()
     return redirect("products:index")
