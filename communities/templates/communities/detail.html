@@ -15,338 +15,219 @@
     <!-- 커뮤니티 헤더 -->
     <div class="r_header">
       <div class="head">
-        <span class="uesr_name">{{ article.user }} | </span>
-        <span class="grade">작성 시간 {{ article.update_at|date:"y-m-d" }}</span>
+        <span class="uesr_name">{{ article.user }}
+          |
+        </span>
+        <span class="grade">작성 시간
+          {{ article.update_at|date:"y-m-d" }}</span>
       </div>
       <div class="detailed_info">
         <!-- 조회수 -->
-          <div class="people_views">
-            <i class="bi bi-eye-fill"></i>
-            <span class="spen">{{ article.hits }}</span>
+        <div class="people_views">
+          <i class="bi bi-eye-fill"></i>
+          <span class="spen">{{ article.hits }}</span>
           <p class="">┃</p>
-      
+
           <!-- 조회수 -->
           <div class="people_views">
             <i class="bi bi-pencil-fill"></i>
             <span class="spen">{{ comments|length }}</span>
           </div>
           <p class="">┃</p>
-          
-          </div>
+
         </div>
       </div>
     </div>
-    <!-- 내용 -->
-    {% for ac in article_content %}
+  </div>
+  <!-- 내용 -->
+  {% for ac in article_content %}
     <h5 class="row mx-2 fw-bold">
       {{ ac }}
     </h5>
-      {% endfor %}
+  {% endfor %}
+  <div class="">
     <div class="">
-      <div class="">
       {% for img in article.articles_image.all %}
         <img src="{{ img.image.url }}" style="width: 150px; height: 150px; border-radius: 25px;">
       {% endfor %}
-      </div>
+    </div>
   </div>
-    <br>
-    <br>
-    <br>
-  <!-- 추천 --> 
-    <div class="likeBtn">
-      
-      {% if request.user in article.like.all %}
+  <br>
+  <br>
+  <br>
+  <!-- 추천 -->
+  <div class="likeBtn">
+
+    {% if request.user in article.like.all %}
       <button id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-hand-thumbs-up-fill likeSize">
         <span id="like-count">{{ article.like.count }}</span>
       </button>
-      {% else %}
+    {% else %}
       <button id="like-btn" data-article-id="{{ article.pk }}" class="bi bi-hand-thumbs-up likeSize">
         <span id="like-count">{{ article.like.count }}</span>
       </button>
-      {% endif %}
-        
-      
-    </div>
-    {% if request.user.pk == article.user.pk%}
-      {% if request.user.is_superuser %}
+    {% endif %}
+
+  </div>
+  {% if request.user.pk == article.user.pk%}
+    {% if request.user.is_superuser %}
       <form class="text-end" action="{% url "communities:article_delete" article.pk %}" method="POST">
         {% csrf_token %}
         <a href="{% url "communities:notion_update" article.pk %}" class="btn_modify1" method="POST">수정</a>
         <input class="btn_modify2" type="submit" value="삭제">
         <a href="{% url "communities:index" %}" class="btn_modify3">뒤로</a>
       </form>
-      {% else %}
-      {% comment %} {% elif request.user.is_authenticated %} {% endcomment %}
+    {% else %}
       <form class="text-end" action="{% url "communities:article_delete" article.pk %}" method="POST">
         {% csrf_token %}
         <a href="{% url "communities:update" article.pk %}" class="btn_modify1" method="POST">수정</a>
         <input class="btn_modify2" type="submit" value="삭제">
         <a href="{% url "communities:index" %}" class="btn_modify3">뒤로</a>
       </form>
-      {% comment %} {% else %} {% endcomment %}
-      {% endif %}
     {% endif %}
-  </div>
+  {% endif %}
+</div>
 
-  <!-- 댓글창 -->
-  <!-- 댓글 -->
-  <div>
-    {% comment %} {% for review in question_list %} {% endcomment %}
-      <div class="a-comment">
-        <!-- 리뷰 상단 -->
-        <div class="reviews-header">
-          <!-- 프로필 사진 -->
-          <div class="d-flex">
-            <div class="rounded-pill">
-              {% if comment.user.image %}
-                <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 50px; height: 50px; border-radius: 500px">
-              {% else %}
-                <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 50px; height: 50px; border-radius: 500px">
-              {% endif %}
-            </div>
-            <!-- 유저 네임 -->
-
-            <div class="user-name"></div>
-          </div>
-
-          {% if request.user.is_authenticated %}
-            <form id="comment-form" data-article-id="{{ article.pk }}" class="comment_n">
-              {% csrf_token %}
-              <input name="content" placeholder="댓글을 작성해주세요" type="text" required="comment_form" class="tradecomment-create" value="">
-              <input class="comment_form" type="submit" value="제출">
-            </form>
-          {% endif %}
-
-          <!-- 시간 -->
-          <div class="time">
-            {% comment %} {% if review.created_string == False %}
-              <td>{{ review.created_string|date:'m월 d일' }}</td>
+<!-- 댓글창 -->
+<!-- 댓글 -->
+<div>
+  <div class="a-comment">
+    <!-- 리뷰 상단 -->
+    <!-- 로그인이 안되면 댓글쓰기 창 안보임 -->
+    {% if request.user.is_authenticated %}
+      <div class="reviews-header">
+        <!-- 프로필 사진 -->
+        <div class="d-flex">
+          <div class="rounded-pill">
+            {% if request.user.image %}
+              <img src="{{ request.user.image.url }}" alt="프로필 사진" style="width: 50px; height: 50px; border-radius: 500px">
             {% else %}
-              <td>{{ review.created_string }}</td>
-            {% endif %} {% endcomment %}
+              <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 50px; height: 50px; border-radius: 500px">
+            {% endif %}
           </div>
         </div>
-        <!-- 댓글내용 -->
-        <div class="review-contents">
-          <div class="review-content"></div>
-          <div class="d-flex">
-              <div id="comments">
-                {% for comment in comments %}
-                {% if comment.parent_id == null %}
-                  <div class="my-2" style="display: inline-block;">
-                    {% if comment.user.image %}
-                      <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
-                    {% else %}
-                      <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
-                    {% endif %}
-                  </div>
-                  <span class="user-c-name">
-                    {{ comment.user.username }}</span>
-                    |
-                    <span>{{ comment.content }}</span>
-                    <!-- 대댓글작성, 삭제 폼 -->
-                    <div class="d-flex mx-5">
-                      <p>
-                        <button class="sub_comment-create" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{comment.id}}" aria-expanded="false" aria-controls="collapseExample">
-                          답글 작성
-                        </button>
-                      </p>
-                      {% if request.user == comment.user %}
-                        <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk comment.pk %}" method="POST">
-                          {% csrf_token %}
-                          <button type="submit" class="btn btn-danger">삭제</button>
-                        </form>
-                      {% endif %}
-                    </div>
-                    <div class="collapse" id="collapseExample{{comment.id}}">
-                      <div class="d-flex">
-                        {% if request.user.is_authenticated %}
-                        <form class="d-flex" id="comment-form" action="{% url 'communities:sub_comment_create' article.pk comment.pk %}" method="POST">
-                          {% csrf_token %}  
-                          <input name="content" placeholder="댓글을 작성해주세요" type="text" required="comment_form" class="tradecomment-create-2" value="">
-                          <input class="btn_comment" type="submit" value="제출">
-                        </form>
-                        {% endif %}
-                      </div>
-                    </div>
-                  <!-- 대댓글내용 -->
-                  <div class="mx-5 child-comments">
-                    {% for sub_comment in comments %}
-                      {% if comment.id == sub_comment.parent_id %}
-                        <div class="text_p">
-                          {% if sub_comment.user.image %}
-                            <img src="{{ sub_comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
-                          {% else %}
-                            <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
-                          {% endif %}
-                        
-                          <p class="comment_p">
-                            {{ sub_comment.user.username }}
-                            |
-                            {{ sub_comment.content }}</p>
-                          <div class="comment_a" style="">
-                            {% if request.user == sub_comment.user %}
-                              <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk sub_comment.pk %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" class="comment_a" style="font-size: small;">삭제</button>
-                              </form>
-                            {% endif %}
-                          </div>
-                        </div>
-                      {% endif %}
-                      {% empty %}
-                        <p>.</p>
-                    {% endfor %}
-                  </div>
-                  <!-- 대댓글끝 -->
-                  <!-- 대댓글작성, 삭제 폼 끝 -->
-                  {% endif %}
-                {% endfor %}
-              </div>
-          </div>
-        </div>
+        <form id="comment-form" data-article-id="{{ article.pk }}" class="comment_n">
+          {% csrf_token %}
+          <input name="content" placeholder="댓글을 작성해주세요" type="text" required="comment_form" class="tradecomment-create" value="">
+          <input class="comment_form" type="submit" value="제출">
+        </form>
+        <!--시간 -->
+        <!-- <div class="time"> {% if review.created_string == False %} <td>{{ review.created_string|date:'m월 d일' }}</td> {% else %} <td>{{ review.created_string }}</td> {% endif %} </div> -->
+      </div>
+    {% endif %}
 
-        <!-- 리뷰에 댓글 달기
-        <div class="re-comment">
-          <div class='d-flex justify-content-between'>
-            <div class='d-flex'>
-              <div>
-                <div class="text-primary text-opacity-25">
-                  <div class="d-flex justify-content-between">
-                    <div>
-                      <-- 로그인된 유저만 보이기 -->
-                      <!-- 리뷰 좋아요 -->
-                      <!-- <div>
-
-            <div>
-                <div class="d-flex">
-                    <div class="user-name">user-name</div>
-                    <div class="time">
-                        time
-                        {% comment %} {% if review.created_string == False %}
-                          <td>{{ review.created_string|date:'m월 d일' }}</td>
-                        {% else %}
-                          <td>{{ review.created_string }}</td>
-                        {% endif %} {% endcomment %}
-                      </div>
-                </div>
-                <div class="user-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid sint quia omnis et eaque aliquam corporis facilis dicta perferendis unde, ea neque magni minima commodi illum consectetur culpa consequuntur qui!</div>
-                <div class="d-flex justify-content-between">
-                    <div class="d-flex">
-
-                        <form class="like-review" data-reviewa-id="" data-restauranta-id="" method="POST">
-                            {% csrf_token %}
-                            {% if request.user.is_authenticated %}
-                            {% comment %} {% if request.user in review.like.all %}
-                            <input type="submit" class="btn btn-dark review-like{{ review.pk }}" value="좋아요 취소">
-                            {% else %}
-                            <input type="submit" class="btn btn-dark review-like{{ review.pk }}" value="좋아요">
-                            {% endif %} {% endcomment %}
-                            {% else %}
-                            <input type="submit" class="btn btn-dark" value="좋아요" disabled="disabled">
-                            {% endif %}
-                            <span class=""></span>
-                        </form>
-                        <div>주인장 좋아요</div>
-                        <button id="comment-btn" type="button" class="btn btn-sm btn-secondary review-comment" data-review-id="">댓글달기</button>
-                    </div>
-                    <div class="text-end">
-                        수정 삭제
-                      {% comment %} {% if review.user.pk == request.user.pk %}
-                        <a href="{% url 'reviews:update' review.pk restaurant.pk %}" class="link-secondary">수정</a>
-                        <a href="{% url 'reviews:delete' review.pk restaurant.pk %}" class="link-danger">삭제</a>
-                      {% endif %} {% endcomment %}
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- 리뷰에 댓글 달기 -->
-        <!-- <div class="re-comment">
-          <div class='d-flex justify-content-between'>
-            <div class='d-flex'>
-                <div>
-                    <div class="text-primary text-opacity-25">
-                        <div class="d-flex justify-content-between">
-                            <div> -->
-                                <!-- 로그인된 유저만 보이기 -->
-                                <!-- 리뷰 좋아요 -->
-                                <!-- <div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-              </div>
-            </div>
-            
-          </div>
-          <div class="hidden"> -->
-            <!-- 대댓글폼 클릭 -->
-            <!-- {% comment %} <form class="commentForm" method="POST" data-review-id="">
-              {% csrf_token %}
-              {% bootstrap_form comment_form %}
-              <input type="submit" class='btn' value='입력'>
-            </form> {% endcomment %}
-          </div>
-          <hr> -->
-          <!-- 대댓글 -->
-          <!-- {% comment %} {% for comment in review.comment_set.all %}
-            <div class="d-flex justify-content-between">
-              <div class="">
+    <!-- 댓글내용 -->
+    <div class="review-contents">
+      <div class="d-flex">
+        <div id="comments">
+          {% for comment in comments %}
+            {% if comment.parent_id == null %}
+              <div class="my-2" style="display: inline-block;">
                 {% if comment.user.image %}
-                  <img src="{{ comment.user.image.url }}" alt="" style="width: 50px; height: 50px; border-radius: 500px">
+                  <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
                 {% else %}
-                  <img src="https://www.dummyimage.com/600x400/000/fff" alt="" style="width: 50px; height: 50px; border-radius: 500px">
+                  <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
                 {% endif %}
-                <span class="user-c-name">{{comment.user}}</span>
-                <span>{{comment.content}}</span>
               </div>
-              <div>
-                {% if request.user.pk == comment.user.pk %}
-                  <form class="comment-delete" data-review-id="{{ review.pk }}" data-comment-id="{{ comment.pk }}">
+              <span class="user-c-name">
+                {{ comment.user.username }}</span>
+              |
+              <span>{{ comment.content }}</span>
+              <!-- 대댓글작성, 삭제 폼 -->
+              <div class="d-flex mx-5">
+                <p>
+                  <button class="sub_comment-create" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{comment.id}}" aria-expanded="false" aria-controls="collapseExample">
+                    답글 작성
+                  </button>
+                </p>
+                {% if request.user == comment.user %}
+                  <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk comment.pk %}" method="POST">
                     {% csrf_token %}
-                    <button type=" submit" class="btn btn-danger">삭제</button>
+                    <button type="submit" class="btn btn-danger">삭제</button>
                   </form>
                 {% endif %}
               </div>
-            </div>
-          {% endfor %} {% endcomment %}
+              <div class="collapse" id="collapseExample{{comment.id}}">
+                <div class="d-flex">
+                  {% if request.user.is_authenticated %}
+                    <form class="d-flex" id="comment-form" action="{% url 'communities:sub_comment_create' article.pk comment.pk %}" method="POST">
+                      {% csrf_token %}
+                      <!-- 이미지 추가 필요 -->
+                      {% if request.user.image %}
+                        <img src="{{ request.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
+                      {% else %}
+                        <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
+                      {% endif %}
+                      <!-- 이미지 여기까지 -->
+                      <input name="content" placeholder="댓글을 작성해주세요" type="text" required="comment_form" class="tradecomment-create-2" value="">
+                      <input class="btn_comment" type="submit" value="제출">
+                    </form>
+                  {% endif %}
+                </div>
+              </div>
+              <!-- 대댓글내용 -->
+              <div class="mx-5 child-comments">
+                {% for sub_comment in comments %}
+                  {% if comment.id == sub_comment.parent_id %}
+                    <div class="text_p">
+                      {% if sub_comment.user.image %}
+                        <img src="{{ sub_comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
+                      {% else %}
+                        <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
+                      {% endif %}
+
+                      <p class="comment_p">
+                        {{ sub_comment.user.username }}
+                        |
+                        {{ sub_comment.content }}</p>
+                      <div class="comment_a" style="">
+                        {% if request.user == sub_comment.user %}
+                          <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk sub_comment.pk %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="comment_a" style="font-size: small;">삭제</button>
+                          </form>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+                  {% empty %}
+                  <p>.</p>
+                {% endfor %}
+              </div>
+              <!-- 대댓글끝 -->
+              <!-- 대댓글작성, 삭제 폼 끝 -->
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
-      {% comment %} {% empty %}
-      <p class="text-center">아직 리뷰가 없습니다. 리뷰를 남겨
-        <b>{{ restaurant.restaurant_name }}</b>의 첫번째 리뷰를 남겨보세요.
-      </p> {% endcomment %}
-    {% comment %} {% endfor %} {% endcomment %}
-  </div>
-</div> -->
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-  // 댓글!
-  // (1) 댓글 폼
-  const commentForm = document.querySelector('#comment-form')
-  // (2) 제출하면, 함수 실행시킬래
-  // csrf
-  const csrftoken = document
-    .querySelector('[name=csrfmiddlewaretoken]')
-    .value
-    commentForm
-    .addEventListener('submit', function (event) {
-      event.preventDefault();
-      axios({
-        method: 'post',
-        url: `/communities/${event.target.dataset.articleId}/comments/`,
-        headers: {
-          'X-CSRFToken': csrftoken
-        },
-        data: new FormData(commentForm) // 폼에 있는 정보를 data로 넘겨줄 수 있도록 변환
-      }).then(response => {
-        const comments = document.querySelector("#comments")
-            comments.insertAdjacentHTML('beforeend',`
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      // 댓글!
+      // (1) 댓글 폼
+      const commentForm = document.querySelector('#comment-form')
+      // (2) 제출하면, 함수 실행시킬래
+      // csrf
+      const csrftoken = document
+        .querySelector('[name=csrfmiddlewaretoken]')
+        .value
+        commentForm
+        .addEventListener('submit', function (event) {
+          event.preventDefault();
+          axios({
+            method: 'post',
+            url: `/communities/${event.target.dataset.articleId}/comments/`,
+            headers: {
+              'X-CSRFToken': csrftoken
+            },
+            data: new FormData(commentForm) // 폼에 있는 정보를 data로 넘겨줄 수 있도록 변환
+          }).then(response => {
+            const comments = document.querySelector("#comments")
+            comments.insertAdjacentHTML('beforeend', `
             <div class="my-2" style="display: inline-block">
-             {% if comment.user.image %}
-                <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
+             {% if request.user.image %}
+                <img src="{{ request.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
               {% else %}
                 <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">
               {% endif %}
@@ -369,43 +250,37 @@
               </div>
             `)
             commentForm.reset()
-      })
-    })
-</script>
-<script>
-  // 북마크 비동기
-  const likeBtn = document.querySelector("#like-btn");
-  likeBtn.addEventListener("click", (e) => {
-    axios({ method: "get", url: `/communities/${e.target.dataset.articleId}/like` }).then((res) => {
-      if (res.data.isLiked === true) {
-        e.target.classList.add("bi-hand-thumbs-up-fill");
-        e.target.classList.remove("bi-hand-thumbs-up");
-      } else {
-        e.target.classList.add("bi-hand-thumbs-up");
-        e.target.classList.remove("bi-hand-thumbs-up-fill");
-      }
-      const likeCount = document.querySelector("#like-count");
-      likeCount.innerText = res.data.likeCount;
-    });
-});
-</script>
+          })
+        })
+    </script>
+    <script>
+      // 북마크 비동기
+      const likeBtn = document.querySelector("#like-btn");
+      likeBtn.addEventListener("click", (e) => {
+        axios({method: "get", url: `/communities/${e.target.dataset.articleId}/like`}).then((res) => {
+          if (res.data.isLiked === true) {
+            e
+              .target
+              .classList
+              .add("bi-hand-thumbs-up-fill");
+            e
+              .target
+              .classList
+              .remove("bi-hand-thumbs-up");
+          } else {
+            e
+              .target
+              .classList
+              .add("bi-hand-thumbs-up");
+            e
+              .target
+              .classList
+              .remove("bi-hand-thumbs-up-fill");
+          }
+          const likeCount = document.querySelector("#like-count");
+          likeCount.innerText = res.data.likeCount;
+        });
+      });
+    </script>
 
-{% endblock content %}
-
-{% comment %} <div class="d-flex justify-content-between">
-  <div>
-    {% if comment.user.image %}
-      <img src="{{ comment.user.image.url }}" alt="" style="width: 50px; height: 50px; border-radius: 500px">
-    {% else %}
-      <img src="https://www.dummyimage.com/600x400/000/fff" alt="" style="width: 50px; height: 50px; border-radius: 500px">
-    {% endif %}
-    <span class="user-c-name">${response.data.comment_review_user}</span>
-    <span>${response.data.comment_review_content}</span>
-  </div>
-  <div>
-      <form class="comment-delete" data-review-id="${reviewId}" data-comment-id="${response.data.comment_review_pk}">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">삭제</button>
-      </form>
-  </div>
-</div>); {% endcomment %}
+  {% endblock content %}
