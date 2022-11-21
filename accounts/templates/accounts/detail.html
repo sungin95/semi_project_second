@@ -120,16 +120,31 @@
             {% endfor %}
           </table>
         </div>
-      <hr class="hr">
-      <div class="review">
-        <p class="bookmarked_p">커뮤니티 댓글</p>
-        <p class="explanation">*사용자가 쓴 댓글을 볼 수 있습니다.</p>
-        {% for comment in user.comments_set.all %}
-          <p>
-            {{ comment.content }}
-          </p>
-        {% endfor %}    
-      </div>  
-    </div>
+        <hr class="hr">
+        <div class="bookmarked">
+          <p class="bookmarked_p">커뮤니티</p>
+          <p class="explanation">*사용자가 쓴 커뮤니티 글을 볼 수 있습니다.</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">제목</th>
+                <th scope="col">카테고리</th>
+                <th scope="col">내용</th>
+              </tr>
+            </thead>
+            {% for article in user.articles_set.all %}
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <a href="{% url 'communities:detail' article.pk %}">
+                      {{ article.title }}</a>
+                  </th>
+                  <td>{{ article.category }}</td>
+                  <td>{{ article.content }}</td>
+                </tr>
+              </tbody>
+            {% endfor %}
+          </table>
+        </div>
 
     {% endblock content %}
