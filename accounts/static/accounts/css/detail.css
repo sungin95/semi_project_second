@@ -181,7 +181,7 @@
     background-color: #a551fa;
     color: white;
     border-radius: 0.3rem;
-    padding: 0.05rem 0.5rem;
+    padding: 0.01rem 0.4rem 0.01rem 0.4rem;
     letter-spacing: 0.1px;
-    font-size: medium;
+    font-size: large;
 }
