@@ -186,18 +186,7 @@
         </div>
       </div>
     </div>
-    {% if messages %}  
-      <div class="messages container" style="background-color: #d5caff;">
-        {% for message in messages %}
-        <div class="d-flex alert {{ message.tags }} alert-auto-dismissible alert-dismissible notification-container text-center" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          {{ message }}
-        </div>
-        {% endfor %}
-      </div>    
-    {% endif %}
+
 
     <!-- 타임특가정보 -->
     {% block timesale %}{% endblock timesale %}
