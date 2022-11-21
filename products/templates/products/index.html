@@ -371,8 +371,10 @@
         </div>
       </div>
       <hr>
-      <input type="submit" class="btn btn-secondary choice1" value="조회">
-      <input type="button" class="btn btn-secondary choice2" value="조건리셋" id="resetBtn">
+      <div class="d-flex justify-content-center">
+        <input type="submit" class="btn btn-dark choice1" style="margin-right:20px;" value="조회">
+        <input type="button" class="btn btn-dark choice2" value="조건리셋" id="resetBtn">
+      </div>
       <input type="checkbox" name='category' value="{{ category }}" checked="true" class="d-none">
       <input type="checkbox" name='search' value="{{ search }}" checked="true" class="d-none">
     </form>
