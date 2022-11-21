@@ -36,6 +36,7 @@
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 1.4rem;
     font-weight: 600;
+    letter-spacing: -3.5px;
 }
 
 
@@ -167,11 +168,20 @@
     text-decoration: none;
 }
 
-.rating{
+/* .rating{
     background-color: #a551fa;
     border-radius: 0.3rem;
-    margin-right: 1rem;
     padding: 0.2rem 0.9rem;
     color: white;
     font-size: small;
+    letter-spacing: 0.1px;
+} */
+
+.rate{
+    background-color: #a551fa;
+    color: white;
+    border-radius: 0.3rem;
+    padding: 0.05rem 0.5rem;
+    letter-spacing: 0.1px;
+    font-size: medium;
 }
