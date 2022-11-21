@@ -123,7 +123,6 @@
             {% endif %} {% endcomment %}
           </div>
         </div>
-
         <!-- 댓글내용 -->
         <div class="review-contents">
           <div class="review-content"></div>
@@ -350,9 +349,9 @@
               {% endif %}
             </div>
             <span class="user-c-name">
-              {{ comment.user.username }}</span>
+              ${response.data.userName}</span>
               |
-              <span>{{ comment.content }}</span>
+              <span>${response.data.content}</span>
               <!-- 대댓글작성, 삭제 폼 -->
               <div class="d-flex mx-5">
                 <p>
@@ -360,12 +359,10 @@
                     답글 작성
                   </button>
                 </p>
-                {% if request.user == comment.user %}
-                  <form class="comment-delete" action="{% url 'communities:comment_delete' article.pk comment.pk %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">삭제</button>
+                <form class="comment-delete">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger">삭제</button>
                   </form>
-                {% endif %}
               </div>
             `)
             commentForm.reset()
