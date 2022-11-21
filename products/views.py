@@ -277,9 +277,9 @@ def calculate_storage(request):
     products = Products.objects.all()
     # 저장 용량 등급 나누기.
     for product in products:
-        if product.저장용량 <= 256:
+        if int(product.저장용량) <= 256:
             product.저장용량등급 = "250GB~256GB이하"
-        elif product.저장용량 >= 500 and product.저장용량 <= 516:
+        elif product.저장용량 >= 500 and product.저장용량 <= 512:
             product.저장용량등급 = "500GB~512GB이하"
         elif product.저장용량 >= 1024 and product.저장용량 < 2048:
             product.저장용량등급 = "1TB이상~2TB미만"
