@@ -37,6 +37,7 @@ def add_cart(request, product_id):
         )
         cart_item.save()
         messages.success(request, "상품이 장바구니에 추가 되었습니다.")
+
     return redirect("products:detail", product_id)
 
 
