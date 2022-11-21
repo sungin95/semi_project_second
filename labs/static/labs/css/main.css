@@ -6,7 +6,7 @@
     font-size: 0.7rem;
     margin: 0px 50px 0 50px;
     padding-left: 100px;
-    padding-right:100px;
+    padding-right: 100px;
 }
 
 .main-category p {
@@ -86,8 +86,6 @@
     flex-direction: column;
 
     border: 5px solid rgb(205, 205, 255);
-
-
 }
 
 .best-ranking h3 {
@@ -113,8 +111,7 @@
     padding: 20px 10px 10px 10px;
     border-radius: 0.5rem;
     font-size: 0.8rem;
-    height: 100%
-    
+    height: 100%;
 }
 
 .now {
@@ -303,7 +300,6 @@
     border-style: none;
     justify-content: center;
     margin: auto;
-
 }
 
 .sale-price {
@@ -317,4 +313,6 @@
 .region_img {
     margin-top: 50px;
     margin-bottom: 50px;
+    width: 264.08px;
+    height: 154px;
 }

@@ -45,7 +45,7 @@ class Products(models.Model):
     메모리교체 = models.TextField(blank=True, null=True)
     메모리구성 = models.TextField(blank=True, null=True)
     저장장치종류 = models.TextField(blank=True, null=True)
-    저장용량 = models.IntegerField(blank=True, null=True)
+    저장용량 = models.IntegerField(blank=True, null=True, default=0)
     저장슬롯 = models.TextField(blank=True, null=True)
     GPU종류 = models.TextField(blank=True, null=True)
     GPU제조사 = models.TextField(blank=True, null=True)
