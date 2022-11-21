@@ -33,7 +33,7 @@ def signup(request):
             if form.is_valid():
                 user = form.save()
                 auth_login(request, user)
-                return redirect("accounts:login")
+                return redirect("labs:main")
     else:
         form = MySignupForm()
     context = {
@@ -44,7 +44,7 @@ def signup(request):
 
 def login(request):
     if request.user.is_authenticated:
-        return redirect("accounts:index")
+        return redirect("labs:main")
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
