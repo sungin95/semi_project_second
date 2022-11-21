@@ -286,6 +286,7 @@
 
 .what-to-do {
     z-index: 7;
+    padding: 0 5px 0 5px;
 }
 
 .inner {
@@ -312,7 +313,8 @@
 }
 
 .sale-price {
-    font-size: 20px;
+    font-size: 17px;
+    padding: 0 10px 0 10px;
 }
 
 .md-pick {
