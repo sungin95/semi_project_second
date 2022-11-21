@@ -204,7 +204,10 @@
                     </button>
                   </li>
                   <li>
-                    <button id="btnCart" type="button" class="btn btn-k btn-type2 ms-3 px-3">바로구매</button>
+                    <form id="purchase" data-product-id="{{product.pk}}">
+                        {% csrf_token %}
+                        <button id="btnCart" type="submit" class="btn btn-k btn-type2 ms-3 px-3">바로구매</button>
+                    </form>
                   </li>
                 </ul>
               </div>
@@ -218,9 +221,6 @@
 </div>
 </div>
 <!-- 스펙 -->
-<form action="13122312312" method="get">
-    <input type="submit" value="11233">
-</form>
 <div class="b_tit">
   <h3 class="txt">상품 상세정보</h3>
 </div>
@@ -597,7 +597,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="/static/js/product.js"></script>
+<script src="{% static 'products/js/product.js' %}"></script>
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/popper.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
@@ -744,6 +744,7 @@ buttons: [
     })
 </script>
 <script>
+    // 리뷰 삭제
     const reviewDelete = document.querySelector(".review-delete")
     reviewDelete.addEventListener("submit", function (event) {
     const productId = event.target.dataset.productId;
@@ -765,6 +766,7 @@ buttons: [
     })
 </script>
 <script>
+    // 리뷰 수정
     const reviewUpdate = document.querySelector(".review-update")
     reviewUpdate.addEventListener("click", function (event) {
         const productId = event.target.dataset.productId;
@@ -784,4 +786,26 @@ buttons: [
             })
         })
 </script>
+{% comment %} <script>
+    const purchase = document.querySelector("#purchase")
+    const result = document.querySelector("#result")
+    purchase.addEventListener("submit", function (event) {
+        const productId = event.target.dataset.productId;
+        const quantity = Number(result.innerText)
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        event.preventDefault()
+        axios(
+            {
+                method: "post", 
+                url: `/products/purchase/${productId}/${quantity}`,
+                headers: {
+                    'X-CSRFToken': csrftoken
+                },
+            }
+        )
+        .then(response => {
+            console.log(123)
+            })
+        })
+</script> {% endcomment %}
 {% endblock js %}

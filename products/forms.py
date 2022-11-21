@@ -32,11 +32,3 @@ class PurchaseForm(forms.ModelForm):
         labels = {
             "content": "배송 메시지",
         }
-        # widgets = {
-        #     "content": forms.Textarea(
-        #         attrs={
-        #             "class": "form-control mt-2",
-        #             "placeholder": "상품이 어떠셨나요? 솔직한 리뷰를 남겨 주세요^^",
-        #         }
-        #     ),
-        # }

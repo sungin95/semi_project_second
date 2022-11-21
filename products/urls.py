@@ -28,8 +28,9 @@ urlpatterns = [
     path("calculate_storage/", views.calculate_storage, name="calculate_storage"),
     path("calculate_processor/", views.calculate_processor, name="calculate_processor"),
     path("calculate_graphic/", views.calculate_graphic, name="calculate_graphic"),
-    path("calculate_resolution/", views.calculate_resolution, name="calculate_resolution"),
+    path(
+        "calculate_resolution/", views.calculate_resolution, name="calculate_resolution"
+    ),
     path("calculate_size/", views.calculate_size, name="calculate_size"),
     path("calculate_ten/", views.calculate_ten, name="calculate_ten"),
-    path("purchase/<int:product_pk>", views.purchase, name="purchase"),
 ]

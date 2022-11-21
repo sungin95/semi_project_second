@@ -8,42 +8,46 @@ from django.http import JsonResponse
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_safe, require_http_methods, require_POST
+from django.views.decorators.http import (
+    require_safe,
+    require_http_methods,
+    require_POST,
+)
 
 # Create your views here.
 def index(request):
     products = Products.objects.all()
     # 카테고리 분류
-    category = request.GET.get("category","")
+    category = request.GET.get("category", "")
     if category:
         products_category = Products.objects.filter(Q(제조회사__contains=category))
     else:
         products_category = products
-    brand = request.GET.get("brand","")
+    brand = request.GET.get("brand", "")
     if brand:
         products_brand = Products.objects.filter(Q(제조회사__contains=brand))
     else:
         products_brand = products
     # 가격 분류  1,2,3,4,5
-    price = request.GET.get("price","")
+    price = request.GET.get("price", "")
     if price:
         products_price = Products.objects.filter(Q(가격등급__contains=price))
     else:
         products_price = products
     # 무게 분류  1,2,3,4
-    weight = request.GET.get("weight","")
+    weight = request.GET.get("weight", "")
     if weight:
         products_weight = Products.objects.filter(Q(무게등급__contains=weight))
     else:
         products_weight = products
     # 프로세스 분류 AMD, INTEL, 애플
-    processor = request.GET.get("processor","")
+    processor = request.GET.get("processor", "")
     if processor:
         products_processor = Products.objects.filter(Q(CPU제조사분류__contains=processor))
     else:
         products_processor = products
     # 프로세스 분류 4000, 5000, 6000, i3, i5, i7, i9, 기타, m1, m2
-    processor_number = request.GET.get("processor_number","")
+    processor_number = request.GET.get("processor_number", "")
     if processor_number:
         products_processor_number = Products.objects.filter(
             Q(CPU넘버분류__contains=processor_number)
@@ -51,33 +55,44 @@ def index(request):
     else:
         products_processor_number = products
     # 저장용량등급 분류  1,2,3,4
-    storage = request.GET.get("storage","")
+    storage = request.GET.get("storage", "")
     if storage:
         products_storage = Products.objects.filter(Q(저장용량등급__contains=storage))
     else:
         products_storage = products
     # GPU종류등급 분류  1,2
-    graphic = request.GET.get("graphic","")
+    graphic = request.GET.get("graphic", "")
     if graphic:
         products_graphic = Products.objects.filter(Q(GPU종류등급__contains=graphic))
     else:
         products_graphic = products
     # 해상도등급 분류  "FHD","QHD","UHD"
-    resolution = request.GET.get("resolution","")
+    resolution = request.GET.get("resolution", "")
     if resolution:
         products_resolution = Products.objects.filter(Q(해상도등급__contains=resolution))
     else:
         products_resolution = products
     # 화면크기등급 분류  1,2,3
-    size = request.GET.get("size","")
+    size = request.GET.get("size", "")
     if size:
         products_size = Products.objects.filter(Q(화면크기등급__contains=size))
     else:
         products_size = products
 
-    print(request.GET.keys()) 
+    print(request.GET.keys())
     print(list(request.GET.values()))
-    result = products_category&products_price&products_weight&products_processor&products_processor_number&products_storage&products_graphic&products_resolution&products_size&products_brand
+    result = (
+        products_category
+        & products_price
+        & products_weight
+        & products_processor
+        & products_processor_number
+        & products_storage
+        & products_graphic
+        & products_resolution
+        & products_size
+        & products_brand
+    )
     print(len(result))
     products_category = result
 
@@ -102,6 +117,7 @@ def index(request):
         "page_obj": page_obj,
     }
     return render(request, "products/index.html", context)
+
 
 def detail(request, pk):
     load_dotenv()
@@ -139,6 +155,7 @@ def detail(request, pk):
         "image3": image3,
     }
     return render(request, "products/detail.html", context)
+
 
 @login_required
 def like_product(request, pk):
@@ -195,6 +212,7 @@ def review_create(request, pk):
     }
     return render(request, "products/create.html", context)
 
+
 @login_required
 def update(request, product_pk, review_pk):
     review = Review.objects.get(pk=review_pk)
@@ -211,6 +229,7 @@ def update(request, product_pk, review_pk):
     return JsonResponse(context)
 
 
+
 def delete(request, product_pk, review_pk):
     get_object_or_404(Review, pk=review_pk).delete()
     context = {}
@@ -219,7 +238,7 @@ def delete(request, product_pk, review_pk):
 
 # 필터링 계산
 @login_required
-@require_http_methods(['GET','POST'])
+@require_http_methods(["GET", "POST"])
 def calculate_weight(request):
     products = Products.objects.all()
     # 무게 등급 나누기
@@ -236,8 +255,8 @@ def calculate_weight(request):
         product.save()
     return redirect("products:index")
 
-@login_required
 
+@login_required
 def calculate_price(request):
     products = Products.objects.all()
     # 가격 등급 나누기.
@@ -255,8 +274,8 @@ def calculate_price(request):
         product.save()
     return redirect("products:index")
 
-@login_required
 
+@login_required
 def calculate_storage(request):
     products = Products.objects.all()
     # 저장 용량 등급 나누기.
@@ -272,8 +291,8 @@ def calculate_storage(request):
         product.save()
     return redirect("products:index")
 
-@login_required
 
+@login_required
 def calculate_processor(request):
     products = Products.objects.all()
     # CPU제조사 분류
@@ -307,8 +326,8 @@ def calculate_processor(request):
         product.save()
     return redirect("products:index")
 
-@login_required
 
+@login_required
 def calculate_graphic(request):
     products = Products.objects.all()
     # 그래픽카드 분류
@@ -326,8 +345,8 @@ def calculate_graphic(request):
         product.save()
     return redirect("products:index")
 
-@login_required
 
+@login_required
 def calculate_resolution(request):
     products = Products.objects.all()
     # 해상도 분류
@@ -341,8 +360,8 @@ def calculate_resolution(request):
         product.save()
     return redirect("products:index")
 
-@login_required
 
+@login_required
 def calculate_size(request):
     products = Products.objects.all()
     # 노트북 크기 분류
@@ -382,30 +401,11 @@ def calculate_size(request):
         product.save()
     return redirect("products:index")
 
-@login_required
 
+@login_required
 def calculate_ten(request):
     products = Products.objects.all()
     for product in products:
         product.ten_price = int(round((product.가격) * 1.1))
         product.save()
     return redirect("products:index")
-
-
-@login_required
-def purchase(request, product_pk):
-    product = Products.objects.get(pk=product_pk)
-    if request.method == "POST":
-        purchaseForm = PurchaseForm(request.POST)
-        if purchaseForm.is_valid():
-            purchase_ = purchaseForm.save(commit=False)
-            purchase_.user = request.user
-            purchase_.products = product
-            purchase_.save()
-            return redirect("products:index")
-    else:
-        purchaseForm = PurchaseForm()
-    context = {
-        "purchaseForm": purchaseForm,
-    }
-    return render(request, "products/index.html", context)
