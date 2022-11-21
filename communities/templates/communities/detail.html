@@ -67,6 +67,7 @@
         
       
     </div>
+    {% if request.user.pk == article.user.pk%}
       {% if request.user.is_superuser %}
       <form class="text-end" action="{% url "communities:article_delete" article.pk %}" method="POST">
         {% csrf_token %}
@@ -74,15 +75,17 @@
         <input class="btn_modify2" type="submit" value="삭제">
         <a href="{% url "communities:index" %}" class="btn_modify3">뒤로</a>
       </form>
-      {% elif request.user.is_authenticated %}
+      {% else %}
+      {% comment %} {% elif request.user.is_authenticated %} {% endcomment %}
       <form class="text-end" action="{% url "communities:article_delete" article.pk %}" method="POST">
         {% csrf_token %}
         <a href="{% url "communities:update" article.pk %}" class="btn_modify1" method="POST">수정</a>
         <input class="btn_modify2" type="submit" value="삭제">
         <a href="{% url "communities:index" %}" class="btn_modify3">뒤로</a>
       </form>
-      {% else %}
+      {% comment %} {% else %} {% endcomment %}
       {% endif %}
+    {% endif %}
   </div>
 
   <!-- 댓글창 -->
@@ -95,8 +98,8 @@
           <!-- 프로필 사진 -->
           <div class="d-flex">
             <div class="rounded-pill">
-              {% if article.user.image %}
-                <img src="{{ article.user.image.url }}" alt="프로필 사진" style="width: 50px; height: 50px; border-radius: 500px">
+              {% if comment.user.image %}
+                <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 50px; height: 50px; border-radius: 500px">
               {% else %}
                 <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 50px; height: 50px; border-radius: 500px">
               {% endif %}
@@ -342,7 +345,7 @@
         const comments = document.querySelector("#comments")
             comments.insertAdjacentHTML('beforeend',`
             <div class="my-2" style="display: inline-block">
-              {% if comment.user.image %}
+             {% if comment.user.image %}
                 <img src="{{ comment.user.image.url }}" alt="프로필 사진" style="width: 30px; height: 30px; border-radius: 500px">
               {% else %}
                 <img src="https://www.dummyimage.com/600x400/000/fff" alt="후기 이미지" style="width: 30px; height: 30px; border-radius: 500px">

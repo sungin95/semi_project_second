@@ -15,7 +15,6 @@ from django.views.decorators.http import (
 )
 
 # Create your views here.
-@require_http_methods(["GET", "POST"])
 def index(request):
     products = Products.objects.all()
     # 카테고리 분류
@@ -120,7 +119,6 @@ def index(request):
     return render(request, "products/index.html", context)
 
 
-@require_http_methods(["GET", "POST"])
 def detail(request, pk):
     load_dotenv()
     KAKAO_KEY = os.getenv("KAKAOKEY")
@@ -231,7 +229,7 @@ def update(request, product_pk, review_pk):
     return JsonResponse(context)
 
 
-@require_POST
+
 def delete(request, product_pk, review_pk):
     get_object_or_404(Review, pk=review_pk).delete()
     context = {}
@@ -259,7 +257,6 @@ def calculate_weight(request):
 
 
 @login_required
-@require_http_methods(["GET", "POST"])
 def calculate_price(request):
     products = Products.objects.all()
     # 가격 등급 나누기.
@@ -279,7 +276,6 @@ def calculate_price(request):
 
 
 @login_required
-@require_http_methods(["GET", "POST"])
 def calculate_storage(request):
     products = Products.objects.all()
     # 저장 용량 등급 나누기.
@@ -297,7 +293,6 @@ def calculate_storage(request):
 
 
 @login_required
-@require_http_methods(["GET", "POST"])
 def calculate_processor(request):
     products = Products.objects.all()
     # CPU제조사 분류
@@ -333,7 +328,6 @@ def calculate_processor(request):
 
 
 @login_required
-@require_http_methods(["GET", "POST"])
 def calculate_graphic(request):
     products = Products.objects.all()
     # 그래픽카드 분류
@@ -353,7 +347,6 @@ def calculate_graphic(request):
 
 
 @login_required
-@require_http_methods(["GET", "POST"])
 def calculate_resolution(request):
     products = Products.objects.all()
     # 해상도 분류
@@ -369,7 +362,6 @@ def calculate_resolution(request):
 
 
 @login_required
-@require_http_methods(["GET", "POST"])
 def calculate_size(request):
     products = Products.objects.all()
     # 노트북 크기 분류
@@ -411,7 +403,6 @@ def calculate_size(request):
 
 
 @login_required
-@require_http_methods(["GET", "POST"])
 def calculate_ten(request):
     products = Products.objects.all()
     for product in products:
