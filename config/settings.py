@@ -61,7 +61,7 @@ DATABASES = {
 
 ALLOWED_HOSTS = [
     # "Elastic Beanstalk URL",
-    "Intellilabs-env.eba-cynacmth.ap-northeast-2.elasticbeanstalk.com", # 예시입니다. 본인 URL로 해주세요.
+    "Intellilabs-env.eba-cynacmth.ap-northeast-2.elasticbeanstalk.com",  # 예시입니다. 본인 URL로 해주세요.
     "127.0.0.1",
     "localhost",
 ]
@@ -88,14 +88,6 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     "django_extensions",
     "storages",
-    "login.apps.LoginConfig",  # 왜 login에서 가져 오는지는 모르겠네
-    # allauth
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    # provider 구글 페이스북 카톡 깃헙
-    "allauth.socialaccount.providers.google",
-    "allauth.socialaccount.providers.kakao",
 ]
 
 MIDDLEWARE = [
@@ -115,7 +107,6 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, "templates"),
-            os.path.join(BASE_DIR, "templates", "accounts"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
