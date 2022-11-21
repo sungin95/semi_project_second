@@ -181,15 +181,15 @@
             <dl class="count-show-box">
               <dt>수량</dt>
               <dd>
-                <span class="spinner-box pd-spinner goods-count">
+                <div class="spinner-box pd-spinner goods-count">
                   <!-- <a href="javascript:void(0);" class="count count-miner" type="button" id="pd-goods-count-miner" onclick='count("minus")' value="-">감소</a> -->
                   <input type="button" onclick='count("minus")' value="-" class="count count-miner btn btns">
                   <label for="countPrd" class="blind">구매수량</label>
-                  <div id='result' class="number countPrd">1</div>
+                  <input id='result' class="number" type="text" value="1">
                   <!-- <input type="text" class="number count-prd" id="countPrd" value="1" data-max-qty="22" data-min-ord-qty> -->
                   <input type="button" onclick='count("plus")' value="+" class="count count-plus btn btns">
                   <!-- <a href="javascript:void(0);" class="count count-plus" type="button" id="pd-goods-count-plus" onclick='count("plus")' value="+">증가</a> -->
-                </span>
+                </div>
               </dd>
             </dl>
           </div>
