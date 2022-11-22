@@ -224,6 +224,16 @@
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- 맨위이면 네브바 보임 -->
+    <script>
+      window.addEventListener("scroll", () => {
+        if (window.scrollY < 200) {
+          navbar.style.transform = "translateY(0%)";
+        }
+      });
+    </script>
+
     <script>
       const navbarProductClick = document.querySelector('#navbarProduct')
       const listGroup = document.querySelector("#listGroup")
