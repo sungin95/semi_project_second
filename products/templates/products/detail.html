@@ -724,8 +724,10 @@ buttons: [
 </script>
 <script>
   //리뷰 좋아요
-    const reviewLike = document.querySelector(".review-like")
-    reviewLike.addEventListener("click", function (event) {
+    const reviewLike = document.querySelectorAll(".review-like")
+  
+    reviewLike.forEach((el)=>{
+      el.addEventListener("click", function (event) {
         const productId = event.target.dataset.productId;
         const reviewId = event.target.dataset.reviewId;
         event.preventDefault()
@@ -741,6 +743,7 @@ buttons: [
             const likeReviewCount = document.querySelector(`#likeReviewCount${reviewId}`)
             likeReviewCount.innerText = response.data.likeReviewCount
         })
+    })
     })
 </script>
 <script>
