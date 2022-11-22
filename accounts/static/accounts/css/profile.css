@@ -5,9 +5,9 @@
 .title {
     font-family: "Noto Sans KR", sans-serif;
     margin: 4rem auto 2rem;
+    text-align: center;
     width: 60%;
 }
-
 
 /* test */
 .profile {
