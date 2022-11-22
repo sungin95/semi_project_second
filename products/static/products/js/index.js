@@ -62,6 +62,24 @@ document.querySelector("#resetBtn").addEventListener("click", () => {
     document.querySelectorAll(".input-tag").forEach(function (ch) {
         ch.checked = false;
     });
+    for (let i = 0; i < arrTop.length; i++) {
+        let hiddenVisible = document.querySelector(`.sidebar-${i}`);
+        hiddenVisible.style.overflow = "visible";
+        hiddenVisible.style.height = "100%";
+        hiddenVisible.childNodes[1].childNodes[3].classList.add("bi-dash");
+        hiddenVisible.childNodes[1].childNodes[3].classList.remove("bi-plus");
+    }
+});
+
+// 모두접기
+document.querySelector("#fold").addEventListener("click", () => {
+    for (let i = 0; i < arrTop.length; i++) {
+        let hiddenVisible = document.querySelector(`.sidebar-${i}`);
+        hiddenVisible.style.overflow = "hidden";
+        hiddenVisible.style.height = "45px";
+        hiddenVisible.childNodes[1].childNodes[3].classList.add("bi-plus");
+        hiddenVisible.childNodes[1].childNodes[3].classList.remove("bi-dash");
+    }
 });
 
 // 다중 클릭금지

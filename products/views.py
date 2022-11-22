@@ -95,7 +95,7 @@ def index(request):
     )
     print(len(result))
     products_category = result
-
+    products_category = products_category.order_by('-스레드수')
     page = request.GET.get("page", "1")
     paginator = Paginator(products_category, 6)
     page_obj = paginator.get_page(page)

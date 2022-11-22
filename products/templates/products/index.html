@@ -46,61 +46,61 @@
       {% endif %}
 
       {% if category == "" and brand %}
-        <span class="manu_name test1">
+        <span class="manu_name test1" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{brand}}</p>
         </span>
       {% elif category %}
-        <span class="manu_name test2">
+        <span class="manu_name test2" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{category}}</p>
         </span>
       {% endif %}
       {% if price %}
-        <span class="manu_name">
+        <span class="manu_name" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{price}}</p>
         </span>
       {% endif %}
       {% if resolution %}
-        <span class="manu_name">
+        <span class="manu_name" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{resolution}}</p>
         </span>
       {% endif %}
       {% if storage %}
-        <span class="manu_name">
+        <span class="manu_name" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{storage}}</p>
         </span>
       {% endif %}
       {% if weight %}
-        <span class="manu_name">
+        <span class="manu_name" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{weight}}</p>
         </span>
       {% endif %}
       {% if processor %}
-        <span class="manu_name">
+        <span class="manu_name" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{processor}}</p>
         </span>
       {% endif %}
       {% if processor_number %}
-        <span class="manu_name">
+        <span class="manu_name" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{processor_number}}</p>
         </span>
       {% endif %}
       {% if graphic %}
-        <span class="manu_name">
+        <span class="manu_name" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{graphic}}</p>
         </span>
       {% endif %}
       {% if size %}
-        <span class="manu_name">
+        <span class="manu_name" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{size}}</p>
         </span>
       {% endif %}
       {% if search %}
-        <span class="manu_name">
+        <span class="manu_name" style="margin-left:5px">
           <p style="margin:0 0px; text-align: center;">{{search}}</p>
         </span>
       {% endif %}
       <!-- 정렬 -->
-      <!--<div class="dropdown"> <button class="btn btns dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> 추천순 </button> <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> <li> <a class="dropdown-item" href="#">추천순</a> </li> <li> <a class="dropdown-item" href="#">최신순</a> </li> <li> <a class="dropdown-item" href="#">인기순</a> </li> <li> <a class="dropdown-item" href="#">높은 가격순</a> </li> <li> <a class="dropdown-item" href="#">낮은 가격순</a> </li> </ul> </div>-->
+      <!--<div class="dropdown"> <button class="btn btns dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> 추천순 </button> <form action=""> <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> <li> <input type="submit" class="dropdown-item" name="sort" value="추천순"> </li> <li> <input type="submit" class="dropdown-item" name="sort" value="인기순"> </li> <li> <input type="submit" class="dropdown-item" name="sort" value="높은가격순"> </li> <li> <input type="submit" class="dropdown-item" name="sort" value="낮은가격순"> </li> </ul> </form> </div>-->
     </div>
   </div>
   <hr class='my-1'>
@@ -409,9 +409,10 @@
           </div>
         </div>
         <hr>
-        <div class="d-flex justify-content-center">
-          <input type="submit" class="btn btn-dark choice1" style="margin-right:20px;" value="조회">
+        <div class="btn-group">
+          <input type="submit" class="btn btn-dark choice1" value="조회">
           <input type="button" class="btn btn-dark choice2" value="조건리셋" id="resetBtn">
+          <input type="button" class="btn btn-dark choice2" value="모두접기" id="fold">
         </div>
         <input type="checkbox" name='category' value="{{ category }}" checked="true" class="d-none" id="category">
         <input type="checkbox" name='search' value="{{ search }}" checked="true" class="d-none" id="searchBtn">

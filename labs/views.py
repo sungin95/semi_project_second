@@ -139,6 +139,14 @@ def search(request):
                 products_size = products
             result = search_lists&products_category&products_price&products_weight&products_processor&products_processor_number&products_storage&products_graphic&products_resolution&products_size&products_brand
             print(len(result))
+            result = result.order_by('-스레드수')
+            
+            # if request.GET.get('sort') == '추천순':
+            # elif request.GET.get('sort') == '높은가격순':
+            #     result = result.order_by('-가격')
+            # elif request.GET.get('sort') == '낮은가격순':
+            #     result = result.order_by('가격')
+
             page = request.GET.get("page", "1")
             paginator = Paginator(result, 6)
             page_obj = paginator.get_page(page)
