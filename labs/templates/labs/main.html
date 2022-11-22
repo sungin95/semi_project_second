@@ -313,7 +313,7 @@
       <div class="card-body">
         <div>
           <img src="{% static 'labs/img/마사지건.jpg'%}" alt="" class="img-fluid region_img" style="width: 264.08px; height:154px;">
-          <h5 class="card-title text-center">Opove M3 Pro 2 마사지건  통증 완화</h5>
+          <h5 class="card-title text-center">Opove M3 Pro 2 마사지건 통증 완화</h5>
           <h6 class="card-subtitle mb-2 text-muted text-center">Pro 2</h6>
           <p class="card-text">
             <div class="standard-price text-center">
@@ -348,12 +348,31 @@
     </div>
     <!-- 카드8 한장 끝 -->
   </div>
-
 {% endblock content %}
 
+{% block footer %}
+  <!-- 푸터2 -->
+  <footer style="background-image: linear-gradient(to top, rgb(253, 253, 252) 25%, #f0f8ff 75%)">
+    <div class="container d-flex align-items-center p-5 mt-5 flex-column">
+      <div>made.by 김유영, 신윤식, 이호빈, 이성인, 조창현</div>
+      <div>아이콘 출처 :
+        <a class="text-decoration-none" href="https://www.flaticon.com/kr/free-animated-icons/" title="컴퓨터 애니메이션 아이콘" style="color:black;">컴퓨터 애니메이션 아이콘 제작자: Freepik - Flaticon</a>
+      </div>
+    </div>
+  </footer>
+{% endblock footer %}
 <!-- 자바스크립트 -->
 {% block js %}
   <script src="{% static 'labs/js/main.js' %}"></script>
+
+  <!-- 맨위이면 네브바 보임 -->
+  <script>
+    window.addEventListener("scroll", () => {
+      if (window.scrollY < 200) {
+        navbar.style.transform = "translateY(0%)";
+      }
+    });
+  </script>
 
   <!-- 베스트랭킹 배지 -->
   <script>
