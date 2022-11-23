@@ -1,6 +1,7 @@
 
 
 # 인텔리랩스
+[인텔리랩스 배포 홈페이지](http://intellilabs-env.eba-cynacmth.ap-northeast-2.elasticbeanstalk.com/)
 
 ## 서비스명 : 인텔리랩스 (Intellilabs)
 
