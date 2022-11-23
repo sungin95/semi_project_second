@@ -42,6 +42,16 @@
 
 ![mypage](README.assets/mypage.gif)
 
+- 인트로 페이지
+
+![intro](README.assets/intro.gif)
+
+- 메인 페이지
+
+![main](README.assets/main.gif)
+
+
+
 ### 페이지마다 주요 기능
 
 - MAIN
