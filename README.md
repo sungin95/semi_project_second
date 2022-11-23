@@ -15,7 +15,7 @@
 
 - 카카오톡 공유하기
 
-![카카오 공유](README.assets/카카오 공유.png)
+![카카오공유](README.assets/카카오 공유.png)
 
 - 장바구니
 
@@ -27,11 +27,11 @@
 
 - 상품 디테일 페이지
 
-![detail (1634x804)](README.assets/detail (1634x804).gif)
+![detail(1634x804)](README.assets/detail(1634x804).gif)
 
 - 상품 목록페이지
 
-![filter (1634x804)](README.assets/filter (1634x804).gif)
+![filter(1634x804)](README.assets/filter(1634x804).gif)
 
 - 회원등급 페이지
 
