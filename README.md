@@ -15,7 +15,7 @@
 
 - 카카오톡 공유하기
 
-![카카오공유](README.assets/카카오 공유.png)
+![카카오공유](README.assets/카카오공유.png)
 
 - 장바구니
 
@@ -111,7 +111,7 @@
 
 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)![PYTHON](https://img.shields.io/badge/Python-3776AB.svg?&style=flat&logo=Python&logoColor=white)![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?&style=flat&logo=HTML5&logoColor=white)![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?&style=flat&logo=CSS3&logoColor=white)![SCSS](https://img.shields.io/badge/SCSS-CC6699.svg?&style=flat&logo=SCSS&logoColor=white)![JAVASCRIPT](https://img.shields.io/badge/JavaScript-F7DF1E.svg?&style=flat&logo=JavaScript&logoColor=white)![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3.svg?&style=flat&logo=Bootstrap&logoColor=white)
 
-![KakaoTalk](https://img.shields.io/badge/kakaotalk-ffcd00.svg?style=for-the-badge&logo=kakaotalk&logoColor=000000)![Visual Studio Code](https://img.shields.io/badge/Visual Studio Code-007ACC.svg?&style=flat&logo=Visual Studio Code&logoColor=white)![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)![SQLite](https://img.shields.io/badge/sqlite-003B57.svg?&style=flat&logo=SQLite&logoColor=white)![AWS S3](https://img.shields.io/badge/AmazonS3-569A31.svg?&style=flat&logo=AmazonS3&logoColor=white)![AWS RDS](https://img.shields.io/badge/AmazonRDS-27FFF1.svg?&style=flat&logo=AmazonRDS&logoColor=white)
+![KakaoTalk](https://img.shields.io/badge/kakaotalk-ffcd00.svg?style=for-the-badge&logo=kakaotalk&logoColor=000000)![Visual Studio Code](https://img.shields.io/badge/VisualStudioCode-007ACC.svg?&style=flat&logo=VisualStudioCode&logoColor=white)![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)![SQLite](https://img.shields.io/badge/sqlite-003B57.svg?&style=flat&logo=SQLite&logoColor=white)![AWS S3](https://img.shields.io/badge/AmazonS3-569A31.svg?&style=flat&logo=AmazonS3&logoColor=white)![AWS RDS](https://img.shields.io/badge/AmazonRDS-27FFF1.svg?&style=flat&logo=AmazonRDS&logoColor=white)
 
 
 
