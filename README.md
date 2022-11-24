@@ -3,6 +3,10 @@
 # 인텔리랩스
 [인텔리랩스 배포 홈페이지](http://intellilabs-env.eba-cynacmth.ap-northeast-2.elasticbeanstalk.com/)
 
+## 핵심가치 
+
+> 고객이 오랫동안 머물 수 있도록 유도하기 
+
 ## 서비스명 : 인텔리랩스 (Intellilabs)
 
 - 노트북 판매 및 노트북 관련 커뮤니티 운영
